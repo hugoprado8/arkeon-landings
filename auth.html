@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication & Security Package - Enterprise-Grade Auth in 3 Days | Hugo Prado</title>
+    <meta name="description" content="Enterprise authentication in 3 days: SSO, 2FA, Social Login, Magic Links. €1,200 fixed price. For B2B SaaS that need security fast.">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --text: #e8e8e8;
+            --accent: #00ff88;
+            --accent-dim: #00cc6e;
+            --border: #2a2a35;
+            --card-bg: #1a1a24;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 255, 136, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, #0a0a0f 0%, #1a1a24 100%);
+            z-index: 0;
+        }
+
+        .hero-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+            background-size: 100px 100px;
+            z-index: 1;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100px, 100px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-left {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #a0a0b0;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin: 2rem 0;
+        }
+
+        .stat-item {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #6a6a7a;
+            margin-top: 0.5rem;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1.125rem 2.5rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-dim);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        /* Hero visual */
+        .hero-visual {
+            position: relative;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .auth-methods {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .auth-methods::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+        }
+
+        .auth-method {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: rgba(0, 255, 136, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(0, 255, 136, 0.1);
+        }
+
+        .auth-method:last-child {
+            margin-bottom: 0;
+        }
+
+        .auth-icon {
+            font-size: 1.5rem;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .auth-name {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .auth-desc {
+            font-size: 0.875rem;
+            color: #a0a0b0;
+            margin-top: 0.25rem;
+        }
+
+        /* Sections */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .price-highlight {
+            background: var(--card-bg);
+            border: 2px solid var(--accent);
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+            margin: 4rem auto;
+            max-width: 600px;
+        }
+
+        .price-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .price-detail {
+            font-size: 1.125rem;
+            color: #a0a0b0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 40px rgba(0, 255, 136, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .feature-desc {
+            color: #a0a0b0;
+            line-height: 1.7;
+        }
+
+        /* Use case */
+        .use-case {
+            background: var(--card-bg);
+            border-left: 4px solid var(--accent);
+            padding: 2rem;
+            margin: 3rem 0;
+            border-radius: 4px;
+        }
+
+        .use-case-title {
+            color: var(--accent);
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .use-case-desc {
+            color: #a0a0b0;
+            line-height: 1.7;
+        }
+
+        /* Tech platforms */
+        .tech-section {
+            margin: 4rem 0;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .tech-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .tech-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .tech-name {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .tech-desc {
+            font-size: 0.875rem;
+            color: #6a6a7a;
+            margin-top: 0.5rem;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .faq-question {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .faq-answer {
+            color: #a0a0b0;
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--card-bg) 0%, rgba(0, 255, 136, 0.05) 100%);
+            border-radius: 24px;
+            margin: 4rem 0;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            color: #a0a0b0;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: #6a6a7a;
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-stats {
+                gap: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 4rem 1rem;
+            }
+
+            .price-tag {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-grid"></div>
+        <div class="hero-content">
+            <div class="hero-left">
+                <span class="label">Authentication & Security</span>
+                <h1>Enterprise auth in 3 days</h1>
+                <p class="hero-subtitle">
+                    Don't lose enterprise deals over missing SSO or 2FA. Get production-ready authentication in 3 business days: SSO (SAML/OAuth), 2FA, Social Login, RBAC. For B2B SaaS that need to move fast.
+                </p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Business days</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">€1.2K</div>
+                        <div class="stat-label">Fixed price</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">SOC2</div>
+                        <div class="stat-label">Ready</div>
+                    </div>
+                </div>
+
+                <div class="cta-group">
+                    <a href="https://calendly.com/hugoprado/auth-setup" class="btn btn-primary">Book a call →</a>
+                    <a href="#features" class="btn btn-secondary">What's included</a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="auth-methods">
+                    <div class="auth-method">
+                        <div class="auth-icon">🔐</div>
+                        <div>
+                            <div class="auth-name">Email/Password</div>
+                            <div class="auth-desc">Registration, login, verification, reset</div>
+                        </div>
+                    </div>
+                    <div class="auth-method">
+                        <div class="auth-icon">🌐</div>
+                        <div>
+                            <div class="auth-name">Social Login</div>
+                            <div class="auth-desc">Google, GitHub, LinkedIn, Microsoft</div>
+                        </div>
+                    </div>
+                    <div class="auth-method">
+                        <div class="auth-icon">✉️</div>
+                        <div>
+                            <div class="auth-name">Magic Links</div>
+                            <div class="auth-desc">Passwordless login via email</div>
+                        </div>
+                    </div>
+                    <div class="auth-method">
+                        <div class="auth-icon">🔒</div>
+                        <div>
+                            <div class="auth-name">Two-Factor Auth (2FA)</div>
+                            <div class="auth-desc">Authenticator app or SMS</div>
+                        </div>
+                    </div>
+                    <div class="auth-method">
+                        <div class="auth-icon">🏢</div>
+                        <div>
+                            <div class="auth-name">SSO (SAML/OAuth)</div>
+                            <div class="auth-desc">Google Workspace, Azure AD, Okta</div>
+                        </div>
+                    </div>
+                    <div class="auth-method">
+                        <div class="auth-icon">👥</div>
+                        <div>
+                            <div class="auth-name">Role-Based Access</div>
+                            <div class="auth-desc">Admin, user, viewer permissions</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Price Highlight -->
+    <div class="container">
+        <div class="price-highlight">
+            <div class="price-tag">€1,200</div>
+            <div class="price-detail">Fixed price · 3 business days · Frontend components included · Production ready</div>
+        </div>
+    </div>
+
+    <!-- Use Case -->
+    <div class="container">
+        <div class="use-case">
+            <div class="use-case-title">The typical scenario</div>
+            <div class="use-case-desc">
+                You're a B2B SaaS with basic email/password auth. A Fortune 500 prospect wants to buy, but they require SSO (Single Sign-On) with their Google Workspace or Microsoft Azure AD. You need it implemented in a week or you lose a €50K+ ARR deal. Your dev team is busy with the roadmap and auth is complex. This is where I come in: SSO + 2FA + everything security-auditors expect, ready in 3 days.
+            </div>
+        </div>
+    </div>
+
+    <!-- What's Included -->
+    <section class="container" id="features">
+        <h2 class="section-title">What's included</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <span class="feature-icon">🔐</span>
+                <h3 class="feature-title">Email/Password Authentication</h3>
+                <p class="feature-desc">
+                    Complete flow: user registration, email verification, login, password reset, account recovery. Secure password hashing (bcrypt/Argon2). Rate limiting on auth endpoints.
+                </p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">🌐</span>
+                <h3 class="feature-title">Social Login (OAuth)</h3>
+                <p class="feature-desc">
+                    Google, GitHub, LinkedIn, Microsoft, or any OAuth 2.0 provider. Users can link multiple providers to one account. Automatic profile sync.
+                </p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">✉️</span>
+                <h3 class="feature-title">Magic Links (Passwordless)</h3>
+                <p class="feature-desc">
+                    Send secure, time-limited login links via email. No passwords to remember. Perfect for non-technical users or internal tools.
+                </p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">🔒</span>
+                <h3 class="feature-title">Two-Factor Authentication (2FA)</h3>
+                <p class="feature-desc">
+                    TOTP-based (Google Authenticator, Authy) or SMS-based 2FA. Backup codes for account recovery. Optional enforcement for admin accounts.
+                </p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">🏢</span>
+                <h3 class="feature-title">SSO (SAML & OAuth)</h3>
+                <p class="feature-desc">
+                    Enterprise Single Sign-On with Google Workspace, Microsoft Azure AD, Okta, or any SAML 2.0 / OAuth 2.0 provider. Critical for selling to large companies.
+                </p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">👥</span>
+                <h3 class="feature-title">Role-Based Access Control (RBAC)</h3>
+                <p class="feature-desc">
+                    Define roles (admin, user, viewer) with granular permissions. Middleware for protecting routes by role. Easy to extend with custom roles.
+                </p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">🔑</span>
+                <h3 class="feature-title">Session Management</h3>
+                <p class="feature-desc">
+                    JWT or session-based auth (your choice). Token refresh flows. "Remember me" functionality. Multi-device session management.
+                </p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">📊</span>
+                <h3 class="feature-title">Audit Logging</h3>
+                <p class="feature-desc">
+                    Track auth events: logins, failed attempts, password changes, role modifications. Essential for SOC2 compliance and security audits.
+                </p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">🎨</span>
+                <h3 class="feature-title">Frontend Components</h3>
+                <p class="feature-desc">
+                    Pre-built login, registration, and password reset forms. Styled to match your brand. Mobile-responsive. Accessible (WCAG 2.1).
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supported Platforms -->
+    <section class="container">
+        <div class="tech-section">
+            <h2 class="section-title">Platforms I work with</h2>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <div class="tech-name">Supabase</div>
+                    <div class="tech-desc">Full auth + database</div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-name">Auth0</div>
+                    <div class="tech-desc">Enterprise SSO specialist</div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-name">Clerk</div>
+                    <div class="tech-desc">Modern auth UI</div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-name">Custom (JWT)</div>
+                    <div class="tech-desc">Full control, no vendor lock-in</div>
+                </div>
+            </div>
+            <p style="text-align: center; color: #6a6a7a; margin-top: 2rem; font-size: 0.95rem;">
+                Or I can work with your existing auth provider. Already using something else? Let's discuss.
+            </p>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="container">
+        <h2 class="section-title">Common questions</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">Why not just use Auth0 or Clerk out of the box?</div>
+            <div class="faq-answer">
+                You can! But there's still implementation work: integrating with your app, customizing the UI, setting up SSO with specific providers, configuring RBAC for your use case, and handling edge cases. This package handles all of that. You get a production-ready auth system, not just an auth provider account.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Is 3 days really enough for SSO?</div>
+            <div class="faq-answer">
+                Yes, if you use a proper auth platform (Supabase, Auth0, etc.) and know what you're doing. The heavy lifting is done by the platform; I handle the integration, configuration, and testing. If you need custom SAML configuration for a specific enterprise customer, that might take an extra day or two.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">What if I need to pass a security audit?</div>
+            <div class="faq-answer">
+                The implementation follows security best practices: hashed passwords, rate limiting, audit logs, secure session management. This covers most SOC2 and ISO 27001 requirements for authentication. If you need specific compliance features (e.g., password rotation policies, IP whitelisting), let me know upfront and I'll include them.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Do you include the frontend components?</div>
+            <div class="faq-answer">
+                Yes. You get working login, registration, password reset, and 2FA setup forms. Styled to match your app (I'll use your design system or Tailwind defaults). Mobile-responsive and accessible. Not just backend APIs — complete, ready-to-use auth flows.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">What tech stacks do you support?</div>
+            <div class="faq-answer">
+                React/Next.js frontend, Node.js or Python backend. Database-agnostic (works with PostgreSQL, Supabase, MongoDB, etc.). If you're using something else, let's discuss — I can usually adapt.
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="container">
+        <div class="cta-section">
+            <h2>Need auth implemented this week?</h2>
+            <p>Book a 15-minute call. We'll discuss your requirements and I'll give you a timeline and price.</p>
+            <a href="https://calendly.com/hugoprado/auth-setup" class="btn btn-primary">Schedule call →</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Hugo Prado · Arkeon Data, S.L.</p>
+        <p><a href="mailto:hugo@arkeondata.com">hugo@arkeondata.com</a> · Barcelona, Spain</p>
+        <p style="margin-top: 1rem; font-size: 0.85rem;">NIF: B40740932</p>
+    </footer>
+</body>
+</html>

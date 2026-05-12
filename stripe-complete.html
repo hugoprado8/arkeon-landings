@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stripe Integration Sprint - 5 Days, Fixed Price | Hugo Prado</title>
+    <meta name="description" content="Add payments to your SaaS in 5 days. Checkout, Webhooks, Customer Portal. €1,500 fixed price. Proven track record with 5+ Stripe integrations.">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --text: #e8e8e8;
+            --accent: #00ff88;
+            --accent-dim: #00cc6e;
+            --border: #2a2a35;
+            --card-bg: #1a1a24;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 255, 136, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, #0a0a0f 0%, #1a1a24 100%);
+            z-index: 0;
+        }
+
+        .hero-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+            background-size: 100px 100px;
+            z-index: 1;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100px, 100px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-left {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #a0a0b0;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin: 2rem 0;
+        }
+
+        .stat-item {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #6a6a7a;
+            margin-top: 0.5rem;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1.125rem 2.5rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-dim);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        /* Hero visual */
+        .hero-visual {
+            position: relative;
+            height: 500px;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .code-block {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            line-height: 1.8;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .code-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+        }
+
+        .code-line {
+            margin-bottom: 0.5rem;
+        }
+
+        .code-comment {
+            color: #6a6a7a;
+        }
+
+        .code-keyword {
+            color: #ff79c6;
+        }
+
+        .code-string {
+            color: var(--accent);
+        }
+
+        .code-function {
+            color: #8be9fd;
+        }
+
+        /* Sections */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .price-highlight {
+            background: var(--card-bg);
+            border: 2px solid var(--accent);
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+            margin: 4rem auto;
+            max-width: 600px;
+        }
+
+        .price-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .price-detail {
+            font-size: 1.125rem;
+            color: #a0a0b0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 40px rgba(0, 255, 136, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .feature-desc {
+            color: #a0a0b0;
+            line-height: 1.7;
+        }
+
+        /* Case studies */
+        .case-study {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s;
+        }
+
+        .case-study:hover {
+            border-color: var(--accent);
+        }
+
+        .case-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .case-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .case-tag {
+            padding: 0.5rem 1rem;
+            background: var(--accent);
+            color: var(--bg);
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .case-problem {
+            margin-bottom: 1.5rem;
+        }
+
+        .case-problem h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .case-problem p {
+            color: #a0a0b0;
+            line-height: 1.7;
+        }
+
+        .case-solution {
+            margin-bottom: 1.5rem;
+        }
+
+        .case-solution h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .case-solution ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .case-solution li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            color: #a0a0b0;
+        }
+
+        .case-solution li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .case-result {
+            background: rgba(0, 255, 136, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 1rem 1.5rem;
+            border-radius: 4px;
+        }
+
+        .case-result strong {
+            color: var(--accent);
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .faq-question {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .faq-answer {
+            color: #a0a0b0;
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--card-bg) 0%, rgba(0, 255, 136, 0.05) 100%);
+            border-radius: 24px;
+            margin: 4rem 0;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            color: #a0a0b0;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: #6a6a7a;
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-visual {
+                height: 400px;
+            }
+
+            .hero-stats {
+                gap: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 4rem 1rem;
+            }
+
+            .price-tag {
+                font-size: 3rem;
+            }
+
+            .case-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-grid"></div>
+        <div class="hero-content">
+            <div class="hero-left">
+                <span class="label">Stripe Integration Sprint</span>
+                <h1>Add payments to your SaaS in 5 days</h1>
+                <p class="hero-subtitle">
+                    Stop leaving money on the table. Get Stripe fully integrated — Checkout, Webhooks, Customer Portal — in one week. Fixed price, guaranteed timeline.
+                </p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Stripe integrations</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">Business days</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">€1.5K</div>
+                        <div class="stat-label">Fixed price</div>
+                    </div>
+                </div>
+
+                <div class="cta-group">
+                    <a href="https://calendly.com/hugoprado/stripe-sprint" class="btn btn-primary">Schedule a call →</a>
+                    <a href="#cases" class="btn btn-secondary">See case studies</a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="code-block">
+                    <div class="code-line"><span class="code-comment">// Complete Stripe integration</span></div>
+                    <div class="code-line"><span class="code-keyword">const</span> stripe = <span class="code-function">require</span>(<span class="code-string">'stripe'</span>);</div>
+                    <div class="code-line"></div>
+                    <div class="code-line"><span class="code-comment">// ✅ Checkout Sessions</span></div>
+                    <div class="code-line"><span class="code-comment">// ✅ Subscriptions (monthly/annual)</span></div>
+                    <div class="code-line"><span class="code-comment">// ✅ Webhook handlers</span></div>
+                    <div class="code-line"><span class="code-comment">// ✅ Customer Portal</span></div>
+                    <div class="code-line"><span class="code-comment">// ✅ Invoice generation</span></div>
+                    <div class="code-line"></div>
+                    <div class="code-line"><span class="code-keyword">app</span>.<span class="code-function">post</span>(<span class="code-string">'/create-checkout'</span>, <span class="code-keyword">async</span> (req, res) => {</div>
+                    <div class="code-line">  <span class="code-keyword">const</span> session = <span class="code-keyword">await</span> stripe.checkout</div>
+                    <div class="code-line">    .<span class="code-function">sessions.create</span>({</div>
+                    <div class="code-line">      mode: <span class="code-string">'subscription'</span>,</div>
+                    <div class="code-line">      line_items: [{ price: priceId, quantity: 1 }],</div>
+                    <div class="code-line">      success_url: <span class="code-string">'https://yoursaas.com/success'</span>,</div>
+                    <div class="code-line">    });</div>
+                    <div class="code-line">});</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Price Highlight -->
+    <div class="container">
+        <div class="price-highlight">
+            <div class="price-tag">€1,500</div>
+            <div class="price-detail">Fixed price · 5 business days · Production deployment included</div>
+        </div>
+    </div>
+
+    <!-- What's Included -->
+    <section class="container">
+        <h2 class="section-title">What's included</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <span class="feature-icon">💳</span>
+                <h3 class="feature-title">Stripe Checkout + Subscriptions</h3>
+                <p class="feature-desc">
+                    Complete payment flow implementation. One-time payments or recurring subscriptions (monthly/annual). Works with your existing stack.
+                </p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">🔔</span>
+                <h3 class="feature-title">Webhook handlers</h3>
+                <p class="feature-desc">
+                    Proper event processing for payment_succeeded, subscription_updated, invoice_paid, and all critical Stripe events. No missed payments.
+                </p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">👤</span>
+                <h3 class="feature-title">Customer Portal</h3>
+                <p class="feature-desc">
+                    Let customers manage their own subscriptions, update payment methods, view invoices, and download receipts. Zero support overhead for you.
+                </p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">📧</span>
+                <h3 class="feature-title">Automated invoicing</h3>
+                <p class="feature-desc">
+                    PDF invoices generated and sent automatically. Customized with your branding. Email receipts for every transaction.
+                </p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">🧪</span>
+                <h3 class="feature-title">Testing & QA</h3>
+                <p class="feature-desc">
+                    Complete test coverage using Stripe test mode. We test successful payments, failed cards, webhook retries, and edge cases.
+                </p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">🚀</span>
+                <h3 class="feature-title">Production deployment</h3>
+                <p class="feature-desc">
+                    Full deployment to your production environment. Environment variables configured. Monitoring set up. Ready to accept real payments.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section class="container" id="cases">
+        <h2 class="section-title">Recent projects</h2>
+
+        <div class="case-study">
+            <div class="case-header">
+                <h3 class="case-title">Gastrovisual</h3>
+                <span class="case-tag">€1,000 · 5 days</span>
+            </div>
+            <div class="case-problem">
+                <h4>Problem</h4>
+                <p>
+                    Hospitality SaaS with 50+ restaurants using the platform but no way to collect payments. Losing clients to competitors with payment systems. Needed SEPA direct debit for European restaurants.
+                </p>
+            </div>
+            <div class="case-solution">
+                <h4>Solution delivered</h4>
+                <ul>
+                    <li>Stripe Payment Links for one-time payments</li>
+                    <li>SEPA subscriptions for recurring monthly fees</li>
+                    <li>Automated PDF invoice generation</li>
+                    <li>Customer Portal for self-service</li>
+                    <li>Stripe Connect for managing restaurant commissions</li>
+                </ul>
+            </div>
+            <div class="case-result">
+                <strong>Result:</strong> Converted 35 restaurants to paying customers in first month. €12K MRR within 60 days of launch.
+            </div>
+        </div>
+
+        <div class="case-study">
+            <div class="case-header">
+                <h3 class="case-title">Tweedy</h3>
+                <span class="case-tag">Part of €7,500 project</span>
+            </div>
+            <div class="case-problem">
+                <h4>Problem</h4>
+                <p>
+                    B2B SaaS for freelancers needing subscription billing. Founder wanted monthly AND annual plans with automatic upgrades/downgrades. Complex tax handling for EU VAT.
+                </p>
+            </div>
+            <div class="case-solution">
+                <h4>Solution delivered</h4>
+                <ul>
+                    <li>Multi-tier pricing (€29/mo, €99/mo, €299/mo)</li>
+                    <li>Annual plans with 20% discount applied automatically</li>
+                    <li>Upgrade/downgrade flow with prorated billing</li>
+                    <li>EU VAT handling via Stripe Tax</li>
+                    <li>Invoice customization with company branding</li>
+                </ul>
+            </div>
+            <div class="case-result">
+                <strong>Result:</strong> 40% of users chose annual plans. Reduced payment support tickets by 90% with Customer Portal.
+            </div>
+        </div>
+
+        <div class="case-study">
+            <div class="case-header">
+                <h3 class="case-title">NAUA Logistics</h3>
+                <span class="case-tag">€1,500 · 6 days</span>
+            </div>
+            <div class="case-problem">
+                <h4>Problem</h4>
+                <p>
+                    Enterprise client purchasing required SSO + credit card storage for recurring charges. Existing payment system couldn't handle PCI compliance requirements.
+                </p>
+            </div>
+            <div class="case-solution">
+                <h4>Solution delivered</h4>
+                <ul>
+                    <li>Stripe Elements for PCI-compliant card storage</li>
+                    <li>Saved payment methods with token vault</li>
+                    <li>Recurring charges for logistics services</li>
+                    <li>Usage-based billing for variable shipments</li>
+                    <li>Detailed transaction reporting dashboard</li>
+                </ul>
+            </div>
+            <div class="case-result">
+                <strong>Result:</strong> Closed €150K/year enterprise deal. Payment processing now handles 500+ transactions/month.
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="container">
+        <h2 class="section-title">Common questions</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">Why not just use Lemon Squeezy or Paddle?</div>
+            <div class="faq-answer">
+                Stripe gives you maximum flexibility for B2B SaaS: custom billing cycles, usage-based pricing, multi-currency, and lower fees (2.9% + 30¢ vs 5%+). You own the customer relationship. For serious B2B products, Stripe is the standard.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Is 5 days really enough?</div>
+            <div class="faq-answer">
+                Yes, for the defined scope: Checkout, Webhooks, Customer Portal, and deployment. I've done this 5+ times. The scope is fixed and proven. If you need extras (usage-based billing, complex tax, Connect marketplace), that's a different package.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">What if I need changes after delivery?</div>
+            <div class="faq-answer">
+                The code is yours. You can modify it or hire another developer. I also offer ongoing support at €100/hour if you prefer me to handle updates. Most clients don't need changes — the integration just works.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Do I need to be technical?</div>
+            <div class="faq-answer">
+                No. I handle everything: code, testing, deployment. You just need to provide access to your codebase and Stripe account. I'll walk you through the setup during our kickoff call.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">What tech stacks do you support?</div>
+            <div class="faq-answer">
+                React/Next.js, Node.js, Python (Django/FastAPI), any PostgreSQL/Supabase setup. If you're using something else, let's discuss — I can usually adapt.
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="container">
+        <div class="cta-section">
+            <h2>Ready to start accepting payments?</h2>
+            <p>Book a 15-minute call. We'll discuss your needs, confirm the scope, and schedule your integration sprint.</p>
+            <a href="https://calendly.com/hugoprado/stripe-sprint" class="btn btn-primary">Schedule call →</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Hugo Prado · Arkeon Data, S.L.</p>
+        <p><a href="mailto:hugo@arkeondata.com">hugo@arkeondata.com</a> · Barcelona, Spain</p>
+        <p style="margin-top: 1rem; font-size: 0.85rem;">NIF: B40740932</p>
+    </footer>
+</body>
+</html>

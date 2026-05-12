@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2-Week MVP Development - From Idea to Live Product | Hugo Prado</title>
+    <meta name="description" content="Ship your MVP in 10 business days. Full-stack development: frontend, backend, database, deployment. €3,000-6,000 fixed price for non-technical founders.">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --text: #e8e8e8;
+            --accent: #00ff88;
+            --accent-dim: #00cc6e;
+            --border: #2a2a35;
+            --card-bg: #1a1a24;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 255, 136, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, #0a0a0f 0%, #1a1a24 100%);
+            z-index: 0;
+        }
+
+        .hero-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+            background-size: 100px 100px;
+            z-index: 1;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100px, 100px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-left {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #a0a0b0;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin: 2rem 0;
+        }
+
+        .stat-item {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #6a6a7a;
+            margin-top: 0.5rem;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1.125rem 2.5rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-dim);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        /* Hero visual */
+        .hero-visual {
+            position: relative;
+            height: 500px;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .timeline {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            align-items: start;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-day {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: var(--accent);
+            min-width: 80px;
+            font-weight: 600;
+        }
+
+        .timeline-content {
+            flex: 1;
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            font-size: 1rem;
+        }
+
+        .timeline-desc {
+            font-size: 0.875rem;
+            color: #a0a0b0;
+        }
+
+        /* Sections */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .price-highlight {
+            background: var(--card-bg);
+            border: 2px solid var(--accent);
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+            margin: 4rem auto;
+            max-width: 600px;
+        }
+
+        .price-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .price-detail {
+            font-size: 1.125rem;
+            color: #a0a0b0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 40px rgba(0, 255, 136, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .feature-desc {
+            color: #a0a0b0;
+            line-height: 1.7;
+        }
+
+        /* Case studies */
+        .case-study {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s;
+        }
+
+        .case-study:hover {
+            border-color: var(--accent);
+        }
+
+        .case-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .case-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .case-tag {
+            padding: 0.5rem 1rem;
+            background: var(--accent);
+            color: var(--bg);
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .case-problem {
+            margin-bottom: 1.5rem;
+        }
+
+        .case-problem h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .case-problem p {
+            color: #a0a0b0;
+            line-height: 1.7;
+        }
+
+        .case-solution {
+            margin-bottom: 1.5rem;
+        }
+
+        .case-solution h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .case-solution ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .case-solution li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            color: #a0a0b0;
+        }
+
+        .case-solution li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .case-result {
+            background: rgba(0, 255, 136, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 1rem 1.5rem;
+            border-radius: 4px;
+        }
+
+        .case-result strong {
+            color: var(--accent);
+        }
+
+        /* Scope callout */
+        .scope-callout {
+            background: var(--card-bg);
+            border-left: 4px solid var(--accent);
+            padding: 2rem;
+            margin: 3rem 0;
+            border-radius: 4px;
+        }
+
+        .scope-callout h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .scope-callout p {
+            color: #a0a0b0;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .scope-callout ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .scope-callout li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            position: relative;
+            color: #a0a0b0;
+        }
+
+        .scope-callout li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .faq-question {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .faq-answer {
+            color: #a0a0b0;
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--card-bg) 0%, rgba(0, 255, 136, 0.05) 100%);
+            border-radius: 24px;
+            margin: 4rem 0;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            color: #a0a0b0;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: #6a6a7a;
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-visual {
+                height: auto;
+            }
+
+            .hero-stats {
+                gap: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 4rem 1rem;
+            }
+
+            .price-tag {
+                font-size: 2.5rem;
+            }
+
+            .case-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-grid"></div>
+        <div class="hero-content">
+            <div class="hero-left">
+                <span class="label">2-Week MVP Development</span>
+                <h1>From idea to live product in 10 days</h1>
+                <p class="hero-subtitle">
+                    Stop waiting for the "perfect" team. Ship your MVP in 2 weeks with a complete full-stack product: frontend, backend, database, and deployment. For non-technical founders who need to validate fast.
+                </p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">10</div>
+                        <div class="stat-label">Business days</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">20+</div>
+                        <div class="stat-label">MVPs shipped</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Code ownership</div>
+                    </div>
+                </div>
+
+                <div class="cta-group">
+                    <a href="https://calendly.com/hugoprado/mvp-discovery" class="btn btn-primary">Book discovery call →</a>
+                    <a href="#cases" class="btn btn-secondary">See projects</a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-day">Day 1</div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Discovery & Scope</div>
+                            <div class="timeline-desc">Define 1-3 core features, tech stack, success criteria</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-day">Days 2-4</div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Database & Backend</div>
+                            <div class="timeline-desc">Schema design, API endpoints, authentication</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-day">Days 5-7</div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Frontend Development</div>
+                            <div class="timeline-desc">UI implementation, responsive design, user flows</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-day">Days 8-9</div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Testing & Refinement</div>
+                            <div class="timeline-desc">Bug fixes, edge cases, performance optimization</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-day">Day 10</div>
+                        <div class="timeline-content">
+                            <div class="timeline-title">Production Deploy</div>
+                            <div class="timeline-desc">Live on your domain, monitoring set up, handoff</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Price Highlight -->
+    <div class="container">
+        <div class="price-highlight">
+            <div class="price-tag">€3,000 - €6,000</div>
+            <div class="price-detail">Based on scope · 10 business days · Full code ownership · Production deployment included</div>
+        </div>
+    </div>
+
+    <!-- What's Included -->
+    <section class="container">
+        <h2 class="section-title">Complete full-stack MVP</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <span class="feature-icon">🎨</span>
+                <h3 class="feature-title">Modern frontend</h3>
+                <p class="feature-desc">
+                    React or Next.js with Tailwind CSS. Mobile-first responsive design. Fast, accessible, professional-looking UI that users actually want to use.
+                </p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">⚙️</span>
+                <h3 class="feature-title">Production backend</h3>
+                <p class="feature-desc">
+                    Node.js or Python. RESTful APIs, authentication, business logic. Designed to scale from 10 to 10,000 users without rebuilding.
+                </p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">🗄️</span>
+                <h3 class="feature-title">Scalable database</h3>
+                <p class="feature-desc">
+                    PostgreSQL via Supabase. Normalized schema, proper indexing, backup strategy. Built to grow with your product.
+                </p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">🔐</span>
+                <h3 class="feature-title">User authentication</h3>
+                <p class="feature-desc">
+                    Email/password login, password reset, email verification. Optional: social login (Google, GitHub) or magic links.
+                </p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">📱</span>
+                <h3 class="feature-title">Responsive design</h3>
+                <p class="feature-desc">
+                    Works perfectly on mobile, tablet, and desktop. Tested on real devices. No "mobile version coming later" — it's ready day one.
+                </p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">🚀</span>
+                <h3 class="feature-title">Production deployment</h3>
+                <p class="feature-desc">
+                    Deployed to Vercel or Railway. Custom domain connected. SSL certificate configured. Monitoring and error tracking set up.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scope -->
+    <div class="container">
+        <div class="scope-callout">
+            <h3>What "MVP" means here</h3>
+            <p><strong>MVP = Minimum Viable Product.</strong> Not a prototype. Not a mockup. A real, working product that users can actually use.</p>
+            <p><strong>The constraint: 1-3 core features max.</strong> We build what's essential to validate your idea, nothing more. Here's what fits in 2 weeks:</p>
+            <ul>
+                <li><strong>Internal tool:</strong> Replace Excel/Google Sheets with a proper web app (CRUD, filtering, exports)</li>
+                <li><strong>Simple marketplace:</strong> Connect buyers with sellers (listings, messaging, basic transactions)</li>
+                <li><strong>Booking/scheduling:</strong> Calendar-based booking for services in your industry</li>
+                <li><strong>CRM for your niche:</strong> Customer management tailored to your specific workflow</li>
+                <li><strong>Dashboard:</strong> Visualize internal data with charts and filtering</li>
+            </ul>
+            <p><strong>What doesn't fit:</strong> Social networks, "Uber for X", AI/ML-heavy apps, games. These need months, not weeks.</p>
+        </div>
+    </div>
+
+    <!-- Case Studies -->
+    <section class="container" id="cases">
+        <h2 class="section-title">Recent MVPs</h2>
+
+        <div class="case-study">
+            <div class="case-header">
+                <h3 class="case-title">Endless Racing</h3>
+                <span class="case-tag">€6,000 · 12 weeks</span>
+            </div>
+            <div class="case-problem">
+                <h4>Problem</h4>
+                <p>
+                    Sports community managing 200+ members via WhatsApp groups and Excel spreadsheets. No way to track registrations, payments, or event attendance. Founder spending 10+ hours/week on manual admin work.
+                </p>
+            </div>
+            <div class="case-solution">
+                <h4>Solution delivered</h4>
+                <ul>
+                    <li>Member profiles with registration history</li>
+                    <li>Event calendar with RSVP tracking</li>
+                    <li>Payment tracking (manual at first, Stripe integration later)</li>
+                    <li>Admin dashboard for managing everything</li>
+                    <li>Mobile-first design (70% of users on mobile)</li>
+                </ul>
+            </div>
+            <div class="case-result">
+                <strong>Result:</strong> Launched to all 200 members in week 13. Reduced admin work from 10 hours/week to 2 hours/week. Now supporting 350+ active members. Founder freed up to focus on growth instead of spreadsheets.
+            </div>
+        </div>
+
+        <div class="case-study">
+            <div class="case-header">
+                <h3 class="case-title">Tweedy</h3>
+                <span class="case-tag">€7,500 · Full platform</span>
+            </div>
+            <div class="case-problem">
+                <h4>Problem</h4>
+                <p>
+                    Freelancers and consultants spending hours each month on financial admin: tracking invoices, calculating taxes, generating reports. Existing tools (Xero, QuickBooks) too complex and expensive for solo consultants.
+                </p>
+            </div>
+            <div class="case-solution">
+                <h4>Solution delivered</h4>
+                <ul>
+                    <li>Automated invoice generation from time entries</li>
+                    <li>Tax calculation engine for Spanish freelancers</li>
+                    <li>Client portal for payment status</li>
+                    <li>Financial dashboard (revenue, expenses, profit)</li>
+                    <li>Stripe integration for subscription billing</li>
+                </ul>
+            </div>
+            <div class="case-result">
+                <strong>Result:</strong> B2B SaaS now serving 40+ paying freelancers. Reduced their financial admin from 10 hours/month to fully automated. Monthly revenue €1,600+ and growing. Validated business model in first 90 days.
+            </div>
+        </div>
+
+        <div class="case-study">
+            <div class="case-header">
+                <h3 class="case-title">DRIVI.ai</h3>
+                <span class="case-tag">Co-Founder & CPO</span>
+            </div>
+            <div class="case-problem">
+                <h4>Context</h4>
+                <p>
+                    Tech startup built from scratch. AI-powered platform requiring full-stack development, team management, and product strategy. Real revenue-generating business, not a side project.
+                </p>
+            </div>
+            <div class="case-solution">
+                <h4>My role</h4>
+                <ul>
+                    <li>Full-stack platform architecture (React Native + Python + GCP)</li>
+                    <li>LangChain + OpenAI API integration for AI features</li>
+                    <li>Managing team of 5 developers</li>
+                    <li>Product roadmap and feature prioritization</li>
+                    <li>Complete product development cycle from ideation to launch</li>
+                </ul>
+            </div>
+            <div class="case-result">
+                <strong>Result:</strong> Live platform generating real revenue. Team scaled from 1 to 5 developers. I understand what founders need: fast execution, user validation, and scalable architecture. Not just a developer — I've been in your shoes.
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="container">
+        <h2 class="section-title">Common questions</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">Is 2 weeks really enough for an MVP?</div>
+            <div class="faq-answer">
+                Yes, for a properly scoped MVP with 1-3 core features. The key is focus: we build what's essential to validate your idea, nothing more. If you have 10 features in mind, we'll discuss which 3 are truly critical and build those first. You can always add more features later once you've validated the core concept.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">What happens after the 2 weeks?</div>
+            <div class="faq-answer">
+                You own 100% of the code and can do whatever you want with it. Hire another developer, bring it in-house, or continue working with me on an ongoing basis (€100/hour or fixed-price projects for additional features). Most founders choose to validate first, then expand if the MVP shows traction.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Do I need to be technical?</div>
+            <div class="faq-answer">
+                No. I've worked with many non-technical founders (ex-consultants, PMs, marketers). You just need to clearly explain the problem you're solving and who your users are. I'll handle all the technical decisions and explain things in plain English. We'll have daily check-ins so you're never in the dark.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Can you build my exact idea for [competitor]?</div>
+            <div class="faq-answer">
+                Probably not in 2 weeks. Apps like Instagram, Uber, Airbnb took teams of engineers months or years. But we can build a simplified version focused on your unique angle. For example: not "Uber for X" (too complex), but "simple booking system for X industry" (totally doable). The scope conversation on our discovery call will clarify what fits.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">What tech stack do you use?</div>
+            <div class="faq-answer">
+                Default: React/Next.js frontend, Node.js or Python backend, PostgreSQL database via Supabase, deployed to Vercel or Railway. But I adapt based on your needs. Already have a team using a specific stack? I can match it. Need something specific for your industry? Let's discuss.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">What if I'm not sure about the scope?</div>
+            <div class="faq-answer">
+                That's what the discovery call is for. We'll spend 30-45 minutes discussing your idea, your users, and what success looks like. I'll ask clarifying questions and help you identify the 1-3 features that are truly essential. By the end, you'll have a clear scope and fixed price quote.
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="container">
+        <div class="cta-section">
+            <h2>Ready to ship your MVP?</h2>
+            <p>Book a 30-minute discovery call. We'll discuss your idea, define the scope, and you'll get a fixed price quote.</p>
+            <a href="https://calendly.com/hugoprado/mvp-discovery" class="btn btn-primary">Schedule discovery call →</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Hugo Prado · Arkeon Data, S.L.</p>
+        <p><a href="mailto:hugo@arkeondata.com">hugo@arkeondata.com</a> · Barcelona, Spain</p>
+        <p style="margin-top: 1rem; font-size: 0.85rem;">NIF: B40740932</p>
+    </footer>
+</body>
+</html>
