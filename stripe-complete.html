@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stripe Integration Sprint - 5 Days, Fixed Price | Hugo Prado</title>
-    <meta name="description" content="Add payments to your SaaS in 5 days. Checkout, Webhooks, Customer Portal. €1,500 fixed price. Proven track record with 5+ Stripe integrations.">
+    <title>Stripe Integration Sprint - 7 Days, Fixed Price | Hugo Prado</title>
+    <meta name="description" content="Add payments to your SaaS in 7 days. Checkout, Webhooks, Customer Portal. €1,500 fixed price.">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -541,18 +541,18 @@
         <div class="hero-content">
             <div class="hero-left">
                 <span class="label">Stripe Integration Sprint</span>
-                <h1>Add payments to your SaaS in 5 days</h1>
+                <h1>Add payments to your SaaS in 7 days</h1>
                 <p class="hero-subtitle">
                     Stop leaving money on the table. Get Stripe fully integrated — Checkout, Webhooks, Customer Portal — in one week. Fixed price, guaranteed timeline.
                 </p>
                 
                 <div class="hero-stats">
                     <div class="stat-item">
-                        <div class="stat-number">5+</div>
-                        <div class="stat-label">Stripe integrations</div>
+                        <div class="stat-number">B2B</div>
+                        <div class="stat-label">Subscription systems</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">5</div>
+                        <div class="stat-number">7</div>
                         <div class="stat-label">Business days</div>
                     </div>
                     <div class="stat-item">
@@ -562,30 +562,26 @@
                 </div>
 
                 <div class="cta-group">
-                    <a href="https://calendly.com/hugoprado/stripe-sprint" class="btn btn-primary">Schedule a call →</a>
+                    <a href="https://calendar.app.google/WmTZX6wxqDUmcjMcA" class="btn btn-primary">Schedule a call →</a>
                     <a href="#cases" class="btn btn-secondary">See case studies</a>
                 </div>
             </div>
 
             <div class="hero-visual">
                 <div class="code-block">
-                    <div class="code-line"><span class="code-comment">// Complete Stripe integration</span></div>
-                    <div class="code-line"><span class="code-keyword">const</span> stripe = <span class="code-function">require</span>(<span class="code-string">'stripe'</span>);</div>
+                    <div class="code-line"><span class="code-comment">Sprint blueprint</span></div>
                     <div class="code-line"></div>
-                    <div class="code-line"><span class="code-comment">// ✅ Checkout Sessions</span></div>
-                    <div class="code-line"><span class="code-comment">// ✅ Subscriptions (monthly/annual)</span></div>
-                    <div class="code-line"><span class="code-comment">// ✅ Webhook handlers</span></div>
-                    <div class="code-line"><span class="code-comment">// ✅ Customer Portal</span></div>
-                    <div class="code-line"><span class="code-comment">// ✅ Invoice generation</span></div>
+                    <div class="code-line"><span class="code-string">Day 1-2:</span> Checkout + products + prices</div>
+                    <div class="code-line"><span class="code-string">Day 3:</span> Subscriptions + customer portal</div>
+                    <div class="code-line"><span class="code-string">Day 4:</span> Webhooks + retry-safe handlers</div>
+                    <div class="code-line"><span class="code-string">Day 5:</span> Tier sync with your database</div>
+                    <div class="code-line"><span class="code-string">Day 6:</span> End-to-end QA in Stripe test mode</div>
+                    <div class="code-line"><span class="code-string">Day 7:</span> Production deploy + handoff</div>
                     <div class="code-line"></div>
-                    <div class="code-line"><span class="code-keyword">app</span>.<span class="code-function">post</span>(<span class="code-string">'/create-checkout'</span>, <span class="code-keyword">async</span> (req, res) => {</div>
-                    <div class="code-line">  <span class="code-keyword">const</span> session = <span class="code-keyword">await</span> stripe.checkout</div>
-                    <div class="code-line">    .<span class="code-function">sessions.create</span>({</div>
-                    <div class="code-line">      mode: <span class="code-string">'subscription'</span>,</div>
-                    <div class="code-line">      line_items: [{ price: priceId, quantity: 1 }],</div>
-                    <div class="code-line">      success_url: <span class="code-string">'https://yoursaas.com/success'</span>,</div>
-                    <div class="code-line">    });</div>
-                    <div class="code-line">});</div>
+                    <div class="code-line"><span class="code-comment">Deliverables:</span></div>
+                    <div class="code-line">- Working billing flow in production</div>
+                    <div class="code-line">- Webhooks mapped to your business logic</div>
+                    <div class="code-line">- Clear docs for your team</div>
                 </div>
             </div>
         </div>
@@ -595,7 +591,7 @@
     <div class="container">
         <div class="price-highlight">
             <div class="price-tag">€1,500</div>
-            <div class="price-detail">Fixed price · 5 business days · Production deployment included</div>
+            <div class="price-detail">Fixed price · 7 business days · Production deployment included</div>
         </div>
     </div>
 
@@ -655,7 +651,7 @@
         <div class="case-study">
             <div class="case-header">
                 <h3 class="case-title">Gastrovisual</h3>
-                <span class="case-tag">€1,000 · 5 days</span>
+                <span class="case-tag">Hospitality SaaS</span>
             </div>
             <div class="case-problem">
                 <h4>Problem</h4>
@@ -673,15 +669,12 @@
                     <li>Stripe Connect for managing restaurant commissions</li>
                 </ul>
             </div>
-            <div class="case-result">
-                <strong>Result:</strong> Converted 35 restaurants to paying customers in first month. €12K MRR within 60 days of launch.
-            </div>
         </div>
 
         <div class="case-study">
             <div class="case-header">
                 <h3 class="case-title">Tweedy</h3>
-                <span class="case-tag">Part of €7,500 project</span>
+                <span class="case-tag">Freelancer SaaS</span>
             </div>
             <div class="case-problem">
                 <h4>Problem</h4>
@@ -699,34 +692,28 @@
                     <li>Invoice customization with company branding</li>
                 </ul>
             </div>
-            <div class="case-result">
-                <strong>Result:</strong> 40% of users chose annual plans. Reduced payment support tickets by 90% with Customer Portal.
-            </div>
         </div>
 
         <div class="case-study">
             <div class="case-header">
-                <h3 class="case-title">NAUA Logistics</h3>
-                <span class="case-tag">€1,500 · 6 days</span>
+                <h3 class="case-title">Drivi</h3>
+                <span class="case-tag">Mobility SaaS</span>
             </div>
             <div class="case-problem">
                 <h4>Problem</h4>
                 <p>
-                    Enterprise client purchasing required SSO + credit card storage for recurring charges. Existing payment system couldn't handle PCI compliance requirements.
+                    Their subscription model had multiple tiers and manual backoffice updates every time a customer upgraded or downgraded. Billing state in Stripe and internal database drifted frequently.
                 </p>
             </div>
             <div class="case-solution">
                 <h4>Solution delivered</h4>
                 <ul>
-                    <li>Stripe Elements for PCI-compliant card storage</li>
-                    <li>Saved payment methods with token vault</li>
-                    <li>Recurring charges for logistics services</li>
-                    <li>Usage-based billing for variable shipments</li>
-                    <li>Detailed transaction reporting dashboard</li>
+                    <li>Full subscription system with multiple pricing tiers</li>
+                    <li>Upgrade/downgrade flows with proration rules</li>
+                    <li>Webhook processing for subscription lifecycle events</li>
+                    <li>Automatic tier synchronization in database after each Stripe event</li>
+                    <li>Idempotent handlers, retry strategy, and operational alerts</li>
                 </ul>
-            </div>
-            <div class="case-result">
-                <strong>Result:</strong> Closed €150K/year enterprise deal. Payment processing now handles 500+ transactions/month.
             </div>
         </div>
     </section>
@@ -736,16 +723,9 @@
         <h2 class="section-title">Common questions</h2>
         
         <div class="faq-item">
-            <div class="faq-question">Why not just use Lemon Squeezy or Paddle?</div>
+            <div class="faq-question">Is 7 days really enough?</div>
             <div class="faq-answer">
-                Stripe gives you maximum flexibility for B2B SaaS: custom billing cycles, usage-based pricing, multi-currency, and lower fees (2.9% + 30¢ vs 5%+). You own the customer relationship. For serious B2B products, Stripe is the standard.
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">Is 5 days really enough?</div>
-            <div class="faq-answer">
-                Yes, for the defined scope: Checkout, Webhooks, Customer Portal, and deployment. I've done this 5+ times. The scope is fixed and proven. If you need extras (usage-based billing, complex tax, Connect marketplace), that's a different package.
+                Yes, for the defined scope: Checkout, Webhooks, Customer Portal, and deployment. The scope is fixed and proven. If you need extras (usage-based billing, complex tax, Connect marketplace), that's a different package.
             </div>
         </div>
 
@@ -776,7 +756,7 @@
         <div class="cta-section">
             <h2>Ready to start accepting payments?</h2>
             <p>Book a 15-minute call. We'll discuss your needs, confirm the scope, and schedule your integration sprint.</p>
-            <a href="https://calendly.com/hugoprado/stripe-sprint" class="btn btn-primary">Schedule call →</a>
+            <a href="https://calendar.app.google/WmTZX6wxqDUmcjMcA" class="btn btn-primary">Schedule call →</a>
         </div>
     </section>
 
