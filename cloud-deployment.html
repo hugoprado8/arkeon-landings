@@ -1,0 +1,700 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cloud Deployment Sprint - Publica tu app IA en internet | Hugo Prado</title>
+    <meta
+      name="description"
+      content="Despliega tu app creada con IA en internet en 7 dias: dominio, SSL, backend, base de datos, backups y monitoreo. Servicio ideal para perfiles no tecnicos."
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0a0a0f;
+        --text: #e8e8e8;
+        --accent: #00ff88;
+        --accent-dim: #00cc6e;
+        --border: #2a2a35;
+        --card-bg: #1a1a24;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      .hero-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background:
+          radial-gradient(
+            circle at 20% 50%,
+            rgba(0, 255, 136, 0.15) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 80%,
+            rgba(0, 255, 136, 0.1) 0%,
+            transparent 50%
+          ),
+          linear-gradient(135deg, #0a0a0f 0%, #1a1a24 100%);
+        z-index: 0;
+      }
+
+      .hero-grid {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image:
+          linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+        background-size: 100px 100px;
+        z-index: 1;
+        animation: gridMove 20s linear infinite;
+      }
+
+      @keyframes gridMove {
+        0% {
+          transform: translate(0, 0);
+        }
+        100% {
+          transform: translate(100px, 100px);
+        }
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 6rem 2rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .hero-left {
+        animation: fadeInUp 1s ease-out;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .label {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.875rem;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 1.5rem;
+        display: block;
+      }
+
+      h1 {
+        font-size: clamp(2.4rem, 6vw, 4rem);
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        line-height: 1.1;
+      }
+
+      .hero-subtitle {
+        font-size: 1.2rem;
+        color: #a0a0b0;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+      }
+
+      .hero-stats {
+        display: flex;
+        gap: 2rem;
+        margin: 2rem 0;
+        flex-wrap: wrap;
+      }
+
+      .stat-item {
+        text-align: left;
+      }
+
+      .stat-number {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--accent);
+        line-height: 1;
+      }
+
+      .stat-label {
+        font-size: 0.875rem;
+        color: #6a6a7a;
+        margin-top: 0.5rem;
+      }
+
+      .cta-group {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .btn {
+        padding: 1.125rem 2.5rem;
+        border-radius: 6px;
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn-primary {
+        background: var(--accent);
+        color: var(--bg);
+      }
+
+      .btn-primary:hover {
+        background: var(--accent-dim);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--accent);
+        border: 2px solid var(--accent);
+      }
+
+      .btn-secondary:hover {
+        background: var(--accent);
+        color: var(--bg);
+      }
+
+      .hero-visual {
+        position: relative;
+        animation: fadeIn 1.5s ease-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .code-block {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 2rem;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.875rem;
+        line-height: 1.8;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .code-block::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--accent), transparent);
+      }
+
+      .code-line {
+        margin-bottom: 0.5rem;
+      }
+
+      .code-comment {
+        color: #6a6a7a;
+      }
+
+      .code-string {
+        color: var(--accent);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 6rem 2rem;
+      }
+
+      .section-title {
+        font-size: clamp(2rem, 4vw, 3rem);
+        margin-bottom: 3rem;
+        text-align: center;
+      }
+
+      .price-highlight {
+        background: var(--card-bg);
+        border: 2px solid var(--accent);
+        border-radius: 12px;
+        padding: 3rem;
+        text-align: center;
+        margin: 4rem auto;
+        max-width: 680px;
+      }
+
+      .price-tag {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 4rem;
+        font-weight: 700;
+        color: var(--accent);
+        margin-bottom: 1rem;
+      }
+
+      .price-detail {
+        font-size: 1.125rem;
+        color: #a0a0b0;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin: 3rem 0;
+      }
+
+      .feature-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 2rem;
+        transition: all 0.3s;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .feature-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--accent), transparent);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s;
+      }
+
+      .feature-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .feature-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent);
+        box-shadow: 0 10px 40px rgba(0, 255, 136, 0.1);
+      }
+
+      .feature-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        display: block;
+      }
+
+      .feature-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      .feature-desc {
+        color: #a0a0b0;
+        line-height: 1.7;
+      }
+
+      .case-study {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 3rem;
+        margin-bottom: 2rem;
+      }
+
+      .case-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .case-title {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--accent);
+      }
+
+      .case-tag {
+        padding: 0.5rem 1rem;
+        background: var(--accent);
+        color: var(--bg);
+        border-radius: 6px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+
+      .case-problem h4,
+      .case-solution h4 {
+        color: var(--accent);
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .case-problem p,
+      .case-solution li {
+        color: #a0a0b0;
+      }
+
+      .case-solution ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .case-solution li {
+        padding-left: 1.5rem;
+        margin-bottom: 0.5rem;
+        position: relative;
+      }
+
+      .case-solution li::before {
+        content: ">";
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+      }
+
+      .faq-item {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .faq-question {
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--accent);
+      }
+
+      .faq-answer {
+        color: #a0a0b0;
+        line-height: 1.7;
+      }
+
+      .cta-section {
+        text-align: center;
+        padding: 6rem 2rem;
+        background: linear-gradient(
+          135deg,
+          var(--card-bg) 0%,
+          rgba(0, 255, 136, 0.05) 100%
+        );
+        border-radius: 24px;
+        margin: 4rem 0;
+      }
+
+      .cta-section h2 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        margin-bottom: 1.5rem;
+      }
+
+      .cta-section p {
+        font-size: 1.25rem;
+        color: #a0a0b0;
+        margin-bottom: 2rem;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer {
+        padding: 3rem 2rem;
+        border-top: 1px solid var(--border);
+        text-align: center;
+        color: #6a6a7a;
+        font-size: 0.9rem;
+      }
+
+      .footer a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      @media (max-width: 968px) {
+        .hero-content {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+
+        .cta-group {
+          flex-direction: column;
+        }
+
+        .btn {
+          width: 100%;
+          text-align: center;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .container {
+          padding: 4rem 1rem;
+        }
+
+        .price-tag {
+          font-size: 3rem;
+        }
+
+        .case-header {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-grid"></div>
+      <div class="hero-content">
+        <div class="hero-left">
+          <span class="label">Cloud Deployment Sprint</span>
+          <h1>Tu app hecha con IA, online en 7 dias</h1>
+          <p class="hero-subtitle">
+            Ya validaste la idea y tienes una app funcional en local, pero no sabes
+            como desplegarla. Yo me encargo de todo para que puedas compartirla,
+            cobrar y crecer sin depender de errores tecnicos de infraestructura.
+          </p>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-number">7</div>
+              <div class="stat-label">Dias de ejecucion</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">1:1</div>
+              <div class="stat-label">Acompanamiento</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">Go Live</div>
+              <div class="stat-label">Con dominio y SSL</div>
+            </div>
+          </div>
+
+          <div class="cta-group">
+            <a
+              href="https://calendar.app.google/WmTZX6wxqDUmcjMcA"
+              class="btn btn-primary"
+              >Schedule a call -></a
+            >
+            <a href="#caso" class="btn btn-secondary">Ver caso real</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="code-block">
+            <div class="code-line">
+              <span class="code-comment">Plan de despliegue para no tecnicos</span>
+            </div>
+            <div class="code-line"></div>
+            <div class="code-line"><span class="code-string">Dia 1:</span> Auditoria de app y arquitectura</div>
+            <div class="code-line"><span class="code-string">Dia 2:</span> Entorno cloud + base de datos</div>
+            <div class="code-line"><span class="code-string">Dia 3:</span> CI/CD para publicar sin friccion</div>
+            <div class="code-line"><span class="code-string">Dia 4:</span> Dominio, SSL y correo transaccional</div>
+            <div class="code-line"><span class="code-string">Dia 5:</span> Observabilidad y alertas</div>
+            <div class="code-line"><span class="code-string">Dia 6:</span> Seguridad, backups y recovery</div>
+            <div class="code-line"><span class="code-string">Dia 7:</span> Launch + handover guiado</div>
+            <div class="code-line"></div>
+            <div class="code-line"><span class="code-comment">Resultado:</span> app estable, accesible y lista para crecer</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="price-highlight">
+        <div class="price-tag">EUR 1,900</div>
+        <div class="price-detail">
+          Precio fijo · 7 dias · Deploy completo en produccion con soporte de lanzamiento
+        </div>
+      </div>
+    </div>
+
+    <section class="container">
+      <h2 class="section-title">Que incluye el servicio</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <span class="feature-icon">☁️</span>
+          <h3 class="feature-title">Infraestructura cloud lista para negocio</h3>
+          <p class="feature-desc">
+            Configuro servidor, runtime, secrets y variables para que tu app funcione
+            estable desde el primer dia.
+          </p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">🌐</span>
+          <h3 class="feature-title">Dominio, HTTPS y performance</h3>
+          <p class="feature-desc">
+            Tu producto queda accesible con tu marca, certificado SSL activo y tiempos
+            de carga optimizados.
+          </p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">🧠</span>
+          <h3 class="feature-title">Preparado para apps hechas con IA</h3>
+          <p class="feature-desc">
+            Ajusto workers, colas, limites y logs para aplicaciones que usan APIs de IA
+            y pueden tener picos impredecibles.
+          </p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">🛡️</span>
+          <h3 class="feature-title">Seguridad y backup</h3>
+          <p class="feature-desc">
+            Hardening basico, copias automaticas y plan de recuperacion para evitar que
+            una caida se convierta en crisis.
+          </p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">📈</span>
+          <h3 class="feature-title">Monitoreo y alertas</h3>
+          <p class="feature-desc">
+            Tendras visibilidad de errores, caidas y consumo para tomar decisiones sin
+            depender de intuicion.
+          </p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">🤝</span>
+          <h3 class="feature-title">Acompanamiento no tecnico</h3>
+          <p class="feature-desc">
+            Te explico cada paso en lenguaje de negocio para que entiendas que pagas,
+            que se entrega y que riesgos se eliminan.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="caso">
+      <h2 class="section-title">Caso tipico</h2>
+      <div class="case-study">
+        <div class="case-header">
+          <h3 class="case-title">Fundador no tecnico con app IA validada</h3>
+          <span class="case-tag">Testimonio resumido</span>
+        </div>
+        <div class="case-problem">
+          <h4>Situacion</h4>
+          <p>
+            "Tenia una app funcional hecha con IA y no podia lanzarla. Todo corria en
+            local, se caia con usuarios reales y me daba miedo tocar servidores."
+          </p>
+        </div>
+        <div class="case-solution">
+          <h4>Intervencion</h4>
+          <ul>
+            <li>Migracion de entorno local a infraestructura cloud estable</li>
+            <li>Pipeline de despliegue para publicar cambios en minutos</li>
+            <li>Dominio, SSL, base de datos y backups totalmente operativos</li>
+            <li>Panel de salud con alertas para errores criticos</li>
+            <li>Guia de operacion simple para continuar sin equipo tecnico interno</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <h2 class="section-title">Preguntas comunes</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">No soy tecnico, podre mantenerlo despues?</div>
+        <div class="faq-answer">
+          Si. El servicio esta pensado para que entiendas lo esencial y tengas una guia
+          operativa clara. Si lo prefieres, tambien puedo quedarme en modo soporte.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Mi app esta hecha con no-code o con IA, sirve igual?</div>
+        <div class="faq-answer">
+          Si. Trabajo con apps construidas en stacks mixtos y herramientas de IA. El
+          objetivo es que funcione en produccion con estabilidad real.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Cuanto tardamos en salir online?</div>
+        <div class="faq-answer">
+          El sprint dura 7 dias laborables una vez tenemos accesos. Si hay dependencias
+          externas, te marco desde el inicio que puede afectar al calendario.
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="cta-section">
+        <h2>Lanza tu app esta semana</h2>
+        <p>
+          Si ya has invertido tiempo y dinero en construir tu producto, el siguiente
+          paso es ponerlo en manos de usuarios reales sin bloqueos tecnicos.
+        </p>
+        <a href="https://calendar.app.google/WmTZX6wxqDUmcjMcA" class="btn btn-primary"
+          >Schedule a meeting -></a
+        >
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>Hugo Prado · Arkeon Data, S.L.</p>
+      <p>
+        <a href="mailto:hugo@arkeondata.com">hugo@arkeondata.com</a> · Barcelona,
+        Spain
+      </p>
+    </footer>
+  </body>
+</html>
