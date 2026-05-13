@@ -3,17 +3,111 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Redirecting...</title>
-    <meta http-equiv="refresh" content="0; url=./stripe-complete.html" />
-    <link rel="canonical" href="./stripe-complete.html" />
-    <script>
-      window.location.replace("./stripe-complete.html");
-    </script>
+    <title>Arkeon Landings</title>
+    <meta
+      name="description"
+      content="Choose a service landing: Stripe Integration Sprint or Cloud Deployment Sprint."
+    />
+    <style>
+      :root {
+        --bg: #0a0a0f;
+        --text: #e8e8e8;
+        --muted: #a0a0b0;
+        --accent: #00ff88;
+        --card: #1a1a24;
+        --border: #2a2a35;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        background: radial-gradient(circle at 20% 10%, #151523 0%, var(--bg) 45%);
+        color: var(--text);
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 2rem;
+      }
+
+      .wrap {
+        width: min(980px, 100%);
+      }
+
+      h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        margin-bottom: 0.75rem;
+      }
+
+      .sub {
+        color: var(--muted);
+        margin-bottom: 2rem;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 1.25rem;
+      }
+
+      .card h2 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .card p {
+        color: var(--muted);
+        margin-bottom: 1rem;
+      }
+
+      .link {
+        display: inline-block;
+        text-decoration: none;
+        color: #00180d;
+        background: var(--accent);
+        padding: 0.6rem 1rem;
+        border-radius: 8px;
+        font-weight: 700;
+      }
+
+      .link:hover {
+        filter: brightness(0.92);
+      }
+    </style>
   </head>
   <body>
-    <p>
-      Redirecting to Stripe landing page...
-      <a href="./stripe-complete.html">Continue</a>
-    </p>
+    <main class="wrap">
+      <h1>Arkeon Service Landings</h1>
+      <p class="sub">Choose the page you want to share with clients.</p>
+
+      <section class="grid">
+        <article class="card">
+          <h2>Stripe Integration Sprint</h2>
+          <p>
+            Landing focused on integrating Stripe subscriptions and billing for SaaS.
+          </p>
+          <a class="link" href="./stripe-complete.html">Open Stripe landing</a>
+        </article>
+
+        <article class="card">
+          <h2>Cloud Deployment Sprint</h2>
+          <p>
+            Landing focused on launching apps built with AI for non-technical founders.
+          </p>
+          <a class="link" href="./cloud-deployment.html">Open Cloud landing</a>
+        </article>
+      </section>
+    </main>
   </body>
 </html>
