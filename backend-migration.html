@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -538,71 +538,121 @@
           flex-direction: column;
         }
       }
+
+      /* Language switcher */
+      .lang-sw {
+        position: fixed;
+        top: 1.25rem;
+        right: 1.25rem;
+        z-index: 9999;
+        display: flex;
+        gap: 0.35rem;
+        background: rgba(26, 26, 36, 0.93);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid #2a2a35;
+        border-radius: 10px;
+        padding: 0.35rem 0.5rem;
+      }
+      .lang-sw button {
+        background: none;
+        border: none;
+        font-size: 1.35rem;
+        line-height: 1;
+        cursor: pointer;
+        padding: 0.2rem 0.35rem;
+        border-radius: 6px;
+        opacity: 0.4;
+        transition: opacity 0.2s, background 0.2s;
+      }
+      .lang-sw button.active {
+        opacity: 1;
+        background: rgba(0, 255, 136, 0.13);
+      }
+      html[lang="en"] .es {
+        display: none !important;
+      }
+      html[lang="es"] .en {
+        display: none !important;
+      }
     </style>
   </head>
   <body>
+    <div class="lang-sw">
+      <button id="sw-es" onclick="setLang('es')">🇪🇸</button>
+      <button id="sw-en" onclick="setLang('en')">🇬🇧</button>
+    </div>
     <section class="hero">
       <div class="hero-bg"></div>
       <div class="hero-grid"></div>
       <div class="hero-content">
         <div class="hero-left">
-          <span class="label">Backend Migration</span>
-          <h1>Why Your App Slows Down With Every New User</h1>
-          <p class="hero-subtitle">
+          <span class="label"><span class="en">Backend Migration</span><span class="es">Migración de Backend</span></span>
+          <h1><span class="en">Why Your App Slows Down With Every New User</span><span class="es">Por Qué Tu App Va Más Lenta con Cada Nuevo Usuario</span></h1>
+          <p class="hero-subtitle en">
             You built with Bolt, v0, or Cursor. It works with 10 users. Now you
             have 100, and it takes 10 seconds to load. The problem: everything
             runs in the browser. The solution: a proper backend.
+          </p>
+          <p class="hero-subtitle es">
+            Construiste con Bolt, v0 o Cursor. Funciona con 10 usuarios. Ahora
+            tienes 100 y tarda 10 segundos en cargar. El problema: todo corre
+            en el navegador. La solución: un backend de verdad.
           </p>
 
           <div class="hero-stats">
             <div class="stat-item">
               <div class="stat-number">10x</div>
-              <div class="stat-label">Faster after migration</div>
+              <div class="stat-label"><span class="en">Faster after migration</span><span class="es">Más rápida tras la migración</span></div>
             </div>
             <div class="stat-item">
               <div class="stat-number">7</div>
-              <div class="stat-label">Business days</div>
+              <div class="stat-label"><span class="en">Business days</span><span class="es">Días laborables</span></div>
             </div>
             <div class="stat-item">
               <div class="stat-number">EUR 2.5K</div>
-              <div class="stat-label">Fixed price</div>
+              <div class="stat-label"><span class="en">Fixed price</span><span class="es">Precio fijo</span></div>
             </div>
           </div>
 
           <div class="cta-group">
-            <a
-              href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1LhXEeHMGnVOsJms7pXlNsDwLhD4oYHPri5mjYeyq9KvTMWueOivjGzxzM0hXGYwy7ssOHwubZ"
-              class="btn btn-primary"
-              >Schedule backend call -></a
-            >
-            <a href="#cases" class="btn btn-secondary">See case studies</a>
+            <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1LhXEeHMGnVOsJms7pXlNsDwLhD4oYHPri5mjYeyq9KvTMWueOivjGzxzM0hXGYwy7ssOHwubZ" class="btn btn-primary"><span class="en">Schedule backend call →</span><span class="es">Agendar migración →</span></a>
+            <a href="#cases" class="btn btn-secondary"><span class="en">See case studies</span><span class="es">Ver casos</span></a>
           </div>
         </div>
 
         <div class="hero-visual">
-          <div class="code-block">
-            <div class="code-line">
-              <span class="code-danger">X Frontend-Only (Now):</span>
-            </div>
+          <div class="code-block en">
+            <div class="code-line"><span class="code-danger">✗ Frontend-Only (Now):</span></div>
             <div class="code-line">Browser downloads 5MB JavaScript</div>
-            <div class="code-line">-> Fetches 10,000 database rows</div>
-            <div class="code-line">-> Filters, sorts in browser</div>
-            <div class="code-line">-> Renders page</div>
-            <div class="code-line">
-              <span class="code-danger">= 8 seconds, crashes at 500 users</span>
-            </div>
+            <div class="code-line">-&gt; Fetches 10,000 database rows</div>
+            <div class="code-line">-&gt; Filters, sorts in browser</div>
+            <div class="code-line">-&gt; Renders page</div>
+            <div class="code-line"><span class="code-danger">= 8 seconds, crashes at 500 users</span></div>
             <div class="code-line"></div>
-            <div class="code-line">
-              <span class="code-good">OK With Backend (After):</span>
-            </div>
+            <div class="code-line"><span class="code-good">✓ With Backend (After):</span></div>
             <div class="code-line">Browser requests /api/dashboard</div>
             <div class="code-line">Server fetches only needed 50 rows</div>
-            <div class="code-line">-> Filters, sorts on server</div>
-            <div class="code-line">-> Returns 10KB JSON</div>
+            <div class="code-line">-&gt; Filters, sorts on server</div>
+            <div class="code-line">-&gt; Returns 10KB JSON</div>
             <div class="code-line">Browser renders page</div>
-            <div class="code-line">
-              <span class="code-good">= 0.8 seconds, handles 10,000 users</span>
-            </div>
+            <div class="code-line"><span class="code-good">= 0.8 seconds, handles 10,000 users</span></div>
+          </div>
+          <div class="code-block es">
+            <div class="code-line"><span class="code-danger">✗ Solo Frontend (Ahora):</span></div>
+            <div class="code-line">El navegador descarga 5MB de JavaScript</div>
+            <div class="code-line">-&gt; Obtiene 10.000 filas de la base de datos</div>
+            <div class="code-line">-&gt; Filtra y ordena en el navegador</div>
+            <div class="code-line">-&gt; Renderiza la página</div>
+            <div class="code-line"><span class="code-danger">= 8 segundos, cuelgue con 500 usuarios</span></div>
+            <div class="code-line"></div>
+            <div class="code-line"><span class="code-good">✓ Con Backend (Después):</span></div>
+            <div class="code-line">El navegador llama a /api/dashboard</div>
+            <div class="code-line">El servidor obtiene solo las 50 filas necesarias</div>
+            <div class="code-line">-&gt; Filtra y ordena en el servidor</div>
+            <div class="code-line">-&gt; Devuelve 10KB de JSON</div>
+            <div class="code-line">El navegador renderiza la página</div>
+            <div class="code-line"><span class="code-good">= 0.8 segundos, aguanta 10.000 usuarios</span></div>
           </div>
         </div>
       </div>
@@ -612,212 +662,196 @@
       <div class="price-highlight">
         <div class="price-tag">EUR 2,500</div>
         <div class="price-detail">
-          Fixed price · 7 business days · Backend migration and deployment
-          included
+          <span class="en">Fixed price · 7 business days · Backend migration and deployment included</span><span class="es">Precio fijo · 7 días laborables · Migración de backend y despliegue incluidos</span>
         </div>
       </div>
     </div>
 
     <section class="container">
-      <h2 class="section-title">What's included</h2>
+      <h2 class="section-title"><span class="en">What's included</span><span class="es">Qué incluye</span></h2>
       <div class="features-grid">
         <div class="feature-card">
           <span class="feature-icon">🔍</span>
-          <h3 class="feature-title">Architecture Audit</h3>
-          <p class="feature-desc">
-            Identify exactly what logic should move to backend for performance,
-            cost control, and scalability.
-          </p>
+          <h3 class="feature-title"><span class="en">Architecture Audit</span><span class="es">Auditoría de Arquitectura</span></h3>
+          <p class="feature-desc en">Identify exactly what logic should move to backend for performance, cost control, and scalability.</p>
+          <p class="feature-desc es">Identificar qué lógica debe moverse al backend para mejorar rendimiento, control de costes y escalabilidad.</p>
         </div>
         <div class="feature-card">
           <span class="feature-icon">⚙️</span>
-          <h3 class="feature-title">API Backend</h3>
-          <p class="feature-desc">
-            Node.js with Express or Python with FastAPI. Optimized endpoints for
-            your critical user flows.
-          </p>
+          <h3 class="feature-title"><span class="en">API Backend</span><span class="es">Backend con API</span></h3>
+          <p class="feature-desc en">Node.js with Express or Python with FastAPI. Optimized endpoints for your critical user flows.</p>
+          <p class="feature-desc es">Node.js con Express o Python con FastAPI. Endpoints optimizados para tus flujos críticos de usuario.</p>
         </div>
         <div class="feature-card">
           <span class="feature-icon">🗄️</span>
-          <h3 class="feature-title">Query Optimization</h3>
-          <p class="feature-desc">
-            Server-side filtering, pagination, and proper indexing to avoid
-            heavy client-side data processing.
-          </p>
+          <h3 class="feature-title"><span class="en">Query Optimization</span><span class="es">Optimización de Consultas</span></h3>
+          <p class="feature-desc en">Server-side filtering, pagination, and proper indexing to avoid heavy client-side data processing.</p>
+          <p class="feature-desc es">Filtrado en servidor, paginación e indexación correcta para evitar procesamiento pesado en el cliente.</p>
         </div>
         <div class="feature-card">
           <span class="feature-icon">📦</span>
-          <h3 class="feature-title">Business Logic Migration</h3>
-          <p class="feature-desc">
-            Move complex logic from frontend to backend so browser clients only
-            render UI.
-          </p>
+          <h3 class="feature-title"><span class="en">Business Logic Migration</span><span class="es">Migración de Lógica de Negocio</span></h3>
+          <p class="feature-desc en">Move complex logic from frontend to backend so browser clients only render UI.</p>
+          <p class="feature-desc es">Mover la lógica compleja del frontend al backend para que los clientes solo rendericen la interfaz.</p>
         </div>
         <div class="feature-card">
           <span class="feature-icon">⚡</span>
-          <h3 class="feature-title">Caching Strategy</h3>
-          <p class="feature-desc">
-            Redis integration if needed to accelerate frequent reads and reduce
-            database pressure.
-          </p>
+          <h3 class="feature-title"><span class="en">Caching Strategy</span><span class="es">Estrategia de Caché</span></h3>
+          <p class="feature-desc en">Redis integration if needed to accelerate frequent reads and reduce database pressure.</p>
+          <p class="feature-desc es">Integración de Redis si es necesario para acelerar lecturas frecuentes y reducir la presión en base de datos.</p>
         </div>
         <div class="feature-card">
           <span class="feature-icon">🚀</span>
-          <h3 class="feature-title">Deploy & Monitor</h3>
-          <p class="feature-desc">
-            Deploy to Railway or Render with performance metrics, logging, and
-            reliability tracking.
-          </p>
+          <h3 class="feature-title"><span class="en">Deploy &amp; Monitor</span><span class="es">Deploy y Monitoreo</span></h3>
+          <p class="feature-desc en">Deploy to Railway or Render with performance metrics, logging, and reliability tracking.</p>
+          <p class="feature-desc es">Deploy a Railway o Render con métricas de rendimiento, logs y seguimiento de disponibilidad.</p>
         </div>
       </div>
     </section>
 
     <section class="container" id="cases">
-      <h2 class="section-title">Recent projects</h2>
+      <h2 class="section-title"><span class="en">Recent projects</span><span class="es">Proyectos recientes</span></h2>
 
       <div class="case-study">
         <div class="case-header">
           <h3 class="case-title">The 10-Second Load Time</h3>
-          <span class="case-tag">Course platform</span>
+          <span class="case-tag"><span class="en">Course platform</span><span class="es">Plataforma de cursos</span></span>
         </div>
         <div class="case-problem">
-          <h4>Problem</h4>
-          <p>
-            Platform with 200 students was fetching all 10,000 course records in
-            browser and filtering client-side. Load time reached 10 seconds.
-          </p>
+          <h4 class="en">Problem</h4><h4 class="es">Problema</h4>
+          <p class="en">Platform with 200 students was fetching all 10,000 course records in browser and filtering client-side. Load time reached 10 seconds.</p>
+          <p class="es">Plataforma con 200 alumnos descargando los 10.000 registros de cursos en el navegador y filtrando en cliente. El tiempo de carga llegó a 10 segundos.</p>
         </div>
         <div class="case-solution">
-          <h4>Solution</h4>
-          <ul>
+          <h4 class="en">Solution</h4><h4 class="es">Solución</h4>
+          <ul class="en">
             <li>Backend API with pagination and server-side filtering</li>
             <li>Database indexing for critical queries</li>
             <li>Caching for frequently accessed data</li>
           </ul>
+          <ul class="es">
+            <li>API backend con paginación y filtrado en servidor</li>
+            <li>Indexación de base de datos para consultas críticas</li>
+            <li>Caché para datos de acceso frecuente</li>
+          </ul>
         </div>
         <div class="case-result">
-          <strong>Result:</strong> Load time dropped to 0.9 seconds. Supports
-          2,000+ students and reduced Supabase data-transfer costs by 60%.
+          <span class="en"><strong>Result:</strong> Load time dropped to 0.9 seconds. Supports 2,000+ students and reduced Supabase data-transfer costs by 60%.</span>
+          <span class="es"><strong>Resultado:</strong> Tiempo de carga bajado a 0.9 segundos. Soporta más de 2.000 alumnos y redujo los costes de transferencia de datos en un 60%.</span>
         </div>
       </div>
 
       <div class="case-study">
         <div class="case-header">
           <h3 class="case-title">The Scale Wall</h3>
-          <span class="case-tag">Growing SaaS</span>
+          <span class="case-tag"><span class="en">Growing SaaS</span><span class="es">SaaS en crecimiento</span></span>
         </div>
         <div class="case-problem">
-          <h4>Problem</h4>
-          <p>
-            SaaS hit 500 concurrent users and started crashing because all
-            computation was running in each user's browser session.
-          </p>
+          <h4 class="en">Problem</h4><h4 class="es">Problema</h4>
+          <p class="en">SaaS hit 500 concurrent users and started crashing because all computation was running in each user's browser session.</p>
+          <p class="es">El SaaS llegó a 500 usuarios concurrentes y empezó a caerse porque toda la computación corría en la sesión del navegador de cada usuario.</p>
         </div>
         <div class="case-solution">
-          <h4>Solution</h4>
-          <ul>
+          <h4 class="en">Solution</h4><h4 class="es">Solución</h4>
+          <ul class="en">
             <li>Migrated business logic to backend services</li>
             <li>Built API endpoints for all heavy data operations</li>
             <li>Frontend reduced to rendering and interaction layer</li>
           </ul>
+          <ul class="es">
+            <li>Lógica de negocio migrada a servicios backend</li>
+            <li>Endpoints API construidos para todas las operaciones pesadas</li>
+            <li>Frontend reducido a capa de renderizado e interacción</li>
+          </ul>
         </div>
         <div class="case-result">
-          <strong>Result:</strong> Handles 5,000 concurrent users without
-          crashes. Founder shifted focus from firefighting to sales.
+          <span class="en"><strong>Result:</strong> Handles 5,000 concurrent users without crashes. Founder shifted focus from firefighting to sales.</span>
+          <span class="es"><strong>Resultado:</strong> Aguanta 5.000 usuarios concurrentes sin caídas. El fundador pasó de apagar fuegos a centrarse en ventas.</span>
         </div>
       </div>
 
       <div class="case-study">
         <div class="case-header">
           <h3 class="case-title">The Supabase Bill Shock</h3>
-          <span class="case-tag">Data-heavy application</span>
+          <span class="case-tag"><span class="en">Data-heavy application</span><span class="es">Aplicación de datos intensivos</span></span>
         </div>
         <div class="case-problem">
-          <h4>Problem</h4>
-          <p>
-            Data transfer costs reached $800/month because every user downloaded
-            huge datasets and filtered locally in the browser.
-          </p>
+          <h4 class="en">Problem</h4><h4 class="es">Problema</h4>
+          <p class="en">Data transfer costs reached $800/month because every user downloaded huge datasets and filtered locally in the browser.</p>
+          <p class="es">Los costes de transferencia de datos llegaron a $800/mes porque cada usuario descargaba datasets enormes y filtraba en el navegador.</p>
         </div>
         <div class="case-solution">
-          <h4>Solution</h4>
-          <ul>
+          <h4 class="en">Solution</h4><h4 class="es">Solución</h4>
+          <ul class="en">
             <li>Backend handles all filtering and sorting logic</li>
             <li>Only exact UI payloads returned to browser</li>
             <li>Implemented strict pagination strategy</li>
           </ul>
+          <ul class="es">
+            <li>Backend gestiona toda la lógica de filtrado y ordenación</li>
+            <li>Solo los payloads exactos devueltos al navegador</li>
+            <li>Estrategia de paginación estricta implementada</li>
+          </ul>
         </div>
         <div class="case-result">
-          <strong>Result:</strong> Supabase bill down to $80/month while
-          supporting 3x more active users.
+          <span class="en"><strong>Result:</strong> Supabase bill down to $80/month while supporting 3x more active users.</span>
+          <span class="es"><strong>Resultado:</strong> Factura de Supabase bajada a $80/mes aguantando 3 veces más usuarios activos.</span>
         </div>
       </div>
     </section>
 
     <section class="container">
-      <h2 class="section-title">Common questions</h2>
+      <h2 class="section-title"><span class="en">Common questions</span><span class="es">Preguntas frecuentes</span></h2>
 
       <div class="faq-item">
-        <div class="faq-question">Can't I just optimize my frontend?</div>
-        <div class="faq-answer">
-          Frontend optimization helps short-term, but there is a hard ceiling. A
-          backend removes the scaling limit and gives you structural speed.
-        </div>
+        <div class="faq-question en">Can’t I just optimize my frontend?</div>
+        <div class="faq-question es">¿No puedo simplemente optimizar el frontend?</div>
+        <div class="faq-answer en">Frontend optimization helps short-term, but there is a hard ceiling. A backend removes the scaling limit and gives you structural speed.</div>
+        <div class="faq-answer es">La optimización del frontend ayuda a corto plazo, pero tiene un techo. Un backend elimina el límite de escala y te da velocidad estructural.</div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">Will my app look different?</div>
-        <div class="faq-answer">
-          No. Same UI and same product experience. It simply becomes faster,
-          cheaper to operate, and much more stable.
-        </div>
+        <div class="faq-question en">Will my app look different?</div>
+        <div class="faq-question es">¿Cambiará el aspecto de mi app?</div>
+        <div class="faq-answer en">No. Same UI and same product experience. It simply becomes faster, cheaper to operate, and much more stable.</div>
+        <div class="faq-answer es">No. Misma interfaz y misma experiencia de producto. Simplemente se vuelve más rápida, más barata de operar y mucho más estable.</div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">Do I need to rebuild from scratch?</div>
-        <div class="faq-answer">
-          No. Migration is incremental. Your app stays live while we move logic
-          layer by layer.
-        </div>
+        <div class="faq-question en">Do I need to rebuild from scratch?</div>
+        <div class="faq-question es">¿Necesito reconstruir desde cero?</div>
+        <div class="faq-answer en">No. Migration is incremental. Your app stays live while we move logic layer by layer.</div>
+        <div class="faq-answer es">No. La migración es incremental. Tu app sigue activa mientras movemos la lógica capa a capa.</div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">What if I add features later?</div>
-        <div class="faq-answer">
-          The backend architecture is designed to scale, so future features are
-          faster to ship and easier to maintain.
-        </div>
+        <div class="faq-question en">What if I add features later?</div>
+        <div class="faq-question es">¿Qué pasa si añado funcionalidades después?</div>
+        <div class="faq-answer en">The backend architecture is designed to scale, so future features are faster to ship and easier to maintain.</div>
+        <div class="faq-answer es">La arquitectura backend está diseñada para escalar, así que las funcionalidades futuras son más rápidas de desarrollar y más fáciles de mantener.</div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">Is 7 days really enough?</div>
-        <div class="faq-answer">
-          Yes for migration scope. We are not building net-new product features,
-          only moving core logic to the right layer with a proven timeline.
-        </div>
+        <div class="faq-question en">Is 7 days really enough?</div>
+        <div class="faq-question es">¿7 días son suficientes?</div>
+        <div class="faq-answer en">Yes for migration scope. We are not building net-new product features, only moving core logic to the right layer with a proven timeline.</div>
+        <div class="faq-answer es">Sí para el alcance de la migración. No estamos construyendo nuevas funcionalidades, solo moviendo la lógica principal a la capa correcta con un plazo probado.</div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">What tech stack for the backend?</div>
-        <div class="faq-answer">
-          Default is Node.js for React/Next projects or Python when preferred.
-          We adapt to your current stack when possible.
-        </div>
+        <div class="faq-question en">What tech stack for the backend?</div>
+        <div class="faq-question es">¿Qué stack para el backend?</div>
+        <div class="faq-answer en">Default is Node.js for React/Next projects or Python when preferred. We adapt to your current stack when possible.</div>
+        <div class="faq-answer es">Por defecto Node.js para proyectos React/Next o Python cuando se prefiere. Nos adaptamos a tu stack actual cuando es posible.</div>
       </div>
     </section>
 
     <section class="container">
       <div class="cta-section">
-        <h2>Unblock growth before performance kills conversion</h2>
-        <p>
-          Book a short call to review your current architecture and get a clear
-          migration plan with timeline and expected speed gains.
-        </p>
-        <a
-          href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1LhXEeHMGnVOsJms7pXlNsDwLhD4oYHPri5mjYeyq9KvTMWueOivjGzxzM0hXGYwy7ssOHwubZ"
-          class="btn btn-primary"
-          >Schedule backend migration -></a
-        >
+        <h2><span class="en">Unblock growth before performance kills conversion</span><span class="es">Desbloquea el crecimiento antes de que el rendimiento mate la conversión</span></h2>
+        <p class="en">Book a short call to review your current architecture and get a clear migration plan with timeline and expected speed gains.</p>
+        <p class="es">Reserva una llamada para revisar tu arquitectura actual y obtener un plan de migración claro con plazos y mejoras de velocidad esperadas.</p>
+        <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1LhXEeHMGnVOsJms7pXlNsDwLhD4oYHPri5mjYeyq9KvTMWueOivjGzxzM0hXGYwy7ssOHwubZ" class="btn btn-primary"><span class="en">Schedule backend migration →</span><span class="es">Agendar migración de backend →</span></a>
       </div>
     </section>
 
@@ -829,5 +863,9 @@
       </p>
       <p style="margin-top: 1rem; font-size: 0.85rem">NIF: B40740932</p>
     </footer>
+  <script>
+    function setLang(l){document.documentElement.lang=l;localStorage.setItem('ark-lang',l);document.querySelectorAll('.lang-sw button').forEach(b=>b.classList.remove('active'));const b=document.getElementById('sw-'+l);if(b)b.classList.add('active');}
+    (function(){const s=localStorage.getItem('ark-lang');setLang(s||(navigator.language.startsWith('es')?'es':'en'));})();
+  </script>
   </body>
 </html>

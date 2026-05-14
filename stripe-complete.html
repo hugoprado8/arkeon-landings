@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -557,87 +557,120 @@
           flex-direction: column;
         }
       }
+
+      /* Language switcher */
+      .lang-sw {
+        position: fixed;
+        top: 1.25rem;
+        right: 1.25rem;
+        z-index: 9999;
+        display: flex;
+        gap: 0.35rem;
+        background: rgba(26, 26, 36, 0.93);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid #2a2a35;
+        border-radius: 10px;
+        padding: 0.35rem 0.5rem;
+      }
+      .lang-sw button {
+        background: none;
+        border: none;
+        font-size: 1.35rem;
+        line-height: 1;
+        cursor: pointer;
+        padding: 0.2rem 0.35rem;
+        border-radius: 6px;
+        opacity: 0.4;
+        transition: opacity 0.2s, background 0.2s;
+      }
+      .lang-sw button.active {
+        opacity: 1;
+        background: rgba(0, 255, 136, 0.13);
+      }
+      html[lang="en"] .es {
+        display: none !important;
+      }
+      html[lang="es"] .en {
+        display: none !important;
+      }
     </style>
   </head>
   <body>
+    <div class="lang-sw">
+      <button id="sw-es" onclick="setLang('es')">🇪🇸</button>
+      <button id="sw-en" onclick="setLang('en')">🇬🇧</button>
+    </div>
     <!-- Hero Section -->
     <section class="hero">
       <div class="hero-bg"></div>
       <div class="hero-grid"></div>
       <div class="hero-content">
         <div class="hero-left">
-          <span class="label">Stripe Integration Sprint</span>
-          <h1>Add payments to your SaaS in 7 days</h1>
-          <p class="hero-subtitle">
+          <span class="label"><span class="en">Stripe Integration Sprint</span><span class="es">Sprint de Integración Stripe</span></span>
+          <h1><span class="en">Add payments to your SaaS in 7 days</span><span class="es">Añade pagos a tu SaaS en 7 días</span></h1>
+          <p class="hero-subtitle en">
             Stop leaving money on the table. Get Stripe fully integrated —
             Checkout, Webhooks, Customer Portal — in one week. Fixed price,
             guaranteed timeline.
           </p>
+          <p class="hero-subtitle es">
+            Deja de perder dinero. Integra Stripe completamente —
+            Checkout, Webhooks, Portal del Cliente — en una semana. Precio fijo,
+            plazo garantizado.
+          </p>
 
           <div class="hero-stats">
             <div class="stat-item">
-              <div class="stat-number">B2B & B2C</div>
-              <div class="stat-label">Subscription systems</div>
+              <div class="stat-number">B2B &amp; B2C</div>
+              <div class="stat-label"><span class="en">Subscription systems</span><span class="es">Sistemas de suscripción</span></div>
             </div>
             <div class="stat-item">
               <div class="stat-number">7</div>
-              <div class="stat-label">Business days</div>
+              <div class="stat-label"><span class="en">Business days</span><span class="es">Días laborables</span></div>
             </div>
             <div class="stat-item">
               <div class="stat-number">€1.5K</div>
-              <div class="stat-label">Fixed price</div>
+              <div class="stat-label"><span class="en">Fixed price</span><span class="es">Precio fijo</span></div>
             </div>
           </div>
 
           <div class="cta-group">
-            <a
-              href="https://calendar.app.google/WmTZX6wxqDUmcjMcA"
-              class="btn btn-primary"
-              >Schedule a call →</a
-            >
-            <a href="#cases" class="btn btn-secondary">See case studies</a>
+            <a href="https://calendar.app.google/WmTZX6wxqDUmcjMcA" class="btn btn-primary"><span class="en">Schedule a call →</span><span class="es">Agendar llamada →</span></a>
+            <a href="#cases" class="btn btn-secondary"><span class="en">See case studies</span><span class="es">Ver proyectos</span></a>
           </div>
         </div>
 
         <div class="hero-visual">
-          <div class="code-block">
-            <div class="code-line">
-              <span class="code-comment">Sprint blueprint</span>
-            </div>
+          <div class="code-block en">
+            <div class="code-line"><span class="code-comment">Sprint blueprint</span></div>
             <div class="code-line"></div>
-            <div class="code-line">
-              <span class="code-string">Day 1-2:</span> Checkout + products +
-              prices
-            </div>
-            <div class="code-line">
-              <span class="code-string">Day 3:</span> Subscriptions + customer
-              portal
-            </div>
-            <div class="code-line">
-              <span class="code-string">Day 4:</span> Webhooks + retry-safe
-              handlers
-            </div>
-            <div class="code-line">
-              <span class="code-string">Day 5:</span> Tier sync with your
-              database
-            </div>
-            <div class="code-line">
-              <span class="code-string">Day 6:</span> End-to-end QA in Stripe
-              test mode
-            </div>
-            <div class="code-line">
-              <span class="code-string">Day 7:</span> Production deploy +
-              handoff
-            </div>
+            <div class="code-line"><span class="code-string">Day 1-2:</span> Checkout + products + prices</div>
+            <div class="code-line"><span class="code-string">Day 3:</span> Subscriptions + customer portal</div>
+            <div class="code-line"><span class="code-string">Day 4:</span> Webhooks + retry-safe handlers</div>
+            <div class="code-line"><span class="code-string">Day 5:</span> Tier sync with your database</div>
+            <div class="code-line"><span class="code-string">Day 6:</span> End-to-end QA in Stripe test mode</div>
+            <div class="code-line"><span class="code-string">Day 7:</span> Production deploy + handoff</div>
             <div class="code-line"></div>
-            <div class="code-line">
-              <span class="code-comment">Deliverables:</span>
-            </div>
+            <div class="code-line"><span class="code-comment">Deliverables:</span></div>
             <div class="code-line">- Working billing flow in production</div>
-            <div class="code-line">
-              - Webhooks mapped to your business logic
-            </div>
+            <div class="code-line">- Webhooks mapped to your business logic</div>
             <div class="code-line">- Clear docs for your team</div>
+          </div>
+          <div class="code-block es">
+            <div class="code-line"><span class="code-comment">Plan del sprint</span></div>
+            <div class="code-line"></div>
+            <div class="code-line"><span class="code-string">Días 1-2:</span> Checkout + productos + precios</div>
+            <div class="code-line"><span class="code-string">Día 3:</span> Suscripciones + portal del cliente</div>
+            <div class="code-line"><span class="code-string">Día 4:</span> Webhooks + handlers con reintentos</div>
+            <div class="code-line"><span class="code-string">Día 5:</span> Sync de nivel con tu base de datos</div>
+            <div class="code-line"><span class="code-string">Día 6:</span> QA completo en modo test de Stripe</div>
+            <div class="code-line"><span class="code-string">Día 7:</span> Deploy en producción + handover</div>
+            <div class="code-line"></div>
+            <div class="code-line"><span class="code-comment">Entregables:</span></div>
+            <div class="code-line">- Flujo de cobro funcional en producción</div>
+            <div class="code-line">- Webhooks vinculados a tu lógica de negocio</div>
+            <div class="code-line">- Documentación clara para tu equipo</div>
           </div>
         </div>
       </div>
@@ -648,93 +681,83 @@
       <div class="price-highlight">
         <div class="price-tag">€1,500</div>
         <div class="price-detail">
-          Fixed price · 7 business days · Production deployment included
+          <span class="en">Fixed price · 7 business days · Production deployment included</span><span class="es">Precio fijo · 7 días laborables · Despliegue en producción incluido</span>
         </div>
       </div>
     </div>
 
     <!-- What's Included -->
     <section class="container">
-      <h2 class="section-title">What's included</h2>
+      <h2 class="section-title"><span class="en">What's included</span><span class="es">Qué incluye</span></h2>
       <div class="features-grid">
         <div class="feature-card">
           <span class="feature-icon">💳</span>
-          <h3 class="feature-title">Stripe Checkout + Subscriptions</h3>
-          <p class="feature-desc">
-            Complete payment flow implementation. One-time payments or recurring
-            subscriptions (monthly/annual). Works with your existing stack.
-          </p>
+          <h3 class="feature-title"><span class="en">Stripe Checkout + Subscriptions</span><span class="es">Stripe Checkout + Suscripciones</span></h3>
+          <p class="feature-desc en">Complete payment flow implementation. One-time payments or recurring subscriptions (monthly/annual). Works with your existing stack.</p>
+          <p class="feature-desc es">Implementación completa del flujo de pago. Cobros únicos o suscripciones recurrentes (mensual/anual). Compatible con tu stack actual.</p>
         </div>
         <div class="feature-card">
           <span class="feature-icon">🔔</span>
-          <h3 class="feature-title">Webhook handlers</h3>
-          <p class="feature-desc">
-            Proper event processing for payment_succeeded, subscription_updated,
-            invoice_paid, and all critical Stripe events. No missed payments.
-          </p>
+          <h3 class="feature-title"><span class="en">Webhook handlers</span><span class="es">Gestión de webhooks</span></h3>
+          <p class="feature-desc en">Proper event processing for payment_succeeded, subscription_updated, invoice_paid, and all critical Stripe events. No missed payments.</p>
+          <p class="feature-desc es">Procesamiento correcto de payment_succeeded, subscription_updated, invoice_paid y todos los eventos críticos. Sin pagos perdidos.</p>
         </div>
         <div class="feature-card">
           <span class="feature-icon">👤</span>
-          <h3 class="feature-title">Customer Portal</h3>
-          <p class="feature-desc">
-            Let customers manage their own subscriptions, update payment
-            methods, view invoices, and download receipts. Zero support overhead
-            for you.
-          </p>
+          <h3 class="feature-title"><span class="en">Customer Portal</span><span class="es">Portal del cliente</span></h3>
+          <p class="feature-desc en">Let customers manage their own subscriptions, update payment methods, view invoices, and download receipts. Zero support overhead for you.</p>
+          <p class="feature-desc es">Tus clientes gestionan sus propias suscripciones, actualizan método de pago y descargan facturas. Cero tickets de soporte para ti.</p>
         </div>
         <div class="feature-card">
           <span class="feature-icon">📧</span>
-          <h3 class="feature-title">Automated invoicing</h3>
-          <p class="feature-desc">
-            PDF invoices generated and sent automatically. Customized with your
-            branding. Email receipts for every transaction.
-          </p>
+          <h3 class="feature-title"><span class="en">Automated invoicing</span><span class="es">Facturación automática</span></h3>
+          <p class="feature-desc en">PDF invoices generated and sent automatically. Customized with your branding. Email receipts for every transaction.</p>
+          <p class="feature-desc es">Facturas PDF generadas y enviadas automáticamente. Con tu marca. Recibo por email en cada transacción.</p>
         </div>
         <div class="feature-card">
           <span class="feature-icon">🧪</span>
-          <h3 class="feature-title">Testing & QA</h3>
-          <p class="feature-desc">
-            Complete test coverage using Stripe test mode. We test successful
-            payments, failed cards, webhook retries, and edge cases.
-          </p>
+          <h3 class="feature-title"><span class="en">Testing &amp; QA</span><span class="es">Pruebas y QA</span></h3>
+          <p class="feature-desc en">Complete test coverage using Stripe test mode. We test successful payments, failed cards, webhook retries, and edge cases.</p>
+          <p class="feature-desc es">Cobertura completa en modo test de Stripe. Probamos pagos exitosos, tarjetas rechazadas, reintentos de webhook y casos límite.</p>
         </div>
         <div class="feature-card">
           <span class="feature-icon">🚀</span>
-          <h3 class="feature-title">Production deployment</h3>
-          <p class="feature-desc">
-            Full deployment to your production environment. Environment
-            variables configured. Monitoring set up. Ready to accept real
-            payments.
-          </p>
+          <h3 class="feature-title"><span class="en">Production deployment</span><span class="es">Despliegue en producción</span></h3>
+          <p class="feature-desc en">Full deployment to your production environment. Environment variables configured. Monitoring set up. Ready to accept real payments.</p>
+          <p class="feature-desc es">Despliegue completo en tu entorno de producción. Variables de entorno configuradas. Monitoreo activo. Listo para cobrar.</p>
         </div>
       </div>
     </section>
 
     <!-- Case Studies -->
     <section class="container" id="cases">
-      <h2 class="section-title">Recent projects</h2>
+      <h2 class="section-title"><span class="en">Recent projects</span><span class="es">Proyectos recientes</span></h2>
 
       <div class="case-study">
         <div class="case-header">
           <h3 class="case-title">Gastrovisual</h3>
-          <span class="case-tag">Hospitality SaaS</span>
+          <span class="case-tag"><span class="en">Hospitality SaaS</span><span class="es">SaaS de hostelería</span></span>
         </div>
         <div class="case-problem">
-          <h4>Problem</h4>
-          <p>
-            Hospitality SaaS with 50+ restaurants using the platform but no way
-            to collect payments. Losing clients to competitors with payment
-            systems. Needed SEPA direct debit for European restaurants.
-          </p>
+          <h4 class="en">Problem</h4><h4 class="es">Problema</h4>
+          <p class="en">Hospitality SaaS with 50+ restaurants using the platform but no way to collect payments. Losing clients to competitors with payment systems. Needed SEPA direct debit for European restaurants.</p>
+          <p class="es">SaaS de hostelería con 50+ restaurantes en la plataforma sin forma de cobrar. Perdiendo clientes frente a competidores. Necesitaban domiciliación SEPA para restaurantes europeos.</p>
         </div>
         <div class="case-solution">
-          <h4>Solution delivered</h4>
-          <ul>
+          <h4 class="en">Solution delivered</h4><h4 class="es">Solución aplicada</h4>
+          <ul class="en">
             <li>Stripe Payment Links for one-time payments</li>
             <li>SEPA subscriptions for recurring monthly fees</li>
             <li>Automated PDF invoice generation</li>
             <li>Customer Portal for self-service</li>
             <li>Stripe Connect for managing restaurant commissions</li>
+          </ul>
+          <ul class="es">
+            <li>Stripe Payment Links para cobros únicos</li>
+            <li>Suscripciones SEPA para cuotas mensuales recurrentes</li>
+            <li>Generación automática de facturas PDF</li>
+            <li>Portal del cliente para autogestión</li>
+            <li>Stripe Connect para gestionar comisiones de restaurantes</li>
           </ul>
         </div>
       </div>
@@ -742,24 +765,28 @@
       <div class="case-study">
         <div class="case-header">
           <h3 class="case-title">Tweedy</h3>
-          <span class="case-tag">Freelancer SaaS</span>
+          <span class="case-tag"><span class="en">Freelancer SaaS</span><span class="es">SaaS para freelancers</span></span>
         </div>
         <div class="case-problem">
-          <h4>Problem</h4>
-          <p>
-            B2B SaaS for freelancers needing subscription billing. Founder
-            wanted monthly AND annual plans with automatic upgrades/downgrades.
-            Complex tax handling for EU VAT.
-          </p>
+          <h4 class="en">Problem</h4><h4 class="es">Problema</h4>
+          <p class="en">B2B SaaS for freelancers needing subscription billing. Founder wanted monthly AND annual plans with automatic upgrades/downgrades. Complex tax handling for EU VAT.</p>
+          <p class="es">SaaS B2B para freelancers con billing por suscripción. El fundador quería planes mensuales y anuales con upgrades/downgrades automáticos. Gestión compleja de IVA europeo.</p>
         </div>
         <div class="case-solution">
-          <h4>Solution delivered</h4>
-          <ul>
+          <h4 class="en">Solution delivered</h4><h4 class="es">Solución aplicada</h4>
+          <ul class="en">
             <li>Multi-tier pricing (€29/mo, €99/mo, €299/mo)</li>
             <li>Annual plans with 20% discount applied automatically</li>
             <li>Upgrade/downgrade flow with prorated billing</li>
             <li>EU VAT handling via Stripe Tax</li>
             <li>Invoice customization with company branding</li>
+          </ul>
+          <ul class="es">
+            <li>Precios por niveles (€29/mes, €99/mes, €299/mes)</li>
+            <li>Planes anuales con 20% de descuento aplicado automáticamente</li>
+            <li>Flujo de cambio de plan con facturación prorrateada</li>
+            <li>Gestión de IVA europeo vía Stripe Tax</li>
+            <li>Facturas personalizadas con la marca de la empresa</li>
           </ul>
         </div>
       </div>
@@ -767,26 +794,28 @@
       <div class="case-study">
         <div class="case-header">
           <h3 class="case-title">Drivi</h3>
-          <span class="case-tag">Mobility SaaS</span>
+          <span class="case-tag"><span class="en">Mobility SaaS</span><span class="es">SaaS de movilidad</span></span>
         </div>
         <div class="case-problem">
-          <h4>Problem</h4>
-          <p>
-            Their subscription model had multiple tiers and manual backoffice
-            updates every time a customer upgraded or downgraded. Billing state
-            in Stripe and internal database drifted frequently.
-          </p>
+          <h4 class="en">Problem</h4><h4 class="es">Problema</h4>
+          <p class="en">Their subscription model had multiple tiers and manual backoffice updates every time a customer upgraded or downgraded. Billing state in Stripe and internal database drifted frequently.</p>
+          <p class="es">Su modelo de suscripción tenía múltiples niveles y actualizaciones manuales en backoffice cada vez que un cliente cambiaba de plan. El estado de facturación en Stripe y la base de datos divergía con frecuencia.</p>
         </div>
         <div class="case-solution">
-          <h4>Solution delivered</h4>
-          <ul>
+          <h4 class="en">Solution delivered</h4><h4 class="es">Solución aplicada</h4>
+          <ul class="en">
             <li>Full subscription system with multiple pricing tiers</li>
             <li>Upgrade/downgrade flows with proration rules</li>
             <li>Webhook processing for subscription lifecycle events</li>
-            <li>
-              Automatic tier synchronization in database after each Stripe event
-            </li>
+            <li>Automatic tier synchronization in database after each Stripe event</li>
             <li>Idempotent handlers, retry strategy, and operational alerts</li>
+          </ul>
+          <ul class="es">
+            <li>Sistema de suscripción completo con múltiples niveles de precio</li>
+            <li>Flujos de cambio de plan con reglas de prorrateo</li>
+            <li>Procesamiento de webhooks para eventos del ciclo de vida</li>
+            <li>Sincronización automática del nivel en base de datos tras cada evento</li>
+            <li>Handlers idempotentes, estrategia de reintentos y alertas operativas</li>
           </ul>
         </div>
       </div>
@@ -794,58 +823,44 @@
 
     <!-- FAQ -->
     <section class="container">
-      <h2 class="section-title">Common questions</h2>
+      <h2 class="section-title"><span class="en">Common questions</span><span class="es">Preguntas frecuentes</span></h2>
 
       <div class="faq-item">
-        <div class="faq-question">Is 7 days really enough?</div>
-        <div class="faq-answer">
-          Yes, for the defined scope: Checkout, Webhooks, Customer Portal, and
-          deployment. The scope is fixed and proven. If you need extras
-          (usage-based billing, complex tax, Connect marketplace), that's a
-          different package.
-        </div>
+        <div class="faq-question en">Is 7 days really enough?</div>
+        <div class="faq-question es">¿7 días son suficientes?</div>
+        <div class="faq-answer en">Yes, for the defined scope: Checkout, Webhooks, Customer Portal, and deployment. The scope is fixed and proven. If you need extras (usage-based billing, complex tax, Connect marketplace), that’s a different package.</div>
+        <div class="faq-answer es">Sí, para el alcance definido: Checkout, Webhooks, Portal del cliente y despliegue. El alcance es fijo y probado. Si necesitas extras (facturación por uso, impuestos complejos, marketplace Connect), eso es un paquete diferente.</div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">What if I need changes after delivery?</div>
-        <div class="faq-answer">
-          The code is yours. You can modify it or hire me to maintain it. I
-          offer ongoing support to handle updates.
-        </div>
+        <div class="faq-question en">What if I need changes after delivery?</div>
+        <div class="faq-question es">¿Qué pasa si necesito cambios después?</div>
+        <div class="faq-answer en">The code is yours. You can modify it or hire me to maintain it. I offer ongoing support to handle updates.</div>
+        <div class="faq-answer es">El código es tuyo. Puedes modificarlo o contratarme para mantenerlo. Ofrezco soporte continuo para gestionar actualizaciones.</div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">Do I need to be technical?</div>
-        <div class="faq-answer">
-          No. I handle everything: code, testing, deployment. You just need to
-          provide access to your codebase and Stripe account. I'll walk you
-          through the setup during our kickoff call.
-        </div>
+        <div class="faq-question en">Do I need to be technical?</div>
+        <div class="faq-question es">¿Necesito ser técnico?</div>
+        <div class="faq-answer en">No. I handle everything: code, testing, deployment. You just need to provide access to your codebase and Stripe account. I’ll walk you through the setup during our kickoff call.</div>
+        <div class="faq-answer es">No. Me encargo de todo: código, pruebas y despliegue. Solo necesitas dar acceso a tu código y cuenta de Stripe. Te guío en la configuración durante la llamada inicial.</div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">What tech stacks do you support?</div>
-        <div class="faq-answer">
-          React/Next.js, Node.js, Python (Django/FastAPI), any
-          PostgreSQL/Supabase setup. If you're using something else, let's
-          discuss — I can usually adapt.
-        </div>
+        <div class="faq-question en">What tech stacks do you support?</div>
+        <div class="faq-question es">¿Qué tecnologías soportas?</div>
+        <div class="faq-answer en">React/Next.js, Node.js, Python (Django/FastAPI), any PostgreSQL/Supabase setup. If you’re using something else, let’s discuss — I can usually adapt.</div>
+        <div class="faq-answer es">React/Next.js, Node.js, Python (Django/FastAPI), cualquier configuración con PostgreSQL/Supabase. Si usas otra cosa, hablamos — normalmente me puedo adaptar.</div>
       </div>
     </section>
 
     <!-- Final CTA -->
     <section class="container">
       <div class="cta-section">
-        <h2>Ready to start accepting payments?</h2>
-        <p>
-          Book a 15-minute call. We'll discuss your needs, confirm the scope,
-          and schedule your integration sprint.
-        </p>
-        <a
-          href="https://calendar.app.google/WmTZX6wxqDUmcjMcA"
-          class="btn btn-primary"
-          >Schedule call →</a
-        >
+        <h2><span class="en">Ready to start accepting payments?</span><span class="es">¿Listo para empezar a cobrar?</span></h2>
+        <p class="en">Book a 15-minute call. We’ll discuss your needs, confirm the scope, and schedule your integration sprint.</p>
+        <p class="es">Reserva una llamada de 15 minutos. Revisamos tus necesidades, confirmamos el alcance y organizamos tu sprint de integración.</p>
+        <a href="https://calendar.app.google/WmTZX6wxqDUmcjMcA" class="btn btn-primary"><span class="en">Schedule call →</span><span class="es">Agendar llamada →</span></a>
       </div>
     </section>
 
@@ -857,5 +872,9 @@
         Barcelona, Spain
       </p>
     </footer>
+  <script>
+    function setLang(l){document.documentElement.lang=l;localStorage.setItem('ark-lang',l);document.querySelectorAll('.lang-sw button').forEach(b=>b.classList.remove('active'));const b=document.getElementById('sw-'+l);if(b)b.classList.add('active');}
+    (function(){const s=localStorage.getItem('ark-lang');setLang(s||(navigator.language.startsWith('es')?'es':'en'));})();
+  </script>
   </body>
 </html>

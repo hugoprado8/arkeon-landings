@@ -497,62 +497,115 @@
           flex-direction: column;
         }
       }
+
+      /* Language switcher */
+      .lang-sw {
+        position: fixed;
+        top: 1.25rem;
+        right: 1.25rem;
+        z-index: 9999;
+        display: flex;
+        gap: 0.35rem;
+        background: rgba(26, 26, 36, 0.93);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid #2a2a35;
+        border-radius: 10px;
+        padding: 0.35rem 0.5rem;
+      }
+      .lang-sw button {
+        background: none;
+        border: none;
+        font-size: 1.35rem;
+        line-height: 1;
+        cursor: pointer;
+        padding: 0.2rem 0.35rem;
+        border-radius: 6px;
+        opacity: 0.4;
+        transition: opacity 0.2s, background 0.2s;
+      }
+      .lang-sw button.active {
+        opacity: 1;
+        background: rgba(0, 255, 136, 0.13);
+      }
+      html[lang="en"] .es {
+        display: none !important;
+      }
+      html[lang="es"] .en {
+        display: none !important;
+      }
     </style>
   </head>
   <body>
+    <div class="lang-sw">
+      <button id="sw-es" onclick="setLang('es')">🇪🇸</button>
+      <button id="sw-en" onclick="setLang('en')">🇬🇧</button>
+    </div>
     <section class="hero">
       <div class="hero-bg"></div>
       <div class="hero-grid"></div>
       <div class="hero-content">
         <div class="hero-left">
           <span class="label">Cloud Deployment Sprint</span>
-          <h1>Tu app hecha con IA, online en 7 dias</h1>
-          <p class="hero-subtitle">
+          <h1><span class="es">Tu app hecha con IA, online en 7 días</span><span class="en">Your AI-Built App, Live in 7 Days</span></h1>
+          <p class="hero-subtitle es">
             Ya validaste la idea y tienes una app funcional en local, pero no sabes
             como desplegarla. Yo me encargo de todo para que puedas compartirla,
-            cobrar y crecer sin depender de errores tecnicos de infraestructura.
+            cobrar y crecer sin depender de errores técnicos de infraestructura.
+          </p>
+          <p class="hero-subtitle en">
+            You validated the idea and have a working app locally, but you don't
+            know how to deploy it. I handle everything so you can share it,
+            charge for it, and grow without infrastructure roadblocks.
           </p>
 
           <div class="hero-stats">
             <div class="stat-item">
               <div class="stat-number">7</div>
-              <div class="stat-label">Dias de ejecucion</div>
+              <div class="stat-label"><span class="es">Días de ejecución</span><span class="en">Execution days</span></div>
             </div>
             <div class="stat-item">
               <div class="stat-number">1:1</div>
-              <div class="stat-label">Acompanamiento</div>
+              <div class="stat-label"><span class="es">Acompañamiento</span><span class="en">1-on-1 support</span></div>
             </div>
             <div class="stat-item">
               <div class="stat-number">Go Live</div>
-              <div class="stat-label">Con dominio y SSL</div>
+              <div class="stat-label"><span class="es">Con dominio y SSL</span><span class="en">Domain &amp; SSL live</span></div>
             </div>
           </div>
 
           <div class="cta-group">
-            <a
-              href="https://calendar.app.google/WmTZX6wxqDUmcjMcA"
-              class="btn btn-primary"
-              >Schedule a call -></a
-            >
-            <a href="#caso" class="btn btn-secondary">Ver caso real</a>
+            <a href="https://calendar.app.google/WmTZX6wxqDUmcjMcA" class="btn btn-primary"><span class="en">Schedule a call →</span><span class="es">Agendar llamada →</span></a>
+            <a href="#caso" class="btn btn-secondary"><span class="es">Ver caso real</span><span class="en">See real case</span></a>
           </div>
         </div>
 
         <div class="hero-visual">
-          <div class="code-block">
-            <div class="code-line">
-              <span class="code-comment">Plan de despliegue para no tecnicos</span>
-            </div>
+          <div class="code-block es">
+            <div class="code-line"><span class="code-comment">Plan de despliegue para no técnicos</span></div>
             <div class="code-line"></div>
-            <div class="code-line"><span class="code-string">Dia 1:</span> Auditoria de app y arquitectura</div>
-            <div class="code-line"><span class="code-string">Dia 2:</span> Entorno cloud + base de datos</div>
-            <div class="code-line"><span class="code-string">Dia 3:</span> CI/CD para publicar sin friccion</div>
-            <div class="code-line"><span class="code-string">Dia 4:</span> Dominio, SSL y correo transaccional</div>
-            <div class="code-line"><span class="code-string">Dia 5:</span> Observabilidad y alertas</div>
-            <div class="code-line"><span class="code-string">Dia 6:</span> Seguridad, backups y recovery</div>
-            <div class="code-line"><span class="code-string">Dia 7:</span> Launch + handover guiado</div>
+            <div class="code-line"><span class="code-string">Día 1:</span> Auditoría de app y arquitectura</div>
+            <div class="code-line"><span class="code-string">Día 2:</span> Entorno cloud + base de datos</div>
+            <div class="code-line"><span class="code-string">Día 3:</span> CI/CD para publicar sin fricción</div>
+            <div class="code-line"><span class="code-string">Día 4:</span> Dominio, SSL y correo transaccional</div>
+            <div class="code-line"><span class="code-string">Día 5:</span> Observabilidad y alertas</div>
+            <div class="code-line"><span class="code-string">Día 6:</span> Seguridad, backups y recovery</div>
+            <div class="code-line"><span class="code-string">Día 7:</span> Launch + handover guiado</div>
             <div class="code-line"></div>
             <div class="code-line"><span class="code-comment">Resultado:</span> app estable, accesible y lista para crecer</div>
+          </div>
+          <div class="code-block en">
+            <div class="code-line"><span class="code-comment">Deployment blueprint</span></div>
+            <div class="code-line"></div>
+            <div class="code-line"><span class="code-string">Day 1:</span> App &amp; architecture audit</div>
+            <div class="code-line"><span class="code-string">Day 2:</span> Cloud environment + database</div>
+            <div class="code-line"><span class="code-string">Day 3:</span> CI/CD for smooth deploys</div>
+            <div class="code-line"><span class="code-string">Day 4:</span> Domain, SSL &amp; transactional email</div>
+            <div class="code-line"><span class="code-string">Day 5:</span> Observability &amp; alerts</div>
+            <div class="code-line"><span class="code-string">Day 6:</span> Security, backups &amp; recovery</div>
+            <div class="code-line"><span class="code-string">Day 7:</span> Launch + guided handover</div>
+            <div class="code-line"></div>
+            <div class="code-line"><span class="code-comment">Result:</span> stable, accessible app ready to grow</div>
           </div>
         </div>
       </div>
@@ -562,130 +615,116 @@
       <div class="price-highlight">
         <div class="price-tag">EUR 1,900</div>
         <div class="price-detail">
-          Precio fijo · 7 dias · Deploy completo en produccion con soporte de lanzamiento
+          <span class="es">Precio fijo · 7 días · Deploy completo en producción con soporte de lanzamiento</span><span class="en">Fixed price · 7 days · Full production deployment with launch support</span>
         </div>
       </div>
     </div>
 
     <section class="container">
-      <h2 class="section-title">Que incluye el servicio</h2>
+      <h2 class="section-title"><span class="es">Qué incluye el servicio</span><span class="en">What's included</span></h2>
       <div class="features-grid">
         <div class="feature-card">
           <span class="feature-icon">☁️</span>
-          <h3 class="feature-title">Infraestructura cloud lista para negocio</h3>
-          <p class="feature-desc">
-            Configuro servidor, runtime, secrets y variables para que tu app funcione
-            estable desde el primer dia.
-          </p>
+          <h3 class="feature-title"><span class="es">Infraestructura cloud lista para negocio</span><span class="en">Production-ready cloud infrastructure</span></h3>
+          <p class="feature-desc es">Configuro servidor, runtime, secrets y variables para que tu app funcione estable desde el primer día.</p>
+          <p class="feature-desc en">I set up server, runtime, secrets, and environment variables so your app runs stable from day one.</p>
         </div>
         <div class="feature-card">
           <span class="feature-icon">🌐</span>
-          <h3 class="feature-title">Dominio, HTTPS y performance</h3>
-          <p class="feature-desc">
-            Tu producto queda accesible con tu marca, certificado SSL activo y tiempos
-            de carga optimizados.
-          </p>
+          <h3 class="feature-title"><span class="es">Dominio, HTTPS y performance</span><span class="en">Domain, HTTPS &amp; performance</span></h3>
+          <p class="feature-desc es">Tu producto queda accesible con tu marca, certificado SSL activo y tiempos de carga optimizados.</p>
+          <p class="feature-desc en">Your product goes live with your domain, active SSL, and optimized load times.</p>
         </div>
         <div class="feature-card">
           <span class="feature-icon">🧠</span>
-          <h3 class="feature-title">Preparado para apps hechas con IA</h3>
-          <p class="feature-desc">
-            Ajusto workers, colas, limites y logs para aplicaciones que usan APIs de IA
-            y pueden tener picos impredecibles.
-          </p>
+          <h3 class="feature-title"><span class="es">Preparado para apps hechas con IA</span><span class="en">Built for AI-powered apps</span></h3>
+          <p class="feature-desc es">Ajusto workers, colas, límites y logs para aplicaciones que usan APIs de IA y pueden tener picos impredecibles.</p>
+          <p class="feature-desc en">I tune workers, queues, limits, and logs for apps using AI APIs that can have unpredictable traffic spikes.</p>
         </div>
         <div class="feature-card">
           <span class="feature-icon">🛡️</span>
-          <h3 class="feature-title">Seguridad y backup</h3>
-          <p class="feature-desc">
-            Hardening basico, copias automaticas y plan de recuperacion para evitar que
-            una caida se convierta en crisis.
-          </p>
+          <h3 class="feature-title"><span class="es">Seguridad y backup</span><span class="en">Security &amp; backups</span></h3>
+          <p class="feature-desc es">Hardening básico, copias automáticas y plan de recuperación para evitar que una caída se convierta en crisis.</p>
+          <p class="feature-desc en">Basic hardening, automated backups, and a recovery plan to prevent downtime from becoming a crisis.</p>
         </div>
         <div class="feature-card">
           <span class="feature-icon">📈</span>
-          <h3 class="feature-title">Monitoreo y alertas</h3>
-          <p class="feature-desc">
-            Tendras visibilidad de errores, caidas y consumo para tomar decisiones sin
-            depender de intuicion.
-          </p>
+          <h3 class="feature-title"><span class="es">Monitoreo y alertas</span><span class="en">Monitoring &amp; alerts</span></h3>
+          <p class="feature-desc es">Tendrás visibilidad de errores, caídas y consumo para tomar decisiones sin depender de intuición.</p>
+          <p class="feature-desc en">You'll have visibility into errors, downtime, and usage to make data-driven decisions.</p>
         </div>
         <div class="feature-card">
           <span class="feature-icon">🤝</span>
-          <h3 class="feature-title">Acompanamiento no tecnico</h3>
-          <p class="feature-desc">
-            Te explico cada paso en lenguaje de negocio para que entiendas que pagas,
-            que se entrega y que riesgos se eliminan.
-          </p>
+          <h3 class="feature-title"><span class="es">Acompañamiento no técnico</span><span class="en">Non-technical guidance</span></h3>
+          <p class="feature-desc es">Te explico cada paso en lenguaje de negocio para que entiendas qué pagas, qué se entrega y qué riesgos se eliminan.</p>
+          <p class="feature-desc en">I explain every step in business language so you know what you're paying for, what's delivered, and what risks are removed.</p>
         </div>
       </div>
     </section>
 
     <section class="container" id="caso">
-      <h2 class="section-title">Caso tipico</h2>
+      <h2 class="section-title"><span class="es">Caso típico</span><span class="en">Typical case</span></h2>
       <div class="case-study">
         <div class="case-header">
-          <h3 class="case-title">Fundador no tecnico con app IA validada</h3>
-          <span class="case-tag">Testimonio resumido</span>
+          <h3 class="case-title"><span class="es">Fundador no técnico con app IA validada</span><span class="en">Non-technical founder with validated AI app</span></h3>
+          <span class="case-tag"><span class="es">Testimonio resumido</span><span class="en">Summarized story</span></span>
         </div>
         <div class="case-problem">
-          <h4>Situacion</h4>
-          <p>
-            "Tenia una app funcional hecha con IA y no podia lanzarla. Todo corria en
-            local, se caia con usuarios reales y me daba miedo tocar servidores."
-          </p>
+          <h4 class="es">Situación</h4><h4 class="en">Situation</h4>
+          <p class="es">“Tenía una app funcional hecha con IA y no podía lanzarla. Todo corría en local, se caía con usuarios reales y me daba miedo tocar servidores.”</p>
+          <p class="en">“I had a working AI-built app and couldn’t launch it. Everything ran locally, crashed with real users, and I was afraid to touch servers.”</p>
         </div>
         <div class="case-solution">
-          <h4>Intervencion</h4>
-          <ul>
-            <li>Migracion de entorno local a infraestructura cloud estable</li>
+          <h4 class="es">Intervención</h4><h4 class="en">What we did</h4>
+          <ul class="es">
+            <li>Migración de entorno local a infraestructura cloud estable</li>
             <li>Pipeline de despliegue para publicar cambios en minutos</li>
             <li>Dominio, SSL, base de datos y backups totalmente operativos</li>
-            <li>Panel de salud con alertas para errores criticos</li>
-            <li>Guia de operacion simple para continuar sin equipo tecnico interno</li>
+            <li>Panel de salud con alertas para errores críticos</li>
+            <li>Guía de operación simple para continuar sin equipo técnico interno</li>
+          </ul>
+          <ul class="en">
+            <li>Migration from local environment to stable cloud infrastructure</li>
+            <li>Deploy pipeline to ship changes in minutes</li>
+            <li>Domain, SSL, database and backups fully operational</li>
+            <li>Health dashboard with alerts for critical errors</li>
+            <li>Simple operations guide to continue without an internal technical team</li>
           </ul>
         </div>
       </div>
     </section>
 
     <section class="container">
-      <h2 class="section-title">Preguntas comunes</h2>
+      <h2 class="section-title"><span class="es">Preguntas comunes</span><span class="en">Common questions</span></h2>
 
       <div class="faq-item">
-        <div class="faq-question">No soy tecnico, podre mantenerlo despues?</div>
-        <div class="faq-answer">
-          Si. El servicio esta pensado para que entiendas lo esencial y tengas una guia
-          operativa clara. Si lo prefieres, tambien puedo quedarme en modo soporte.
-        </div>
+        <div class="faq-question es">No soy técnico, podré mantenerlo después?</div>
+        <div class="faq-question en">I’m not technical — can I maintain it after?</div>
+        <div class="faq-answer es">Sí. El servicio está pensado para que entiendas lo esencial y tengas una guía operativa clara. Si lo prefieres, también puedo quedarme en modo soporte.</div>
+        <div class="faq-answer en">Yes. The service is designed so you understand the essentials and have a clear operations guide. If you prefer, I can also stay on as ongoing support.</div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">Mi app esta hecha con no-code o con IA, sirve igual?</div>
-        <div class="faq-answer">
-          Si. Trabajo con apps construidas en stacks mixtos y herramientas de IA. El
-          objetivo es que funcione en produccion con estabilidad real.
-        </div>
+        <div class="faq-question es">Mi app está hecha con no-code o con IA, sirve igual?</div>
+        <div class="faq-question en">My app is built with no-code or AI tools — does it work?</div>
+        <div class="faq-answer es">Sí. Trabajo con apps construidas en stacks mixtos y herramientas de IA. El objetivo es que funcione en producción con estabilidad real.</div>
+        <div class="faq-answer en">Yes. I work with apps built on mixed stacks and AI tooling. The goal is to get it running in production with real stability.</div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">Cuanto tardamos en salir online?</div>
-        <div class="faq-answer">
-          El sprint dura 7 dias laborables una vez tenemos accesos. Si hay dependencias
-          externas, te marco desde el inicio que puede afectar al calendario.
-        </div>
+        <div class="faq-question es">¿Cuánto tardamos en salir online?</div>
+        <div class="faq-question en">How long until we go live?</div>
+        <div class="faq-answer es">El sprint dura 7 días laborables una vez tenemos accesos. Si hay dependencias externas, te marco desde el inicio qué puede afectar al calendario.</div>
+        <div class="faq-answer en">The sprint takes 7 business days once we have access. If there are external dependencies, I’ll flag them upfront so they don’t catch you off guard.</div>
       </div>
     </section>
 
     <section class="container">
       <div class="cta-section">
-        <h2>Lanza tu app esta semana</h2>
-        <p>
-          Si ya has invertido tiempo y dinero en construir tu producto, el siguiente
-          paso es ponerlo en manos de usuarios reales sin bloqueos tecnicos.
-        </p>
-        <a href="https://calendar.app.google/WmTZX6wxqDUmcjMcA" class="btn btn-primary"
-          >Schedule a meeting -></a
-        >
+        <h2><span class="es">Lanza tu app esta semana</span><span class="en">Launch your app this week</span></h2>
+        <p class="es">Si ya has invertido tiempo y dinero en construir tu producto, el siguiente paso es ponerlo en manos de usuarios reales sin bloqueos técnicos.</p>
+        <p class="en">If you’ve already invested time and money building your product, the next step is putting it in real users’ hands without technical roadblocks.</p>
+        <a href="https://calendar.app.google/WmTZX6wxqDUmcjMcA" class="btn btn-primary"><span class="en">Schedule a meeting →</span><span class="es">Agendar reunión →</span></a>
       </div>
     </section>
 
@@ -696,5 +735,9 @@
         Spain
       </p>
     </footer>
+  <script>
+    function setLang(l){document.documentElement.lang=l;localStorage.setItem('ark-lang',l);document.querySelectorAll('.lang-sw button').forEach(b=>b.classList.remove('active'));const b=document.getElementById('sw-'+l);if(b)b.classList.add('active');}
+    (function(){const s=localStorage.getItem('ark-lang');setLang(s||(navigator.language.startsWith('es')?'es':'en'));})();
+  </script>
   </body>
 </html>
