@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Stripe Integration Sprint - 7 Days, Fixed Price | Hugo Prado</title>
+    <title>Backend Migration - 7 Days, Fixed Price | Hugo Prado</title>
     <meta
       name="description"
-      content="Add payments to your SaaS in 7 days. Checkout, Webhooks, Customer Portal. €1,500 fixed price."
+      content="Backend migration in 7 days for apps built with Bolt, v0, or Cursor. Move logic out of the browser, improve speed, and scale reliably."
     />
     <link
       href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap"
@@ -36,7 +36,6 @@
         min-height: 100vh;
       }
 
-      /* Hero Section */
       .hero {
         position: relative;
         min-height: 100vh;
@@ -204,7 +203,6 @@
         color: var(--bg);
       }
 
-      /* Hero visual */
       .hero-visual {
         position: relative;
         height: 500px;
@@ -250,19 +248,14 @@
         color: #6a6a7a;
       }
 
-      .code-keyword {
-        color: #ff79c6;
+      .code-danger {
+        color: #ff6b6b;
       }
 
-      .code-string {
+      .code-good {
         color: var(--accent);
       }
 
-      .code-function {
-        color: #8be9fd;
-      }
-
-      /* Sections */
       .container {
         max-width: 1200px;
         margin: 0 auto;
@@ -355,7 +348,6 @@
         line-height: 1.7;
       }
 
-      /* Case studies */
       .case-study {
         background: var(--card-bg);
         border: 1px solid var(--border);
@@ -398,7 +390,8 @@
         margin-bottom: 1.5rem;
       }
 
-      .case-problem h4 {
+      .case-problem h4,
+      .case-solution h4 {
         color: var(--accent);
         margin-bottom: 0.5rem;
         font-size: 1rem;
@@ -415,14 +408,6 @@
         margin-bottom: 1.5rem;
       }
 
-      .case-solution h4 {
-        color: var(--accent);
-        margin-bottom: 0.5rem;
-        font-size: 1rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
       .case-solution ul {
         list-style: none;
         padding: 0;
@@ -436,7 +421,7 @@
       }
 
       .case-solution li::before {
-        content: "→";
+        content: "->";
         position: absolute;
         left: 0;
         color: var(--accent);
@@ -453,7 +438,6 @@
         color: var(--accent);
       }
 
-      /* FAQ */
       .faq-item {
         background: var(--card-bg);
         border: 1px solid var(--border);
@@ -474,7 +458,6 @@
         line-height: 1.7;
       }
 
-      /* CTA Section */
       .cta-section {
         text-align: center;
         padding: 6rem 2rem;
@@ -501,7 +484,6 @@
         margin-right: auto;
       }
 
-      /* Footer */
       .footer {
         padding: 3rem 2rem;
         border-top: 1px solid var(--border);
@@ -515,7 +497,6 @@
         text-decoration: none;
       }
 
-      /* Responsive */
       @media (max-width: 968px) {
         .hero-content {
           grid-template-columns: 1fr;
@@ -560,40 +541,39 @@
     </style>
   </head>
   <body>
-    <!-- Hero Section -->
     <section class="hero">
       <div class="hero-bg"></div>
       <div class="hero-grid"></div>
       <div class="hero-content">
         <div class="hero-left">
-          <span class="label">Stripe Integration Sprint</span>
-          <h1>Add payments to your SaaS in 7 days</h1>
+          <span class="label">Backend Migration</span>
+          <h1>Why Your App Slows Down With Every New User</h1>
           <p class="hero-subtitle">
-            Stop leaving money on the table. Get Stripe fully integrated —
-            Checkout, Webhooks, Customer Portal — in one week. Fixed price,
-            guaranteed timeline.
+            You built with Bolt, v0, or Cursor. It works with 10 users. Now you
+            have 100, and it takes 10 seconds to load. The problem: everything
+            runs in the browser. The solution: a proper backend.
           </p>
 
           <div class="hero-stats">
             <div class="stat-item">
-              <div class="stat-number">B2B & B2C</div>
-              <div class="stat-label">Subscription systems</div>
+              <div class="stat-number">10x</div>
+              <div class="stat-label">Faster after migration</div>
             </div>
             <div class="stat-item">
               <div class="stat-number">7</div>
               <div class="stat-label">Business days</div>
             </div>
             <div class="stat-item">
-              <div class="stat-number">€1.5K</div>
+              <div class="stat-number">EUR 2.5K</div>
               <div class="stat-label">Fixed price</div>
             </div>
           </div>
 
           <div class="cta-group">
             <a
-              href="https://calendar.app.google/WmTZX6wxqDUmcjMcA"
+              href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1LhXEeHMGnVOsJms7pXlNsDwLhD4oYHPri5mjYeyq9KvTMWueOivjGzxzM0hXGYwy7ssOHwubZ"
               class="btn btn-primary"
-              >Schedule a call →</a
+              >Schedule backend call -></a
             >
             <a href="#cases" class="btn btn-secondary">See case studies</a>
           </div>
@@ -602,260 +582,252 @@
         <div class="hero-visual">
           <div class="code-block">
             <div class="code-line">
-              <span class="code-comment">Sprint blueprint</span>
+              <span class="code-danger">X Frontend-Only (Now):</span>
+            </div>
+            <div class="code-line">Browser downloads 5MB JavaScript</div>
+            <div class="code-line">-> Fetches 10,000 database rows</div>
+            <div class="code-line">-> Filters, sorts in browser</div>
+            <div class="code-line">-> Renders page</div>
+            <div class="code-line">
+              <span class="code-danger">= 8 seconds, crashes at 500 users</span>
             </div>
             <div class="code-line"></div>
             <div class="code-line">
-              <span class="code-string">Day 1-2:</span> Checkout + products +
-              prices
+              <span class="code-good">OK With Backend (After):</span>
             </div>
+            <div class="code-line">Browser requests /api/dashboard</div>
+            <div class="code-line">Server fetches only needed 50 rows</div>
+            <div class="code-line">-> Filters, sorts on server</div>
+            <div class="code-line">-> Returns 10KB JSON</div>
+            <div class="code-line">Browser renders page</div>
             <div class="code-line">
-              <span class="code-string">Day 3:</span> Subscriptions + customer
-              portal
+              <span class="code-good">= 0.8 seconds, handles 10,000 users</span>
             </div>
-            <div class="code-line">
-              <span class="code-string">Day 4:</span> Webhooks + retry-safe
-              handlers
-            </div>
-            <div class="code-line">
-              <span class="code-string">Day 5:</span> Tier sync with your
-              database
-            </div>
-            <div class="code-line">
-              <span class="code-string">Day 6:</span> End-to-end QA in Stripe
-              test mode
-            </div>
-            <div class="code-line">
-              <span class="code-string">Day 7:</span> Production deploy +
-              handoff
-            </div>
-            <div class="code-line"></div>
-            <div class="code-line">
-              <span class="code-comment">Deliverables:</span>
-            </div>
-            <div class="code-line">- Working billing flow in production</div>
-            <div class="code-line">
-              - Webhooks mapped to your business logic
-            </div>
-            <div class="code-line">- Clear docs for your team</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Price Highlight -->
     <div class="container">
       <div class="price-highlight">
-        <div class="price-tag">€1,500</div>
+        <div class="price-tag">EUR 2,500</div>
         <div class="price-detail">
-          Fixed price · 7 business days · Production deployment included
+          Fixed price · 7 business days · Backend migration and deployment
+          included
         </div>
       </div>
     </div>
 
-    <!-- What's Included -->
     <section class="container">
       <h2 class="section-title">What's included</h2>
       <div class="features-grid">
         <div class="feature-card">
-          <span class="feature-icon">💳</span>
-          <h3 class="feature-title">Stripe Checkout + Subscriptions</h3>
+          <span class="feature-icon">🔍</span>
+          <h3 class="feature-title">Architecture Audit</h3>
           <p class="feature-desc">
-            Complete payment flow implementation. One-time payments or recurring
-            subscriptions (monthly/annual). Works with your existing stack.
+            Identify exactly what logic should move to backend for performance,
+            cost control, and scalability.
           </p>
         </div>
         <div class="feature-card">
-          <span class="feature-icon">🔔</span>
-          <h3 class="feature-title">Webhook handlers</h3>
+          <span class="feature-icon">⚙️</span>
+          <h3 class="feature-title">API Backend</h3>
           <p class="feature-desc">
-            Proper event processing for payment_succeeded, subscription_updated,
-            invoice_paid, and all critical Stripe events. No missed payments.
+            Node.js with Express or Python with FastAPI. Optimized endpoints for
+            your critical user flows.
           </p>
         </div>
         <div class="feature-card">
-          <span class="feature-icon">👤</span>
-          <h3 class="feature-title">Customer Portal</h3>
+          <span class="feature-icon">🗄️</span>
+          <h3 class="feature-title">Query Optimization</h3>
           <p class="feature-desc">
-            Let customers manage their own subscriptions, update payment
-            methods, view invoices, and download receipts. Zero support overhead
-            for you.
+            Server-side filtering, pagination, and proper indexing to avoid
+            heavy client-side data processing.
           </p>
         </div>
         <div class="feature-card">
-          <span class="feature-icon">📧</span>
-          <h3 class="feature-title">Automated invoicing</h3>
+          <span class="feature-icon">📦</span>
+          <h3 class="feature-title">Business Logic Migration</h3>
           <p class="feature-desc">
-            PDF invoices generated and sent automatically. Customized with your
-            branding. Email receipts for every transaction.
+            Move complex logic from frontend to backend so browser clients only
+            render UI.
           </p>
         </div>
         <div class="feature-card">
-          <span class="feature-icon">🧪</span>
-          <h3 class="feature-title">Testing & QA</h3>
+          <span class="feature-icon">⚡</span>
+          <h3 class="feature-title">Caching Strategy</h3>
           <p class="feature-desc">
-            Complete test coverage using Stripe test mode. We test successful
-            payments, failed cards, webhook retries, and edge cases.
+            Redis integration if needed to accelerate frequent reads and reduce
+            database pressure.
           </p>
         </div>
         <div class="feature-card">
           <span class="feature-icon">🚀</span>
-          <h3 class="feature-title">Production deployment</h3>
+          <h3 class="feature-title">Deploy & Monitor</h3>
           <p class="feature-desc">
-            Full deployment to your production environment. Environment
-            variables configured. Monitoring set up. Ready to accept real
-            payments.
+            Deploy to Railway or Render with performance metrics, logging, and
+            reliability tracking.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Case Studies -->
     <section class="container" id="cases">
       <h2 class="section-title">Recent projects</h2>
 
       <div class="case-study">
         <div class="case-header">
-          <h3 class="case-title">Gastrovisual</h3>
-          <span class="case-tag">Hospitality SaaS</span>
+          <h3 class="case-title">The 10-Second Load Time</h3>
+          <span class="case-tag">Course platform</span>
         </div>
         <div class="case-problem">
           <h4>Problem</h4>
           <p>
-            Hospitality SaaS with 50+ restaurants using the platform but no way
-            to collect payments. Losing clients to competitors with payment
-            systems. Needed SEPA direct debit for European restaurants.
+            Platform with 200 students was fetching all 10,000 course records in
+            browser and filtering client-side. Load time reached 10 seconds.
           </p>
         </div>
         <div class="case-solution">
-          <h4>Solution delivered</h4>
+          <h4>Solution</h4>
           <ul>
-            <li>Stripe Payment Links for one-time payments</li>
-            <li>SEPA subscriptions for recurring monthly fees</li>
-            <li>Automated PDF invoice generation</li>
-            <li>Customer Portal for self-service</li>
-            <li>Stripe Connect for managing restaurant commissions</li>
+            <li>Backend API with pagination and server-side filtering</li>
+            <li>Database indexing for critical queries</li>
+            <li>Caching for frequently accessed data</li>
           </ul>
+        </div>
+        <div class="case-result">
+          <strong>Result:</strong> Load time dropped to 0.9 seconds. Supports
+          2,000+ students and reduced Supabase data-transfer costs by 60%.
         </div>
       </div>
 
       <div class="case-study">
         <div class="case-header">
-          <h3 class="case-title">Tweedy</h3>
-          <span class="case-tag">Freelancer SaaS</span>
+          <h3 class="case-title">The Scale Wall</h3>
+          <span class="case-tag">Growing SaaS</span>
         </div>
         <div class="case-problem">
           <h4>Problem</h4>
           <p>
-            B2B SaaS for freelancers needing subscription billing. Founder
-            wanted monthly AND annual plans with automatic upgrades/downgrades.
-            Complex tax handling for EU VAT.
+            SaaS hit 500 concurrent users and started crashing because all
+            computation was running in each user's browser session.
           </p>
         </div>
         <div class="case-solution">
-          <h4>Solution delivered</h4>
+          <h4>Solution</h4>
           <ul>
-            <li>Multi-tier pricing (€29/mo, €99/mo, €299/mo)</li>
-            <li>Annual plans with 20% discount applied automatically</li>
-            <li>Upgrade/downgrade flow with prorated billing</li>
-            <li>EU VAT handling via Stripe Tax</li>
-            <li>Invoice customization with company branding</li>
+            <li>Migrated business logic to backend services</li>
+            <li>Built API endpoints for all heavy data operations</li>
+            <li>Frontend reduced to rendering and interaction layer</li>
           </ul>
+        </div>
+        <div class="case-result">
+          <strong>Result:</strong> Handles 5,000 concurrent users without
+          crashes. Founder shifted focus from firefighting to sales.
         </div>
       </div>
 
       <div class="case-study">
         <div class="case-header">
-          <h3 class="case-title">Drivi</h3>
-          <span class="case-tag">Mobility SaaS</span>
+          <h3 class="case-title">The Supabase Bill Shock</h3>
+          <span class="case-tag">Data-heavy application</span>
         </div>
         <div class="case-problem">
           <h4>Problem</h4>
           <p>
-            Their subscription model had multiple tiers and manual backoffice
-            updates every time a customer upgraded or downgraded. Billing state
-            in Stripe and internal database drifted frequently.
+            Data transfer costs reached $800/month because every user downloaded
+            huge datasets and filtered locally in the browser.
           </p>
         </div>
         <div class="case-solution">
-          <h4>Solution delivered</h4>
+          <h4>Solution</h4>
           <ul>
-            <li>Full subscription system with multiple pricing tiers</li>
-            <li>Upgrade/downgrade flows with proration rules</li>
-            <li>Webhook processing for subscription lifecycle events</li>
-            <li>
-              Automatic tier synchronization in database after each Stripe event
-            </li>
-            <li>Idempotent handlers, retry strategy, and operational alerts</li>
+            <li>Backend handles all filtering and sorting logic</li>
+            <li>Only exact UI payloads returned to browser</li>
+            <li>Implemented strict pagination strategy</li>
           </ul>
+        </div>
+        <div class="case-result">
+          <strong>Result:</strong> Supabase bill down to $80/month while
+          supporting 3x more active users.
         </div>
       </div>
     </section>
 
-    <!-- FAQ -->
     <section class="container">
       <h2 class="section-title">Common questions</h2>
 
       <div class="faq-item">
+        <div class="faq-question">Can't I just optimize my frontend?</div>
+        <div class="faq-answer">
+          Frontend optimization helps short-term, but there is a hard ceiling. A
+          backend removes the scaling limit and gives you structural speed.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Will my app look different?</div>
+        <div class="faq-answer">
+          No. Same UI and same product experience. It simply becomes faster,
+          cheaper to operate, and much more stable.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Do I need to rebuild from scratch?</div>
+        <div class="faq-answer">
+          No. Migration is incremental. Your app stays live while we move logic
+          layer by layer.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">What if I add features later?</div>
+        <div class="faq-answer">
+          The backend architecture is designed to scale, so future features are
+          faster to ship and easier to maintain.
+        </div>
+      </div>
+
+      <div class="faq-item">
         <div class="faq-question">Is 7 days really enough?</div>
         <div class="faq-answer">
-          Yes, for the defined scope: Checkout, Webhooks, Customer Portal, and
-          deployment. The scope is fixed and proven. If you need extras
-          (usage-based billing, complex tax, Connect marketplace), that's a
-          different package.
+          Yes for migration scope. We are not building net-new product features,
+          only moving core logic to the right layer with a proven timeline.
         </div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">What if I need changes after delivery?</div>
+        <div class="faq-question">What tech stack for the backend?</div>
         <div class="faq-answer">
-          The code is yours. You can modify it or hire me to maintain it. I
-          offer ongoing support to handle updates.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">Do I need to be technical?</div>
-        <div class="faq-answer">
-          No. I handle everything: code, testing, deployment. You just need to
-          provide access to your codebase and Stripe account. I'll walk you
-          through the setup during our kickoff call.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">What tech stacks do you support?</div>
-        <div class="faq-answer">
-          React/Next.js, Node.js, Python (Django/FastAPI), any
-          PostgreSQL/Supabase setup. If you're using something else, let's
-          discuss — I can usually adapt.
+          Default is Node.js for React/Next projects or Python when preferred.
+          We adapt to your current stack when possible.
         </div>
       </div>
     </section>
 
-    <!-- Final CTA -->
     <section class="container">
       <div class="cta-section">
-        <h2>Ready to start accepting payments?</h2>
+        <h2>Unblock growth before performance kills conversion</h2>
         <p>
-          Book a 15-minute call. We'll discuss your needs, confirm the scope,
-          and schedule your integration sprint.
+          Book a short call to review your current architecture and get a clear
+          migration plan with timeline and expected speed gains.
         </p>
         <a
-          href="https://calendar.app.google/WmTZX6wxqDUmcjMcA"
+          href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1LhXEeHMGnVOsJms7pXlNsDwLhD4oYHPri5mjYeyq9KvTMWueOivjGzxzM0hXGYwy7ssOHwubZ"
           class="btn btn-primary"
-          >Schedule call →</a
+          >Schedule backend migration -></a
         >
       </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
       <p>Hugo Prado · Arkeon Data, S.L.</p>
       <p>
         <a href="mailto:hugo@arkeondata.com">hugo@arkeondata.com</a> ·
         Barcelona, Spain
       </p>
+      <p style="margin-top: 1rem; font-size: 0.85rem">NIF: B40740932</p>
     </footer>
   </body>
 </html>

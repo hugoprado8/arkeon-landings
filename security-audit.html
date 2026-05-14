@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Stripe Integration Sprint - 7 Days, Fixed Price | Hugo Prado</title>
+    <title>Security Audit & Fixes - 3 Days, Fixed Price | Hugo Prado</title>
     <meta
       name="description"
-      content="Add payments to your SaaS in 7 days. Checkout, Webhooks, Customer Portal. €1,500 fixed price."
+      content="Security audit and fixes in 3 days for AI-built SaaS. Exposed API keys, public databases, and critical vulnerabilities fixed with a professional report."
     />
     <link
       href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap"
@@ -36,7 +36,6 @@
         min-height: 100vh;
       }
 
-      /* Hero Section */
       .hero {
         position: relative;
         min-height: 100vh;
@@ -204,7 +203,6 @@
         color: var(--bg);
       }
 
-      /* Hero visual */
       .hero-visual {
         position: relative;
         height: 500px;
@@ -239,7 +237,7 @@
         left: 0;
         width: 100%;
         height: 4px;
-        background: linear-gradient(90deg, var(--accent), transparent);
+        background: linear-gradient(90deg, #ff4d4f, transparent);
       }
 
       .code-line {
@@ -255,14 +253,13 @@
       }
 
       .code-string {
-        color: var(--accent);
+        color: #ff6b6b;
       }
 
       .code-function {
         color: #8be9fd;
       }
 
-      /* Sections */
       .container {
         max-width: 1200px;
         margin: 0 auto;
@@ -355,7 +352,6 @@
         line-height: 1.7;
       }
 
-      /* Case studies */
       .case-study {
         background: var(--card-bg);
         border: 1px solid var(--border);
@@ -398,7 +394,8 @@
         margin-bottom: 1.5rem;
       }
 
-      .case-problem h4 {
+      .case-problem h4,
+      .case-solution h4 {
         color: var(--accent);
         margin-bottom: 0.5rem;
         font-size: 1rem;
@@ -415,14 +412,6 @@
         margin-bottom: 1.5rem;
       }
 
-      .case-solution h4 {
-        color: var(--accent);
-        margin-bottom: 0.5rem;
-        font-size: 1rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
       .case-solution ul {
         list-style: none;
         padding: 0;
@@ -436,7 +425,7 @@
       }
 
       .case-solution li::before {
-        content: "→";
+        content: "->";
         position: absolute;
         left: 0;
         color: var(--accent);
@@ -453,7 +442,6 @@
         color: var(--accent);
       }
 
-      /* FAQ */
       .faq-item {
         background: var(--card-bg);
         border: 1px solid var(--border);
@@ -474,7 +462,6 @@
         line-height: 1.7;
       }
 
-      /* CTA Section */
       .cta-section {
         text-align: center;
         padding: 6rem 2rem;
@@ -501,7 +488,6 @@
         margin-right: auto;
       }
 
-      /* Footer */
       .footer {
         padding: 3rem 2rem;
         border-top: 1px solid var(--border);
@@ -515,7 +501,6 @@
         text-decoration: none;
       }
 
-      /* Responsive */
       @media (max-width: 968px) {
         .hero-content {
           grid-template-columns: 1fr;
@@ -560,40 +545,40 @@
     </style>
   </head>
   <body>
-    <!-- Hero Section -->
     <section class="hero">
       <div class="hero-bg"></div>
       <div class="hero-grid"></div>
       <div class="hero-content">
         <div class="hero-left">
-          <span class="label">Stripe Integration Sprint</span>
-          <h1>Add payments to your SaaS in 7 days</h1>
+          <span class="label">Security Audit & Fixes</span>
+          <h1>Your AI-Built SaaS Is Leaking Secrets</h1>
           <p class="hero-subtitle">
-            Stop leaving money on the table. Get Stripe fully integrated —
-            Checkout, Webhooks, Customer Portal — in one week. Fixed price,
-            guaranteed timeline.
+            90% of no-code/low-code MVPs have critical security flaws. Exposed
+            API keys. Public databases. Stolen user data. Get a professional
+            security audit + fixes in 3 days before competitors find your
+            vulnerabilities.
           </p>
 
           <div class="hero-stats">
             <div class="stat-item">
-              <div class="stat-number">B2B & B2C</div>
-              <div class="stat-label">Subscription systems</div>
+              <div class="stat-number">90%</div>
+              <div class="stat-label">MVPs with security issues</div>
             </div>
             <div class="stat-item">
-              <div class="stat-number">7</div>
+              <div class="stat-number">3</div>
               <div class="stat-label">Business days</div>
             </div>
             <div class="stat-item">
-              <div class="stat-number">€1.5K</div>
+              <div class="stat-number">EUR 900</div>
               <div class="stat-label">Fixed price</div>
             </div>
           </div>
 
           <div class="cta-group">
             <a
-              href="https://calendar.app.google/WmTZX6wxqDUmcjMcA"
+              href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1LhXEeHMGnVOsJms7pXlNsDwLhD4oYHPri5mjYeyq9KvTMWueOivjGzxzM0hXGYwy7ssOHwubZ"
               class="btn btn-primary"
-              >Schedule a call →</a
+              >Schedule security audit call -></a
             >
             <a href="#cases" class="btn btn-secondary">See case studies</a>
           </div>
@@ -602,260 +587,246 @@
         <div class="hero-visual">
           <div class="code-block">
             <div class="code-line">
-              <span class="code-comment">Sprint blueprint</span>
-            </div>
-            <div class="code-line"></div>
-            <div class="code-line">
-              <span class="code-string">Day 1-2:</span> Checkout + products +
-              prices
+              <span class="code-comment"
+                >// CRITICAL: Your actual code right now</span
+              >
             </div>
             <div class="code-line">
-              <span class="code-string">Day 3:</span> Subscriptions + customer
-              portal
+              <span class="code-keyword">const</span> openaiKey =
+              <span class="code-string">"sk-proj-abc123..."</span>
+              <span class="code-comment">// Visible to anyone</span>
             </div>
             <div class="code-line">
-              <span class="code-string">Day 4:</span> Webhooks + retry-safe
-              handlers
+              <span class="code-keyword">const</span> supabaseKey =
+              <span class="code-string">"eyJhbGc..."</span>
+              <span class="code-comment">// Public in browser</span>
             </div>
             <div class="code-line">
-              <span class="code-string">Day 5:</span> Tier sync with your
-              database
+              <span class="code-keyword">const</span> stripeSecret =
+              <span class="code-string">"sk_live_xyz..."</span>
+              <span class="code-comment">// Anyone can charge</span>
             </div>
-            <div class="code-line">
-              <span class="code-string">Day 6:</span> End-to-end QA in Stripe
-              test mode
-            </div>
-            <div class="code-line">
-              <span class="code-string">Day 7:</span> Production deploy +
-              handoff
-            </div>
-            <div class="code-line"></div>
-            <div class="code-line">
-              <span class="code-comment">Deliverables:</span>
-            </div>
-            <div class="code-line">- Working billing flow in production</div>
-            <div class="code-line">
-              - Webhooks mapped to your business logic
-            </div>
-            <div class="code-line">- Clear docs for your team</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Price Highlight -->
     <div class="container">
       <div class="price-highlight">
-        <div class="price-tag">€1,500</div>
+        <div class="price-tag">EUR 900</div>
         <div class="price-detail">
-          Fixed price · 7 business days · Production deployment included
+          Fixed price · 3 business days · Audit report + fixes included
         </div>
       </div>
     </div>
 
-    <!-- What's Included -->
     <section class="container">
       <h2 class="section-title">What's included</h2>
       <div class="features-grid">
         <div class="feature-card">
-          <span class="feature-icon">💳</span>
-          <h3 class="feature-title">Stripe Checkout + Subscriptions</h3>
+          <span class="feature-icon">🔍</span>
+          <h3 class="feature-title">Complete Security Audit</h3>
           <p class="feature-desc">
-            Complete payment flow implementation. One-time payments or recurring
-            subscriptions (monthly/annual). Works with your existing stack.
+            30-point checklist covering API keys, database access,
+            authentication flows, and deployment configuration.
           </p>
         </div>
         <div class="feature-card">
-          <span class="feature-icon">🔔</span>
-          <h3 class="feature-title">Webhook handlers</h3>
+          <span class="feature-icon">📋</span>
+          <h3 class="feature-title">Detailed Report</h3>
           <p class="feature-desc">
-            Proper event processing for payment_succeeded, subscription_updated,
-            invoice_paid, and all critical Stripe events. No missed payments.
+            PDF with findings, severity levels, proof screenshots, and
+            prioritized remediation plan.
           </p>
         </div>
         <div class="feature-card">
-          <span class="feature-icon">👤</span>
-          <h3 class="feature-title">Customer Portal</h3>
+          <span class="feature-icon">🔒</span>
+          <h3 class="feature-title">API Key Migration</h3>
           <p class="feature-desc">
-            Let customers manage their own subscriptions, update payment
-            methods, view invoices, and download receipts. Zero support overhead
-            for you.
+            Move all sensitive keys to secure backend and environment variables.
+            Nothing critical exposed in frontend.
           </p>
         </div>
         <div class="feature-card">
-          <span class="feature-icon">📧</span>
-          <h3 class="feature-title">Automated invoicing</h3>
+          <span class="feature-icon">🛡️</span>
+          <h3 class="feature-title">Database Security</h3>
           <p class="feature-desc">
-            PDF invoices generated and sent automatically. Customized with your
-            branding. Email receipts for every transaction.
+            Implement Row Level Security (RLS) in Supabase and close direct data
+            leakage paths.
           </p>
         </div>
         <div class="feature-card">
-          <span class="feature-icon">🧪</span>
-          <h3 class="feature-title">Testing & QA</h3>
+          <span class="feature-icon">⚡</span>
+          <h3 class="feature-title">Rate Limiting</h3>
           <p class="feature-desc">
-            Complete test coverage using Stripe test mode. We test successful
-            payments, failed cards, webhook retries, and edge cases.
+            Protect sensitive endpoints from abuse, brute force, and runaway bot
+            traffic.
           </p>
         </div>
         <div class="feature-card">
-          <span class="feature-icon">🚀</span>
-          <h3 class="feature-title">Production deployment</h3>
+          <span class="feature-icon">✅</span>
+          <h3 class="feature-title">Security Checklist</h3>
           <p class="feature-desc">
-            Full deployment to your production environment. Environment
-            variables configured. Monitoring set up. Ready to accept real
-            payments.
+            Future-proof guide to keep your product secure as you ship new
+            features.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Case Studies -->
     <section class="container" id="cases">
       <h2 class="section-title">Recent projects</h2>
 
       <div class="case-study">
         <div class="case-header">
-          <h3 class="case-title">Gastrovisual</h3>
-          <span class="case-tag">Hospitality SaaS</span>
+          <h3 class="case-title">The $12K OpenAI Bill</h3>
+          <span class="case-tag">AI course platform</span>
         </div>
         <div class="case-problem">
           <h4>Problem</h4>
           <p>
-            Hospitality SaaS with 50+ restaurants using the platform but no way
-            to collect payments. Losing clients to competitors with payment
-            systems. Needed SEPA direct debit for European restaurants.
+            Founder built a course platform with Cursor. OpenAI API key exposed
+            in frontend. Bill went from $200 to $12K in one month from
+            unauthorized usage.
           </p>
         </div>
         <div class="case-solution">
-          <h4>Solution delivered</h4>
+          <h4>Solution</h4>
           <ul>
-            <li>Stripe Payment Links for one-time payments</li>
-            <li>SEPA subscriptions for recurring monthly fees</li>
-            <li>Automated PDF invoice generation</li>
-            <li>Customer Portal for self-service</li>
-            <li>Stripe Connect for managing restaurant commissions</li>
+            <li>Moved API key to backend</li>
+            <li>Added rate limiting</li>
+            <li>Implemented user authentication for API calls</li>
           </ul>
+        </div>
+        <div class="case-result">
+          <strong>Result:</strong> Bill back to $200/month. Prevented potential
+          $50K+ bill. Founder could finally sleep at night.
         </div>
       </div>
 
       <div class="case-study">
         <div class="case-header">
-          <h3 class="case-title">Tweedy</h3>
-          <span class="case-tag">Freelancer SaaS</span>
+          <h3 class="case-title">Database Wide Open</h3>
+          <span class="case-tag">SaaS with 5,000 users</span>
         </div>
         <div class="case-problem">
           <h4>Problem</h4>
           <p>
-            B2B SaaS for freelancers needing subscription billing. Founder
-            wanted monthly AND annual plans with automatic upgrades/downgrades.
-            Complex tax handling for EU VAT.
+            Supabase database accessible without authentication. All 5,000 user
+            records (emails, payment data) visible to anyone with browser
+            devtools.
           </p>
         </div>
         <div class="case-solution">
-          <h4>Solution delivered</h4>
+          <h4>Solution</h4>
           <ul>
-            <li>Multi-tier pricing (€29/mo, €99/mo, €299/mo)</li>
-            <li>Annual plans with 20% discount applied automatically</li>
-            <li>Upgrade/downgrade flow with prorated billing</li>
-            <li>EU VAT handling via Stripe Tax</li>
-            <li>Invoice customization with company branding</li>
+            <li>Implemented Row Level Security (RLS)</li>
+            <li>Secured admin endpoints</li>
+            <li>Added proper authentication checks</li>
           </ul>
+        </div>
+        <div class="case-result">
+          <strong>Result:</strong> Passed enterprise security audit and closed a
+          EUR 80K deal that required security compliance.
         </div>
       </div>
 
       <div class="case-study">
         <div class="case-header">
-          <h3 class="case-title">Drivi</h3>
-          <span class="case-tag">Mobility SaaS</span>
+          <h3 class="case-title">Stripe Keys in GitHub</h3>
+          <span class="case-tag">Public repository incident</span>
         </div>
         <div class="case-problem">
           <h4>Problem</h4>
           <p>
-            Their subscription model had multiple tiers and manual backoffice
-            updates every time a customer upgraded or downgraded. Billing state
-            in Stripe and internal database drifted frequently.
+            Stripe secret key committed to public GitHub repo. Anyone could
+            issue refunds and access customer-level billing data.
           </p>
         </div>
         <div class="case-solution">
-          <h4>Solution delivered</h4>
+          <h4>Solution</h4>
           <ul>
-            <li>Full subscription system with multiple pricing tiers</li>
-            <li>Upgrade/downgrade flows with proration rules</li>
-            <li>Webhook processing for subscription lifecycle events</li>
-            <li>
-              Automatic tier synchronization in database after each Stripe event
-            </li>
-            <li>Idempotent handlers, retry strategy, and operational alerts</li>
+            <li>Rotated all compromised keys</li>
+            <li>Moved secrets to environment variables</li>
+            <li>Added .gitignore and webhook signature validation</li>
           </ul>
+        </div>
+        <div class="case-result">
+          <strong>Result:</strong> No fraudulent activity detected. Team avoided
+          a potentially catastrophic breach scenario.
         </div>
       </div>
     </section>
 
-    <!-- FAQ -->
     <section class="container">
       <h2 class="section-title">Common questions</h2>
 
       <div class="faq-item">
-        <div class="faq-question">Is 7 days really enough?</div>
+        <div class="faq-question">
+          How do I know if my app has these issues?
+        </div>
         <div class="faq-answer">
-          Yes, for the defined scope: Checkout, Webhooks, Customer Portal, and
-          deployment. The scope is fixed and proven. If you need extras
-          (usage-based billing, complex tax, Connect marketplace), that's a
-          different package.
+          If you built with v0, Cursor, Bolt, or no-code tooling and have not
+          had a professional security pass, you almost certainly have critical
+          gaps.
         </div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">What if I need changes after delivery?</div>
+        <div class="faq-question">Can't I just fix it myself?</div>
         <div class="faq-answer">
-          The code is yours. You can modify it or hire me to maintain it. I
-          offer ongoing support to handle updates.
+          You can patch visible issues, but audits uncover hidden risks you do
+          not know exist yet. That is usually where breaches start.
         </div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">Do I need to be technical?</div>
+        <div class="faq-question">Will this break my app?</div>
         <div class="faq-answer">
-          No. I handle everything: code, testing, deployment. You just need to
-          provide access to your codebase and Stripe account. I'll walk you
-          through the setup during our kickoff call.
+          No. Fixes are tested thoroughly. Your app keeps the same behavior, but
+          with secure architecture behind it.
         </div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">What tech stacks do you support?</div>
+        <div class="faq-question">Do I need this if I'm pre-launch?</div>
         <div class="faq-answer">
-          React/Next.js, Node.js, Python (Django/FastAPI), any
-          PostgreSQL/Supabase setup. If you're using something else, let's
-          discuss — I can usually adapt.
+          Yes. It is much easier and cheaper to secure before user growth than
+          after a public incident.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">What if I have questions after delivery?</div>
+        <div class="faq-answer">
+          You get the full checklist and can email me for 30 days post-delivery
+          for clarifications.
         </div>
       </div>
     </section>
 
-    <!-- Final CTA -->
     <section class="container">
       <div class="cta-section">
-        <h2>Ready to start accepting payments?</h2>
+        <h2>Secure it before growth exposes everything</h2>
         <p>
-          Book a 15-minute call. We'll discuss your needs, confirm the scope,
-          and schedule your integration sprint.
+          Book a short call and get a clear picture of your current risk level,
+          timeline, and exact security fixes.
         </p>
         <a
-          href="https://calendar.app.google/WmTZX6wxqDUmcjMcA"
+          href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1LhXEeHMGnVOsJms7pXlNsDwLhD4oYHPri5mjYeyq9KvTMWueOivjGzxzM0hXGYwy7ssOHwubZ"
           class="btn btn-primary"
-          >Schedule call →</a
+          >Schedule security audit -></a
         >
       </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
       <p>Hugo Prado · Arkeon Data, S.L.</p>
       <p>
         <a href="mailto:hugo@arkeondata.com">hugo@arkeondata.com</a> ·
         Barcelona, Spain
       </p>
+      <p style="margin-top: 1rem; font-size: 0.85rem">NIF: B40740932</p>
     </footer>
   </body>
 </html>
