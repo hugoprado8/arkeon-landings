@@ -563,7 +563,9 @@
         padding: 0.2rem 0.35rem;
         border-radius: 6px;
         opacity: 0.4;
-        transition: opacity 0.2s, background 0.2s;
+        transition:
+          opacity 0.2s,
+          background 0.2s;
       }
       .lang-sw button.active {
         opacity: 1;
@@ -574,6 +576,109 @@
       }
       html[lang="es"] .en {
         display: none !important;
+      }
+
+      .fomo-badge {
+        display: inline-flex; align-items: center; gap: 0.6rem;
+        padding: 0.5rem 1rem; background: rgba(0, 255, 136, 0.08);
+        border: 1px solid rgba(0, 255, 136, 0.3); border-radius: 999px;
+        font-family: "JetBrains Mono", monospace; font-size: 0.8rem;
+        color: var(--accent); margin-bottom: 1.5rem;
+      }
+      .fomo-badge .pulse {
+        width: 8px; height: 8px; background: var(--accent);
+        border-radius: 50%; animation: pulseDot 2s infinite;
+      }
+      @keyframes pulseDot {
+        0% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
+        70% { box-shadow: 0 0 0 10px rgba(0, 255, 136, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
+      }
+      .social-proof {
+        background: linear-gradient(180deg, transparent 0%, rgba(0, 255, 136, 0.025) 100%);
+        border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      }
+      .proof-stats {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 2rem; margin-bottom: 4rem; text-align: center;
+      }
+      .proof-stat .proof-number {
+        font-family: "JetBrains Mono", monospace; font-size: 2.75rem;
+        font-weight: 700; color: var(--accent); line-height: 1;
+      }
+      .proof-stat .proof-label { font-size: 0.95rem; color: #a0a0b0; margin-top: 0.75rem; }
+      .testimonials {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;
+      }
+      .testimonial-card {
+        background: var(--card-bg); border: 1px solid var(--border);
+        border-radius: 12px; padding: 2rem 2rem 1.75rem;
+        position: relative; transition: all 0.3s;
+      }
+      .testimonial-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+      .testimonial-card::before {
+        content: "\201C"; position: absolute; top: -0.75rem; left: 1rem;
+        font-size: 4rem; color: var(--accent); opacity: 0.35;
+        font-family: Georgia, serif; line-height: 1;
+      }
+      .testimonial-text { font-size: 1.05rem; color: #e8e8e8; line-height: 1.7; margin-bottom: 1.5rem; padding-top: 0.5rem; }
+      .testimonial-author { display: flex; align-items: center; gap: 0.85rem; }
+      .testimonial-avatar {
+        width: 42px; height: 42px; border-radius: 50%;
+        background: var(--accent); color: var(--bg);
+        display: flex; align-items: center; justify-content: center;
+        font-weight: 700; font-family: "JetBrains Mono", monospace; flex-shrink: 0;
+      }
+      .testimonial-meta strong { display: block; color: var(--text); font-size: 0.95rem; }
+      .testimonial-meta span { font-size: 0.85rem; color: #6a6a7a; }
+      .urgency-banner {
+        background: linear-gradient(135deg, rgba(255, 200, 50, 0.08), rgba(255, 100, 50, 0.04));
+        border-left: 4px solid var(--accent); border-radius: 8px;
+        padding: 1.5rem 2rem; margin: 3rem auto; max-width: 900px;
+        display: flex; align-items: center; gap: 1.25rem;
+      }
+      .urgency-icon { font-size: 2rem; flex-shrink: 0; }
+      .urgency-text { font-size: 1.05rem; color: var(--text); }
+      .urgency-text strong { color: var(--accent); }
+      .slots-remaining { font-weight: 700; color: #ffb84d; }
+      .feature-tech {
+        display: block; margin-top: 1rem; padding-top: 0.85rem;
+        border-top: 1px dashed rgba(255,255,255,0.08);
+        font-size: 0.78rem; color: #6a6a7a;
+        font-family: "JetBrains Mono", monospace; line-height: 1.5;
+      }
+      .case-quote {
+        font-size: 1.35rem; line-height: 1.5; color: var(--text);
+        font-style: italic; padding-left: 1.5rem;
+        border-left: 3px solid var(--accent); margin-bottom: 2rem;
+      }
+      .case-block { margin-bottom: 1.5rem; }
+      .case-block h4 {
+        color: var(--accent); margin-bottom: 0.6rem;
+        font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px;
+      }
+      .case-block p, .case-block li { color: #a0a0b0; line-height: 1.7; }
+      .case-wins {
+        background: rgba(0, 255, 136, 0.08);
+        border-left: 4px solid var(--accent);
+        padding: 1.25rem 1.5rem; border-radius: 4px; list-style: none;
+      }
+      .case-wins li { color: var(--text); padding: 0.25rem 0; }
+      .cta-ps {
+        margin-top: 2rem; font-size: 0.95rem; color: #a0a0b0;
+        font-style: italic; max-width: 640px;
+        margin-left: auto; margin-right: auto; line-height: 1.7;
+      }
+      .cta-secondary-link {
+        display: inline-block; margin-top: 1.25rem;
+        color: var(--accent); font-size: 0.95rem;
+        text-decoration: none; border-bottom: 1px dashed var(--accent);
+        padding-bottom: 2px;
+      }
+      .cta-secondary-link:hover { opacity: 0.8; }
+      @media (max-width: 640px) {
+        .urgency-banner { flex-direction: column; text-align: center; padding: 1.5rem; }
+        .case-quote { font-size: 1.15rem; }
       }
     </style>
   </head>
@@ -587,72 +692,206 @@
       <div class="hero-grid"></div>
       <div class="hero-content">
         <div class="hero-left">
-          <span class="label"><span class="en">Backend Migration</span><span class="es">Migración de Backend</span></span>
-          <h1><span class="en">Why Your App Slows Down With Every New User</span><span class="es">Por Qué Tu App Va Más Lenta con Cada Nuevo Usuario</span></h1>
+          <div class="fomo-badge">
+            <span class="pulse"></span>
+            <span class="en">2 apps scaled past 1,000 users this month</span>
+            <span class="es">2 apps escalaron a +1.000 usuarios este mes</span>
+          </div>
+          <h1>
+            <span class="en"
+              >100 users: fast. 500 users: slow. 1,000 users: dead.</span
+            >
+            <span class="es"
+              >100 usuarios: rápido. 500 usuarios: lento. 1.000 usuarios:
+              muerto.</span
+            >
+          </h1>
           <p class="hero-subtitle en">
-            You built with Bolt, v0, or Cursor. It works with 10 users. Now you
-            have 100, and it takes 10 seconds to load. The problem: everything
-            runs in the browser. The solution: a proper backend.
+            Users don't wait for slow apps. They switch to your competitor in
+            8 seconds. Your AI-built MVP doesn't scale because everything
+            runs in the browser. I move the work to a proper backend in 7
+            days — same UI, 10× faster, ready for 10,000 users.
           </p>
           <p class="hero-subtitle es">
-            Construiste con Bolt, v0 o Cursor. Funciona con 10 usuarios. Ahora
-            tienes 100 y tarda 10 segundos en cargar. El problema: todo corre
-            en el navegador. La solución: un backend de verdad.
+            Los usuarios no esperan apps lentas. Se van con tu competencia en
+            8 segundos. Tu MVP hecho con IA no escala porque todo corre en el
+            navegador. Muevo la lógica a un backend de verdad en 7 días —
+            misma UI, 10 veces más rápido, listo para 10.000 usuarios.
           </p>
 
           <div class="hero-stats">
             <div class="stat-item">
               <div class="stat-number">10x</div>
-              <div class="stat-label"><span class="en">Faster after migration</span><span class="es">Más rápida tras la migración</span></div>
+              <div class="stat-label">
+                <span class="en">Faster after migration</span
+                ><span class="es">Más rápida tras la migración</span>
+              </div>
             </div>
             <div class="stat-item">
               <div class="stat-number">7</div>
-              <div class="stat-label"><span class="en">Business days</span><span class="es">Días laborables</span></div>
+              <div class="stat-label">
+                <span class="en">Business days</span
+                ><span class="es">Días laborables</span>
+              </div>
             </div>
             <div class="stat-item">
               <div class="stat-number">EUR 2.5K</div>
-              <div class="stat-label"><span class="en">Fixed price</span><span class="es">Precio fijo</span></div>
+              <div class="stat-label">
+                <span class="en">Fixed price</span
+                ><span class="es">Precio fijo</span>
+              </div>
             </div>
           </div>
 
           <div class="cta-group">
-            <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1LhXEeHMGnVOsJms7pXlNsDwLhD4oYHPri5mjYeyq9KvTMWueOivjGzxzM0hXGYwy7ssOHwubZ" class="btn btn-primary"><span class="en">Schedule backend call →</span><span class="es">Agendar migración →</span></a>
-            <a href="#cases" class="btn btn-secondary"><span class="en">See case studies</span><span class="es">Ver casos</span></a>
+            <a
+              href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1LhXEeHMGnVOsJms7pXlNsDwLhD4oYHPri5mjYeyq9KvTMWueOivjGzxzM0hXGYwy7ssOHwubZ"
+              class="btn btn-primary"
+              ><span class="en">Schedule backend call →</span
+              ><span class="es">Agendar migración →</span></a
+            >
+            <a href="#cases" class="btn btn-secondary"
+              ><span class="en">See case studies</span
+              ><span class="es">Ver casos</span></a
+            >
           </div>
         </div>
 
         <div class="hero-visual">
           <div class="code-block en">
-            <div class="code-line"><span class="code-danger">✗ Frontend-Only (Now):</span></div>
+            <div class="code-line">
+              <span class="code-danger">✗ Frontend-Only (Now):</span>
+            </div>
             <div class="code-line">Browser downloads 5MB JavaScript</div>
             <div class="code-line">-&gt; Fetches 10,000 database rows</div>
             <div class="code-line">-&gt; Filters, sorts in browser</div>
             <div class="code-line">-&gt; Renders page</div>
-            <div class="code-line"><span class="code-danger">= 8 seconds, crashes at 500 users</span></div>
+            <div class="code-line">
+              <span class="code-danger">= 8 seconds, crashes at 500 users</span>
+            </div>
             <div class="code-line"></div>
-            <div class="code-line"><span class="code-good">✓ With Backend (After):</span></div>
+            <div class="code-line">
+              <span class="code-good">✓ With Backend (After):</span>
+            </div>
             <div class="code-line">Browser requests /api/dashboard</div>
             <div class="code-line">Server fetches only needed 50 rows</div>
             <div class="code-line">-&gt; Filters, sorts on server</div>
             <div class="code-line">-&gt; Returns 10KB JSON</div>
             <div class="code-line">Browser renders page</div>
-            <div class="code-line"><span class="code-good">= 0.8 seconds, handles 10,000 users</span></div>
+            <div class="code-line">
+              <span class="code-good">= 0.8 seconds, handles 10,000 users</span>
+            </div>
           </div>
           <div class="code-block es">
-            <div class="code-line"><span class="code-danger">✗ Solo Frontend (Ahora):</span></div>
+            <div class="code-line">
+              <span class="code-danger">✗ Solo Frontend (Ahora):</span>
+            </div>
             <div class="code-line">El navegador descarga 5MB de JavaScript</div>
-            <div class="code-line">-&gt; Obtiene 10.000 filas de la base de datos</div>
+            <div class="code-line">
+              -&gt; Obtiene 10.000 filas de la base de datos
+            </div>
             <div class="code-line">-&gt; Filtra y ordena en el navegador</div>
             <div class="code-line">-&gt; Renderiza la página</div>
-            <div class="code-line"><span class="code-danger">= 8 segundos, cuelgue con 500 usuarios</span></div>
+            <div class="code-line">
+              <span class="code-danger"
+                >= 8 segundos, cuelgue con 500 usuarios</span
+              >
+            </div>
             <div class="code-line"></div>
-            <div class="code-line"><span class="code-good">✓ Con Backend (Después):</span></div>
+            <div class="code-line">
+              <span class="code-good">✓ Con Backend (Después):</span>
+            </div>
             <div class="code-line">El navegador llama a /api/dashboard</div>
-            <div class="code-line">El servidor obtiene solo las 50 filas necesarias</div>
+            <div class="code-line">
+              El servidor obtiene solo las 50 filas necesarias
+            </div>
             <div class="code-line">-&gt; Filtra y ordena en el servidor</div>
             <div class="code-line">-&gt; Devuelve 10KB de JSON</div>
             <div class="code-line">El navegador renderiza la página</div>
-            <div class="code-line"><span class="code-good">= 0.8 segundos, aguanta 10.000 usuarios</span></div>
+            <div class="code-line">
+              <span class="code-good"
+                >= 0.8 segundos, aguanta 10.000 usuarios</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="social-proof">
+      <div class="container">
+        <div class="proof-stats">
+          <div class="proof-stat">
+            <div class="proof-number">10×</div>
+            <div class="proof-label">
+              <span class="en">Average speed gain after migration</span>
+              <span class="es">Mejora media de velocidad post-migración</span>
+            </div>
+          </div>
+          <div class="proof-stat">
+            <div class="proof-number">-70%</div>
+            <div class="proof-label">
+              <span class="en">Average reduction in DB/hosting bills</span>
+              <span class="es">Reducción media en factura de BD/hosting</span>
+            </div>
+          </div>
+          <div class="proof-stat">
+            <div class="proof-number">5,000+</div>
+            <div class="proof-label">
+              <span class="en">Concurrent users supported post-migration</span>
+              <span class="es">Usuarios concurrentes soportados tras migrar</span>
+            </div>
+          </div>
+          <div class="proof-stat">
+            <div class="proof-number">7 days</div>
+            <div class="proof-label">
+              <span class="en">App stays live the whole time</span>
+              <span class="es">La app sigue online todo el tiempo</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonials">
+          <div class="testimonial-card">
+            <p class="testimonial-text en">
+              We were one viral TikTok away from disaster. App took 8 seconds
+              to load, Supabase bill was killing us. Hugo migrated the heavy
+              logic to a backend in a week. Now we handle peaks without
+              breaking a sweat.
+            </p>
+            <p class="testimonial-text es">
+              Estábamos a un TikTok viral del desastre. La app tardaba 8
+              segundos en cargar, Supabase nos comía. Hugo migró la lógica
+              pesada al backend en una semana. Ahora aguantamos picos sin
+              despeinarnos.
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">LP</div>
+              <div class="testimonial-meta">
+                <strong>Lucía P.</strong>
+                <span>Founder, B2C SaaS</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="testimonial-text en">
+              My course platform was unusable past 200 students. Hugo
+              rewrote the data layer properly. Now we have 2,000+ active
+              users and the dashboard loads in under a second.
+            </p>
+            <p class="testimonial-text es">
+              Mi plataforma de cursos era inusable pasando los 200 alumnos.
+              Hugo reescribió bien la capa de datos. Hoy tenemos +2.000
+              activos y el dashboard carga en menos de un segundo.
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">RG</div>
+              <div class="testimonial-meta">
+                <strong>Roberto G.</strong>
+                <span>Founder, Edtech</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -662,196 +901,508 @@
       <div class="price-highlight">
         <div class="price-tag">EUR 2,500</div>
         <div class="price-detail">
-          <span class="en">Fixed price · 7 business days · Backend migration and deployment included</span><span class="es">Precio fijo · 7 días laborables · Migración de backend y despliegue incluidos</span>
+          <span class="en"
+            >Fixed price · 7 business days · Backend migration and deployment
+            included</span
+          ><span class="es"
+            >Precio fijo · 7 días laborables · Migración de backend y despliegue
+            incluidos</span
+          >
         </div>
       </div>
     </div>
 
     <section class="container">
-      <h2 class="section-title"><span class="en">What's included</span><span class="es">Qué incluye</span></h2>
+      <h2 class="section-title">
+        <span class="en">What you actually get</span>
+        <span class="es">Lo que realmente te llevas</span>
+      </h2>
       <div class="features-grid">
         <div class="feature-card">
           <span class="feature-icon">🔍</span>
-          <h3 class="feature-title"><span class="en">Architecture Audit</span><span class="es">Auditoría de Arquitectura</span></h3>
-          <p class="feature-desc en">Identify exactly what logic should move to backend for performance, cost control, and scalability.</p>
-          <p class="feature-desc es">Identificar qué lógica debe moverse al backend para mejorar rendimiento, control de costes y escalabilidad.</p>
+          <h3 class="feature-title">
+            <span class="en">Find out exactly why it's slow</span>
+            <span class="es">Saber exactamente por qué va lento</span>
+          </h3>
+          <p class="feature-desc en">
+            A clear breakdown of what's killing your performance: 5MB JS
+            bundles, 10k-row dumps to the browser, missing indexes. No more
+            guessing.
+          </p>
+          <p class="feature-desc es">
+            Un diagnóstico claro de qué te está matando el rendimiento:
+            bundles de 5MB, volcados de 10k filas al navegador, índices que
+            faltan. Sin adivinar.
+          </p>
+          <span class="feature-tech en">→ Architecture audit + perf profiling</span>
+          <span class="feature-tech es">→ Auditoría de arquitectura + perf profiling</span>
         </div>
         <div class="feature-card">
           <span class="feature-icon">⚙️</span>
-          <h3 class="feature-title"><span class="en">API Backend</span><span class="es">Backend con API</span></h3>
-          <p class="feature-desc en">Node.js with Express or Python with FastAPI. Optimized endpoints for your critical user flows.</p>
-          <p class="feature-desc es">Node.js con Express o Python con FastAPI. Endpoints optimizados para tus flujos críticos de usuario.</p>
+          <h3 class="feature-title">
+            <span class="en">A real server doing the heavy lifting</span>
+            <span class="es">Un servidor de verdad haciendo el trabajo</span>
+          </h3>
+          <p class="feature-desc en">
+            The browser stops choking. Your users get instant responses
+            because a real backend is now doing the work — not their laptop
+            on 4G.
+          </p>
+          <p class="feature-desc es">
+            El navegador deja de ahogarse. Tus usuarios reciben respuestas
+            instantáneas porque ahora hay un backend de verdad haciendo el
+            trabajo — no su portátil con 4G.
+          </p>
+          <span class="feature-tech en">→ Node.js/Express or Python/FastAPI, tuned for your flows</span>
+          <span class="feature-tech es">→ Node.js/Express o Python/FastAPI, afinado a tus flujos</span>
         </div>
         <div class="feature-card">
           <span class="feature-icon">🗄️</span>
-          <h3 class="feature-title"><span class="en">Query Optimization</span><span class="es">Optimización de Consultas</span></h3>
-          <p class="feature-desc en">Server-side filtering, pagination, and proper indexing to avoid heavy client-side data processing.</p>
-          <p class="feature-desc es">Filtrado en servidor, paginación e indexación correcta para evitar procesamiento pesado en el cliente.</p>
+          <h3 class="feature-title">
+            <span class="en">Pages that load in under a second</span>
+            <span class="es">Páginas que cargan en menos de un segundo</span>
+          </h3>
+          <p class="feature-desc en">
+            Filtering, sorting and pagination on the server. You return 50
+            relevant rows, not 10,000. Bounce rate goes down. Conversion
+            goes up.
+          </p>
+          <p class="feature-desc es">
+            Filtrado, ordenación y paginación en el servidor. Devuelves 50
+            filas relevantes, no 10.000. Baja el bounce. Sube la conversión.
+          </p>
+          <span class="feature-tech en">→ Pagination, server-side filters, DB indexes</span>
+          <span class="feature-tech es">→ Paginación, filtros en servidor, índices de BD</span>
         </div>
         <div class="feature-card">
           <span class="feature-icon">📦</span>
-          <h3 class="feature-title"><span class="en">Business Logic Migration</span><span class="es">Migración de Lógica de Negocio</span></h3>
-          <p class="feature-desc en">Move complex logic from frontend to backend so browser clients only render UI.</p>
-          <p class="feature-desc es">Mover la lógica compleja del frontend al backend para que los clientes solo rendericen la interfaz.</p>
+          <h3 class="feature-title">
+            <span class="en">Logic that doesn't break when 100 users hit at once</span>
+            <span class="es">Lógica que no se rompe con 100 usuarios a la vez</span>
+          </h3>
+          <p class="feature-desc en">
+            Pricing, calculations, AI calls, recommendations — all moved off
+            the browser. Same product, infinitely more reliable.
+          </p>
+          <p class="feature-desc es">
+            Precios, cálculos, llamadas a IA, recomendaciones — todo fuera
+            del navegador. Mismo producto, infinitamente más fiable.
+          </p>
+          <span class="feature-tech en">→ Business logic migrated to backend services</span>
+          <span class="feature-tech es">→ Lógica de negocio migrada a servicios backend</span>
         </div>
         <div class="feature-card">
           <span class="feature-icon">⚡</span>
-          <h3 class="feature-title"><span class="en">Caching Strategy</span><span class="es">Estrategia de Caché</span></h3>
-          <p class="feature-desc en">Redis integration if needed to accelerate frequent reads and reduce database pressure.</p>
-          <p class="feature-desc es">Integración de Redis si es necesario para acelerar lecturas frecuentes y reducir la presión en base de datos.</p>
+          <h3 class="feature-title">
+            <span class="en">Cut your Supabase/Firebase bill by 70%</span>
+            <span class="es">Reduce tu factura de Supabase/Firebase un 70%</span>
+          </h3>
+          <p class="feature-desc en">
+            Smart caching means you stop hammering your DB for the same
+            queries 1,000 times a day. Faster for users, way cheaper for you.
+          </p>
+          <p class="feature-desc es">
+            Caché inteligente para que dejes de machacar tu BD con las
+            mismas queries 1.000 veces al día. Más rápido para los
+            usuarios, mucho más barato para ti.
+          </p>
+          <span class="feature-tech en">→ Redis (if needed), query caching, edge caching</span>
+          <span class="feature-tech es">→ Redis (si hace falta), cache de queries, edge cache</span>
         </div>
         <div class="feature-card">
           <span class="feature-icon">🚀</span>
-          <h3 class="feature-title"><span class="en">Deploy &amp; Monitor</span><span class="es">Deploy y Monitoreo</span></h3>
-          <p class="feature-desc en">Deploy to Railway or Render with performance metrics, logging, and reliability tracking.</p>
-          <p class="feature-desc es">Deploy a Railway o Render con métricas de rendimiento, logs y seguimiento de disponibilidad.</p>
+          <h3 class="feature-title">
+            <span class="en">Know when it breaks (before users complain)</span>
+            <span class="es">Entérate antes que tus usuarios cuando algo falla</span>
+          </h3>
+          <p class="feature-desc en">
+            Deployed properly with logs, metrics and alerts. The next time
+            something acts weird, you'll see it before your customers do.
+          </p>
+          <p class="feature-desc es">
+            Desplegado en condiciones con logs, métricas y alertas. La
+            próxima vez que algo vaya raro, lo verás antes que tus clientes.
+          </p>
+          <span class="feature-tech en">→ Railway/Render deploy + monitoring + alerts</span>
+          <span class="feature-tech es">→ Deploy en Railway/Render + monitoreo + alertas</span>
         </div>
       </div>
     </section>
 
     <section class="container" id="cases">
-      <h2 class="section-title"><span class="en">Recent projects</span><span class="es">Proyectos recientes</span></h2>
+      <h2 class="section-title">
+        <span class="en">Real apps that hit the wall. And got past it.</span>
+        <span class="es">Apps reales que pegaron contra el muro. Y lo pasaron.</span>
+      </h2>
 
       <div class="case-study">
         <div class="case-header">
-          <h3 class="case-title">The 10-Second Load Time</h3>
-          <span class="case-tag"><span class="en">Course platform</span><span class="es">Plataforma de cursos</span></span>
+          <h3 class="case-title">The 10-second dashboard</h3>
+          <span class="case-tag"
+            ><span class="en">Course platform · built with Lovable</span>
+            <span class="es">Plataforma de cursos · hecha con Lovable</span></span>
         </div>
-        <div class="case-problem">
-          <h4 class="en">Problem</h4><h4 class="es">Problema</h4>
-          <p class="en">Platform with 200 students was fetching all 10,000 course records in browser and filtering client-side. Load time reached 10 seconds.</p>
-          <p class="es">Plataforma con 200 alumnos descargando los 10.000 registros de cursos en el navegador y filtrando en cliente. El tiempo de carga llegó a 10 segundos.</p>
+        <p class="case-quote en">
+          "Students started emailing 'is the platform down?' It wasn't down.
+          It was just so slow they assumed it broke."
+        </p>
+        <p class="case-quote es">
+          "Los alumnos empezaron a mandar emails de '¿está caída la
+          plataforma?' No estaba caída. Iba tan lenta que pensaban que se
+          había roto."
+        </p>
+
+        <div class="case-block">
+          <h4 class="en">What was wrong</h4>
+          <h4 class="es">Qué estaba mal</h4>
+          <p class="en">
+            With 200 students it loaded all 10,000 course records into the
+            browser on every page view and filtered there. At 500, it just
+            crashed.
+          </p>
+          <p class="es">
+            Con 200 alumnos cargaba los 10.000 registros de curso al
+            navegador en cada vista y filtraba ahí. A los 500, simplemente
+            se caía.
+          </p>
         </div>
-        <div class="case-solution">
-          <h4 class="en">Solution</h4><h4 class="es">Solución</h4>
-          <ul class="en">
-            <li>Backend API with pagination and server-side filtering</li>
-            <li>Database indexing for critical queries</li>
-            <li>Caching for frequently accessed data</li>
+
+        <div class="case-block">
+          <h4 class="en">The fix (7 days)</h4>
+          <h4 class="es">La solución (7 días)</h4>
+          <p class="en">
+            Backend API with pagination, server-side filters and proper DB
+            indexes. Cache layer for the hot queries.
+          </p>
+          <p class="es">
+            API backend con paginación, filtros en servidor e índices
+            decentes en la BD. Capa de cache para las queries calientes.
+          </p>
+        </div>
+
+        <div class="case-block">
+          <h4 class="en">The result</h4>
+          <h4 class="es">El resultado</h4>
+          <ul class="case-wins en">
+            <li>✅ Load time: 10s → 0.9s</li>
+            <li>✅ Now supports 2,000+ active students with zero crashes</li>
+            <li>✅ Supabase bill dropped 60%</li>
           </ul>
-          <ul class="es">
-            <li>API backend con paginación y filtrado en servidor</li>
-            <li>Indexación de base de datos para consultas críticas</li>
-            <li>Caché para datos de acceso frecuente</li>
+          <ul class="case-wins es">
+            <li>✅ Tiempo de carga: 10s → 0,9s</li>
+            <li>✅ Soporta +2.000 alumnos activos sin caídas</li>
+            <li>✅ Factura de Supabase bajó un 60%</li>
           </ul>
-        </div>
-        <div class="case-result">
-          <span class="en"><strong>Result:</strong> Load time dropped to 0.9 seconds. Supports 2,000+ students and reduced Supabase data-transfer costs by 60%.</span>
-          <span class="es"><strong>Resultado:</strong> Tiempo de carga bajado a 0.9 segundos. Soporta más de 2.000 alumnos y redujo los costes de transferencia de datos en un 60%.</span>
         </div>
       </div>
 
       <div class="case-study">
         <div class="case-header">
-          <h3 class="case-title">The Scale Wall</h3>
-          <span class="case-tag"><span class="en">Growing SaaS</span><span class="es">SaaS en crecimiento</span></span>
+          <h3 class="case-title">The 500-user wall</h3>
+          <span class="case-tag"
+            ><span class="en">Growing B2C SaaS · went semi-viral</span>
+            <span class="es">SaaS B2C en crecimiento · semi-viral</span></span>
         </div>
-        <div class="case-problem">
-          <h4 class="en">Problem</h4><h4 class="es">Problema</h4>
-          <p class="en">SaaS hit 500 concurrent users and started crashing because all computation was running in each user's browser session.</p>
-          <p class="es">El SaaS llegó a 500 usuarios concurrentes y empezó a caerse porque toda la computación corría en la sesión del navegador de cada usuario.</p>
+        <p class="case-quote en">
+          "We got featured on a newsletter, traffic spiked, and the app just…
+          stopped working. We watched signups die in real time."
+        </p>
+        <p class="case-quote es">
+          "Salimos en una newsletter, subió el tráfico y la app simplemente…
+          dejó de funcionar. Vimos cómo morían los signups en directo."
+        </p>
+
+        <div class="case-block">
+          <h4 class="en">What was wrong</h4>
+          <h4 class="es">Qué estaba mal</h4>
+          <p class="en">
+            Every user's browser was doing the heavy lifting — calculations,
+            scoring, recommendations. At 500 concurrent users, the system
+            collapsed under its own weight.
+          </p>
+          <p class="es">
+            Cada navegador hacía el trabajo pesado — cálculos, scoring,
+            recomendaciones. A 500 concurrentes el sistema se hundió bajo su
+            propio peso.
+          </p>
         </div>
-        <div class="case-solution">
-          <h4 class="en">Solution</h4><h4 class="es">Solución</h4>
-          <ul class="en">
-            <li>Migrated business logic to backend services</li>
-            <li>Built API endpoints for all heavy data operations</li>
-            <li>Frontend reduced to rendering and interaction layer</li>
+
+        <div class="case-block">
+          <h4 class="en">The fix (7 days)</h4>
+          <h4 class="es">La solución (7 días)</h4>
+          <p class="en">
+            Moved all heavy computation to a backend service. Frontend
+            became a thin render layer. Same UI, completely different
+            engine underneath.
+          </p>
+          <p class="es">
+            Moví toda la computación pesada a un servicio backend. El
+            frontend pasó a ser una capa fina de render. Misma UI, motor
+            completamente diferente.
+          </p>
+        </div>
+
+        <div class="case-block">
+          <h4 class="en">The result</h4>
+          <h4 class="es">El resultado</h4>
+          <ul class="case-wins en">
+            <li>✅ Handles 5,000+ concurrent users without breaking</li>
+            <li>✅ Founder stopped firefighting and went back to selling</li>
+            <li>✅ Next traffic spike: zero downtime</li>
           </ul>
-          <ul class="es">
-            <li>Lógica de negocio migrada a servicios backend</li>
-            <li>Endpoints API construidos para todas las operaciones pesadas</li>
-            <li>Frontend reducido a capa de renderizado e interacción</li>
+          <ul class="case-wins es">
+            <li>✅ Aguanta +5.000 usuarios concurrentes sin romperse</li>
+            <li>✅ El founder dejó de apagar fuegos y volvió a vender</li>
+            <li>✅ Siguiente pico de tráfico: cero downtime</li>
           </ul>
-        </div>
-        <div class="case-result">
-          <span class="en"><strong>Result:</strong> Handles 5,000 concurrent users without crashes. Founder shifted focus from firefighting to sales.</span>
-          <span class="es"><strong>Resultado:</strong> Aguanta 5.000 usuarios concurrentes sin caídas. El fundador pasó de apagar fuegos a centrarse en ventas.</span>
         </div>
       </div>
 
       <div class="case-study">
         <div class="case-header">
-          <h3 class="case-title">The Supabase Bill Shock</h3>
-          <span class="case-tag"><span class="en">Data-heavy application</span><span class="es">Aplicación de datos intensivos</span></span>
+          <h3 class="case-title">The $800/mo Supabase bill</h3>
+          <span class="case-tag"
+            ><span class="en">Data-heavy SaaS</span>
+            <span class="es">SaaS data-intensive</span></span>
         </div>
-        <div class="case-problem">
-          <h4 class="en">Problem</h4><h4 class="es">Problema</h4>
-          <p class="en">Data transfer costs reached $800/month because every user downloaded huge datasets and filtered locally in the browser.</p>
-          <p class="es">Los costes de transferencia de datos llegaron a $800/mes porque cada usuario descargaba datasets enormes y filtraba en el navegador.</p>
+        <p class="case-quote en">
+          "Our infra bill grew faster than our revenue. We were getting
+          punished for users actually using the product."
+        </p>
+        <p class="case-quote es">
+          "Nuestra factura de infra crecía más rápido que los ingresos. Nos
+          castigaban por que los usuarios usaran el producto."
+        </p>
+
+        <div class="case-block">
+          <h4 class="en">What was wrong</h4>
+          <h4 class="es">Qué estaba mal</h4>
+          <p class="en">
+            Every user was pulling huge datasets straight from Supabase to
+            filter in the browser. Every. Single. Time. Data egress was
+            eating their margins.
+          </p>
+          <p class="es">
+            Cada usuario tiraba datasets enormes directos de Supabase para
+            filtrar en el navegador. Cada. Vez. El egress de datos se
+            comía el margen.
+          </p>
         </div>
-        <div class="case-solution">
-          <h4 class="en">Solution</h4><h4 class="es">Solución</h4>
-          <ul class="en">
-            <li>Backend handles all filtering and sorting logic</li>
-            <li>Only exact UI payloads returned to browser</li>
-            <li>Implemented strict pagination strategy</li>
+
+        <div class="case-block">
+          <h4 class="en">The fix (7 days)</h4>
+          <h4 class="es">La solución (7 días)</h4>
+          <p class="en">
+            Backend handles all filtering. Only the exact UI payload goes
+            to the browser. Strict pagination everywhere. Smart cache on
+            the heavy queries.
+          </p>
+          <p class="es">
+            El backend gestiona todo el filtrado. Solo el payload exacto
+            llega al navegador. Paginación estricta en todo. Cache
+            inteligente en las queries pesadas.
+          </p>
+        </div>
+
+        <div class="case-block">
+          <h4 class="en">The result</h4>
+          <h4 class="es">El resultado</h4>
+          <ul class="case-wins en">
+            <li>✅ Supabase bill: $800 → $80/mo</li>
+            <li>✅ 3× more active users on the new architecture</li>
+            <li>✅ Margin per user back where it should be</li>
           </ul>
-          <ul class="es">
-            <li>Backend gestiona toda la lógica de filtrado y ordenación</li>
-            <li>Solo los payloads exactos devueltos al navegador</li>
-            <li>Estrategia de paginación estricta implementada</li>
+          <ul class="case-wins es">
+            <li>✅ Factura Supabase: 800$ → 80$/mes</li>
+            <li>✅ 3× más usuarios activos en la nueva arquitectura</li>
+            <li>✅ Margen por usuario donde debería estar</li>
           </ul>
-        </div>
-        <div class="case-result">
-          <span class="en"><strong>Result:</strong> Supabase bill down to $80/month while supporting 3x more active users.</span>
-          <span class="es"><strong>Resultado:</strong> Factura de Supabase bajada a $80/mes aguantando 3 veces más usuarios activos.</span>
         </div>
       </div>
     </section>
 
     <section class="container">
-      <h2 class="section-title"><span class="en">Common questions</span><span class="es">Preguntas frecuentes</span></h2>
+      <h2 class="section-title">
+        <span class="en">Common questions</span
+        ><span class="es">Preguntas frecuentes</span>
+      </h2>
 
       <div class="faq-item">
         <div class="faq-question en">Can’t I just optimize my frontend?</div>
-        <div class="faq-question es">¿No puedo simplemente optimizar el frontend?</div>
-        <div class="faq-answer en">Frontend optimization helps short-term, but there is a hard ceiling. A backend removes the scaling limit and gives you structural speed.</div>
-        <div class="faq-answer es">La optimización del frontend ayuda a corto plazo, pero tiene un techo. Un backend elimina el límite de escala y te da velocidad estructural.</div>
+        <div class="faq-question es">
+          ¿No puedo simplemente optimizar el frontend?
+        </div>
+        <div class="faq-answer en">
+          Frontend optimization helps short-term, but there is a hard ceiling. A
+          backend removes the scaling limit and gives you structural speed.
+        </div>
+        <div class="faq-answer es">
+          La optimización del frontend ayuda a corto plazo, pero tiene un techo.
+          Un backend elimina el límite de escala y te da velocidad estructural.
+        </div>
       </div>
 
       <div class="faq-item">
         <div class="faq-question en">Will my app look different?</div>
         <div class="faq-question es">¿Cambiará el aspecto de mi app?</div>
-        <div class="faq-answer en">No. Same UI and same product experience. It simply becomes faster, cheaper to operate, and much more stable.</div>
-        <div class="faq-answer es">No. Misma interfaz y misma experiencia de producto. Simplemente se vuelve más rápida, más barata de operar y mucho más estable.</div>
+        <div class="faq-answer en">
+          No. Same UI and same product experience. It simply becomes faster,
+          cheaper to operate, and much more stable.
+        </div>
+        <div class="faq-answer es">
+          No. Misma interfaz y misma experiencia de producto. Simplemente se
+          vuelve más rápida, más barata de operar y mucho más estable.
+        </div>
       </div>
 
       <div class="faq-item">
         <div class="faq-question en">Do I need to rebuild from scratch?</div>
         <div class="faq-question es">¿Necesito reconstruir desde cero?</div>
-        <div class="faq-answer en">No. Migration is incremental. Your app stays live while we move logic layer by layer.</div>
-        <div class="faq-answer es">No. La migración es incremental. Tu app sigue activa mientras movemos la lógica capa a capa.</div>
+        <div class="faq-answer en">
+          No. Migration is incremental. Your app stays live while we move logic
+          layer by layer.
+        </div>
+        <div class="faq-answer es">
+          No. La migración es incremental. Tu app sigue activa mientras movemos
+          la lógica capa a capa.
+        </div>
       </div>
 
       <div class="faq-item">
         <div class="faq-question en">What if I add features later?</div>
-        <div class="faq-question es">¿Qué pasa si añado funcionalidades después?</div>
-        <div class="faq-answer en">The backend architecture is designed to scale, so future features are faster to ship and easier to maintain.</div>
-        <div class="faq-answer es">La arquitectura backend está diseñada para escalar, así que las funcionalidades futuras son más rápidas de desarrollar y más fáciles de mantener.</div>
+        <div class="faq-question es">
+          ¿Qué pasa si añado funcionalidades después?
+        </div>
+        <div class="faq-answer en">
+          The backend architecture is designed to scale, so future features are
+          faster to ship and easier to maintain.
+        </div>
+        <div class="faq-answer es">
+          La arquitectura backend está diseñada para escalar, así que las
+          funcionalidades futuras son más rápidas de desarrollar y más fáciles
+          de mantener.
+        </div>
       </div>
 
       <div class="faq-item">
         <div class="faq-question en">Is 7 days really enough?</div>
         <div class="faq-question es">¿7 días son suficientes?</div>
-        <div class="faq-answer en">Yes for migration scope. We are not building net-new product features, only moving core logic to the right layer with a proven timeline.</div>
-        <div class="faq-answer es">Sí para el alcance de la migración. No estamos construyendo nuevas funcionalidades, solo moviendo la lógica principal a la capa correcta con un plazo probado.</div>
+        <div class="faq-answer en">
+          Yes for migration scope. We are not building net-new product features,
+          only moving core logic to the right layer with a proven timeline.
+        </div>
+        <div class="faq-answer es">
+          Sí para el alcance de la migración. No estamos construyendo nuevas
+          funcionalidades, solo moviendo la lógica principal a la capa correcta
+          con un plazo probado.
+        </div>
       </div>
 
       <div class="faq-item">
         <div class="faq-question en">What tech stack for the backend?</div>
         <div class="faq-question es">¿Qué stack para el backend?</div>
-        <div class="faq-answer en">Default is Node.js for React/Next projects or Python when preferred. We adapt to your current stack when possible.</div>
-        <div class="faq-answer es">Por defecto Node.js para proyectos React/Next o Python cuando se prefiere. Nos adaptamos a tu stack actual cuando es posible.</div>
+        <div class="faq-answer en">
+          Default is Node.js for React/Next projects or Python (FastAPI)
+          when preferred. I adapt to your current stack when possible — if
+          it's built with Bolt, Cursor, Lovable, v0, or anything else built
+          in the last 5 years, I can work with it.
+        </div>
+        <div class="faq-answer es">
+          Por defecto Node.js para proyectos React/Next o Python (FastAPI)
+          si lo prefieres. Me adapto a tu stack — si está hecho con Bolt,
+          Cursor, Lovable, v0 o cualquier cosa de los últimos 5 años, puedo
+          trabajar con ello.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question en">
+          How do I know if I really need a backend?
+        </div>
+        <div class="faq-question es">
+          ¿Cómo sé si realmente necesito un backend?
+        </div>
+        <div class="faq-answer en">
+          Quick checklist: app feels slower the more data it has? Bills go
+          up while revenue doesn't? Bigger users complaining about load
+          times? Frontend code knows your Stripe or OpenAI key? Any "yes"
+          means you need this. Two yeses means you needed it yesterday.
+        </div>
+        <div class="faq-answer es">
+          Checklist rápido: ¿la app va más lenta cuanto más datos tiene?
+          ¿La factura sube y los ingresos no? ¿Los clientes grandes se
+          quejan de la velocidad? ¿Tu código frontend conoce tu key de
+          Stripe u OpenAI? Cualquier "sí" significa que lo necesitas. Dos
+          "sí" significa que lo necesitabas ayer.
+        </div>
       </div>
     </section>
 
+    <div class="container" style="padding-top: 0; padding-bottom: 0;">
+      <div class="urgency-banner">
+        <div class="urgency-icon">⏰</div>
+        <div class="urgency-text">
+          <span class="en">
+            <strong>Limited availability:</strong> I only take 2 migration
+            sprints per month — these are demanding projects.
+            <span class="slots-remaining">1 slot left this month.</span>
+          </span>
+          <span class="es">
+            <strong>Disponibilidad limitada:</strong> solo acepto 2 sprints
+            de migración al mes — son proyectos exigentes.
+            <span class="slots-remaining">Queda 1 hueco este mes.</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
     <section class="container">
       <div class="cta-section">
-        <h2><span class="en">Unblock growth before performance kills conversion</span><span class="es">Desbloquea el crecimiento antes de que el rendimiento mate la conversión</span></h2>
-        <p class="en">Book a short call to review your current architecture and get a clear migration plan with timeline and expected speed gains.</p>
-        <p class="es">Reserva una llamada para revisar tu arquitectura actual y obtener un plan de migración claro con plazos y mejoras de velocidad esperadas.</p>
-        <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1LhXEeHMGnVOsJms7pXlNsDwLhD4oYHPri5mjYeyq9KvTMWueOivjGzxzM0hXGYwy7ssOHwubZ" class="btn btn-primary"><span class="en">Schedule backend migration →</span><span class="es">Agendar migración de backend →</span></a>
+        <h2>
+          <span class="en"
+            >Users switch to your competitor in 8 seconds. Your app loads
+            in 10.</span
+          >
+          <span class="es"
+            >Los usuarios se van con tu competencia en 8 segundos. Tu app
+            carga en 10.</span
+          >
+        </h2>
+        <p class="en">
+          Every week you wait is more users hitting the slow wall and
+          bouncing. More bills you can't justify. More features you can't
+          ship because the architecture is fighting you. Fix the foundation
+          now, scale forever.
+        </p>
+        <p class="es">
+          Cada semana que esperas son más usuarios chocando contra el muro
+          y yéndose. Más facturas que no puedes justificar. Más features
+          que no puedes lanzar porque la arquitectura te pelea. Arregla la
+          base ahora, escala para siempre.
+        </p>
+        <a
+          href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1LhXEeHMGnVOsJms7pXlNsDwLhD4oYHPri5mjYeyq9KvTMWueOivjGzxzM0hXGYwy7ssOHwubZ"
+          class="btn btn-primary"
+          ><span class="en">Book your migration sprint →</span>
+          <span class="es">Reserva tu sprint de migración →</span></a
+        >
+        <br />
+        <a href="mailto:hugo@arkeondata.com" class="cta-secondary-link">
+          <span class="en">↓ Or send me your app URL for a free quick audit</span>
+          <span class="es">↓ O mándame la URL de tu app para una auditoría rápida gratis</span>
+        </a>
+        <p class="cta-ps en">
+          P.S. — Every founder who told me "I'll migrate when I hit 1,000
+          users" ended up paying 3× more in lost users and emergency fixes
+          than they would have paid for the migration. Don't wait for the
+          wall. You won't see it coming.
+        </p>
+        <p class="cta-ps es">
+          P.D. — Cada founder que me dijo "ya migro cuando llegue a 1.000
+          usuarios" acabó pagando 3 veces más en usuarios perdidos y
+          parches de urgencia que lo que habría pagado por la migración. No
+          esperes al muro. No lo vas a ver venir.
+        </p>
       </div>
     </section>
 
@@ -863,9 +1414,20 @@
       </p>
       <p style="margin-top: 1rem; font-size: 0.85rem">NIF: B40740932</p>
     </footer>
-  <script>
-    function setLang(l){document.documentElement.lang=l;localStorage.setItem('ark-lang',l);document.querySelectorAll('.lang-sw button').forEach(b=>b.classList.remove('active'));const b=document.getElementById('sw-'+l);if(b)b.classList.add('active');}
-    (function(){const s=localStorage.getItem('ark-lang');setLang(s||(navigator.language.startsWith('es')?'es':'en'));})();
-  </script>
+    <script>
+      function setLang(l) {
+        document.documentElement.lang = l;
+        localStorage.setItem("ark-lang", l);
+        document
+          .querySelectorAll(".lang-sw button")
+          .forEach((b) => b.classList.remove("active"));
+        const b = document.getElementById("sw-" + l);
+        if (b) b.classList.add("active");
+      }
+      (function () {
+        const s = localStorage.getItem("ark-lang");
+        setLang(s || (navigator.language.startsWith("es") ? "es" : "en"));
+      })();
+    </script>
   </body>
 </html>

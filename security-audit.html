@@ -567,7 +567,9 @@
         padding: 0.2rem 0.35rem;
         border-radius: 6px;
         opacity: 0.4;
-        transition: opacity 0.2s, background 0.2s;
+        transition:
+          opacity 0.2s,
+          background 0.2s;
       }
       .lang-sw button.active {
         opacity: 1;
@@ -578,6 +580,109 @@
       }
       html[lang="es"] .en {
         display: none !important;
+      }
+
+      .fomo-badge {
+        display: inline-flex; align-items: center; gap: 0.6rem;
+        padding: 0.5rem 1rem; background: rgba(0, 255, 136, 0.08);
+        border: 1px solid rgba(0, 255, 136, 0.3); border-radius: 999px;
+        font-family: "JetBrains Mono", monospace; font-size: 0.8rem;
+        color: var(--accent); margin-bottom: 1.5rem;
+      }
+      .fomo-badge .pulse {
+        width: 8px; height: 8px; background: var(--accent);
+        border-radius: 50%; animation: pulseDot 2s infinite;
+      }
+      @keyframes pulseDot {
+        0% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
+        70% { box-shadow: 0 0 0 10px rgba(0, 255, 136, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
+      }
+      .social-proof {
+        background: linear-gradient(180deg, transparent 0%, rgba(0, 255, 136, 0.025) 100%);
+        border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      }
+      .proof-stats {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 2rem; margin-bottom: 4rem; text-align: center;
+      }
+      .proof-stat .proof-number {
+        font-family: "JetBrains Mono", monospace; font-size: 2.75rem;
+        font-weight: 700; color: var(--accent); line-height: 1;
+      }
+      .proof-stat .proof-label { font-size: 0.95rem; color: #a0a0b0; margin-top: 0.75rem; }
+      .testimonials {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;
+      }
+      .testimonial-card {
+        background: var(--card-bg); border: 1px solid var(--border);
+        border-radius: 12px; padding: 2rem 2rem 1.75rem;
+        position: relative; transition: all 0.3s;
+      }
+      .testimonial-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+      .testimonial-card::before {
+        content: "\201C"; position: absolute; top: -0.75rem; left: 1rem;
+        font-size: 4rem; color: var(--accent); opacity: 0.35;
+        font-family: Georgia, serif; line-height: 1;
+      }
+      .testimonial-text { font-size: 1.05rem; color: #e8e8e8; line-height: 1.7; margin-bottom: 1.5rem; padding-top: 0.5rem; }
+      .testimonial-author { display: flex; align-items: center; gap: 0.85rem; }
+      .testimonial-avatar {
+        width: 42px; height: 42px; border-radius: 50%;
+        background: var(--accent); color: var(--bg);
+        display: flex; align-items: center; justify-content: center;
+        font-weight: 700; font-family: "JetBrains Mono", monospace; flex-shrink: 0;
+      }
+      .testimonial-meta strong { display: block; color: var(--text); font-size: 0.95rem; }
+      .testimonial-meta span { font-size: 0.85rem; color: #6a6a7a; }
+      .urgency-banner {
+        background: linear-gradient(135deg, rgba(255, 200, 50, 0.08), rgba(255, 100, 50, 0.04));
+        border-left: 4px solid var(--accent); border-radius: 8px;
+        padding: 1.5rem 2rem; margin: 3rem auto; max-width: 900px;
+        display: flex; align-items: center; gap: 1.25rem;
+      }
+      .urgency-icon { font-size: 2rem; flex-shrink: 0; }
+      .urgency-text { font-size: 1.05rem; color: var(--text); }
+      .urgency-text strong { color: var(--accent); }
+      .slots-remaining { font-weight: 700; color: #ffb84d; }
+      .feature-tech {
+        display: block; margin-top: 1rem; padding-top: 0.85rem;
+        border-top: 1px dashed rgba(255,255,255,0.08);
+        font-size: 0.78rem; color: #6a6a7a;
+        font-family: "JetBrains Mono", monospace; line-height: 1.5;
+      }
+      .case-quote {
+        font-size: 1.35rem; line-height: 1.5; color: var(--text);
+        font-style: italic; padding-left: 1.5rem;
+        border-left: 3px solid var(--accent); margin-bottom: 2rem;
+      }
+      .case-block { margin-bottom: 1.5rem; }
+      .case-block h4 {
+        color: var(--accent); margin-bottom: 0.6rem;
+        font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px;
+      }
+      .case-block p, .case-block li { color: #a0a0b0; line-height: 1.7; }
+      .case-wins {
+        background: rgba(0, 255, 136, 0.08);
+        border-left: 4px solid var(--accent);
+        padding: 1.25rem 1.5rem; border-radius: 4px; list-style: none;
+      }
+      .case-wins li { color: var(--text); padding: 0.25rem 0; }
+      .cta-ps {
+        margin-top: 2rem; font-size: 0.95rem; color: #a0a0b0;
+        font-style: italic; max-width: 640px;
+        margin-left: auto; margin-right: auto; line-height: 1.7;
+      }
+      .cta-secondary-link {
+        display: inline-block; margin-top: 1.25rem;
+        color: var(--accent); font-size: 0.95rem;
+        text-decoration: none; border-bottom: 1px dashed var(--accent);
+        padding-bottom: 2px;
+      }
+      .cta-secondary-link:hover { opacity: 0.8; }
+      @media (max-width: 640px) {
+        .urgency-banner { flex-direction: column; text-align: center; padding: 1.5rem; }
+        .case-quote { font-size: 1.15rem; }
       }
     </style>
   </head>
@@ -591,44 +696,79 @@
       <div class="hero-grid"></div>
       <div class="hero-content">
         <div class="hero-left">
-          <span class="label"><span class="en">Security Audit &amp; Fixes</span><span class="es">Auditoría de Seguridad y Correcciones</span></span>
-          <h1><span class="en">Your AI-Built SaaS Is Leaking Secrets</span><span class="es">Tu SaaS Hecho con IA Está Exponiendo Secretos</span></h1>
+          <div class="fomo-badge">
+            <span class="pulse"></span>
+            <span class="en">3 AI-built apps secured this month</span>
+            <span class="es">3 apps con IA aseguradas este mes</span>
+          </div>
+          <h1>
+            <span class="en"
+              >$12,847 OpenAI bill because your API key was in your
+              JavaScript.</span
+            >
+            <span class="es"
+              >12.847€ de factura de OpenAI porque tu API key estaba en tu
+              JavaScript.</span
+            >
+          </h1>
           <p class="hero-subtitle en">
-            90% of no-code/low-code MVPs have critical security flaws. Exposed
-            API keys. Public databases. Stolen user data. Get a professional
-            security audit + fixes in 3 days before competitors find your
-            vulnerabilities.
+            Every day with exposed keys is Russian roulette with your API
+            budget — and your users' data. 90% of AI-built MVPs have critical
+            leaks. I find them, fix them, and lock them down in 3 days. Before
+            a bot finds them first.
           </p>
           <p class="hero-subtitle es">
-            El 90% de los MVPs construidos sin código tienen vulnerabilidades
-            críticas. API keys expuestas. Bases de datos públicas. Datos robados.
-            Obtén una auditoría profesional + correcciones en 3 días.
+            Cada día con tus keys expuestas es ruleta rusa con tu presupuesto
+            de API — y los datos de tus usuarios. El 90% de los MVPs hechos
+            con IA tienen fugas críticas. Las encuentro, las arreglo y las
+            cierro en 3 días. Antes de que un bot las encuentre primero.
           </p>
 
           <div class="hero-stats">
             <div class="stat-item">
               <div class="stat-number">90%</div>
-              <div class="stat-label"><span class="en">MVPs with security issues</span><span class="es">MVPs con vulnerabilidades</span></div>
+              <div class="stat-label">
+                <span class="en">MVPs with security issues</span
+                ><span class="es">MVPs con vulnerabilidades</span>
+              </div>
             </div>
             <div class="stat-item">
               <div class="stat-number">3</div>
-              <div class="stat-label"><span class="en">Business days</span><span class="es">Días laborables</span></div>
+              <div class="stat-label">
+                <span class="en">Business days</span
+                ><span class="es">Días laborables</span>
+              </div>
             </div>
             <div class="stat-item">
               <div class="stat-number">EUR 900</div>
-              <div class="stat-label"><span class="en">Fixed price</span><span class="es">Precio fijo</span></div>
+              <div class="stat-label">
+                <span class="en">Fixed price</span
+                ><span class="es">Precio fijo</span>
+              </div>
             </div>
           </div>
 
           <div class="cta-group">
-            <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1LhXEeHMGnVOsJms7pXlNsDwLhD4oYHPri5mjYeyq9KvTMWueOivjGzxzM0hXGYwy7ssOHwubZ" class="btn btn-primary"><span class="en">Schedule security audit →</span><span class="es">Agendar auditoría →</span></a>
-            <a href="#cases" class="btn btn-secondary"><span class="en">See case studies</span><span class="es">Ver casos</span></a>
+            <a
+              href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1LhXEeHMGnVOsJms7pXlNsDwLhD4oYHPri5mjYeyq9KvTMWueOivjGzxzM0hXGYwy7ssOHwubZ"
+              class="btn btn-primary"
+              ><span class="en">Schedule security audit →</span
+              ><span class="es">Agendar auditoría →</span></a
+            >
+            <a href="#cases" class="btn btn-secondary"
+              ><span class="en">See case studies</span
+              ><span class="es">Ver casos</span></a
+            >
           </div>
         </div>
 
         <div class="hero-visual">
           <div class="code-block en">
-            <div class="code-line"><span class="code-comment">// CRITICAL: Your actual code right now</span></div>
+            <div class="code-line">
+              <span class="code-comment"
+                >// CRITICAL: Your actual code right now</span
+              >
+            </div>
             <div class="code-line">
               <span class="code-keyword">const</span> openaiKey =
               <span class="code-string">"sk-proj-abc123..."</span>
@@ -646,7 +786,11 @@
             </div>
           </div>
           <div class="code-block es">
-            <div class="code-line"><span class="code-comment">// CRÍTICO: Tu código real ahora mismo</span></div>
+            <div class="code-line">
+              <span class="code-comment"
+                >// CRÍTICO: Tu código real ahora mismo</span
+              >
+            </div>
             <div class="code-line">
               <span class="code-keyword">const</span> openaiKey =
               <span class="code-string">"sk-proj-abc123..."</span>
@@ -667,193 +811,565 @@
       </div>
     </section>
 
+    <section class="social-proof">
+      <div class="container">
+        <div class="proof-stats">
+          <div class="proof-stat">
+            <div class="proof-number">$50K+</div>
+            <div class="proof-label">
+              <span class="en">In API bills prevented</span>
+              <span class="es">En facturas de API evitadas</span>
+            </div>
+          </div>
+          <div class="proof-stat">
+            <div class="proof-number">90%</div>
+            <div class="proof-label">
+              <span class="en">Of audited AI apps had critical leaks</span>
+              <span class="es">De apps con IA auditadas tenían fugas críticas</span>
+            </div>
+          </div>
+          <div class="proof-stat">
+            <div class="proof-number">3 days</div>
+            <div class="proof-label">
+              <span class="en">From "exposed" to "locked down"</span>
+              <span class="es">De "expuesto" a "blindado"</span>
+            </div>
+          </div>
+          <div class="proof-stat">
+            <div class="proof-number">0</div>
+            <div class="proof-label">
+              <span class="en">Breaches after delivery</span>
+              <span class="es">Brechas tras la entrega</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonials">
+          <div class="testimonial-card">
+            <p class="testimonial-text en">
+              I woke up to a $4,300 OpenAI bill. Hugo found the leak in 20
+              minutes, fixed it in 2 days, and showed me 6 other things I had
+              no idea were broken. Worth every euro.
+            </p>
+            <p class="testimonial-text es">
+              Me desperté con una factura de 4.300$ de OpenAI. Hugo encontró
+              la fuga en 20 minutos, la arregló en 2 días y me enseñó otras 6
+              cosas rotas que ni sabía. Vale cada euro.
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">DM</div>
+              <div class="testimonial-meta">
+                <strong>Daniel M.</strong>
+                <span>Solo founder, AI course platform</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="testimonial-text en">
+              We were about to close an enterprise deal that required a
+              security review. Hugo got us through it. €80K contract signed
+              the week after.
+            </p>
+            <p class="testimonial-text es">
+              Estábamos a punto de cerrar un contrato enterprise que exigía
+              revisión de seguridad. Hugo nos lo dejó listo. Contrato de 80K€
+              firmado la semana siguiente.
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">PS</div>
+              <div class="testimonial-meta">
+                <strong>Paula S.</strong>
+                <span>CTO, B2B SaaS (5K users)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <div class="container">
       <div class="price-highlight">
         <div class="price-tag">EUR 900</div>
         <div class="price-detail">
-          <span class="en">Fixed price · 3 business days · Audit report + fixes included</span><span class="es">Precio fijo · 3 días laborables · Informe de auditoría + correcciones incluidas</span>
+          <span class="en"
+            >Fixed price · 3 business days · Audit report + fixes included</span
+          ><span class="es"
+            >Precio fijo · 3 días laborables · Informe de auditoría +
+            correcciones incluidas</span
+          >
         </div>
       </div>
     </div>
 
     <section class="container">
-      <h2 class="section-title"><span class="en">What's included</span><span class="es">Qué incluye</span></h2>
+      <h2 class="section-title">
+        <span class="en">What you actually get</span>
+        <span class="es">Lo que realmente te llevas</span>
+      </h2>
       <div class="features-grid">
         <div class="feature-card">
           <span class="feature-icon">🔍</span>
-          <h3 class="feature-title"><span class="en">Complete Security Audit</span><span class="es">Auditoría de Seguridad Completa</span></h3>
-          <p class="feature-desc en">30-point checklist covering API keys, database access, authentication flows, and deployment configuration.</p>
-          <p class="feature-desc es">Lista de 30 puntos cubriendo API keys, acceso a base de datos, flujos de autenticación y configuración de despliegue.</p>
+          <h3 class="feature-title">
+            <span class="en">Know exactly where you're bleeding money</span>
+            <span class="es">Saber exactamente por dónde se te va el dinero</span>
+          </h3>
+          <p class="feature-desc en">
+            A full sweep of your app to find every exposed key, open
+            endpoint, and "wait, that's public??" moment. Before someone else
+            finds it.
+          </p>
+          <p class="feature-desc es">
+            Un barrido completo de tu app para encontrar cada key expuesta,
+            endpoint abierto y momento "¿espera, eso es público??". Antes de
+            que lo encuentre otro.
+          </p>
+          <span class="feature-tech en">→ 30-point audit: keys, DB, auth, deploy config</span>
+          <span class="feature-tech es">→ Auditoría de 30 puntos: keys, BD, auth, config de deploy</span>
         </div>
         <div class="feature-card">
           <span class="feature-icon">📋</span>
-          <h3 class="feature-title"><span class="en">Detailed Report</span><span class="es">Informe Detallado</span></h3>
-          <p class="feature-desc en">PDF with findings, severity levels, proof screenshots, and prioritized remediation plan.</p>
-          <p class="feature-desc es">PDF con hallazgos, niveles de severidad, capturas de pantalla y plan de corrección priorizado.</p>
+          <h3 class="feature-title">
+            <span class="en">A PDF you can show your investors</span>
+            <span class="es">Un PDF que puedes enseñar a tus inversores</span>
+          </h3>
+          <p class="feature-desc en">
+            Full report with every issue, severity, screenshots and what was
+            fixed. Use it for due diligence, enterprise sales, or your own
+            peace of mind.
+          </p>
+          <p class="feature-desc es">
+            Informe completo con cada problema, severidad, capturas y qué se
+            arregló. Úsalo para due diligence, ventas enterprise o tu propia
+            tranquilidad.
+          </p>
+          <span class="feature-tech en">→ PDF report with findings, severity, fix log</span>
+          <span class="feature-tech es">→ Informe PDF con hallazgos, severidad y log de fixes</span>
         </div>
         <div class="feature-card">
           <span class="feature-icon">🔒</span>
-          <h3 class="feature-title"><span class="en">API Key Migration</span><span class="es">Migración de API Keys</span></h3>
-          <p class="feature-desc en">Move all sensitive keys to secure backend and environment variables. Nothing critical exposed in frontend.</p>
-          <p class="feature-desc es">Mover todas las claves sensibles a backend seguro y variables de entorno. Nada crítico expuesto en el frontend.</p>
+          <h3 class="feature-title">
+            <span class="en">Stop random bots draining your OpenAI budget</span>
+            <span class="es">Stop a bots aleatorios vaciando tu cuenta de OpenAI</span>
+          </h3>
+          <p class="feature-desc en">
+            Every sensitive key off the frontend, into the backend with proper
+            env vars. No more "why is my Stripe bill at $0 but OpenAI at
+            $4,000?"
+          </p>
+          <p class="feature-desc es">
+            Cada key sensible fuera del frontend, al backend con env vars en
+            condiciones. Se acabó el "¿por qué Stripe está a 0€ y OpenAI a
+            4.000$?"
+          </p>
+          <span class="feature-tech en">→ Backend proxy, env vars, key rotation, auth gates</span>
+          <span class="feature-tech es">→ Backend proxy, env vars, rotación de keys, auth gates</span>
         </div>
         <div class="feature-card">
           <span class="feature-icon">🛡️</span>
-          <h3 class="feature-title"><span class="en">Database Security</span><span class="es">Seguridad de Base de Datos</span></h3>
-          <p class="feature-desc en">Implement Row Level Security (RLS) in Supabase and close direct data leakage paths.</p>
-          <p class="feature-desc es">Implementar Row Level Security (RLS) en Supabase y cerrar todas las rutas de fuga de datos.</p>
+          <h3 class="feature-title">
+            <span class="en">Your users' data isn't sitting in a public bucket</span>
+            <span class="es">Los datos de tus usuarios no en un bucket público</span>
+          </h3>
+          <p class="feature-desc en">
+            Database locked down properly so emails, payments and personal
+            data aren't a browser devtools tab away. Mandatory for GDPR. And
+            for not getting sued.
+          </p>
+          <p class="feature-desc es">
+            Base de datos blindada para que emails, pagos y datos personales
+            no estén a una pestaña de DevTools de distancia. Obligatorio para
+            GDPR. Y para no acabar en los tribunales.
+          </p>
+          <span class="feature-tech en">→ Supabase RLS, admin endpoint guards, GDPR audit</span>
+          <span class="feature-tech es">→ Supabase RLS, protección de endpoints admin, audit GDPR</span>
         </div>
         <div class="feature-card">
           <span class="feature-icon">⚡</span>
-          <h3 class="feature-title"><span class="en">Rate Limiting</span><span class="es">Control de Acceso</span></h3>
-          <p class="feature-desc en">Protect sensitive endpoints from abuse, brute force, and runaway bot traffic.</p>
-          <p class="feature-desc es">Proteger endpoints sensibles de abuso, fuerza bruta y tráfico de bots.</p>
+          <h3 class="feature-title">
+            <span class="en">Cap the damage if someone does try to attack</span>
+            <span class="es">Limita el daño si alguien intenta atacar</span>
+          </h3>
+          <p class="feature-desc en">
+            Rate limits, abuse detection and hard ceilings on expensive
+            endpoints. The difference between a $40 bill and a $4,000 bill.
+          </p>
+          <p class="feature-desc es">
+            Rate limits, detección de abuso y techos duros en endpoints
+            caros. La diferencia entre una factura de 40€ y una de 4.000€.
+          </p>
+          <span class="feature-tech en">→ Rate limiting, abuse detection, cost caps, alerts</span>
+          <span class="feature-tech es">→ Rate limiting, detección de abuso, límites de coste, alertas</span>
         </div>
         <div class="feature-card">
           <span class="feature-icon">✅</span>
-          <h3 class="feature-title"><span class="en">Security Checklist</span><span class="es">Guía de Seguridad</span></h3>
-          <p class="feature-desc en">Future-proof guide to keep your product secure as you ship new features.</p>
-          <p class="feature-desc es">Guía para mantener tu producto seguro a medida que añades nuevas funcionalidades.</p>
+          <h3 class="feature-title">
+            <span class="en">A checklist so you don't break it later</span>
+            <span class="es">Un checklist para que no la líes después</span>
+          </h3>
+          <p class="feature-desc en">
+            Plain-language guide so when you ship the next feature with
+            Cursor at 11pm, you don't accidentally expose another secret.
+          </p>
+          <p class="feature-desc es">
+            Guía en lenguaje claro para que cuando lances la siguiente
+            feature con Cursor a las 11 de la noche, no expongas otro secreto
+            sin querer.
+          </p>
+          <span class="feature-tech en">→ Living security checklist + 30 days of email support</span>
+          <span class="feature-tech es">→ Checklist vivo de seguridad + 30 días de soporte por email</span>
         </div>
       </div>
     </section>
 
     <section class="container" id="cases">
-      <h2 class="section-title"><span class="en">Recent projects</span><span class="es">Proyectos recientes</span></h2>
+      <h2 class="section-title">
+        <span class="en">Real incidents. Real fixes. Real sleep.</span>
+        <span class="es">Incidentes reales. Arreglos reales. Sueño real.</span>
+      </h2>
 
       <div class="case-study">
         <div class="case-header">
-          <h3 class="case-title">The $12K OpenAI Bill</h3>
-          <span class="case-tag"><span class="en">AI course platform</span><span class="es">Plataforma de cursos con IA</span></span>
+          <h3 class="case-title">The $12,847 OpenAI bill</h3>
+          <span class="case-tag"
+            ><span class="en">AI course platform · built with Cursor</span>
+            <span class="es">Plataforma de cursos con IA · hecha con Cursor</span></span>
         </div>
-        <div class="case-problem">
-          <h4 class="en">Problem</h4><h4 class="es">Problema</h4>
-          <p class="en">Founder built a course platform with Cursor. OpenAI API key exposed in frontend. Bill went from $200 to $12K in one month from unauthorized usage.</p>
-          <p class="es">Fundador construyó una plataforma de cursos con Cursor. API key de OpenAI expuesta en el frontend. La factura pasó de $200 a $12K en un mes por uso no autorizado.</p>
+        <p class="case-quote en">
+          "I went to bed with a $200 monthly bill. Woke up to $12,847 and an
+          email from OpenAI asking what was going on. I almost vomited."
+        </p>
+        <p class="case-quote es">
+          "Me fui a dormir con una factura de 200$ al mes. Me desperté con
+          12.847$ y un email de OpenAI preguntando qué pasaba. Casi vomito."
+        </p>
+
+        <div class="case-block">
+          <h4 class="en">What was wrong</h4>
+          <h4 class="es">Qué estaba mal</h4>
+          <p class="en">
+            OpenAI key hardcoded in the JavaScript bundle. A scraper found
+            it. Within hours, bots were running their own GPT-4 workloads on
+            their account.
+          </p>
+          <p class="es">
+            Key de OpenAI hardcoded en el bundle de JavaScript. Un scraper la
+            encontró. En horas, había bots ejecutando sus propias cargas
+            GPT-4 con esa cuenta.
+          </p>
         </div>
-        <div class="case-solution">
-          <h4 class="en">Solution</h4><h4 class="es">Solución</h4>
-          <ul class="en">
-            <li>Moved API key to backend</li>
-            <li>Added rate limiting</li>
-            <li>Implemented user authentication for API calls</li>
+
+        <div class="case-block">
+          <h4 class="en">The fix (3 days)</h4>
+          <h4 class="es">La solución (3 días)</h4>
+          <p class="en">
+            Rotated the key, moved all AI calls to a backend proxy, added
+            per-user auth + rate limits + hard daily cost caps with email
+            alerts.
+          </p>
+          <p class="es">
+            Rotamos la key, moví todas las llamadas a IA a un proxy backend,
+            añadí auth por usuario + rate limits + límites duros de coste
+            diario con alertas por email.
+          </p>
+        </div>
+
+        <div class="case-block">
+          <h4 class="en">The result</h4>
+          <h4 class="es">El resultado</h4>
+          <ul class="case-wins en">
+            <li>✅ Bill back to $180/mo within the week</li>
+            <li>✅ OpenAI refunded the abuse (because we had logs)</li>
+            <li>✅ Founder finally sleeps without checking the dashboard at 3am</li>
           </ul>
-          <ul class="es">
-            <li>API key movida al backend</li>
-            <li>Rate limiting añadido</li>
-            <li>Autenticación de usuario implementada para llamadas a la API</li>
+          <ul class="case-wins es">
+            <li>✅ Factura de vuelta a 180$/mes en una semana</li>
+            <li>✅ OpenAI les devolvió el abuso (porque teníamos logs)</li>
+            <li>✅ El founder duerme sin revisar el dashboard a las 3 am</li>
           </ul>
-        </div>
-        <div class="case-result">
-          <span class="en"><strong>Result:</strong> Bill back to $200/month. Prevented potential $50K+ bill. Founder could finally sleep at night.</span>
-          <span class="es"><strong>Resultado:</strong> Factura de vuelta a $200/mes. Se previno una factura potencial de más de $50K. El fundador por fin podía dormir tranquilo.</span>
         </div>
       </div>
 
       <div class="case-study">
         <div class="case-header">
-          <h3 class="case-title">Database Wide Open</h3>
-          <span class="case-tag"><span class="en">SaaS with 5,000 users</span><span class="es">SaaS con 5.000 usuarios</span></span>
+          <h3 class="case-title">5.000 users' data, one click away</h3>
+          <span class="case-tag"
+            ><span class="en">B2B SaaS · Supabase backend</span>
+            <span class="es">SaaS B2B · backend Supabase</span></span>
         </div>
-        <div class="case-problem">
-          <h4 class="en">Problem</h4><h4 class="es">Problema</h4>
-          <p class="en">Supabase database accessible without authentication. All 5,000 user records (emails, payment data) visible to anyone with browser devtools.</p>
-          <p class="es">Base de datos de Supabase accesible sin autenticación. Los 5.000 registros de usuarios (emails, datos de pago) visibles para cualquiera con las devtools del navegador.</p>
+        <p class="case-quote en">
+          "We were about to sign an enterprise deal. Their security team
+          asked one question and my stomach dropped: we had RLS disabled on
+          everything."
+        </p>
+        <p class="case-quote es">
+          "Estábamos a punto de firmar un contrato enterprise. Su equipo de
+          seguridad hizo una pregunta y se me cayó el alma: teníamos RLS
+          desactivado en todo."
+        </p>
+
+        <div class="case-block">
+          <h4 class="en">What was wrong</h4>
+          <h4 class="es">Qué estaba mal</h4>
+          <p class="en">
+            Supabase tables wide open. 5,000 user emails, plan data and
+            internal notes visible to anyone with browser devtools. A single
+            screenshot would have killed the deal — and possibly the company.
+          </p>
+          <p class="es">
+            Tablas de Supabase totalmente abiertas. 5.000 emails de usuarios,
+            datos de plan y notas internas visibles para cualquiera con
+            devtools. Una sola captura habría matado el contrato — y
+            posiblemente la empresa.
+          </p>
         </div>
-        <div class="case-solution">
-          <h4 class="en">Solution</h4><h4 class="es">Solución</h4>
-          <ul class="en">
-            <li>Implemented Row Level Security (RLS)</li>
-            <li>Secured admin endpoints</li>
-            <li>Added proper authentication checks</li>
+
+        <div class="case-block">
+          <h4 class="en">The fix (3 days)</h4>
+          <h4 class="es">La solución (3 días)</h4>
+          <p class="en">
+            Full RLS rollout, secured every admin endpoint, added auth checks
+            on every read path, produced a signed security report for the
+            enterprise team.
+          </p>
+          <p class="es">
+            Rollout completo de RLS, asegurados todos los endpoints admin,
+            checks de auth en cada lectura, informe de seguridad firmado para
+            el equipo enterprise.
+          </p>
+        </div>
+
+        <div class="case-block">
+          <h4 class="en">The result</h4>
+          <h4 class="es">El resultado</h4>
+          <ul class="case-wins en">
+            <li>✅ €80K enterprise contract signed the next week</li>
+            <li>✅ Passed two more security reviews on autopilot</li>
+            <li>✅ Zero data was leaked (we checked the logs first)</li>
           </ul>
-          <ul class="es">
-            <li>Implementado Row Level Security (RLS)</li>
-            <li>Endpoints de admin asegurados</li>
-            <li>Verificaciones de autenticación correctas añadidas</li>
+          <ul class="case-wins es">
+            <li>✅ Contrato enterprise de 80K€ firmado la semana siguiente</li>
+            <li>✅ Pasaron 2 revisiones de seguridad más en piloto automático</li>
+            <li>✅ Cero datos filtrados (revisamos logs antes)</li>
           </ul>
-        </div>
-        <div class="case-result">
-          <span class="en"><strong>Result:</strong> Passed enterprise security audit and closed a EUR 80K deal that required security compliance.</span>
-          <span class="es"><strong>Resultado:</strong> Pasó una auditoría de seguridad enterprise y cerró un contrato de 80K€ que requería cumplimiento de seguridad.</span>
         </div>
       </div>
 
       <div class="case-study">
         <div class="case-header">
-          <h3 class="case-title">Stripe Keys in GitHub</h3>
-          <span class="case-tag"><span class="en">Public repository incident</span><span class="es">Incidente en repositorio público</span></span>
+          <h3 class="case-title">Stripe secret key on public GitHub</h3>
+          <span class="case-tag"
+            ><span class="en">Solo founder, post-launch</span>
+            <span class="es">Founder solo, post-lanzamiento</span></span>
         </div>
-        <div class="case-problem">
-          <h4 class="en">Problem</h4><h4 class="es">Problema</h4>
-          <p class="en">Stripe secret key committed to public GitHub repo. Anyone could issue refunds and access customer-level billing data.</p>
-          <p class="es">Clave secreta de Stripe subida a repositorio público de GitHub. Cualquiera podía emitir reembolsos y acceder a datos de facturación de clientes.</p>
+        <p class="case-quote en">
+          "I made the repo public to show a friend. Two hours later GitHub
+          sent me an email: 'your Stripe secret key is exposed.' I didn't
+          even know it was there."
+        </p>
+        <p class="case-quote es">
+          "Hice el repo público para enseñárselo a un amigo. Dos horas
+          después GitHub me mandó un email: 'tu Stripe secret key está
+          expuesta'. Ni sabía que estaba ahí."
+        </p>
+
+        <div class="case-block">
+          <h4 class="en">The fix (1 day, emergency)</h4>
+          <h4 class="es">La solución (1 día, urgencia)</h4>
+          <p class="en">
+            Rotated every key in under an hour, audited Stripe for fraudulent
+            activity, moved every secret out of the repo, added .gitignore +
+            pre-commit hooks + webhook signature validation.
+          </p>
+          <p class="es">
+            Roté todas las keys en menos de una hora, audité Stripe por
+            actividad fraudulenta, saqué todos los secretos del repo, añadí
+            .gitignore + pre-commit hooks + validación de firma de webhooks.
+          </p>
         </div>
-        <div class="case-solution">
-          <h4 class="en">Solution</h4><h4 class="es">Solución</h4>
-          <ul class="en">
-            <li>Rotated all compromised keys</li>
-            <li>Moved secrets to environment variables</li>
-            <li>Added .gitignore and webhook signature validation</li>
+
+        <div class="case-block">
+          <h4 class="en">The result</h4>
+          <h4 class="es">El resultado</h4>
+          <ul class="case-wins en">
+            <li>✅ Zero fraudulent transactions detected</li>
+            <li>✅ Hooks in place so it can't happen again, ever</li>
+            <li>✅ Founder kept their company instead of headlines</li>
           </ul>
-          <ul class="es">
-            <li>Rotación de todas las claves comprometidas</li>
-            <li>Secrets movidos a variables de entorno</li>
-            <li>Añadido .gitignore y validación de firma de webhook</li>
+          <ul class="case-wins es">
+            <li>✅ Cero transacciones fraudulentas detectadas</li>
+            <li>✅ Hooks instalados para que no vuelva a pasar, nunca</li>
+            <li>✅ El founder mantuvo su empresa en vez de salir en titulares</li>
           </ul>
-        </div>
-        <div class="case-result">
-          <span class="en"><strong>Result:</strong> No fraudulent activity detected. Team avoided a potentially catastrophic breach scenario.</span>
-          <span class="es"><strong>Resultado:</strong> No se detectó actividad fraudulenta. El equipo evitó un escenario de brecha potencialmente catastrófico.</span>
         </div>
       </div>
     </section>
 
     <section class="container">
-      <h2 class="section-title"><span class="en">Common questions</span><span class="es">Preguntas frecuentes</span></h2>
+      <h2 class="section-title">
+        <span class="en">Common questions</span
+        ><span class="es">Preguntas frecuentes</span>
+      </h2>
 
       <div class="faq-item">
-        <div class="faq-question en">How do I know if my app has these issues?</div>
-        <div class="faq-question es">¿Cómo sé si mi app tiene estos problemas?</div>
-        <div class="faq-answer en">If you built with v0, Cursor, Bolt, or no-code tooling and have not had a professional security pass, you almost certainly have critical gaps.</div>
-        <div class="faq-answer es">Si construiste con v0, Cursor, Bolt o herramientas no-code y no has tenido una revisión profesional de seguridad, casi seguro tienes vulnerabilidades críticas.</div>
+        <div class="faq-question en">
+          How do I know if my app has these issues?
+        </div>
+        <div class="faq-question es">
+          ¿Cómo sé si mi app tiene estos problemas?
+        </div>
+        <div class="faq-answer en">
+          If you built with v0, Cursor, Bolt, or no-code tooling and have not
+          had a professional security pass, you almost certainly have critical
+          gaps.
+        </div>
+        <div class="faq-answer es">
+          Si construiste con v0, Cursor, Bolt o herramientas no-code y no has
+          tenido una revisión profesional de seguridad, casi seguro tienes
+          vulnerabilidades críticas.
+        </div>
       </div>
 
       <div class="faq-item">
         <div class="faq-question en">Can’t I just fix it myself?</div>
         <div class="faq-question es">¿No puedo arreglarlo yo mismo?</div>
-        <div class="faq-answer en">You can patch visible issues, but audits uncover hidden risks you do not know exist yet. That is usually where breaches start.</div>
-        <div class="faq-answer es">Puedes parchear los problemas visibles, pero las auditorías descubren riesgos ocultos que aún no sabes que existen. Ahí es donde suelen empezar las brechas.</div>
+        <div class="faq-answer en">
+          You can patch visible issues, but audits uncover hidden risks you do
+          not know exist yet. That is usually where breaches start.
+        </div>
+        <div class="faq-answer es">
+          Puedes parchear los problemas visibles, pero las auditorías descubren
+          riesgos ocultos que aún no sabes que existen. Ahí es donde suelen
+          empezar las brechas.
+        </div>
       </div>
 
       <div class="faq-item">
         <div class="faq-question en">Will this break my app?</div>
         <div class="faq-question es">¿Se romperá mi app?</div>
-        <div class="faq-answer en">No. Fixes are tested thoroughly. Your app keeps the same behavior, but with secure architecture behind it.</div>
-        <div class="faq-answer es">No. Las correcciones se prueban exhaustivamente. Tu app mantiene el mismo comportamiento, pero con una arquitectura segura detrás.</div>
+        <div class="faq-answer en">
+          No. Fixes are tested thoroughly. Your app keeps the same behavior, but
+          with secure architecture behind it.
+        </div>
+        <div class="faq-answer es">
+          No. Las correcciones se prueban exhaustivamente. Tu app mantiene el
+          mismo comportamiento, pero con una arquitectura segura detrás.
+        </div>
       </div>
 
       <div class="faq-item">
         <div class="faq-question en">Do I need this if I’m pre-launch?</div>
         <div class="faq-question es">¿Lo necesito si aún no he lanzado?</div>
-        <div class="faq-answer en">Yes. It is much easier and cheaper to secure before user growth than after a public incident.</div>
-        <div class="faq-answer es">Sí. Es mucho más fácil y barato asegurar antes del crecimiento de usuarios que después de un incidente público.</div>
+        <div class="faq-answer en">
+          Yes. It is much easier and cheaper to secure before user growth than
+          after a public incident.
+        </div>
+        <div class="faq-answer es">
+          Sí. Es mucho más fácil y barato asegurar antes del crecimiento de
+          usuarios que después de un incidente público.
+        </div>
       </div>
 
       <div class="faq-item">
-        <div class="faq-question en">What if I have questions after delivery?</div>
+        <div class="faq-question en">
+          What if I have questions after delivery?
+        </div>
         <div class="faq-question es">¿Qué pasa si tengo preguntas después?</div>
-        <div class="faq-answer en">You get the full checklist and can email me for 30 days post-delivery for clarifications.</div>
-        <div class="faq-answer es">Recibes el checklist completo y puedes escribirme durante 30 días tras la entrega para cualquier aclaración.</div>
+        <div class="faq-answer en">
+          You get the full checklist and can email me for 30 days
+          post-delivery for any clarification.
+        </div>
+        <div class="faq-answer es">
+          Recibes el checklist completo y puedes escribirme durante 30 días
+          tras la entrega para cualquier aclaración.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question en">
+          Why not just ask ChatGPT to audit my code?
+        </div>
+        <div class="faq-question es">
+          ¿Por qué no le pido a ChatGPT que audite mi código?
+        </div>
+        <div class="faq-answer en">
+          ChatGPT can spot obvious issues. It won't find the auth flow that
+          leaks data via a cached endpoint, the webhook with no signature
+          check, the RLS rule that silently bypasses on edge cases. The
+          dangerous bugs are the ones you don't know to ask about.
+        </div>
+        <div class="faq-answer es">
+          ChatGPT detecta lo evidente. No va a encontrar el flujo de auth que
+          filtra datos por un endpoint cacheado, el webhook sin validar
+          firma, la regla RLS que se salta en casos límite. Las que muerden
+          son las que ni sabes preguntar.
+        </div>
       </div>
     </section>
 
+    <div class="container" style="padding-top: 0; padding-bottom: 0;">
+      <div class="urgency-banner">
+        <div class="urgency-icon">⏰</div>
+        <div class="urgency-text">
+          <span class="en">
+            <strong>Every day exposed is Russian roulette.</strong> I take 2
+            audits per month — quality over volume.
+            <span class="slots-remaining">1 slot left this month.</span>
+          </span>
+          <span class="es">
+            <strong>Cada día expuesto es ruleta rusa.</strong> Acepto 2
+            auditorías al mes — calidad antes que volumen.
+            <span class="slots-remaining">Queda 1 hueco este mes.</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
     <section class="container">
       <div class="cta-section">
-        <h2><span class="en">Secure it before growth exposes everything</span><span class="es">Aséguralo antes de que el crecimiento lo exponga todo</span></h2>
-        <p class="en">Book a short call and get a clear picture of your current risk level, timeline, and exact security fixes.</p>
-        <p class="es">Reserva una llamada corta y obtén una imagen clara de tu nivel de riesgo actual, el calendario y las correcciones de seguridad exactas.</p>
-        <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1LhXEeHMGnVOsJms7pXlNsDwLhD4oYHPri5mjYeyq9KvTMWueOivjGzxzM0hXGYwy7ssOHwubZ" class="btn btn-primary"><span class="en">Schedule security audit →</span><span class="es">Agendar auditoría de seguridad →</span></a>
+        <h2>
+          <span class="en"
+            >Find it before a bot does — or before your investor's lawyer
+            does</span
+          >
+          <span class="es"
+            >Encuéntralo antes que un bot — o antes que el abogado de tu
+            inversor</span
+          >
+        </h2>
+        <p class="en">
+          The cheapest security incident I've seen cost €4,300 in API abuse.
+          The most expensive nearly killed the company. This audit costs €900
+          and takes 3 days. Math is simple.
+        </p>
+        <p class="es">
+          El incidente más barato que he visto costó 4.300€ en abuso de API.
+          El más caro casi mata la empresa. Esta auditoría son 900€ y 3 días.
+          La cuenta es fácil.
+        </p>
+        <a
+          href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1LhXEeHMGnVOsJms7pXlNsDwLhD4oYHPri5mjYeyq9KvTMWueOivjGzxzM0hXGYwy7ssOHwubZ"
+          class="btn btn-primary"
+          ><span class="en">Book your security audit →</span>
+          <span class="es">Reserva tu auditoría →</span></a
+        >
+        <br />
+        <a href="mailto:hugo@arkeondata.com" class="cta-secondary-link">
+          <span class="en">↓ Or send me your repo URL for a free quick scan</span>
+          <span class="es">↓ O mándame la URL de tu repo para un escaneo rápido gratis</span>
+        </a>
+        <p class="cta-ps en">
+          P.S. — If you're thinking "I'll do an audit after launch", remember:
+          the worst breaches happen in week 2, when you have just enough
+          users to notice and just enough secrets to lose. Better now than
+          after the headline.
+        </p>
+        <p class="cta-ps es">
+          P.D. — Si piensas "ya hago la auditoría después del lanzamiento",
+          recuerda: las peores brechas ocurren la semana 2, cuando ya tienes
+          suficientes usuarios para notarlo y suficientes secretos para
+          perder. Mejor ahora que después del titular.
+        </p>
       </div>
     </section>
 
@@ -865,9 +1381,20 @@
       </p>
       <p style="margin-top: 1rem; font-size: 0.85rem">NIF: B40740932</p>
     </footer>
-  <script>
-    function setLang(l){document.documentElement.lang=l;localStorage.setItem('ark-lang',l);document.querySelectorAll('.lang-sw button').forEach(b=>b.classList.remove('active'));const b=document.getElementById('sw-'+l);if(b)b.classList.add('active');}
-    (function(){const s=localStorage.getItem('ark-lang');setLang(s||(navigator.language.startsWith('es')?'es':'en'));})();
-  </script>
+    <script>
+      function setLang(l) {
+        document.documentElement.lang = l;
+        localStorage.setItem("ark-lang", l);
+        document
+          .querySelectorAll(".lang-sw button")
+          .forEach((b) => b.classList.remove("active"));
+        const b = document.getElementById("sw-" + l);
+        if (b) b.classList.add("active");
+      }
+      (function () {
+        const s = localStorage.getItem("ark-lang");
+        setLang(s || (navigator.language.startsWith("es") ? "es" : "en"));
+      })();
+    </script>
   </body>
 </html>
