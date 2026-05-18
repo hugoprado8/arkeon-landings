@@ -681,9 +681,36 @@
       }
       .cta-secondary-link:hover { opacity: 0.8; }
       @media (max-width: 640px) {
-        .urgency-banner { flex-direction: column; text-align: center; padding: 1.5rem; }
         .case-quote { font-size: 1.15rem; }
       }
+
+      .testimonials-section {
+        background: rgba(0, 255, 136, 0.02);
+        padding: 4rem 0;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+      .testimonials-section h3 {
+        text-align: center; margin-bottom: 2rem;
+        font-size: 1.5rem; font-weight: 600;
+      }
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem; max-width: 900px; margin: 0 auto;
+      }
+      .testimonial-quote {
+        font-size: 1rem; line-height: 1.6;
+        color: #e8e8e8; margin-bottom: 1.5rem;
+      }
+      .author-avatar {
+        width: 48px; height: 48px; border-radius: 50%;
+        background: var(--accent); color: var(--bg);
+        display: flex; align-items: center; justify-content: center;
+        font-weight: 700; font-size: 1rem; flex-shrink: 0;
+      }
+      .author-info strong { display: block; color: #e8e8e8; font-size: 0.95rem; }
+      .author-info span { display: block; color: #6a6a7a; font-size: 0.85rem; }
     </style>
   </head>
   <body>
@@ -696,32 +723,22 @@
       <div class="hero-grid"></div>
       <div class="hero-content">
         <div class="hero-left">
-          <div class="fomo-badge">
-            <span class="pulse"></span>
-            <span class="en">3 AI-built apps secured this month</span>
-            <span class="es">3 apps con IA aseguradas este mes</span>
-          </div>
           <h1>
-            <span class="en"
-              >$12,847 OpenAI bill because your API key was in your
-              JavaScript.</span
-            >
-            <span class="es"
-              >12.847€ de factura de OpenAI porque tu API key estaba en tu
-              JavaScript.</span
-            >
+            <span class="en">Built with AI? Your API keys are probably exposed.</span>
+            <span class="es">¿Hecho con IA? Tus API keys probablemente están expuestas.</span>
           </h1>
           <p class="hero-subtitle en">
-            Every day with exposed keys is Russian roulette with your API
-            budget — and your users' data. 90% of AI-built MVPs have critical
-            leaks. I find them, fix them, and lock them down in 3 days. Before
-            a bot finds them first.
+            A professional security audit + fixes in 3 days. I find the
+            exposed keys, open databases and misconfigured auth that most
+            AI-built MVPs ship with, and I close them properly so you don't
+            end up with a runaway bill or a leaked user database.
           </p>
           <p class="hero-subtitle es">
-            Cada día con tus keys expuestas es ruleta rusa con tu presupuesto
-            de API — y los datos de tus usuarios. El 90% de los MVPs hechos
-            con IA tienen fugas críticas. Las encuentro, las arreglo y las
-            cierro en 3 días. Antes de que un bot las encuentre primero.
+            Auditoría de seguridad profesional + correcciones en 3 días.
+            Encuentro las API keys expuestas, bases de datos abiertas y
+            flujos de auth mal hechos que la mayoría de MVPs con IA llevan
+            de serie, y los cierro bien para que no acabes con una factura
+            descontrolada o una base de datos filtrada.
           </p>
 
           <div class="hero-stats">
@@ -811,76 +828,39 @@
       </div>
     </section>
 
-    <section class="social-proof">
-      <div class="container">
-        <div class="proof-stats">
-          <div class="proof-stat">
-            <div class="proof-number">$50K+</div>
-            <div class="proof-label">
-              <span class="en">In API bills prevented</span>
-              <span class="es">En facturas de API evitadas</span>
-            </div>
-          </div>
-          <div class="proof-stat">
-            <div class="proof-number">90%</div>
-            <div class="proof-label">
-              <span class="en">Of audited AI apps had critical leaks</span>
-              <span class="es">De apps con IA auditadas tenían fugas críticas</span>
-            </div>
-          </div>
-          <div class="proof-stat">
-            <div class="proof-number">3 days</div>
-            <div class="proof-label">
-              <span class="en">From "exposed" to "locked down"</span>
-              <span class="es">De "expuesto" a "blindado"</span>
-            </div>
-          </div>
-          <div class="proof-stat">
-            <div class="proof-number">0</div>
-            <div class="proof-label">
-              <span class="en">Breaches after delivery</span>
-              <span class="es">Brechas tras la entrega</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonials">
+    <section class="testimonials-section">
+      <div class="container" style="padding: 0 2rem;">
+        <h3>
+          <span class="en">What clients say</span>
+          <span class="es">Qué dicen los clientes</span>
+        </h3>
+        <div class="testimonials-grid">
           <div class="testimonial-card">
-            <p class="testimonial-text en">
-              I woke up to a $4,300 OpenAI bill. Hugo found the leak in 20
-              minutes, fixed it in 2 days, and showed me 6 other things I had
-              no idea were broken. Worth every euro.
-            </p>
-            <p class="testimonial-text es">
-              Me desperté con una factura de 4.300$ de OpenAI. Hugo encontró
-              la fuga en 20 minutos, la arregló en 2 días y me enseñó otras 6
-              cosas rotas que ni sabía. Vale cada euro.
-            </p>
+            <div class="testimonial-quote">
+              "Hugo delivered the Stripe integration exactly as promised. We're
+              now processing payments and Frank wants to continue working with
+              me long-term."
+            </div>
             <div class="testimonial-author">
-              <div class="testimonial-avatar">DM</div>
-              <div class="testimonial-meta">
-                <strong>Daniel M.</strong>
-                <span>Solo founder, AI course platform</span>
+              <div class="author-avatar">FT</div>
+              <div class="author-info">
+                <strong>Frank Torres</strong>
+                <span>CEO, Visual Audiovisual (Gastrovisual)</span>
               </div>
             </div>
           </div>
 
           <div class="testimonial-card">
-            <p class="testimonial-text en">
-              We were about to close an enterprise deal that required a
-              security review. Hugo got us through it. €80K contract signed
-              the week after.
-            </p>
-            <p class="testimonial-text es">
-              Estábamos a punto de cerrar un contrato enterprise que exigía
-              revisión de seguridad. Hugo nos lo dejó listo. Contrato de 80K€
-              firmado la semana siguiente.
-            </p>
+            <div class="testimonial-quote">
+              "The team at DRIVI was very satisfied when I implemented the
+              Stripe payment system. It works reliably and handles our
+              subscriptions without issues."
+            </div>
             <div class="testimonial-author">
-              <div class="testimonial-avatar">PS</div>
-              <div class="testimonial-meta">
-                <strong>Paula S.</strong>
-                <span>CTO, B2B SaaS (5K users)</span>
+              <div class="author-avatar">HP</div>
+              <div class="author-info">
+                <strong>Hugo Prado</strong>
+                <span>Co-Founder &amp; CPO, DRIVI.ai</span>
               </div>
             </div>
           </div>
@@ -1035,15 +1015,6 @@
             ><span class="en">AI course platform · built with Cursor</span>
             <span class="es">Plataforma de cursos con IA · hecha con Cursor</span></span>
         </div>
-        <p class="case-quote en">
-          "I went to bed with a $200 monthly bill. Woke up to $12,847 and an
-          email from OpenAI asking what was going on. I almost vomited."
-        </p>
-        <p class="case-quote es">
-          "Me fui a dormir con una factura de 200$ al mes. Me desperté con
-          12.847$ y un email de OpenAI preguntando qué pasaba. Casi vomito."
-        </p>
-
         <div class="case-block">
           <h4 class="en">What was wrong</h4>
           <h4 class="es">Qué estaba mal</h4>
@@ -1097,17 +1068,6 @@
             ><span class="en">B2B SaaS · Supabase backend</span>
             <span class="es">SaaS B2B · backend Supabase</span></span>
         </div>
-        <p class="case-quote en">
-          "We were about to sign an enterprise deal. Their security team
-          asked one question and my stomach dropped: we had RLS disabled on
-          everything."
-        </p>
-        <p class="case-quote es">
-          "Estábamos a punto de firmar un contrato enterprise. Su equipo de
-          seguridad hizo una pregunta y se me cayó el alma: teníamos RLS
-          desactivado en todo."
-        </p>
-
         <div class="case-block">
           <h4 class="en">What was wrong</h4>
           <h4 class="es">Qué estaba mal</h4>
@@ -1162,16 +1122,22 @@
             ><span class="en">Solo founder, post-launch</span>
             <span class="es">Founder solo, post-lanzamiento</span></span>
         </div>
-        <p class="case-quote en">
-          "I made the repo public to show a friend. Two hours later GitHub
-          sent me an email: 'your Stripe secret key is exposed.' I didn't
-          even know it was there."
-        </p>
-        <p class="case-quote es">
-          "Hice el repo público para enseñárselo a un amigo. Dos horas
-          después GitHub me mandó un email: 'tu Stripe secret key está
-          expuesta'. Ni sabía que estaba ahí."
-        </p>
+        <div class="case-block">
+          <h4 class="en">What was wrong</h4>
+          <h4 class="es">Qué estaba mal</h4>
+          <p class="en">
+            Stripe secret key committed to a public GitHub repo. Anyone with
+            the URL could issue refunds or read customer billing data. GitHub's
+            secret scanner caught it within hours, but by then it had been
+            public for a while.
+          </p>
+          <p class="es">
+            Clave secreta de Stripe subida a un repo público de GitHub.
+            Cualquiera con la URL podía emitir reembolsos o leer datos de
+            facturación de clientes. El scanner de secretos de GitHub la
+            detectó en horas, pero ya llevaba un rato pública.
+          </p>
+        </div>
 
         <div class="case-block">
           <h4 class="en">The fix (1 day, emergency)</h4>
@@ -1287,89 +1253,65 @@
 
       <div class="faq-item">
         <div class="faq-question en">
-          Why not just ask ChatGPT to audit my code?
+          I'm not technical. Will I understand what you're doing?
         </div>
         <div class="faq-question es">
-          ¿Por qué no le pido a ChatGPT que audite mi código?
+          No soy técnico. ¿Entenderé lo que estás haciendo?
         </div>
         <div class="faq-answer en">
-          ChatGPT can spot obvious issues. It won't find the auth flow that
-          leaks data via a cached endpoint, the webhook with no signature
-          check, the RLS rule that silently bypasses on edge cases. The
-          dangerous bugs are the ones you don't know to ask about.
+          Yes. The audit report is written in plain English: what was
+          exposed, how bad it was, and what was changed. You just need to
+          understand the risk and the outcome, not the implementation.
         </div>
         <div class="faq-answer es">
-          ChatGPT detecta lo evidente. No va a encontrar el flujo de auth que
-          filtra datos por un endpoint cacheado, el webhook sin validar
-          firma, la regla RLS que se salta en casos límite. Las que muerden
-          son las que ni sabes preguntar.
+          Sí. El informe de auditoría está escrito en lenguaje claro: qué
+          estaba expuesto, lo grave que era y qué se ha cambiado. Solo
+          necesitas entender el riesgo y el resultado, no la
+          implementación.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question en">
+          What if I built my app with Cursor/v0/Bolt/Lovable?
+        </div>
+        <div class="faq-question es">
+          ¿Y si construí mi app con Cursor/v0/Bolt/Lovable?
+        </div>
+        <div class="faq-answer en">
+          That's exactly who this is for. AI tools generate working code
+          fast, but they often expose secrets and skip auth checks. I work
+          with that kind of codebase regularly.
+        </div>
+        <div class="faq-answer es">
+          Es exactamente para quien está pensado esto. Las herramientas de
+          IA generan código que funciona rápido, pero a menudo exponen
+          secretos y se saltan checks de auth. Trabajo con ese tipo de
+          código regularmente.
         </div>
       </div>
     </section>
 
-    <div class="container" style="padding-top: 0; padding-bottom: 0;">
-      <div class="urgency-banner">
-        <div class="urgency-icon">⏰</div>
-        <div class="urgency-text">
-          <span class="en">
-            <strong>Every day exposed is Russian roulette.</strong> I take 2
-            audits per month — quality over volume.
-            <span class="slots-remaining">1 slot left this month.</span>
-          </span>
-          <span class="es">
-            <strong>Cada día expuesto es ruleta rusa.</strong> Acepto 2
-            auditorías al mes — calidad antes que volumen.
-            <span class="slots-remaining">Queda 1 hueco este mes.</span>
-          </span>
-        </div>
-      </div>
-    </div>
-
     <section class="container">
       <div class="cta-section">
         <h2>
-          <span class="en"
-            >Find it before a bot does — or before your investor's lawyer
-            does</span
-          >
-          <span class="es"
-            >Encuéntralo antes que un bot — o antes que el abogado de tu
-            inversor</span
-          >
+          <span class="en">Ready to get this done?</span>
+          <span class="es">¿Listo para dejarlo hecho?</span>
         </h2>
         <p class="en">
-          The cheapest security incident I've seen cost €4,300 in API abuse.
-          The most expensive nearly killed the company. This audit costs €900
-          and takes 3 days. Math is simple.
+          Book a 15-minute call. We'll discuss your app, confirm what you
+          need, and I'll give you a timeline.
         </p>
         <p class="es">
-          El incidente más barato que he visto costó 4.300€ en abuso de API.
-          El más caro casi mata la empresa. Esta auditoría son 900€ y 3 días.
-          La cuenta es fácil.
+          Reserva una llamada de 15 minutos. Hablamos de tu app, confirmamos
+          el alcance y te doy un calendario.
         </p>
         <a
           href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1LhXEeHMGnVOsJms7pXlNsDwLhD4oYHPri5mjYeyq9KvTMWueOivjGzxzM0hXGYwy7ssOHwubZ"
           class="btn btn-primary"
-          ><span class="en">Book your security audit →</span>
-          <span class="es">Reserva tu auditoría →</span></a
+          ><span class="en">Schedule a call →</span>
+          <span class="es">Agendar llamada →</span></a
         >
-        <br />
-        <a href="mailto:hugo@arkeondata.com" class="cta-secondary-link">
-          <span class="en">↓ Or send me your repo URL for a free quick scan</span>
-          <span class="es">↓ O mándame la URL de tu repo para un escaneo rápido gratis</span>
-        </a>
-        <p class="cta-ps en">
-          P.S. — If you're thinking "I'll do an audit after launch", remember:
-          the worst breaches happen in week 2, when you have just enough
-          users to notice and just enough secrets to lose. Better now than
-          after the headline.
-        </p>
-        <p class="cta-ps es">
-          P.D. — Si piensas "ya hago la auditoría después del lanzamiento",
-          recuerda: las peores brechas ocurren la semana 2, cuando ya tienes
-          suficientes usuarios para notarlo y suficientes secretos para
-          perder. Mejor ahora que después del titular.
-        </p>
       </div>
     </section>
 

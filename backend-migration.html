@@ -677,9 +677,36 @@
       }
       .cta-secondary-link:hover { opacity: 0.8; }
       @media (max-width: 640px) {
-        .urgency-banner { flex-direction: column; text-align: center; padding: 1.5rem; }
         .case-quote { font-size: 1.15rem; }
       }
+
+      .testimonials-section {
+        background: rgba(0, 255, 136, 0.02);
+        padding: 4rem 0;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+      .testimonials-section h3 {
+        text-align: center; margin-bottom: 2rem;
+        font-size: 1.5rem; font-weight: 600;
+      }
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem; max-width: 900px; margin: 0 auto;
+      }
+      .testimonial-quote {
+        font-size: 1rem; line-height: 1.6;
+        color: #e8e8e8; margin-bottom: 1.5rem;
+      }
+      .author-avatar {
+        width: 48px; height: 48px; border-radius: 50%;
+        background: var(--accent); color: var(--bg);
+        display: flex; align-items: center; justify-content: center;
+        font-weight: 700; font-size: 1rem; flex-shrink: 0;
+      }
+      .author-info strong { display: block; color: #e8e8e8; font-size: 0.95rem; }
+      .author-info span { display: block; color: #6a6a7a; font-size: 0.85rem; }
     </style>
   </head>
   <body>
@@ -692,31 +719,21 @@
       <div class="hero-grid"></div>
       <div class="hero-content">
         <div class="hero-left">
-          <div class="fomo-badge">
-            <span class="pulse"></span>
-            <span class="en">2 apps scaled past 1,000 users this month</span>
-            <span class="es">2 apps escalaron a +1.000 usuarios este mes</span>
-          </div>
           <h1>
-            <span class="en"
-              >100 users: fast. 500 users: slow. 1,000 users: dead.</span
-            >
-            <span class="es"
-              >100 usuarios: rápido. 500 usuarios: lento. 1.000 usuarios:
-              muerto.</span
-            >
+            <span class="en">100 users: fast. 500 users: slow. 1,000 users: dead.</span>
+            <span class="es">100 usuarios: rápido. 500 usuarios: lento. 1.000 usuarios: muerto.</span>
           </h1>
           <p class="hero-subtitle en">
-            Users don't wait for slow apps. They switch to your competitor in
-            8 seconds. Your AI-built MVP doesn't scale because everything
-            runs in the browser. I move the work to a proper backend in 7
-            days — same UI, 10× faster, ready for 10,000 users.
+            Your AI-built MVP slows down because everything runs in the
+            user's browser. I move the heavy work to a proper backend in 7
+            days — same UI, much faster, and ready to grow without
+            rewriting from scratch.
           </p>
           <p class="hero-subtitle es">
-            Los usuarios no esperan apps lentas. Se van con tu competencia en
-            8 segundos. Tu MVP hecho con IA no escala porque todo corre en el
-            navegador. Muevo la lógica a un backend de verdad en 7 días —
-            misma UI, 10 veces más rápido, listo para 10.000 usuarios.
+            Tu MVP hecho con IA va más lento porque todo corre en el
+            navegador del usuario. Muevo la lógica pesada a un backend en
+            condiciones en 7 días — misma UI, mucho más rápido, y listo
+            para crecer sin reescribir desde cero.
           </p>
 
           <div class="hero-stats">
@@ -818,78 +835,39 @@
       </div>
     </section>
 
-    <section class="social-proof">
-      <div class="container">
-        <div class="proof-stats">
-          <div class="proof-stat">
-            <div class="proof-number">10×</div>
-            <div class="proof-label">
-              <span class="en">Average speed gain after migration</span>
-              <span class="es">Mejora media de velocidad post-migración</span>
-            </div>
-          </div>
-          <div class="proof-stat">
-            <div class="proof-number">-70%</div>
-            <div class="proof-label">
-              <span class="en">Average reduction in DB/hosting bills</span>
-              <span class="es">Reducción media en factura de BD/hosting</span>
-            </div>
-          </div>
-          <div class="proof-stat">
-            <div class="proof-number">5,000+</div>
-            <div class="proof-label">
-              <span class="en">Concurrent users supported post-migration</span>
-              <span class="es">Usuarios concurrentes soportados tras migrar</span>
-            </div>
-          </div>
-          <div class="proof-stat">
-            <div class="proof-number">7 days</div>
-            <div class="proof-label">
-              <span class="en">App stays live the whole time</span>
-              <span class="es">La app sigue online todo el tiempo</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonials">
+    <section class="testimonials-section">
+      <div class="container" style="padding: 0 2rem;">
+        <h3>
+          <span class="en">What clients say</span>
+          <span class="es">Qué dicen los clientes</span>
+        </h3>
+        <div class="testimonials-grid">
           <div class="testimonial-card">
-            <p class="testimonial-text en">
-              We were one viral TikTok away from disaster. App took 8 seconds
-              to load, Supabase bill was killing us. Hugo migrated the heavy
-              logic to a backend in a week. Now we handle peaks without
-              breaking a sweat.
-            </p>
-            <p class="testimonial-text es">
-              Estábamos a un TikTok viral del desastre. La app tardaba 8
-              segundos en cargar, Supabase nos comía. Hugo migró la lógica
-              pesada al backend en una semana. Ahora aguantamos picos sin
-              despeinarnos.
-            </p>
+            <div class="testimonial-quote">
+              "Hugo delivered the Stripe integration exactly as promised. We're
+              now processing payments and Frank wants to continue working with
+              me long-term."
+            </div>
             <div class="testimonial-author">
-              <div class="testimonial-avatar">LP</div>
-              <div class="testimonial-meta">
-                <strong>Lucía P.</strong>
-                <span>Founder, B2C SaaS</span>
+              <div class="author-avatar">FT</div>
+              <div class="author-info">
+                <strong>Frank Torres</strong>
+                <span>CEO, Visual Audiovisual (Gastrovisual)</span>
               </div>
             </div>
           </div>
 
           <div class="testimonial-card">
-            <p class="testimonial-text en">
-              My course platform was unusable past 200 students. Hugo
-              rewrote the data layer properly. Now we have 2,000+ active
-              users and the dashboard loads in under a second.
-            </p>
-            <p class="testimonial-text es">
-              Mi plataforma de cursos era inusable pasando los 200 alumnos.
-              Hugo reescribió bien la capa de datos. Hoy tenemos +2.000
-              activos y el dashboard carga en menos de un segundo.
-            </p>
+            <div class="testimonial-quote">
+              "The team at DRIVI was very satisfied when I implemented the
+              Stripe payment system. It works reliably and handles our
+              subscriptions without issues."
+            </div>
             <div class="testimonial-author">
-              <div class="testimonial-avatar">RG</div>
-              <div class="testimonial-meta">
-                <strong>Roberto G.</strong>
-                <span>Founder, Edtech</span>
+              <div class="author-avatar">HP</div>
+              <div class="author-info">
+                <strong>Hugo Prado</strong>
+                <span>Co-Founder &amp; CPO, DRIVI.ai</span>
               </div>
             </div>
           </div>
@@ -1042,16 +1020,6 @@
             ><span class="en">Course platform · built with Lovable</span>
             <span class="es">Plataforma de cursos · hecha con Lovable</span></span>
         </div>
-        <p class="case-quote en">
-          "Students started emailing 'is the platform down?' It wasn't down.
-          It was just so slow they assumed it broke."
-        </p>
-        <p class="case-quote es">
-          "Los alumnos empezaron a mandar emails de '¿está caída la
-          plataforma?' No estaba caída. Iba tan lenta que pensaban que se
-          había roto."
-        </p>
-
         <div class="case-block">
           <h4 class="en">What was wrong</h4>
           <h4 class="es">Qué estaba mal</h4>
@@ -1103,15 +1071,6 @@
             ><span class="en">Growing B2C SaaS · went semi-viral</span>
             <span class="es">SaaS B2C en crecimiento · semi-viral</span></span>
         </div>
-        <p class="case-quote en">
-          "We got featured on a newsletter, traffic spiked, and the app just…
-          stopped working. We watched signups die in real time."
-        </p>
-        <p class="case-quote es">
-          "Salimos en una newsletter, subió el tráfico y la app simplemente…
-          dejó de funcionar. Vimos cómo morían los signups en directo."
-        </p>
-
         <div class="case-block">
           <h4 class="en">What was wrong</h4>
           <h4 class="es">Qué estaba mal</h4>
@@ -1165,15 +1124,6 @@
             ><span class="en">Data-heavy SaaS</span>
             <span class="es">SaaS data-intensive</span></span>
         </div>
-        <p class="case-quote en">
-          "Our infra bill grew faster than our revenue. We were getting
-          punished for users actually using the product."
-        </p>
-        <p class="case-quote es">
-          "Nuestra factura de infra crecía más rápido que los ingresos. Nos
-          castigaban por que los usuarios usaran el producto."
-        </p>
-
         <div class="case-block">
           <h4 class="en">What was wrong</h4>
           <h4 class="es">Qué estaba mal</h4>
@@ -1317,92 +1267,66 @@
 
       <div class="faq-item">
         <div class="faq-question en">
-          How do I know if I really need a backend?
+          I'm not technical. Will I understand what you're doing?
         </div>
         <div class="faq-question es">
-          ¿Cómo sé si realmente necesito un backend?
+          No soy técnico. ¿Entenderé lo que estás haciendo?
         </div>
         <div class="faq-answer en">
-          Quick checklist: app feels slower the more data it has? Bills go
-          up while revenue doesn't? Bigger users complaining about load
-          times? Frontend code knows your Stripe or OpenAI key? Any "yes"
-          means you need this. Two yeses means you needed it yesterday.
+          Yes. I explain everything in plain English. You just need to know
+          the outcome (your app is faster, stable under more users, and
+          your hosting bill makes sense), not the technical details.
         </div>
         <div class="faq-answer es">
-          Checklist rápido: ¿la app va más lenta cuanto más datos tiene?
-          ¿La factura sube y los ingresos no? ¿Los clientes grandes se
-          quejan de la velocidad? ¿Tu código frontend conoce tu key de
-          Stripe u OpenAI? Cualquier "sí" significa que lo necesitas. Dos
-          "sí" significa que lo necesitabas ayer.
+          Sí. Te lo explico todo en lenguaje claro. Solo necesitas entender
+          el resultado (tu app va más rápido, aguanta más usuarios y la
+          factura de hosting tiene sentido), no los detalles técnicos.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question en">
+          What if I built my app with Cursor/v0/Bolt/Lovable?
+        </div>
+        <div class="faq-question es">
+          ¿Y si construí mi app con Cursor/v0/Bolt/Lovable?
+        </div>
+        <div class="faq-answer en">
+          That's exactly who this is for. AI tools build great frontends
+          fast but rarely put the heavy logic where it belongs. I work
+          with that kind of codebase regularly and migrate incrementally so
+          your app keeps working the whole time.
+        </div>
+        <div class="faq-answer es">
+          Es exactamente para quien está pensado esto. Las herramientas de
+          IA construyen frontends rápido pero rara vez ponen la lógica
+          pesada donde debe ir. Trabajo con ese tipo de código
+          regularmente y migro de forma incremental para que tu app siga
+          funcionando todo el tiempo.
         </div>
       </div>
     </section>
 
-    <div class="container" style="padding-top: 0; padding-bottom: 0;">
-      <div class="urgency-banner">
-        <div class="urgency-icon">⏰</div>
-        <div class="urgency-text">
-          <span class="en">
-            <strong>Limited availability:</strong> I only take 2 migration
-            sprints per month — these are demanding projects.
-            <span class="slots-remaining">1 slot left this month.</span>
-          </span>
-          <span class="es">
-            <strong>Disponibilidad limitada:</strong> solo acepto 2 sprints
-            de migración al mes — son proyectos exigentes.
-            <span class="slots-remaining">Queda 1 hueco este mes.</span>
-          </span>
-        </div>
-      </div>
-    </div>
-
     <section class="container">
       <div class="cta-section">
         <h2>
-          <span class="en"
-            >Users switch to your competitor in 8 seconds. Your app loads
-            in 10.</span
-          >
-          <span class="es"
-            >Los usuarios se van con tu competencia en 8 segundos. Tu app
-            carga en 10.</span
-          >
+          <span class="en">Ready to get this done?</span>
+          <span class="es">¿Listo para dejarlo hecho?</span>
         </h2>
         <p class="en">
-          Every week you wait is more users hitting the slow wall and
-          bouncing. More bills you can't justify. More features you can't
-          ship because the architecture is fighting you. Fix the foundation
-          now, scale forever.
+          Book a 15-minute call. We'll discuss your app, confirm what you
+          need, and I'll give you a timeline.
         </p>
         <p class="es">
-          Cada semana que esperas son más usuarios chocando contra el muro
-          y yéndose. Más facturas que no puedes justificar. Más features
-          que no puedes lanzar porque la arquitectura te pelea. Arregla la
-          base ahora, escala para siempre.
+          Reserva una llamada de 15 minutos. Hablamos de tu app, confirmamos
+          el alcance y te doy un calendario.
         </p>
         <a
           href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1LhXEeHMGnVOsJms7pXlNsDwLhD4oYHPri5mjYeyq9KvTMWueOivjGzxzM0hXGYwy7ssOHwubZ"
           class="btn btn-primary"
-          ><span class="en">Book your migration sprint →</span>
-          <span class="es">Reserva tu sprint de migración →</span></a
+          ><span class="en">Schedule a call →</span>
+          <span class="es">Agendar llamada →</span></a
         >
-        <br />
-        <a href="mailto:hugo@arkeondata.com" class="cta-secondary-link">
-          <span class="en">↓ Or send me your app URL for a free quick audit</span>
-          <span class="es">↓ O mándame la URL de tu app para una auditoría rápida gratis</span>
-        </a>
-        <p class="cta-ps en">
-          P.S. — Every founder who told me "I'll migrate when I hit 1,000
-          users" ended up paying 3× more in lost users and emergency fixes
-          than they would have paid for the migration. Don't wait for the
-          wall. You won't see it coming.
-        </p>
-        <p class="cta-ps es">
-          P.D. — Cada founder que me dijo "ya migro cuando llegue a 1.000
-          usuarios" acabó pagando 3 veces más en usuarios perdidos y
-          parches de urgencia que lo que habría pagado por la migración. No
-          esperes al muro. No lo vas a ver venir.
-        </p>
       </div>
     </section>
 

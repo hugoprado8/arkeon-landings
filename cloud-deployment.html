@@ -672,9 +672,36 @@
       }
       .cta-secondary-link:hover { opacity: 0.8; }
       @media (max-width: 640px) {
-        .urgency-banner { flex-direction: column; text-align: center; padding: 1.5rem; }
         .case-quote { font-size: 1.15rem; }
       }
+
+      .testimonials-section {
+        background: rgba(0, 255, 136, 0.02);
+        padding: 4rem 0;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+      .testimonials-section h3 {
+        text-align: center; margin-bottom: 2rem;
+        font-size: 1.5rem; font-weight: 600;
+      }
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem; max-width: 900px; margin: 0 auto;
+      }
+      .testimonial-quote {
+        font-size: 1rem; line-height: 1.6;
+        color: #e8e8e8; margin-bottom: 1.5rem;
+      }
+      .author-avatar {
+        width: 48px; height: 48px; border-radius: 50%;
+        background: var(--accent); color: var(--bg);
+        display: flex; align-items: center; justify-content: center;
+        font-weight: 700; font-size: 1rem; flex-shrink: 0;
+      }
+      .author-info strong { display: block; color: #e8e8e8; font-size: 0.95rem; }
+      .author-info span { display: block; color: #6a6a7a; font-size: 0.85rem; }
     </style>
   </head>
   <body>
@@ -687,32 +714,21 @@
       <div class="hero-grid"></div>
       <div class="hero-content">
         <div class="hero-left">
-          <div class="fomo-badge">
-            <span class="pulse"></span>
-            <span class="en">4 AI-built apps shipped to production this month</span>
-            <span class="es">4 apps hechas con IA en producción este mes</span>
-          </div>
           <h1>
-            <span class="es"
-              >Tu app funciona en localhost. Tu reunión con el inversor es
-              mañana.</span
-            >
-            <span class="en"
-              >Your MVP works on localhost. Your investor meeting is
-              tomorrow.</span
-            >
+            <span class="en">localhost:3000 works. Your customers can't access it.</span>
+            <span class="es">localhost:3000 funciona. Tus clientes no pueden acceder.</span>
           </h1>
-          <p class="hero-subtitle es">
-            Mostrar <code>localhost:3000</code> en una demo mata tu
-            credibilidad al instante. Pongo tu app online — con tu dominio,
-            SSL y estable bajo usuarios reales — en 7 días. Sin que tengas que
-            tocar AWS, Docker, ni gritarle a la terminal.
-          </p>
           <p class="hero-subtitle en">
-            Showing <code>localhost:3000</code> in a demo kills your
-            credibility on the spot. I put your app online — your domain, SSL,
-            stable under real users — in 7 days. Without you having to touch
-            AWS, Docker, or scream at a terminal.
+            I put your app online properly in 7 days — your domain, SSL,
+            backups, monitoring, and the ability to ship updates without
+            breaking things. You stop worrying about infrastructure and go
+            back to your product.
+          </p>
+          <p class="hero-subtitle es">
+            Pongo tu app online en condiciones en 7 días — tu dominio, SSL,
+            backups, monitorización y la posibilidad de subir cambios sin
+            romper nada. Dejas de pelearte con infraestructura y vuelves a
+            centrarte en el producto.
           </p>
 
           <div class="hero-stats">
@@ -833,76 +849,39 @@
       </div>
     </section>
 
-    <section class="social-proof">
-      <div class="container">
-        <div class="proof-stats">
-          <div class="proof-stat">
-            <div class="proof-number">15+</div>
-            <div class="proof-label">
-              <span class="es">Apps en producción este año</span>
-              <span class="en">Apps shipped to production this year</span>
-            </div>
-          </div>
-          <div class="proof-stat">
-            <div class="proof-number">99.9%</div>
-            <div class="proof-label">
-              <span class="es">Uptime medio post-lanzamiento</span>
-              <span class="en">Average uptime after launch</span>
-            </div>
-          </div>
-          <div class="proof-stat">
-            <div class="proof-number">7 días</div>
-            <div class="proof-label">
-              <span class="es">De "localhost" a "compártelo con todos"</span>
-              <span class="en">From "localhost" to "share it with everyone"</span>
-            </div>
-          </div>
-          <div class="proof-stat">
-            <div class="proof-number">0</div>
-            <div class="proof-label">
-              <span class="es">Conocimiento técnico que necesitas</span>
-              <span class="en">Technical knowledge you need</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonials">
+    <section class="testimonials-section">
+      <div class="container" style="padding: 0 2rem;">
+        <h3>
+          <span class="en">What clients say</span>
+          <span class="es">Qué dicen los clientes</span>
+        </h3>
+        <div class="testimonials-grid">
           <div class="testimonial-card">
-            <p class="testimonial-text es">
-              Tenía la app lista pero llevaba 2 meses bloqueado intentando
-              ponerla online. Hugo la dejó en producción con mi dominio en una
-              semana. Ese mismo día empezamos a cerrar clientes.
-            </p>
-            <p class="testimonial-text en">
-              My app was ready but I was stuck for 2 months trying to put it
-              online. Hugo had it in production with my domain in a week. We
-              started closing customers that same day.
-            </p>
+            <div class="testimonial-quote">
+              "Hugo delivered the Stripe integration exactly as promised. We're
+              now processing payments and Frank wants to continue working with
+              me long-term."
+            </div>
             <div class="testimonial-author">
-              <div class="testimonial-avatar">MA</div>
-              <div class="testimonial-meta">
-                <strong>Marc Aragón</strong>
-                <span>Founder, AI SaaS</span>
+              <div class="author-avatar">FT</div>
+              <div class="author-info">
+                <strong>Frank Torres</strong>
+                <span>CEO, Visual Audiovisual (Gastrovisual)</span>
               </div>
             </div>
           </div>
 
           <div class="testimonial-card">
-            <p class="testimonial-text es">
-              Construí el MVP con Cursor y no tenía ni idea de cómo desplegarlo.
-              Hugo me lo dejó listo, con backups, monitoring y una guía simple.
-              Hoy gestiono yo todo sin saber tocar un servidor.
-            </p>
-            <p class="testimonial-text en">
-              I built the MVP with Cursor and had no clue how to deploy it.
-              Hugo got it live with backups, monitoring and a simple guide.
-              Today I run everything myself without touching a server.
-            </p>
+            <div class="testimonial-quote">
+              "The team at DRIVI was very satisfied when I implemented the
+              Stripe payment system. It works reliably and handles our
+              subscriptions without issues."
+            </div>
             <div class="testimonial-author">
-              <div class="testimonial-avatar">CR</div>
-              <div class="testimonial-meta">
-                <strong>Clara Ruiz</strong>
-                <span>Solo founder</span>
+              <div class="author-avatar">HP</div>
+              <div class="author-info">
+                <strong>Hugo Prado</strong>
+                <span>Co-Founder &amp; CPO, DRIVI.ai</span>
               </div>
             </div>
           </div>
@@ -1056,29 +1035,20 @@
           <span class="case-tag">AI SaaS</span>
         </div>
 
-        <p class="case-quote es">
-          "Tenía la app funcionando en mi portátil. Llevaba 2 meses leyendo
-          documentación de AWS sin entender nada. Me daba pánico tocar algo y
-          romperlo."
-        </p>
-        <p class="case-quote en">
-          "I had the app working on my laptop. I'd been reading AWS docs for 2
-          months without understanding a thing. I was terrified of touching
-          anything."
-        </p>
-
         <div class="case-block">
-          <h4 class="es">El punto de no retorno</h4>
-          <h4 class="en">The breaking point</h4>
+          <h4 class="es">Situación</h4>
+          <h4 class="en">The situation</h4>
           <p class="es">
-            Tenía una demo con un inversor y solo podía enseñar
-            <code>localhost:3000</code>. El inversor pasó. "Cuando esté online
-            hablamos."
+            Founder no técnico con una app funcional construida con
+            herramientas tipo Cursor/Lovable. Todo corría en el portátil y
+            no había forma de enseñarla a un usuario, un cliente o un
+            inversor sin hacer una llamada compartiendo pantalla.
           </p>
           <p class="en">
-            They had an investor demo and could only show
-            <code>localhost:3000</code>. The investor passed. "Talk to me when
-            it's live."
+            Non-technical founder with a working app built with tools like
+            Cursor/Lovable. Everything ran on their laptop and there was no
+            way to show it to a user, customer, or investor without doing a
+            screenshare call.
           </p>
         </div>
 
@@ -1213,82 +1183,63 @@
 
       <div class="faq-item">
         <div class="faq-question es">
-          ¿Por qué no contrato a alguien por 200€ en Fiverr?
+          No soy técnico. ¿Entenderé lo que estás haciendo?
         </div>
         <div class="faq-question en">
-          Why not hire someone on Fiverr for €200?
+          I'm not technical. Will I understand what you're doing?
         </div>
         <div class="faq-answer es">
-          Puedes. Lo que suele pasar: pagas 200€ → te lo despliegan "como
-          sea" → primera caída a las 3 am sin saber por qué → pagas a otro
-          900€ para arreglarlo. Aquí pagas una vez, queda bien hecho, y tienes
-          documentación para mantenerlo tú solo.
+          Sí. Te lo explico todo en lenguaje claro. Solo necesitas saber el
+          resultado (tu app accesible online, con tu dominio, estable), no
+          los detalles técnicos de cómo se hace.
         </div>
         <div class="faq-answer en">
-          You can. Here's what usually happens: you pay €200 → it gets
-          deployed "somehow" → first crash at 3am with no clue why → you pay
-          someone else €900 to fix it. Here you pay once, it's done right, and
-          you get docs to maintain it yourself.
+          Yes. I explain everything in plain English. You just need to know
+          the outcome (your app online, on your domain, stable), not the
+          technical details of how it gets there.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question es">
+          ¿Y si construí mi app con Cursor/v0/Bolt/Lovable?
+        </div>
+        <div class="faq-question en">
+          What if I built my app with Cursor/v0/Bolt/Lovable?
+        </div>
+        <div class="faq-answer es">
+          Perfecto. Es exactamente para quien está pensado esto. Trabajo
+          regularmente con código generado por IA y sé cómo desplegarlo
+          bien sin tener que reescribir tu app.
+        </div>
+        <div class="faq-answer en">
+          Perfect. That's exactly who this is for. I work with AI-generated
+          code regularly and know how to deploy it properly without having
+          to rewrite your app.
         </div>
       </div>
     </section>
 
-    <div class="container" style="padding-top: 0; padding-bottom: 0;">
-      <div class="urgency-banner">
-        <div class="urgency-icon">⏰</div>
-        <div class="urgency-text">
-          <span class="es">
-            <strong>Disponibilidad limitada:</strong> solo acepto 2 sprints al
-            mes para garantizar la calidad.
-            <span class="slots-remaining">Queda 1 hueco este mes.</span>
-          </span>
-          <span class="en">
-            <strong>Limited availability:</strong> I only take 2 sprints per
-            month to guarantee quality.
-            <span class="slots-remaining">1 slot left this month.</span>
-          </span>
-        </div>
-      </div>
-    </div>
-
     <section class="container">
       <div class="cta-section">
         <h2>
-          <span class="es">Tu app no existe hasta que está online</span>
-          <span class="en">Your app doesn't exist until it's online</span>
+          <span class="es">¿Listo para dejarlo hecho?</span>
+          <span class="en">Ready to get this done?</span>
         </h2>
         <p class="es">
-          Cada semana más en localhost es una semana sin usuarios, sin
-          feedback, sin ingresos y sin la siguiente reunión con un inversor.
-          ¿Cuánto más vas a esperar?
+          Reserva una llamada de 15 minutos. Hablamos de tu app, confirmamos
+          el alcance y te doy un calendario.
         </p>
         <p class="en">
-          Every extra week on localhost is a week without users, without
-          feedback, without revenue, and without the next investor meeting.
-          How much longer can you wait?
+          Book a 15-minute call. We'll discuss your app, confirm what you
+          need, and I'll give you a timeline.
         </p>
         <a
           href="https://calendar.app.google/WmTZX6wxqDUmcjMcA"
           class="btn btn-primary"
-          ><span class="es">Reserva tu sprint de despliegue →</span>
-          <span class="en">Book your deployment sprint →</span></a
+          ><span class="es">Agendar llamada →</span>
+          <span class="en">Schedule a call →</span></a
         >
-        <br />
-        <a href="mailto:hugo@arkeondata.com" class="cta-secondary-link">
-          <span class="es">↓ O mándame el link de tu repo primero (sin llamada)</span>
-          <span class="en">↓ Or send me your repo URL first (no call needed)</span>
-        </a>
-        <p class="cta-ps es">
-          P.D. — Si sigues pensando "lo despliego yo este finde", recuerda:
-          ese finde nunca llega. Y cuando llega, te das cuenta de que necesitas
-          aprender DNS, SSL, Docker, env vars y backups. 7 días no, 7 semanas.
-        </p>
-        <p class="cta-ps en">
-          P.S. — If you're still thinking "I'll deploy it this weekend",
-          remember: that weekend never comes. And when it does, you realize you
-          need to learn DNS, SSL, Docker, env vars and backups. Not 7 days. 7
-          weeks.
-        </p>
       </div>
     </section>
 

@@ -828,14 +828,56 @@
       }
 
       @media (max-width: 640px) {
-        .urgency-banner {
-          flex-direction: column;
-          text-align: center;
-          padding: 1.5rem;
-        }
-        .case-quote {
-          font-size: 1.15rem;
-        }
+        .case-quote { font-size: 1.15rem; }
+      }
+
+      .testimonials-section {
+        background: rgba(0, 255, 136, 0.02);
+        padding: 4rem 0;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+      .testimonials-section h3 {
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .testimonial-quote {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #e8e8e8;
+        margin-bottom: 1.5rem;
+      }
+      .author-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: var(--bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1rem;
+        flex-shrink: 0;
+      }
+      .author-info strong {
+        display: block;
+        color: #e8e8e8;
+        font-size: 0.95rem;
+      }
+      .author-info span {
+        display: block;
+        color: #6a6a7a;
+        font-size: 0.85rem;
       }
     </style>
   </head>
@@ -850,30 +892,19 @@
       <div class="hero-grid"></div>
       <div class="hero-content">
         <div class="hero-left">
-          <div class="fomo-badge">
-            <span class="pulse"></span>
-            <span class="en">3 founders launched paid plans this month</span>
-            <span class="es">3 founders lanzaron pagos este mes</span>
-          </div>
           <h1>
-            <span class="en"
-              >Your competitor just launched paid plans. You're still figuring
-              out Stripe.</span
-            >
-            <span class="es"
-              >Tu competencia ya cobra. Tú sigues "viendo cómo integrar
-              Stripe".</span
-            >
+            <span class="en">Your SaaS works. Now you need to charge for it.</span>
+            <span class="es">Tu SaaS funciona. Ahora hay que cobrar por él.</span>
           </h1>
           <p class="hero-subtitle en">
-            Every week without payments is money walking out the door. Get a
-            professional Stripe integration in 7 days — not 7 weeks of YouTube
-            tutorials and ChatGPT debugging. Fixed price, fixed deadline.
+            Stripe done properly in 7 days — checkout, subscriptions, customer
+            portal and invoicing. So you can stop manually tracking payments
+            in a spreadsheet and start running a real business.
           </p>
           <p class="hero-subtitle es">
-            Cada semana sin cobrar es dinero que se va. Integración profesional
-            de Stripe en 7 días — no 7 semanas peleándote con tutoriales y
-            ChatGPT. Precio cerrado, plazo cerrado.
+            Stripe hecho bien en 7 días — checkout, suscripciones, portal de
+            cliente y facturación. Para que dejes de llevar los pagos en un
+            Excel y empieces a tener un negocio de verdad.
           </p>
 
           <div class="hero-stats">
@@ -999,77 +1030,40 @@
       </div>
     </section>
 
-    <!-- Social Proof -->
-    <section class="social-proof">
-      <div class="container">
-        <div class="proof-stats">
-          <div class="proof-stat">
-            <div class="proof-number">€127K+</div>
-            <div class="proof-label">
-              <span class="en">Revenue enabled for clients</span>
-              <span class="es">Ingresos activados para clientes</span>
-            </div>
-          </div>
-          <div class="proof-stat">
-            <div class="proof-number">15+</div>
-            <div class="proof-label">
-              <span class="en">Stripe integrations shipped on time</span>
-              <span class="es">Integraciones entregadas a tiempo</span>
-            </div>
-          </div>
-          <div class="proof-stat">
-            <div class="proof-number">7 days</div>
-            <div class="proof-label">
-              <span class="en">Average from kickoff to first payment</span>
-              <span class="es">Media del kickoff al primer cobro</span>
-            </div>
-          </div>
-          <div class="proof-stat">
-            <div class="proof-number">100%</div>
-            <div class="proof-label">
-              <span class="en">Delivered or money back</span>
-              <span class="es">Entregado o te devuelvo el dinero</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonials">
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+      <div class="container" style="padding: 0 2rem;">
+        <h3>
+          <span class="en">What clients say</span>
+          <span class="es">Qué dicen los clientes</span>
+        </h3>
+        <div class="testimonials-grid">
           <div class="testimonial-card">
-            <p class="testimonial-text en">
-              Hugo got Stripe live in days, not weeks. We started charging
-              restaurants the same week and it just works — invoices, SEPA,
-              everything. Best money we've spent this year.
-            </p>
-            <p class="testimonial-text es">
-              Hugo dejó Stripe funcionando en días, no semanas. Empezamos a
-              cobrar a restaurantes esa misma semana y funciona — facturas,
-              SEPA, todo. El mejor dinero que hemos gastado este año.
-            </p>
+            <div class="testimonial-quote">
+              "Hugo delivered the Stripe integration exactly as promised. We're
+              now processing payments and Frank wants to continue working with
+              me long-term."
+            </div>
             <div class="testimonial-author">
-              <div class="testimonial-avatar">FT</div>
-              <div class="testimonial-meta">
+              <div class="author-avatar">FT</div>
+              <div class="author-info">
                 <strong>Frank Torres</strong>
-                <span>CEO, Gastrovisual</span>
+                <span>CEO, Visual Audiovisual (Gastrovisual)</span>
               </div>
             </div>
           </div>
 
           <div class="testimonial-card">
-            <p class="testimonial-text en">
-              We needed monthly + annual plans, EU VAT, upgrades, the works.
-              Hugo just delivered. No back-and-forth, no surprises. We started
-              billing the day after launch.
-            </p>
-            <p class="testimonial-text es">
-              Necesitábamos planes mensuales, anuales, IVA europeo, upgrades…
-              todo. Hugo lo entregó. Sin idas y venidas, sin sorpresas.
-              Empezamos a facturar al día siguiente del lanzamiento.
-            </p>
+            <div class="testimonial-quote">
+              "The team at DRIVI was very satisfied when I implemented the
+              Stripe payment system. It works reliably and handles our
+              subscriptions without issues."
+            </div>
             <div class="testimonial-author">
-              <div class="testimonial-avatar">JM</div>
-              <div class="testimonial-meta">
-                <strong>Javier Molina</strong>
-                <span>Founder, Tweedy</span>
+              <div class="author-avatar">HP</div>
+              <div class="author-info">
+                <strong>Hugo Prado</strong>
+                <span>Co-Founder &amp; CPO, DRIVI.ai</span>
               </div>
             </div>
           </div>
@@ -1251,28 +1245,20 @@
             ><span class="es">SaaS de hostelería</span></span
           >
         </div>
-        <p class="case-quote en">
-          "We had 50 restaurants using us and we couldn't charge a single one.
-          Competitors with worse products were winning because they could
-          actually send an invoice."
-        </p>
-        <p class="case-quote es">
-          "Teníamos 50 restaurantes usándonos y no podíamos cobrarle a ninguno.
-          Competencia con peor producto ganaba porque ellos sí podían facturar."
-        </p>
-
         <div class="case-block">
-          <h4 class="en">The breaking point</h4>
-          <h4 class="es">El punto de no retorno</h4>
+          <h4 class="en">The situation</h4>
+          <h4 class="es">Situación</h4>
           <p class="en">
-            A restaurant told them: "We love your product, but we're switching
-            because our accountant needs proper invoices." That was the call
-            that started this project.
+            A hospitality SaaS with 50+ restaurants on the platform but no
+            way to charge any of them. Needed SEPA direct debit for EU
+            restaurants and proper invoicing to keep customers happy with
+            their accountants.
           </p>
           <p class="es">
-            Un restaurante les dijo: "Nos encanta vuestro producto, pero nos
-            cambiamos porque mi gestor necesita facturas en condiciones". Esa
-            llamada inició este proyecto.
+            Un SaaS de hostelería con 50+ restaurantes en la plataforma pero
+            sin forma de cobrarles. Necesitaban domiciliación SEPA para
+            restaurantes europeos y facturación en condiciones para que sus
+            clientes pudieran pasarlas al gestor.
           </p>
         </div>
 
@@ -1317,27 +1303,20 @@
             ><span class="es">SaaS B2B para freelancers</span></span
           >
         </div>
-        <p class="case-quote en">
-          "I tried building Stripe myself for 3 weekends. Got monthly working,
-          broke annual. Got annual working, broke upgrades. I needed it done."
-        </p>
-        <p class="case-quote es">
-          "Intenté hacer Stripe yo solo durante 3 finde. Conseguí mensual, rompí
-          anual. Conseguí anual, rompí los upgrades. Necesitaba que alguien lo
-          hiciera bien."
-        </p>
-
         <div class="case-block">
-          <h4 class="en">The breaking point</h4>
-          <h4 class="es">El punto de no retorno</h4>
+          <h4 class="en">The situation</h4>
+          <h4 class="es">Situación</h4>
           <p class="en">
-            Their launch list was 200 freelancers waiting. Every week without
-            billing meant signups going cold. EU VAT was the final straw.
+            B2B SaaS for freelancers that needed proper subscription billing:
+            monthly + annual plans with automatic upgrades/downgrades and EU
+            VAT handling. Building it themselves was eating weekends without
+            getting closer to a working flow.
           </p>
           <p class="es">
-            Tenían 200 freelancers en lista de espera. Cada semana sin cobrar,
-            los signups se enfriaban. El IVA europeo fue la gota que colmó el
-            vaso.
+            SaaS B2B para freelancers que necesitaba facturación por
+            suscripción en condiciones: planes mensuales y anuales con
+            upgrades/downgrades automáticos y gestión de IVA europeo. Hacerlo
+            por su cuenta se les comía finde tras finde sin acabarlo.
           </p>
         </div>
 
@@ -1382,25 +1361,21 @@
             ><span class="es">SaaS de movilidad</span></span
           >
         </div>
-        <p class="case-quote en">
-          "Every plan change meant 10 minutes of manual work in the backoffice.
-          And we still got it wrong half the time."
-        </p>
-        <p class="case-quote es">
-          "Cada cambio de plan eran 10 minutos en el backoffice a mano. Y aun
-          así fallábamos la mitad de las veces."
-        </p>
-
         <div class="case-block">
-          <h4 class="en">The breaking point</h4>
-          <h4 class="es">El punto de no retorno</h4>
+          <h4 class="en">The situation</h4>
+          <h4 class="es">Situación</h4>
           <p class="en">
-            A customer paid for the premium tier but their database record still
-            said "free". They churned. That was the last manual sync.
+            A subscription model with multiple tiers and manual backoffice
+            updates every time a customer changed plan. Billing state in
+            Stripe and the internal database drifted frequently, which meant
+            customers occasionally lost access to features they had paid for.
           </p>
           <p class="es">
-            Un cliente pagó el plan premium pero en la base de datos seguía como
-            "free". Se dio de baja. Esa fue la última sync manual.
+            Modelo de suscripción con varios niveles y actualizaciones
+            manuales en backoffice cada vez que alguien cambiaba de plan. El
+            estado de Stripe y la BD interna se desincronizaba a menudo, lo
+            que provocaba que algún cliente perdiera acceso a funcionalidades
+            que sí había pagado.
           </p>
         </div>
 
@@ -1510,113 +1485,64 @@
 
       <div class="faq-item">
         <div class="faq-question en">
-          Why not hire someone on Fiverr/Upwork for €300?
+          I'm not technical. Will I understand what you're doing?
         </div>
         <div class="faq-question es">
-          ¿Por qué no contrato a alguien en Fiverr/Upwork por 300€?
+          No soy técnico. ¿Entenderé lo que estás haciendo?
         </div>
         <div class="faq-answer en">
-          You can try. Here's what usually happens: you pay €300 → they deliver
-          something that "works in test mode" → first real customer breaks it →
-          they ghost → you pay someone else €1,500 to fix the mess. Or: pay
-          once, sleep at night, start charging on day 8.
+          Yes. I explain everything in plain English. You just need to know
+          the outcome (you can charge customers, they get receipts, you get
+          a working portal), not the technical details underneath.
         </div>
         <div class="faq-answer es">
-          Puedes intentarlo. Lo que suele pasar: pagas 300€ → te entregan algo
-          que "funciona en modo test" → el primer cliente real lo rompe →
-          desaparecen → pagas a otro 1.500€ para arreglar el desastre. O: pagas
-          una vez, duermes tranquilo y empiezas a cobrar el día 8.
+          Sí. Te lo explico todo en lenguaje claro. Solo necesitas entender
+          el resultado (puedes cobrar, los clientes reciben factura, tienes
+          un portal funcionando), no los detalles técnicos de debajo.
         </div>
       </div>
 
       <div class="faq-item">
         <div class="faq-question en">
-          What if my product is "vibe-coded" with AI tools?
+          What if I built my app with Cursor/v0/Bolt/Lovable?
         </div>
         <div class="faq-question es">
-          ¿Y si mi producto está "vibe-coded" con herramientas de IA?
+          ¿Y si construí mi app con Cursor/v0/Bolt/Lovable?
         </div>
         <div class="faq-answer en">
-          That's literally most of my clients. Cursor, Lovable, Bolt, v0, Claude
-          Code — I work with all of them every week. I'll make Stripe work in
-          your codebase, even if it's held together with prompts and hope.
+          Perfect. That's exactly who this is for. I work with AI-generated
+          code regularly and know how to integrate Stripe cleanly into it
+          without rewriting your whole app.
         </div>
         <div class="faq-answer es">
-          Literalmente la mayoría de mis clientes. Cursor, Lovable, Bolt, v0,
-          Claude Code — trabajo con todas cada semana. Haré que Stripe funcione
-          en tu código, aunque esté sujeto con prompts y buena fe.
+          Perfecto. Es exactamente para quien está pensado esto. Trabajo
+          regularmente con código generado por IA y sé cómo integrar Stripe
+          bien sin tener que reescribir tu app entera.
         </div>
       </div>
     </section>
-
-    <!-- Urgency banner -->
-    <div class="container" style="padding-top: 0; padding-bottom: 0;">
-      <div class="urgency-banner">
-        <div class="urgency-icon">⏰</div>
-        <div class="urgency-text">
-          <span class="en">
-            <strong>Limited availability:</strong> I only take 2 sprints per
-            month to guarantee delivery quality.
-            <span class="slots-remaining"
-              >1 slot left for this month.</span
-            >
-          </span>
-          <span class="es">
-            <strong>Disponibilidad limitada:</strong> solo acepto 2 sprints al
-            mes para garantizar la calidad.
-            <span class="slots-remaining"
-              >Queda 1 hueco este mes.</span
-            >
-          </span>
-        </div>
-      </div>
-    </div>
 
     <!-- Final CTA -->
     <section class="container">
       <div class="cta-section">
         <h2>
-          <span class="en"
-            >Every week without payments is money walking out the door</span
-          >
-          <span class="es"
-            >Cada semana sin cobrar es dinero que se te escapa</span
-          >
+          <span class="en">Ready to get this done?</span>
+          <span class="es">¿Listo para dejarlo hecho?</span>
         </h2>
         <p class="en">
-          Your competitor launched paid plans last month. Your launch list is
-          getting cold. Your runway isn't infinite. How much longer can you
-          wait?
+          Book a 15-minute call. We'll discuss your app, confirm what you
+          need, and I'll give you a timeline.
         </p>
         <p class="es">
-          Tu competencia lanzó pagos el mes pasado. Tu lista de espera se
-          enfría. Tu runway no es infinita. ¿Cuánto más vas a esperar?
+          Reserva una llamada de 15 minutos. Hablamos de tu app, confirmamos
+          el alcance y te doy un calendario.
         </p>
         <a
           href="https://calendar.app.google/WmTZX6wxqDUmcjMcA"
           class="btn btn-primary"
-          ><span class="en">Book your Stripe sprint →</span>
-          <span class="es">Reserva tu sprint de Stripe →</span></a
+          ><span class="en">Schedule a call →</span>
+          <span class="es">Agendar llamada →</span></a
         >
-        <br />
-        <a href="mailto:hugo@arkeondata.com" class="cta-secondary-link">
-          <span class="en"
-            >↓ Or send me your repo URL first (no call needed)</span
-          >
-          <span class="es"
-            >↓ O mándame primero la URL de tu repo (sin llamada)</span
-          >
-        </a>
-        <p class="cta-ps en">
-          P.S. — If you're still thinking "I'll do it myself next month",
-          remember: next month never comes. And when it does, it's messier,
-          more expensive, and your best leads have already moved on.
-        </p>
-        <p class="cta-ps es">
-          P.D. — Si sigues pensando "lo hago yo el mes que viene", recuerda: el
-          mes que viene nunca llega. Y cuando llega, es más sucio, más caro y
-          tus mejores leads ya se han ido.
-        </p>
       </div>
     </section>
 
