@@ -3,7 +3,329 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Arkeon — De la IA a Producción</title>
+    <title>Arkeon — From AI to Production</title>
+    <meta
+      name="description"
+      content="Your app built with Cursor, Bolt or Claude works locally — but deploying it safely, integrating real payments, or connecting a database without breaking everything? That's where we take over."
+    />
+    <style>
+      :root {
+        --bg: #0a0a0f;
+        --text: #e8e8e8;
+        --muted: #a0a0b0;
+        --accent: #00ff88;
+        --card: #1a1a24;
+        --border: #2a2a35;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family:
+          Inter,
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          sans-serif;
+        background: radial-gradient(
+          circle at 20% 10%,
+          #151523 0%,
+          var(--bg) 45%
+        );
+        color: var(--text);
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 2rem;
+      }
+
+      .wrap {
+        width: min(980px, 100%);
+      }
+
+      h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        margin-bottom: 0.75rem;
+        line-height: 1.15;
+      }
+
+      .sub {
+        color: var(--muted);
+        margin-bottom: 2.5rem;
+        max-width: 640px;
+        line-height: 1.6;
+      }
+
+      /* Pain-point row */
+      .pain-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 0.75rem;
+        margin-bottom: 2rem;
+      }
+
+      .pain-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 1rem 1.25rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+
+      .pain-icon {
+        font-size: 1.2rem;
+        flex-shrink: 0;
+        margin-top: 0.05rem;
+      }
+
+      .pain-card p {
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      /* Service grid */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 1.25rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.65rem;
+      }
+
+      .card-icon {
+        font-size: 1.4rem;
+      }
+
+      .card h2 {
+        font-size: 1rem;
+        font-weight: 600;
+        line-height: 1.3;
+      }
+
+      .card p {
+        color: var(--muted);
+        font-size: 0.875rem;
+        line-height: 1.5;
+        flex: 1;
+      }
+
+      .link {
+        align-self: flex-start;
+        display: inline-block;
+        text-decoration: none;
+        color: #00180d;
+        background: var(--accent);
+        padding: 0.5rem 0.9rem;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 0.875rem;
+      }
+
+      .link:hover {
+        filter: brightness(0.92);
+      }
+
+      .footer-note {
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.7;
+      }
+
+      .footer-note strong {
+        color: var(--accent);
+      }
+
+      /* Language switcher */
+      .lang-sw {
+        position: fixed;
+        top: 1.25rem;
+        right: 1.25rem;
+        z-index: 9999;
+        display: flex;
+        gap: 0.35rem;
+        background: rgba(26, 26, 36, 0.93);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid #2a2a35;
+        border-radius: 10px;
+        padding: 0.35rem 0.5rem;
+      }
+
+      .lang-sw button {
+        background: none;
+        border: none;
+        font-size: 1.35rem;
+        line-height: 1;
+        cursor: pointer;
+        padding: 0.2rem 0.35rem;
+        border-radius: 6px;
+        opacity: 0.4;
+        transition:
+          opacity 0.2s,
+          background 0.2s;
+      }
+
+      .lang-sw button.active {
+        opacity: 1;
+        background: rgba(0, 255, 136, 0.13);
+      }
+
+      html[lang="en"] .es {
+        display: none !important;
+      }
+      html[lang="es"] .en {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="lang-sw">
+      <button id="sw-en" onclick="setLang('en')">🇬🇧</button>
+      <button id="sw-es" onclick="setLang('es')">🇪🇸</button>
+    </div>
+
+    <main class="wrap">
+      <h1>
+        <span class="en">You got 80% there with AI.<br />We take you to production.</span>
+        <span class="es">Llegaste al 80% con la IA.<br />Nosotros te llevamos a producción.</span>
+      </h1>
+      <p class="sub">
+        <span class="en">Your app built with Cursor, Bolt or Claude works locally — deploying it safely, integrating real payments, or wiring up the database without breaking everything? That's where we take over.</span>
+        <span class="es">Tu app hecha con Cursor, Bolt o Claude funciona en local — desplegarla de forma segura, integrar pagos reales o conectar la base de datos sin romper nada… ahí tomamos el relevo.</span>
+      </p>
+
+      <section class="pain-row">
+        <div class="pain-card">
+          <span class="pain-icon">🤔</span>
+          <p>
+            <span class="en">AI is great for prototyping — risky when real money, users or servers are involved.</span>
+            <span class="es">La IA es genial para prototipar — riesgosa cuando entran dinero real, usuarios o servidores.</span>
+          </p>
+        </div>
+        <div class="pain-card">
+          <span class="pain-icon">🔁</span>
+          <p>
+            <span class="en">Ask AI to fix one bug in production and it quietly breaks three more.</span>
+            <span class="es">Le pides a la IA que arregle un bug en producción y rompe tres cosas más.</span>
+          </p>
+        </div>
+        <div class="pain-card">
+          <span class="pain-icon">🔑</span>
+          <p>
+            <span class="en">Afraid to launch because you're not sure if your API keys are exposed.</span>
+            <span class="es">Miedo de lanzar porque no sabes si tus API keys están expuestas al mundo.</span>
+          </p>
+        </div>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <span class="card-icon">💳</span>
+          <h2>
+            <span class="en">Secure Payment Integration (Stripe)</span>
+            <span class="es">Integración de Pagos Segura (Stripe)</span>
+          </h2>
+          <p>
+            <span class="en">You don't play with money via prompts — we implement Stripe manually and robustly.</span>
+            <span class="es">Con el dinero no se juega mediante prompts — implementamos Stripe de forma manual y robusta.</span>
+          </p>
+          <a class="link" href="./stripe/">
+            <span class="en">Integrate payments →</span>
+            <span class="es">Integrar pagos →</span>
+          </a>
+        </article>
+
+        <article class="card">
+          <span class="card-icon">☁️</span>
+          <h2>
+            <span class="en">Cloud Deployment</span>
+            <span class="es">Despliegue en la Nube</span>
+          </h2>
+          <p>
+            <span class="en">AI fails at configuring real servers — we deploy to stable cloud environments that scale.</span>
+            <span class="es">La IA falla al configurar servidores reales — desplegamos en entornos estables que escalan.</span>
+          </p>
+          <a class="link" href="./deployment/">
+            <span class="en">Deploy to cloud →</span>
+            <span class="es">Desplegar en la nube →</span>
+          </a>
+        </article>
+
+        <article class="card">
+          <span class="card-icon">🛡️</span>
+          <h2>
+            <span class="en">Security Audit &amp; Fixes</span>
+            <span class="es">Auditoría de Seguridad y Fixes</span>
+          </h2>
+          <p>
+            <span class="en">90% of AI-built MVPs ship with exposed keys or open databases — we close every gap in 3 days.</span>
+            <span class="es">El 90% de los MVPs con IA llevan keys expuestas o bases abiertas — cerramos cada brecha en 3 días.</span>
+          </p>
+          <a class="link" href="./security-audit.html">
+            <span class="en">Audit security →</span>
+            <span class="es">Auditar seguridad →</span>
+          </a>
+        </article>
+
+        <article class="card">
+          <span class="card-icon">⚙️</span>
+          <h2>
+            <span class="en">Database &amp; Backend Structure</span>
+            <span class="es">Estructura de Base de Datos y Backend</span>
+          </h2>
+          <p>
+            <span class="en">AI-designed databases get chaotic fast — we optimise your backend so queries are fast and data is safe.</span>
+            <span class="es">Las bases de datos diseñadas por IA se vuelven caóticas — optimizamos tu backend para que las consultas vuelen.</span>
+          </p>
+          <a class="link" href="./backend-migration.html">
+            <span class="en">Migrate backend →</span>
+            <span class="es">Migrar al backend →</span>
+          </a>
+        </article>
+      </section>
+
+      <p class="footer-note">
+        <span class="en">Don't leave your infrastructure to an AI hallucination.<br /><strong>Secure your deployment, payments, and software today.</strong></span>
+        <span class="es">No dejes tu infraestructura en manos de una alucinación de IA.<br /><strong>Asegura el despliegue, los pagos y el futuro de tu software hoy mismo.</strong></span>
+      </p>
+    </main>
+
+    <script>
+      function setLang(l) {
+        document.documentElement.lang = l;
+        localStorage.setItem("ark-lang", l);
+        document
+          .querySelectorAll(".lang-sw button")
+          .forEach((b) => b.classList.remove("active"));
+        const b = document.getElementById("sw-" + l);
+        if (b) b.classList.add("active");
+      }
+      (function () {
+        const s = localStorage.getItem("ark-lang");
+        setLang(s || (navigator.language.startsWith("es") ? "es" : "en"));
+      })();
+    </script>
+  </body>
+</html>
+
     <meta
       name="description"
       content="¿Tu app hecha con Cursor, Bolt o Claude funciona en local pero no sabes cómo desplegarla? Integramos pagos, despliegues cloud, auditorías de seguridad y migración de backend. Precio fijo, entrega en días."
