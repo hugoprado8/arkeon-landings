@@ -583,105 +583,227 @@
       }
 
       .fomo-badge {
-        display: inline-flex; align-items: center; gap: 0.6rem;
-        padding: 0.5rem 1rem; background: rgba(0, 255, 136, 0.08);
-        border: 1px solid rgba(0, 255, 136, 0.3); border-radius: 999px;
-        font-family: "JetBrains Mono", monospace; font-size: 0.8rem;
-        color: var(--accent); margin-bottom: 1.5rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.5rem 1rem;
+        background: rgba(0, 255, 136, 0.08);
+        border: 1px solid rgba(0, 255, 136, 0.3);
+        border-radius: 999px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.8rem;
+        color: var(--accent);
+        margin-bottom: 1.5rem;
       }
       .fomo-badge .pulse {
-        width: 8px; height: 8px; background: var(--accent);
-        border-radius: 50%; animation: pulseDot 2s infinite;
+        width: 8px;
+        height: 8px;
+        background: var(--accent);
+        border-radius: 50%;
+        animation: pulseDot 2s infinite;
       }
       @keyframes pulseDot {
-        0% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
-        70% { box-shadow: 0 0 0 10px rgba(0, 255, 136, 0); }
-        100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
+        0% {
+          box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 10px rgba(0, 255, 136, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(0, 255, 136, 0);
+        }
       }
       .social-proof {
-        background: linear-gradient(180deg, transparent 0%, rgba(0, 255, 136, 0.025) 100%);
-        border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+        background: linear-gradient(
+          180deg,
+          transparent 0%,
+          rgba(0, 255, 136, 0.025) 100%
+        );
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
       }
       .proof-stats {
-        display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 2rem; margin-bottom: 4rem; text-align: center;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 2rem;
+        margin-bottom: 4rem;
+        text-align: center;
       }
       .proof-stat .proof-number {
-        font-family: "JetBrains Mono", monospace; font-size: 2.75rem;
-        font-weight: 700; color: var(--accent); line-height: 1;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 2.75rem;
+        font-weight: 700;
+        color: var(--accent);
+        line-height: 1;
       }
-      .proof-stat .proof-label { font-size: 0.95rem; color: #a0a0b0; margin-top: 0.75rem; }
+      .proof-stat .proof-label {
+        font-size: 0.95rem;
+        color: #a0a0b0;
+        margin-top: 0.75rem;
+      }
       .testimonials {
-        display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 1.5rem;
       }
       .testimonial-card {
-        background: var(--card-bg); border: 1px solid var(--border);
-        border-radius: 12px; padding: 2rem 2rem 1.75rem;
-        position: relative; transition: all 0.3s;
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 2rem 2rem 1.75rem;
+        position: relative;
+        transition: all 0.3s;
       }
-      .testimonial-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+      .testimonial-card:hover {
+        border-color: var(--accent);
+        transform: translateY(-3px);
+      }
       .testimonial-card::before {
-        content: "\201C"; position: absolute; top: -0.75rem; left: 1rem;
-        font-size: 4rem; color: var(--accent); opacity: 0.35;
-        font-family: Georgia, serif; line-height: 1;
+        content: "\201C";
+        position: absolute;
+        top: -0.75rem;
+        left: 1rem;
+        font-size: 4rem;
+        color: var(--accent);
+        opacity: 0.35;
+        font-family: Georgia, serif;
+        line-height: 1;
       }
-      .testimonial-text { font-size: 1.05rem; color: #e8e8e8; line-height: 1.7; margin-bottom: 1.5rem; padding-top: 0.5rem; }
-      .testimonial-author { display: flex; align-items: center; gap: 0.85rem; }
+      .testimonial-text {
+        font-size: 1.05rem;
+        color: #e8e8e8;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+        padding-top: 0.5rem;
+      }
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+      }
       .testimonial-avatar {
-        width: 42px; height: 42px; border-radius: 50%;
-        background: var(--accent); color: var(--bg);
-        display: flex; align-items: center; justify-content: center;
-        font-weight: 700; font-family: "JetBrains Mono", monospace; flex-shrink: 0;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: var(--bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-family: "JetBrains Mono", monospace;
+        flex-shrink: 0;
       }
-      .testimonial-meta strong { display: block; color: var(--text); font-size: 0.95rem; }
-      .testimonial-meta span { font-size: 0.85rem; color: #6a6a7a; }
+      .testimonial-meta strong {
+        display: block;
+        color: var(--text);
+        font-size: 0.95rem;
+      }
+      .testimonial-meta span {
+        font-size: 0.85rem;
+        color: #6a6a7a;
+      }
       .urgency-banner {
-        background: linear-gradient(135deg, rgba(255, 200, 50, 0.08), rgba(255, 100, 50, 0.04));
-        border-left: 4px solid var(--accent); border-radius: 8px;
-        padding: 1.5rem 2rem; margin: 3rem auto; max-width: 900px;
-        display: flex; align-items: center; gap: 1.25rem;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 200, 50, 0.08),
+          rgba(255, 100, 50, 0.04)
+        );
+        border-left: 4px solid var(--accent);
+        border-radius: 8px;
+        padding: 1.5rem 2rem;
+        margin: 3rem auto;
+        max-width: 900px;
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
       }
-      .urgency-icon { font-size: 2rem; flex-shrink: 0; }
-      .urgency-text { font-size: 1.05rem; color: var(--text); }
-      .urgency-text strong { color: var(--accent); }
-      .slots-remaining { font-weight: 700; color: #ffb84d; }
+      .urgency-icon {
+        font-size: 2rem;
+        flex-shrink: 0;
+      }
+      .urgency-text {
+        font-size: 1.05rem;
+        color: var(--text);
+      }
+      .urgency-text strong {
+        color: var(--accent);
+      }
+      .slots-remaining {
+        font-weight: 700;
+        color: #ffb84d;
+      }
       .feature-tech {
-        display: block; margin-top: 1rem; padding-top: 0.85rem;
-        border-top: 1px dashed rgba(255,255,255,0.08);
-        font-size: 0.78rem; color: #6a6a7a;
-        font-family: "JetBrains Mono", monospace; line-height: 1.5;
+        display: block;
+        margin-top: 1rem;
+        padding-top: 0.85rem;
+        border-top: 1px dashed rgba(255, 255, 255, 0.08);
+        font-size: 0.78rem;
+        color: #6a6a7a;
+        font-family: "JetBrains Mono", monospace;
+        line-height: 1.5;
       }
       .case-quote {
-        font-size: 1.35rem; line-height: 1.5; color: var(--text);
-        font-style: italic; padding-left: 1.5rem;
-        border-left: 3px solid var(--accent); margin-bottom: 2rem;
+        font-size: 1.35rem;
+        line-height: 1.5;
+        color: var(--text);
+        font-style: italic;
+        padding-left: 1.5rem;
+        border-left: 3px solid var(--accent);
+        margin-bottom: 2rem;
       }
-      .case-block { margin-bottom: 1.5rem; }
+      .case-block {
+        margin-bottom: 1.5rem;
+      }
       .case-block h4 {
-        color: var(--accent); margin-bottom: 0.6rem;
-        font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px;
+        color: var(--accent);
+        margin-bottom: 0.6rem;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
       }
-      .case-block p, .case-block li { color: #a0a0b0; line-height: 1.7; }
+      .case-block p,
+      .case-block li {
+        color: #a0a0b0;
+        line-height: 1.7;
+      }
       .case-wins {
         background: rgba(0, 255, 136, 0.08);
         border-left: 4px solid var(--accent);
-        padding: 1.25rem 1.5rem; border-radius: 4px; list-style: none;
+        padding: 1.25rem 1.5rem;
+        border-radius: 4px;
+        list-style: none;
       }
-      .case-wins li { color: var(--text); padding: 0.25rem 0; }
+      .case-wins li {
+        color: var(--text);
+        padding: 0.25rem 0;
+      }
       .cta-ps {
-        margin-top: 2rem; font-size: 0.95rem; color: #a0a0b0;
-        font-style: italic; max-width: 640px;
-        margin-left: auto; margin-right: auto; line-height: 1.7;
+        margin-top: 2rem;
+        font-size: 0.95rem;
+        color: #a0a0b0;
+        font-style: italic;
+        max-width: 640px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.7;
       }
       .cta-secondary-link {
-        display: inline-block; margin-top: 1.25rem;
-        color: var(--accent); font-size: 0.95rem;
-        text-decoration: none; border-bottom: 1px dashed var(--accent);
+        display: inline-block;
+        margin-top: 1.25rem;
+        color: var(--accent);
+        font-size: 0.95rem;
+        text-decoration: none;
+        border-bottom: 1px dashed var(--accent);
         padding-bottom: 2px;
       }
-      .cta-secondary-link:hover { opacity: 0.8; }
+      .cta-secondary-link:hover {
+        opacity: 0.8;
+      }
       @media (max-width: 640px) {
-        .case-quote { font-size: 1.15rem; }
+        .case-quote {
+          font-size: 1.15rem;
+        }
       }
 
       .testimonials-section {
@@ -691,26 +813,47 @@
         border-bottom: 1px solid var(--border);
       }
       .testimonials-section h3 {
-        text-align: center; margin-bottom: 2rem;
-        font-size: 1.5rem; font-weight: 600;
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 1.5rem;
+        font-weight: 600;
       }
       .testimonials-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 2rem; max-width: 900px; margin: 0 auto;
+        gap: 2rem;
+        max-width: 900px;
+        margin: 0 auto;
       }
       .testimonial-quote {
-        font-size: 1rem; line-height: 1.6;
-        color: #e8e8e8; margin-bottom: 1.5rem;
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #e8e8e8;
+        margin-bottom: 1.5rem;
       }
       .author-avatar {
-        width: 48px; height: 48px; border-radius: 50%;
-        background: var(--accent); color: var(--bg);
-        display: flex; align-items: center; justify-content: center;
-        font-weight: 700; font-size: 1rem; flex-shrink: 0;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: var(--bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1rem;
+        flex-shrink: 0;
       }
-      .author-info strong { display: block; color: #e8e8e8; font-size: 0.95rem; }
-      .author-info span { display: block; color: #6a6a7a; font-size: 0.85rem; }
+      .author-info strong {
+        display: block;
+        color: #e8e8e8;
+        font-size: 0.95rem;
+      }
+      .author-info span {
+        display: block;
+        color: #6a6a7a;
+        font-size: 0.85rem;
+      }
     </style>
   </head>
   <body>
@@ -724,21 +867,28 @@
       <div class="hero-content">
         <div class="hero-left">
           <h1>
-            <span class="en">Built with AI? Your API keys are probably exposed.</span>
-            <span class="es">¿Hecho con IA? Tus API keys probablemente están expuestas.</span>
+            <span class="en"
+              >Built with AI? Your API keys are probably exposed.</span
+            >
+            <span class="es"
+              >¿Hecho con IA? Tus API keys probablemente están expuestas.</span
+            >
           </h1>
           <p class="hero-subtitle en">
-            A professional security audit + fixes in 3 days. I find the
-            exposed keys, open databases and misconfigured auth that most
-            AI-built MVPs ship with, and I close them properly so you don't
-            end up with a runaway bill or a leaked user database.
+            The AI generated working code fast — but it hardcoded your keys,
+            skipped auth checks, and left your database wide open. A
+            professional security audit + fixes in 3 days: we find the exposed
+            keys, open databases, and broken auth flows that most AI-built MVPs
+            ship with, and close them properly before someone else finds them
+            first.
           </p>
           <p class="hero-subtitle es">
-            Auditoría de seguridad profesional + correcciones en 3 días.
-            Encuentro las API keys expuestas, bases de datos abiertas y
-            flujos de auth mal hechos que la mayoría de MVPs con IA llevan
-            de serie, y los cierro bien para que no acabes con una factura
-            descontrolada o una base de datos filtrada.
+            La IA generó el código rápido — pero dejó las keys expuestas, se
+            saltó los checks de auth y dejó tu base de datos abierta. Auditoría
+            de seguridad profesional + correcciones en 3 días: encontramos las
+            API keys expuestas, bases de datos abiertas y flujos de auth rotos
+            que la mayoría de MVPs con IA llevan de serie, y los cerramos bien
+            antes de que los encuentre otro.
           </p>
 
           <div class="hero-stats">
@@ -829,7 +979,7 @@
     </section>
 
     <section class="testimonials-section">
-      <div class="container" style="padding: 0 2rem;">
+      <div class="container" style="padding: 0 2rem">
         <h3>
           <span class="en">What clients say</span>
           <span class="es">Qué dicen los clientes</span>
@@ -892,20 +1042,25 @@
           <span class="feature-icon">🔍</span>
           <h3 class="feature-title">
             <span class="en">Know exactly where you're bleeding money</span>
-            <span class="es">Saber exactamente por dónde se te va el dinero</span>
+            <span class="es"
+              >Saber exactamente por dónde se te va el dinero</span
+            >
           </h3>
           <p class="feature-desc en">
-            A full sweep of your app to find every exposed key, open
-            endpoint, and "wait, that's public??" moment. Before someone else
-            finds it.
+            A full sweep of your app to find every exposed key, open endpoint,
+            and "wait, that's public??" moment. Before someone else finds it.
           </p>
           <p class="feature-desc es">
             Un barrido completo de tu app para encontrar cada key expuesta,
-            endpoint abierto y momento "¿espera, eso es público??". Antes de
-            que lo encuentre otro.
+            endpoint abierto y momento "¿espera, eso es público??". Antes de que
+            lo encuentre otro.
           </p>
-          <span class="feature-tech en">→ 30-point audit: keys, DB, auth, deploy config</span>
-          <span class="feature-tech es">→ Auditoría de 30 puntos: keys, BD, auth, config de deploy</span>
+          <span class="feature-tech en"
+            >→ 30-point audit: keys, DB, auth, deploy config</span
+          >
+          <span class="feature-tech es"
+            >→ Auditoría de 30 puntos: keys, BD, auth, config de deploy</span
+          >
         </div>
         <div class="feature-card">
           <span class="feature-icon">📋</span>
@@ -915,22 +1070,28 @@
           </h3>
           <p class="feature-desc en">
             Full report with every issue, severity, screenshots and what was
-            fixed. Use it for due diligence, enterprise sales, or your own
-            peace of mind.
+            fixed. Use it for due diligence, enterprise sales, or your own peace
+            of mind.
           </p>
           <p class="feature-desc es">
             Informe completo con cada problema, severidad, capturas y qué se
             arregló. Úsalo para due diligence, ventas enterprise o tu propia
             tranquilidad.
           </p>
-          <span class="feature-tech en">→ PDF report with findings, severity, fix log</span>
-          <span class="feature-tech es">→ Informe PDF con hallazgos, severidad y log de fixes</span>
+          <span class="feature-tech en"
+            >→ PDF report with findings, severity, fix log</span
+          >
+          <span class="feature-tech es"
+            >→ Informe PDF con hallazgos, severidad y log de fixes</span
+          >
         </div>
         <div class="feature-card">
           <span class="feature-icon">🔒</span>
           <h3 class="feature-title">
             <span class="en">Stop random bots draining your OpenAI budget</span>
-            <span class="es">Stop a bots aleatorios vaciando tu cuenta de OpenAI</span>
+            <span class="es"
+              >Stop a bots aleatorios vaciando tu cuenta de OpenAI</span
+            >
           </h3>
           <p class="feature-desc en">
             Every sensitive key off the frontend, into the backend with proper
@@ -942,27 +1103,39 @@
             condiciones. Se acabó el "¿por qué Stripe está a 0€ y OpenAI a
             4.000$?"
           </p>
-          <span class="feature-tech en">→ Backend proxy, env vars, key rotation, auth gates</span>
-          <span class="feature-tech es">→ Backend proxy, env vars, rotación de keys, auth gates</span>
+          <span class="feature-tech en"
+            >→ Backend proxy, env vars, key rotation, auth gates</span
+          >
+          <span class="feature-tech es"
+            >→ Backend proxy, env vars, rotación de keys, auth gates</span
+          >
         </div>
         <div class="feature-card">
           <span class="feature-icon">🛡️</span>
           <h3 class="feature-title">
-            <span class="en">Your users' data isn't sitting in a public bucket</span>
-            <span class="es">Los datos de tus usuarios no en un bucket público</span>
+            <span class="en"
+              >Your users' data isn't sitting in a public bucket</span
+            >
+            <span class="es"
+              >Los datos de tus usuarios no en un bucket público</span
+            >
           </h3>
           <p class="feature-desc en">
-            Database locked down properly so emails, payments and personal
-            data aren't a browser devtools tab away. Mandatory for GDPR. And
-            for not getting sued.
+            Database locked down properly so emails, payments and personal data
+            aren't a browser devtools tab away. Mandatory for GDPR. And for not
+            getting sued.
           </p>
           <p class="feature-desc es">
-            Base de datos blindada para que emails, pagos y datos personales
-            no estén a una pestaña de DevTools de distancia. Obligatorio para
-            GDPR. Y para no acabar en los tribunales.
+            Base de datos blindada para que emails, pagos y datos personales no
+            estén a una pestaña de DevTools de distancia. Obligatorio para GDPR.
+            Y para no acabar en los tribunales.
           </p>
-          <span class="feature-tech en">→ Supabase RLS, admin endpoint guards, GDPR audit</span>
-          <span class="feature-tech es">→ Supabase RLS, protección de endpoints admin, audit GDPR</span>
+          <span class="feature-tech en"
+            >→ Supabase RLS, admin endpoint guards, GDPR audit</span
+          >
+          <span class="feature-tech es"
+            >→ Supabase RLS, protección de endpoints admin, audit GDPR</span
+          >
         </div>
         <div class="feature-card">
           <span class="feature-icon">⚡</span>
@@ -975,11 +1148,16 @@
             endpoints. The difference between a $40 bill and a $4,000 bill.
           </p>
           <p class="feature-desc es">
-            Rate limits, detección de abuso y techos duros en endpoints
-            caros. La diferencia entre una factura de 40€ y una de 4.000€.
+            Rate limits, detección de abuso y techos duros en endpoints caros.
+            La diferencia entre una factura de 40€ y una de 4.000€.
           </p>
-          <span class="feature-tech en">→ Rate limiting, abuse detection, cost caps, alerts</span>
-          <span class="feature-tech es">→ Rate limiting, detección de abuso, límites de coste, alertas</span>
+          <span class="feature-tech en"
+            >→ Rate limiting, abuse detection, cost caps, alerts</span
+          >
+          <span class="feature-tech es"
+            >→ Rate limiting, detección de abuso, límites de coste,
+            alertas</span
+          >
         </div>
         <div class="feature-card">
           <span class="feature-icon">✅</span>
@@ -988,16 +1166,20 @@
             <span class="es">Un checklist para que no la líes después</span>
           </h3>
           <p class="feature-desc en">
-            Plain-language guide so when you ship the next feature with
-            Cursor at 11pm, you don't accidentally expose another secret.
+            Plain-language guide so when you ship the next feature with Cursor
+            at 11pm, you don't accidentally expose another secret.
           </p>
           <p class="feature-desc es">
-            Guía en lenguaje claro para que cuando lances la siguiente
-            feature con Cursor a las 11 de la noche, no expongas otro secreto
-            sin querer.
+            Guía en lenguaje claro para que cuando lances la siguiente feature
+            con Cursor a las 11 de la noche, no expongas otro secreto sin
+            querer.
           </p>
-          <span class="feature-tech en">→ Living security checklist + 30 days of email support</span>
-          <span class="feature-tech es">→ Checklist vivo de seguridad + 30 días de soporte por email</span>
+          <span class="feature-tech en"
+            >→ Living security checklist + 30 days of email support</span
+          >
+          <span class="feature-tech es"
+            >→ Checklist vivo de seguridad + 30 días de soporte por email</span
+          >
         </div>
       </div>
     </section>
@@ -1013,20 +1195,23 @@
           <h3 class="case-title">The $12,847 OpenAI bill</h3>
           <span class="case-tag"
             ><span class="en">AI course platform · built with Cursor</span>
-            <span class="es">Plataforma de cursos con IA · hecha con Cursor</span></span>
+            <span class="es"
+              >Plataforma de cursos con IA · hecha con Cursor</span
+            ></span
+          >
         </div>
         <div class="case-block">
           <h4 class="en">What was wrong</h4>
           <h4 class="es">Qué estaba mal</h4>
           <p class="en">
-            OpenAI key hardcoded in the JavaScript bundle. A scraper found
-            it. Within hours, bots were running their own GPT-4 workloads on
-            their account.
+            OpenAI key hardcoded in the JavaScript bundle. A scraper found it.
+            Within hours, bots were running their own GPT-4 workloads on their
+            account.
           </p>
           <p class="es">
             Key de OpenAI hardcoded en el bundle de JavaScript. Un scraper la
-            encontró. En horas, había bots ejecutando sus propias cargas
-            GPT-4 con esa cuenta.
+            encontró. En horas, había bots ejecutando sus propias cargas GPT-4
+            con esa cuenta.
           </p>
         </div>
 
@@ -1040,8 +1225,8 @@
           </p>
           <p class="es">
             Rotamos la key, moví todas las llamadas a IA a un proxy backend,
-            añadí auth por usuario + rate limits + límites duros de coste
-            diario con alertas por email.
+            añadí auth por usuario + rate limits + límites duros de coste diario
+            con alertas por email.
           </p>
         </div>
 
@@ -1051,7 +1236,9 @@
           <ul class="case-wins en">
             <li>✅ Bill back to $180/mo within the week</li>
             <li>✅ OpenAI refunded the abuse (because we had logs)</li>
-            <li>✅ Founder finally sleeps without checking the dashboard at 3am</li>
+            <li>
+              ✅ Founder finally sleeps without checking the dashboard at 3am
+            </li>
           </ul>
           <ul class="case-wins es">
             <li>✅ Factura de vuelta a 180$/mes en una semana</li>
@@ -1066,15 +1253,16 @@
           <h3 class="case-title">5.000 users' data, one click away</h3>
           <span class="case-tag"
             ><span class="en">B2B SaaS · Supabase backend</span>
-            <span class="es">SaaS B2B · backend Supabase</span></span>
+            <span class="es">SaaS B2B · backend Supabase</span></span
+          >
         </div>
         <div class="case-block">
           <h4 class="en">What was wrong</h4>
           <h4 class="es">Qué estaba mal</h4>
           <p class="en">
-            Supabase tables wide open. 5,000 user emails, plan data and
-            internal notes visible to anyone with browser devtools. A single
-            screenshot would have killed the deal — and possibly the company.
+            Supabase tables wide open. 5,000 user emails, plan data and internal
+            notes visible to anyone with browser devtools. A single screenshot
+            would have killed the deal — and possibly the company.
           </p>
           <p class="es">
             Tablas de Supabase totalmente abiertas. 5.000 emails de usuarios,
@@ -1088,14 +1276,14 @@
           <h4 class="en">The fix (3 days)</h4>
           <h4 class="es">La solución (3 días)</h4>
           <p class="en">
-            Full RLS rollout, secured every admin endpoint, added auth checks
-            on every read path, produced a signed security report for the
+            Full RLS rollout, secured every admin endpoint, added auth checks on
+            every read path, produced a signed security report for the
             enterprise team.
           </p>
           <p class="es">
             Rollout completo de RLS, asegurados todos los endpoints admin,
-            checks de auth en cada lectura, informe de seguridad firmado para
-            el equipo enterprise.
+            checks de auth en cada lectura, informe de seguridad firmado para el
+            equipo enterprise.
           </p>
         </div>
 
@@ -1109,7 +1297,9 @@
           </ul>
           <ul class="case-wins es">
             <li>✅ Contrato enterprise de 80K€ firmado la semana siguiente</li>
-            <li>✅ Pasaron 2 revisiones de seguridad más en piloto automático</li>
+            <li>
+              ✅ Pasaron 2 revisiones de seguridad más en piloto automático
+            </li>
             <li>✅ Cero datos filtrados (revisamos logs antes)</li>
           </ul>
         </div>
@@ -1120,22 +1310,23 @@
           <h3 class="case-title">Stripe secret key on public GitHub</h3>
           <span class="case-tag"
             ><span class="en">Solo founder, post-launch</span>
-            <span class="es">Founder solo, post-lanzamiento</span></span>
+            <span class="es">Founder solo, post-lanzamiento</span></span
+          >
         </div>
         <div class="case-block">
           <h4 class="en">What was wrong</h4>
           <h4 class="es">Qué estaba mal</h4>
           <p class="en">
-            Stripe secret key committed to a public GitHub repo. Anyone with
-            the URL could issue refunds or read customer billing data. GitHub's
+            Stripe secret key committed to a public GitHub repo. Anyone with the
+            URL could issue refunds or read customer billing data. GitHub's
             secret scanner caught it within hours, but by then it had been
             public for a while.
           </p>
           <p class="es">
             Clave secreta de Stripe subida a un repo público de GitHub.
             Cualquiera con la URL podía emitir reembolsos o leer datos de
-            facturación de clientes. El scanner de secretos de GitHub la
-            detectó en horas, pero ya llevaba un rato pública.
+            facturación de clientes. El scanner de secretos de GitHub la detectó
+            en horas, pero ya llevaba un rato pública.
           </p>
         </div>
 
@@ -1165,7 +1356,9 @@
           <ul class="case-wins es">
             <li>✅ Cero transacciones fraudulentas detectadas</li>
             <li>✅ Hooks instalados para que no vuelva a pasar, nunca</li>
-            <li>✅ El founder mantuvo su empresa en vez de salir en titulares</li>
+            <li>
+              ✅ El founder mantuvo su empresa en vez de salir en titulares
+            </li>
           </ul>
         </div>
       </div>
@@ -1242,12 +1435,12 @@
         </div>
         <div class="faq-question es">¿Qué pasa si tengo preguntas después?</div>
         <div class="faq-answer en">
-          You get the full checklist and can email me for 30 days
-          post-delivery for any clarification.
+          You get the full checklist and can email me for 30 days post-delivery
+          for any clarification.
         </div>
         <div class="faq-answer es">
-          Recibes el checklist completo y puedes escribirme durante 30 días
-          tras la entrega para cualquier aclaración.
+          Recibes el checklist completo y puedes escribirme durante 30 días tras
+          la entrega para cualquier aclaración.
         </div>
       </div>
 
@@ -1259,15 +1452,14 @@
           No soy técnico. ¿Entenderé lo que estás haciendo?
         </div>
         <div class="faq-answer en">
-          Yes. The audit report is written in plain English: what was
-          exposed, how bad it was, and what was changed. You just need to
-          understand the risk and the outcome, not the implementation.
+          Yes. The audit report is written in plain English: what was exposed,
+          how bad it was, and what was changed. You just need to understand the
+          risk and the outcome, not the implementation.
         </div>
         <div class="faq-answer es">
-          Sí. El informe de auditoría está escrito en lenguaje claro: qué
-          estaba expuesto, lo grave que era y qué se ha cambiado. Solo
-          necesitas entender el riesgo y el resultado, no la
-          implementación.
+          Sí. El informe de auditoría está escrito en lenguaje claro: qué estaba
+          expuesto, lo grave que era y qué se ha cambiado. Solo necesitas
+          entender el riesgo y el resultado, no la implementación.
         </div>
       </div>
 
@@ -1279,15 +1471,14 @@
           ¿Y si construí mi app con Cursor/v0/Bolt/Lovable?
         </div>
         <div class="faq-answer en">
-          That's exactly who this is for. AI tools generate working code
-          fast, but they often expose secrets and skip auth checks. I work
-          with that kind of codebase regularly.
+          That's exactly who this is for. AI tools generate working code fast,
+          but they often expose secrets and skip auth checks. I work with that
+          kind of codebase regularly.
         </div>
         <div class="faq-answer es">
-          Es exactamente para quien está pensado esto. Las herramientas de
-          IA generan código que funciona rápido, pero a menudo exponen
-          secretos y se saltan checks de auth. Trabajo con ese tipo de
-          código regularmente.
+          Es exactamente para quien está pensado esto. Las herramientas de IA
+          generan código que funciona rápido, pero a menudo exponen secretos y
+          se saltan checks de auth. Trabajo con ese tipo de código regularmente.
         </div>
       </div>
     </section>
@@ -1295,16 +1486,22 @@
     <section class="container">
       <div class="cta-section">
         <h2>
-          <span class="en">Ready to get this done?</span>
-          <span class="es">¿Listo para dejarlo hecho?</span>
+          <span class="en"
+            >Don't leave your security to an AI hallucination.</span
+          >
+          <span class="es"
+            >No dejes tu seguridad en manos de una alucinación de IA.</span
+          >
         </h2>
         <p class="en">
-          Book a 15-minute call. We'll discuss your app, confirm what you
-          need, and I'll give you a timeline.
+          Secure the deployment, the payments, and the future of your software
+          today. Book a 15-minute call — we'll review your app, confirm what's
+          exposed, and give you a delivery date.
         </p>
         <p class="es">
-          Reserva una llamada de 15 minutos. Hablamos de tu app, confirmamos
-          el alcance y te doy un calendario.
+          Asegura el despliegue, los pagos y el futuro de tu software hoy mismo.
+          Reserva una llamada de 15 minutos — revisamos tu app, confirmamos qué
+          está expuesto y te damos una fecha de entrega.
         </p>
         <a
           href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1LhXEeHMGnVOsJms7pXlNsDwLhD4oYHPri5mjYeyq9KvTMWueOivjGzxzM0hXGYwy7ssOHwubZ"

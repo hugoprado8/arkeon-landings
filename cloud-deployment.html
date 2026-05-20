@@ -560,12 +560,22 @@
         animation: pulseDot 2s infinite;
       }
       @keyframes pulseDot {
-        0% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
-        70% { box-shadow: 0 0 0 10px rgba(0, 255, 136, 0); }
-        100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
+        0% {
+          box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 10px rgba(0, 255, 136, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(0, 255, 136, 0);
+        }
       }
       .social-proof {
-        background: linear-gradient(180deg, transparent 0%, rgba(0, 255, 136, 0.025) 100%);
+        background: linear-gradient(
+          180deg,
+          transparent 0%,
+          rgba(0, 255, 136, 0.025) 100%
+        );
         border-top: 1px solid var(--border);
         border-bottom: 1px solid var(--border);
       }
@@ -601,7 +611,10 @@
         position: relative;
         transition: all 0.3s;
       }
-      .testimonial-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+      .testimonial-card:hover {
+        border-color: var(--accent);
+        transform: translateY(-3px);
+      }
       .testimonial-card::before {
         content: "\201C";
         position: absolute;
@@ -613,66 +626,141 @@
         font-family: Georgia, serif;
         line-height: 1;
       }
-      .testimonial-text { font-size: 1.05rem; color: #e8e8e8; line-height: 1.7; margin-bottom: 1.5rem; padding-top: 0.5rem; }
-      .testimonial-author { display: flex; align-items: center; gap: 0.85rem; }
-      .testimonial-avatar {
-        width: 42px; height: 42px; border-radius: 50%;
-        background: var(--accent); color: var(--bg);
-        display: flex; align-items: center; justify-content: center;
-        font-weight: 700; font-family: "JetBrains Mono", monospace; flex-shrink: 0;
+      .testimonial-text {
+        font-size: 1.05rem;
+        color: #e8e8e8;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+        padding-top: 0.5rem;
       }
-      .testimonial-meta strong { display: block; color: var(--text); font-size: 0.95rem; }
-      .testimonial-meta span { font-size: 0.85rem; color: #6a6a7a; }
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+      }
+      .testimonial-avatar {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: var(--bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-family: "JetBrains Mono", monospace;
+        flex-shrink: 0;
+      }
+      .testimonial-meta strong {
+        display: block;
+        color: var(--text);
+        font-size: 0.95rem;
+      }
+      .testimonial-meta span {
+        font-size: 0.85rem;
+        color: #6a6a7a;
+      }
       .urgency-banner {
-        background: linear-gradient(135deg, rgba(255, 200, 50, 0.08), rgba(255, 100, 50, 0.04));
+        background: linear-gradient(
+          135deg,
+          rgba(255, 200, 50, 0.08),
+          rgba(255, 100, 50, 0.04)
+        );
         border-left: 4px solid var(--accent);
         border-radius: 8px;
         padding: 1.5rem 2rem;
         margin: 3rem auto;
         max-width: 900px;
-        display: flex; align-items: center; gap: 1.25rem;
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
       }
-      .urgency-icon { font-size: 2rem; flex-shrink: 0; }
-      .urgency-text { font-size: 1.05rem; color: var(--text); }
-      .urgency-text strong { color: var(--accent); }
-      .slots-remaining { font-weight: 700; color: #ffb84d; }
+      .urgency-icon {
+        font-size: 2rem;
+        flex-shrink: 0;
+      }
+      .urgency-text {
+        font-size: 1.05rem;
+        color: var(--text);
+      }
+      .urgency-text strong {
+        color: var(--accent);
+      }
+      .slots-remaining {
+        font-weight: 700;
+        color: #ffb84d;
+      }
       .feature-tech {
-        display: block; margin-top: 1rem; padding-top: 0.85rem;
-        border-top: 1px dashed rgba(255,255,255,0.08);
-        font-size: 0.78rem; color: #6a6a7a;
-        font-family: "JetBrains Mono", monospace; line-height: 1.5;
+        display: block;
+        margin-top: 1rem;
+        padding-top: 0.85rem;
+        border-top: 1px dashed rgba(255, 255, 255, 0.08);
+        font-size: 0.78rem;
+        color: #6a6a7a;
+        font-family: "JetBrains Mono", monospace;
+        line-height: 1.5;
       }
       .case-quote {
-        font-size: 1.35rem; line-height: 1.5; color: var(--text);
-        font-style: italic; padding-left: 1.5rem;
-        border-left: 3px solid var(--accent); margin-bottom: 2rem;
+        font-size: 1.35rem;
+        line-height: 1.5;
+        color: var(--text);
+        font-style: italic;
+        padding-left: 1.5rem;
+        border-left: 3px solid var(--accent);
+        margin-bottom: 2rem;
       }
-      .case-block { margin-bottom: 1.5rem; }
+      .case-block {
+        margin-bottom: 1.5rem;
+      }
       .case-block h4 {
-        color: var(--accent); margin-bottom: 0.6rem;
-        font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px;
+        color: var(--accent);
+        margin-bottom: 0.6rem;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
       }
-      .case-block p, .case-block li { color: #a0a0b0; line-height: 1.7; }
+      .case-block p,
+      .case-block li {
+        color: #a0a0b0;
+        line-height: 1.7;
+      }
       .case-wins {
         background: rgba(0, 255, 136, 0.08);
         border-left: 4px solid var(--accent);
-        padding: 1.25rem 1.5rem; border-radius: 4px; list-style: none;
+        padding: 1.25rem 1.5rem;
+        border-radius: 4px;
+        list-style: none;
       }
-      .case-wins li { color: var(--text); padding: 0.25rem 0; }
+      .case-wins li {
+        color: var(--text);
+        padding: 0.25rem 0;
+      }
       .cta-ps {
-        margin-top: 2rem; font-size: 0.95rem; color: #a0a0b0;
-        font-style: italic; max-width: 640px;
-        margin-left: auto; margin-right: auto; line-height: 1.7;
+        margin-top: 2rem;
+        font-size: 0.95rem;
+        color: #a0a0b0;
+        font-style: italic;
+        max-width: 640px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.7;
       }
       .cta-secondary-link {
-        display: inline-block; margin-top: 1.25rem;
-        color: var(--accent); font-size: 0.95rem;
-        text-decoration: none; border-bottom: 1px dashed var(--accent);
+        display: inline-block;
+        margin-top: 1.25rem;
+        color: var(--accent);
+        font-size: 0.95rem;
+        text-decoration: none;
+        border-bottom: 1px dashed var(--accent);
         padding-bottom: 2px;
       }
-      .cta-secondary-link:hover { opacity: 0.8; }
+      .cta-secondary-link:hover {
+        opacity: 0.8;
+      }
       @media (max-width: 640px) {
-        .case-quote { font-size: 1.15rem; }
+        .case-quote {
+          font-size: 1.15rem;
+        }
       }
 
       .testimonials-section {
@@ -682,26 +770,47 @@
         border-bottom: 1px solid var(--border);
       }
       .testimonials-section h3 {
-        text-align: center; margin-bottom: 2rem;
-        font-size: 1.5rem; font-weight: 600;
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 1.5rem;
+        font-weight: 600;
       }
       .testimonials-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 2rem; max-width: 900px; margin: 0 auto;
+        gap: 2rem;
+        max-width: 900px;
+        margin: 0 auto;
       }
       .testimonial-quote {
-        font-size: 1rem; line-height: 1.6;
-        color: #e8e8e8; margin-bottom: 1.5rem;
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #e8e8e8;
+        margin-bottom: 1.5rem;
       }
       .author-avatar {
-        width: 48px; height: 48px; border-radius: 50%;
-        background: var(--accent); color: var(--bg);
-        display: flex; align-items: center; justify-content: center;
-        font-weight: 700; font-size: 1rem; flex-shrink: 0;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: var(--bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1rem;
+        flex-shrink: 0;
       }
-      .author-info strong { display: block; color: #e8e8e8; font-size: 0.95rem; }
-      .author-info span { display: block; color: #6a6a7a; font-size: 0.85rem; }
+      .author-info strong {
+        display: block;
+        color: #e8e8e8;
+        font-size: 0.95rem;
+      }
+      .author-info span {
+        display: block;
+        color: #6a6a7a;
+        font-size: 0.85rem;
+      }
     </style>
   </head>
   <body>
@@ -715,20 +824,28 @@
       <div class="hero-content">
         <div class="hero-left">
           <h1>
-            <span class="en">localhost:3000 works. Your customers can't access it.</span>
-            <span class="es">localhost:3000 funciona. Tus clientes no pueden acceder.</span>
+            <span class="en"
+              >Your AI app works locally.<br />Your customers still can't access
+              it.</span
+            >
+            <span class="es"
+              >Tu app de IA funciona en local.<br />El problema: tus clientes no
+              pueden acceder.</span
+            >
           </h1>
           <p class="hero-subtitle en">
-            I put your app online properly in 7 days — your domain, SSL,
-            backups, monitoring, and the ability to ship updates without
-            breaking things. You stop worrying about infrastructure and go
-            back to your product.
+            AI is great at writing code locally, but it usually fails when
+            configuring real servers, environment variables, databases, and SSL.
+            We deploy your app to secure, stable environments (AWS, Vercel,
+            Render) so it handles thousands of users without going down — and
+            you never have to touch a terminal again.
           </p>
           <p class="hero-subtitle es">
-            Pongo tu app online en condiciones en 7 días — tu dominio, SSL,
-            backups, monitorización y la posibilidad de subir cambios sin
-            romper nada. Dejas de pelearte con infraestructura y vuelves a
-            centrarte en el producto.
+            La IA es genial programando en local, pero suele fallar al
+            configurar servidores reales, variables de entorno, bases de datos y
+            SSL. Subimos tu aplicación a entornos seguros y estables (AWS,
+            Vercel, Render) para que soporte miles de usuarios sin caerse — y tú
+            no tengas que tocar un terminal nunca más.
           </p>
 
           <div class="hero-stats">
@@ -850,7 +967,7 @@
     </section>
 
     <section class="testimonials-section">
-      <div class="container" style="padding: 0 2rem;">
+      <div class="container" style="padding: 0 2rem">
         <h3>
           <span class="en">What clients say</span>
           <span class="es">Qué dicen los clientes</span>
@@ -918,15 +1035,19 @@
           </h3>
           <p class="feature-desc es">
             Tu app online, en tu dominio, sin "espera, déjame levantar el
-            servidor primero". Lista para inversores, primeros usuarios y
-            posts en LinkedIn.
+            servidor primero". Lista para inversores, primeros usuarios y posts
+            en LinkedIn.
           </p>
           <p class="feature-desc en">
             Your app online, on your domain, with no "wait, let me spin up the
             server first." Ready for investors, first users, and LinkedIn posts.
           </p>
-          <span class="feature-tech es">→ Servidor, runtime, secrets, env vars configurados</span>
-          <span class="feature-tech en">→ Server, runtime, secrets, env vars configured</span>
+          <span class="feature-tech es"
+            >→ Servidor, runtime, secrets, env vars configurados</span
+          >
+          <span class="feature-tech en"
+            >→ Server, runtime, secrets, env vars configured</span
+          >
         </div>
         <div class="feature-card">
           <span class="feature-icon">🌐</span>
@@ -942,7 +1063,9 @@
             Custom domain, green padlock, fast loads. What people expect to see
             before they put their card in.
           </p>
-          <span class="feature-tech es">→ DNS, SSL automático, CDN, caching</span>
+          <span class="feature-tech es"
+            >→ DNS, SSL automático, CDN, caching</span
+          >
           <span class="feature-tech en">→ DNS, auto SSL, CDN, caching</span>
         </div>
         <div class="feature-card">
@@ -952,17 +1075,21 @@
             <span class="en">Doesn't crash when OpenAI takes 30 seconds</span>
           </h3>
           <p class="feature-desc es">
-            Apps con IA tienen picos raros y respuestas lentas. Configuro
-            colas, workers y timeouts para que no se caiga cuando entran 10
-            usuarios a la vez.
+            Apps con IA tienen picos raros y respuestas lentas. Configuro colas,
+            workers y timeouts para que no se caiga cuando entran 10 usuarios a
+            la vez.
           </p>
           <p class="feature-desc en">
             AI apps have weird spikes and slow responses. I tune queues,
             workers, and timeouts so it doesn't fall over when 10 users hit it
             at once.
           </p>
-          <span class="feature-tech es">→ Workers async, retries, rate limits, timeouts</span>
-          <span class="feature-tech en">→ Async workers, retries, rate limits, timeouts</span>
+          <span class="feature-tech es"
+            >→ Workers async, retries, rate limits, timeouts</span
+          >
+          <span class="feature-tech en"
+            >→ Async workers, retries, rate limits, timeouts</span
+          >
         </div>
         <div class="feature-card">
           <span class="feature-icon">🛡️</span>
@@ -979,13 +1106,19 @@
             something goes wrong, you have a safety net — not an existential
             crisis.
           </p>
-          <span class="feature-tech es">→ Backups diarios, recovery plan, secrets, firewall</span>
-          <span class="feature-tech en">→ Daily backups, recovery plan, secrets, firewall</span>
+          <span class="feature-tech es"
+            >→ Backups diarios, recovery plan, secrets, firewall</span
+          >
+          <span class="feature-tech en"
+            >→ Daily backups, recovery plan, secrets, firewall</span
+          >
         </div>
         <div class="feature-card">
           <span class="feature-icon">📈</span>
           <h3 class="feature-title">
-            <span class="es">Entérate de los problemas antes que tus usuarios</span>
+            <span class="es"
+              >Entérate de los problemas antes que tus usuarios</span
+            >
             <span class="en">Find out about issues before your users do</span>
           </h3>
           <p class="feature-desc es">
@@ -996,8 +1129,12 @@
             Email/Slack alerts when something breaks. No more finding out the
             app is down because an angry customer messaged you.
           </p>
-          <span class="feature-tech es">→ Uptime monitoring, error tracking, dashboards</span>
-          <span class="feature-tech en">→ Uptime monitoring, error tracking, dashboards</span>
+          <span class="feature-tech es"
+            >→ Uptime monitoring, error tracking, dashboards</span
+          >
+          <span class="feature-tech en"
+            >→ Uptime monitoring, error tracking, dashboards</span
+          >
         </div>
         <div class="feature-card">
           <span class="feature-icon">🤝</span>
@@ -1011,11 +1148,15 @@
           </p>
           <p class="feature-desc en">
             Every step explained in business language. You know what you're
-            paying for, what you get, and how to keep going on your own. No
-            "ok, you're set, good luck."
+            paying for, what you get, and how to keep going on your own. No "ok,
+            you're set, good luck."
           </p>
-          <span class="feature-tech es">→ Guía operativa simple + handover guiado</span>
-          <span class="feature-tech en">→ Simple ops guide + guided handover</span>
+          <span class="feature-tech es"
+            >→ Guía operativa simple + handover guiado</span
+          >
+          <span class="feature-tech en"
+            >→ Simple ops guide + guided handover</span
+          >
         </div>
       </div>
     </section>
@@ -1039,15 +1180,15 @@
           <h4 class="es">Situación</h4>
           <h4 class="en">The situation</h4>
           <p class="es">
-            Founder no técnico con una app funcional construida con
-            herramientas tipo Cursor/Lovable. Todo corría en el portátil y
-            no había forma de enseñarla a un usuario, un cliente o un
-            inversor sin hacer una llamada compartiendo pantalla.
+            Founder no técnico con una app funcional construida con herramientas
+            tipo Cursor/Lovable. Todo corría en el portátil y no había forma de
+            enseñarla a un usuario, un cliente o un inversor sin hacer una
+            llamada compartiendo pantalla.
           </p>
           <p class="en">
             Non-technical founder with a working app built with tools like
-            Cursor/Lovable. Everything ran on their laptop and there was no
-            way to show it to a user, customer, or investor without doing a
+            Cursor/Lovable. Everything ran on their laptop and there was no way
+            to show it to a user, customer, or investor without doing a
             screenshare call.
           </p>
         </div>
@@ -1057,13 +1198,13 @@
           <h4 class="en">The fix (7 days)</h4>
           <p class="es">
             Infraestructura cloud estable, dominio + SSL, BD con backups
-            diarios, deploy automático (cambios en producción en minutos), alertas
-            y una guía operativa de 2 páginas en castellano.
+            diarios, deploy automático (cambios en producción en minutos),
+            alertas y una guía operativa de 2 páginas en castellano.
           </p>
           <p class="en">
             Stable cloud infrastructure, domain + SSL, database with daily
-            backups, automated deploys (changes live in minutes), alerts, and
-            a 2-page operations guide in plain English.
+            backups, automated deploys (changes live in minutes), alerts, and a
+            2-page operations guide in plain English.
           </p>
         </div>
 
@@ -1071,14 +1212,19 @@
           <h4 class="es">El resultado</h4>
           <h4 class="en">The result</h4>
           <ul class="case-wins es">
-            <li>✅ Demo enseñada con dominio real → segunda reunión con el inversor</li>
+            <li>
+              ✅ Demo enseñada con dominio real → segunda reunión con el
+              inversor
+            </li>
             <li>✅ Primeros 20 usuarios usando la app sin caídas</li>
             <li>✅ Founder gestionando deploys solo, sin escribirme una vez</li>
           </ul>
           <ul class="case-wins en">
             <li>✅ Demo shown on a real domain → second investor meeting</li>
             <li>✅ First 20 users on the app with zero downtime</li>
-            <li>✅ Founder shipping deploys solo, didn't message me once after</li>
+            <li>
+              ✅ Founder shipping deploys solo, didn't message me once after
+            </li>
           </ul>
         </div>
       </div>
@@ -1136,8 +1282,8 @@
         </div>
         <div class="faq-answer en">
           7 business days from when I get access. If your app depends on
-          something external (a locked domain, an API to activate), I flag it
-          on day 1 so nothing surprises you.
+          something external (a locked domain, an API to activate), I flag it on
+          day 1 so nothing surprises you.
         </div>
       </div>
 
@@ -1149,16 +1295,15 @@
           Why don't I just use Vercel/Netlify for free?
         </div>
         <div class="faq-answer es">
-          Si tu app es una landing estática, hazlo. Si tiene base de datos,
-          jobs en background, llamadas a IA, archivos de usuarios, webhooks…
-          el plan gratis se te queda corto el día 1 y la migración después
-          cuesta el triple. Mejor empezar bien.
+          Si tu app es una landing estática, hazlo. Si tiene base de datos, jobs
+          en background, llamadas a IA, archivos de usuarios, webhooks… el plan
+          gratis se te queda corto el día 1 y la migración después cuesta el
+          triple. Mejor empezar bien.
         </div>
         <div class="faq-answer en">
           If your app is a static landing, do it. If it has a database,
-          background jobs, AI calls, user uploads, webhooks… the free tier
-          runs out on day 1 and migrating later costs 3x. Better to start
-          right.
+          background jobs, AI calls, user uploads, webhooks… the free tier runs
+          out on day 1 and migrating later costs 3x. Better to start right.
         </div>
       </div>
 
@@ -1171,8 +1316,8 @@
         </div>
         <div class="faq-answer es">
           Sí. Trabajo con esas apps cada semana. Las exporto, las limpio lo
-          mínimo necesario y las pongo en producción de verdad. Sin romperte
-          el flujo de "vibe coding" que ya tienes.
+          mínimo necesario y las pongo en producción de verdad. Sin romperte el
+          flujo de "vibe coding" que ya tienes.
         </div>
         <div class="faq-answer en">
           Yes. I work with those apps every week. I export them, clean only
@@ -1190,13 +1335,13 @@
         </div>
         <div class="faq-answer es">
           Sí. Te lo explico todo en lenguaje claro. Solo necesitas saber el
-          resultado (tu app accesible online, con tu dominio, estable), no
-          los detalles técnicos de cómo se hace.
+          resultado (tu app accesible online, con tu dominio, estable), no los
+          detalles técnicos de cómo se hace.
         </div>
         <div class="faq-answer en">
-          Yes. I explain everything in plain English. You just need to know
-          the outcome (your app online, on your domain, stable), not the
-          technical details of how it gets there.
+          Yes. I explain everything in plain English. You just need to know the
+          outcome (your app online, on your domain, stable), not the technical
+          details of how it gets there.
         </div>
       </div>
 
@@ -1209,13 +1354,13 @@
         </div>
         <div class="faq-answer es">
           Perfecto. Es exactamente para quien está pensado esto. Trabajo
-          regularmente con código generado por IA y sé cómo desplegarlo
-          bien sin tener que reescribir tu app.
+          regularmente con código generado por IA y sé cómo desplegarlo bien sin
+          tener que reescribir tu app.
         </div>
         <div class="faq-answer en">
-          Perfect. That's exactly who this is for. I work with AI-generated
-          code regularly and know how to deploy it properly without having
-          to rewrite your app.
+          Perfect. That's exactly who this is for. I work with AI-generated code
+          regularly and know how to deploy it properly without having to rewrite
+          your app.
         </div>
       </div>
     </section>
@@ -1223,16 +1368,23 @@
     <section class="container">
       <div class="cta-section">
         <h2>
-          <span class="es">¿Listo para dejarlo hecho?</span>
-          <span class="en">Ready to get this done?</span>
+          <span class="es"
+            >No dejes tu infraestructura en manos de una alucinación de
+            IA.</span
+          >
+          <span class="en"
+            >Don't leave your infrastructure to an AI hallucination.</span
+          >
         </h2>
         <p class="es">
-          Reserva una llamada de 15 minutos. Hablamos de tu app, confirmamos
-          el alcance y te doy un calendario.
+          Asegura el despliegue, los pagos y el futuro de tu software hoy mismo.
+          Reserva una llamada de 15 minutos — revisamos tu app, confirmamos el
+          alcance y te damos una fecha de entrega.
         </p>
         <p class="en">
-          Book a 15-minute call. We'll discuss your app, confirm what you
-          need, and I'll give you a timeline.
+          Secure the deployment, the payments, and the future of your software
+          today. Book a 15-minute call — we'll review your app, confirm what's
+          needed, and give you a delivery date.
         </p>
         <a
           href="https://calendar.app.google/WmTZX6wxqDUmcjMcA"

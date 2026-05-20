@@ -579,105 +579,227 @@
       }
 
       .fomo-badge {
-        display: inline-flex; align-items: center; gap: 0.6rem;
-        padding: 0.5rem 1rem; background: rgba(0, 255, 136, 0.08);
-        border: 1px solid rgba(0, 255, 136, 0.3); border-radius: 999px;
-        font-family: "JetBrains Mono", monospace; font-size: 0.8rem;
-        color: var(--accent); margin-bottom: 1.5rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.5rem 1rem;
+        background: rgba(0, 255, 136, 0.08);
+        border: 1px solid rgba(0, 255, 136, 0.3);
+        border-radius: 999px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.8rem;
+        color: var(--accent);
+        margin-bottom: 1.5rem;
       }
       .fomo-badge .pulse {
-        width: 8px; height: 8px; background: var(--accent);
-        border-radius: 50%; animation: pulseDot 2s infinite;
+        width: 8px;
+        height: 8px;
+        background: var(--accent);
+        border-radius: 50%;
+        animation: pulseDot 2s infinite;
       }
       @keyframes pulseDot {
-        0% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
-        70% { box-shadow: 0 0 0 10px rgba(0, 255, 136, 0); }
-        100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
+        0% {
+          box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 10px rgba(0, 255, 136, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(0, 255, 136, 0);
+        }
       }
       .social-proof {
-        background: linear-gradient(180deg, transparent 0%, rgba(0, 255, 136, 0.025) 100%);
-        border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+        background: linear-gradient(
+          180deg,
+          transparent 0%,
+          rgba(0, 255, 136, 0.025) 100%
+        );
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
       }
       .proof-stats {
-        display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 2rem; margin-bottom: 4rem; text-align: center;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 2rem;
+        margin-bottom: 4rem;
+        text-align: center;
       }
       .proof-stat .proof-number {
-        font-family: "JetBrains Mono", monospace; font-size: 2.75rem;
-        font-weight: 700; color: var(--accent); line-height: 1;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 2.75rem;
+        font-weight: 700;
+        color: var(--accent);
+        line-height: 1;
       }
-      .proof-stat .proof-label { font-size: 0.95rem; color: #a0a0b0; margin-top: 0.75rem; }
+      .proof-stat .proof-label {
+        font-size: 0.95rem;
+        color: #a0a0b0;
+        margin-top: 0.75rem;
+      }
       .testimonials {
-        display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 1.5rem;
       }
       .testimonial-card {
-        background: var(--card-bg); border: 1px solid var(--border);
-        border-radius: 12px; padding: 2rem 2rem 1.75rem;
-        position: relative; transition: all 0.3s;
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 2rem 2rem 1.75rem;
+        position: relative;
+        transition: all 0.3s;
       }
-      .testimonial-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+      .testimonial-card:hover {
+        border-color: var(--accent);
+        transform: translateY(-3px);
+      }
       .testimonial-card::before {
-        content: "\201C"; position: absolute; top: -0.75rem; left: 1rem;
-        font-size: 4rem; color: var(--accent); opacity: 0.35;
-        font-family: Georgia, serif; line-height: 1;
+        content: "\201C";
+        position: absolute;
+        top: -0.75rem;
+        left: 1rem;
+        font-size: 4rem;
+        color: var(--accent);
+        opacity: 0.35;
+        font-family: Georgia, serif;
+        line-height: 1;
       }
-      .testimonial-text { font-size: 1.05rem; color: #e8e8e8; line-height: 1.7; margin-bottom: 1.5rem; padding-top: 0.5rem; }
-      .testimonial-author { display: flex; align-items: center; gap: 0.85rem; }
+      .testimonial-text {
+        font-size: 1.05rem;
+        color: #e8e8e8;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+        padding-top: 0.5rem;
+      }
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+      }
       .testimonial-avatar {
-        width: 42px; height: 42px; border-radius: 50%;
-        background: var(--accent); color: var(--bg);
-        display: flex; align-items: center; justify-content: center;
-        font-weight: 700; font-family: "JetBrains Mono", monospace; flex-shrink: 0;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: var(--bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-family: "JetBrains Mono", monospace;
+        flex-shrink: 0;
       }
-      .testimonial-meta strong { display: block; color: var(--text); font-size: 0.95rem; }
-      .testimonial-meta span { font-size: 0.85rem; color: #6a6a7a; }
+      .testimonial-meta strong {
+        display: block;
+        color: var(--text);
+        font-size: 0.95rem;
+      }
+      .testimonial-meta span {
+        font-size: 0.85rem;
+        color: #6a6a7a;
+      }
       .urgency-banner {
-        background: linear-gradient(135deg, rgba(255, 200, 50, 0.08), rgba(255, 100, 50, 0.04));
-        border-left: 4px solid var(--accent); border-radius: 8px;
-        padding: 1.5rem 2rem; margin: 3rem auto; max-width: 900px;
-        display: flex; align-items: center; gap: 1.25rem;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 200, 50, 0.08),
+          rgba(255, 100, 50, 0.04)
+        );
+        border-left: 4px solid var(--accent);
+        border-radius: 8px;
+        padding: 1.5rem 2rem;
+        margin: 3rem auto;
+        max-width: 900px;
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
       }
-      .urgency-icon { font-size: 2rem; flex-shrink: 0; }
-      .urgency-text { font-size: 1.05rem; color: var(--text); }
-      .urgency-text strong { color: var(--accent); }
-      .slots-remaining { font-weight: 700; color: #ffb84d; }
+      .urgency-icon {
+        font-size: 2rem;
+        flex-shrink: 0;
+      }
+      .urgency-text {
+        font-size: 1.05rem;
+        color: var(--text);
+      }
+      .urgency-text strong {
+        color: var(--accent);
+      }
+      .slots-remaining {
+        font-weight: 700;
+        color: #ffb84d;
+      }
       .feature-tech {
-        display: block; margin-top: 1rem; padding-top: 0.85rem;
-        border-top: 1px dashed rgba(255,255,255,0.08);
-        font-size: 0.78rem; color: #6a6a7a;
-        font-family: "JetBrains Mono", monospace; line-height: 1.5;
+        display: block;
+        margin-top: 1rem;
+        padding-top: 0.85rem;
+        border-top: 1px dashed rgba(255, 255, 255, 0.08);
+        font-size: 0.78rem;
+        color: #6a6a7a;
+        font-family: "JetBrains Mono", monospace;
+        line-height: 1.5;
       }
       .case-quote {
-        font-size: 1.35rem; line-height: 1.5; color: var(--text);
-        font-style: italic; padding-left: 1.5rem;
-        border-left: 3px solid var(--accent); margin-bottom: 2rem;
+        font-size: 1.35rem;
+        line-height: 1.5;
+        color: var(--text);
+        font-style: italic;
+        padding-left: 1.5rem;
+        border-left: 3px solid var(--accent);
+        margin-bottom: 2rem;
       }
-      .case-block { margin-bottom: 1.5rem; }
+      .case-block {
+        margin-bottom: 1.5rem;
+      }
       .case-block h4 {
-        color: var(--accent); margin-bottom: 0.6rem;
-        font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px;
+        color: var(--accent);
+        margin-bottom: 0.6rem;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
       }
-      .case-block p, .case-block li { color: #a0a0b0; line-height: 1.7; }
+      .case-block p,
+      .case-block li {
+        color: #a0a0b0;
+        line-height: 1.7;
+      }
       .case-wins {
         background: rgba(0, 255, 136, 0.08);
         border-left: 4px solid var(--accent);
-        padding: 1.25rem 1.5rem; border-radius: 4px; list-style: none;
+        padding: 1.25rem 1.5rem;
+        border-radius: 4px;
+        list-style: none;
       }
-      .case-wins li { color: var(--text); padding: 0.25rem 0; }
+      .case-wins li {
+        color: var(--text);
+        padding: 0.25rem 0;
+      }
       .cta-ps {
-        margin-top: 2rem; font-size: 0.95rem; color: #a0a0b0;
-        font-style: italic; max-width: 640px;
-        margin-left: auto; margin-right: auto; line-height: 1.7;
+        margin-top: 2rem;
+        font-size: 0.95rem;
+        color: #a0a0b0;
+        font-style: italic;
+        max-width: 640px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.7;
       }
       .cta-secondary-link {
-        display: inline-block; margin-top: 1.25rem;
-        color: var(--accent); font-size: 0.95rem;
-        text-decoration: none; border-bottom: 1px dashed var(--accent);
+        display: inline-block;
+        margin-top: 1.25rem;
+        color: var(--accent);
+        font-size: 0.95rem;
+        text-decoration: none;
+        border-bottom: 1px dashed var(--accent);
         padding-bottom: 2px;
       }
-      .cta-secondary-link:hover { opacity: 0.8; }
+      .cta-secondary-link:hover {
+        opacity: 0.8;
+      }
       @media (max-width: 640px) {
-        .case-quote { font-size: 1.15rem; }
+        .case-quote {
+          font-size: 1.15rem;
+        }
       }
 
       .testimonials-section {
@@ -687,26 +809,47 @@
         border-bottom: 1px solid var(--border);
       }
       .testimonials-section h3 {
-        text-align: center; margin-bottom: 2rem;
-        font-size: 1.5rem; font-weight: 600;
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 1.5rem;
+        font-weight: 600;
       }
       .testimonials-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 2rem; max-width: 900px; margin: 0 auto;
+        gap: 2rem;
+        max-width: 900px;
+        margin: 0 auto;
       }
       .testimonial-quote {
-        font-size: 1rem; line-height: 1.6;
-        color: #e8e8e8; margin-bottom: 1.5rem;
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #e8e8e8;
+        margin-bottom: 1.5rem;
       }
       .author-avatar {
-        width: 48px; height: 48px; border-radius: 50%;
-        background: var(--accent); color: var(--bg);
-        display: flex; align-items: center; justify-content: center;
-        font-weight: 700; font-size: 1rem; flex-shrink: 0;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: var(--bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1rem;
+        flex-shrink: 0;
       }
-      .author-info strong { display: block; color: #e8e8e8; font-size: 0.95rem; }
-      .author-info span { display: block; color: #6a6a7a; font-size: 0.85rem; }
+      .author-info strong {
+        display: block;
+        color: #e8e8e8;
+        font-size: 0.95rem;
+      }
+      .author-info span {
+        display: block;
+        color: #6a6a7a;
+        font-size: 0.85rem;
+      }
     </style>
   </head>
   <body>
@@ -720,20 +863,27 @@
       <div class="hero-content">
         <div class="hero-left">
           <h1>
-            <span class="en">100 users: fast. 500 users: slow. 1,000 users: dead.</span>
-            <span class="es">100 usuarios: rápido. 500 usuarios: lento. 1.000 usuarios: muerto.</span>
+            <span class="en"
+              >100 users: fast. 500 users: slow. 1,000 users: dead.</span
+            >
+            <span class="es"
+              >100 usuarios: rápido. 500 usuarios: lento. 1.000 usuarios:
+              muerto.</span
+            >
           </h1>
           <p class="hero-subtitle en">
-            Your AI-built MVP slows down because everything runs in the
-            user's browser. I move the heavy work to a proper backend in 7
-            days — same UI, much faster, and ready to grow without
-            rewriting from scratch.
+            When you ask AI to optimise a database, it often makes things worse
+            or breaks something else. Your AI-built MVP slows down because
+            everything runs in the user’s browser. We move the heavy work to a
+            proper backend in 7 days — same UI, much faster, and ready to grow
+            without rewriting from scratch.
           </p>
           <p class="hero-subtitle es">
-            Tu MVP hecho con IA va más lento porque todo corre en el
-            navegador del usuario. Muevo la lógica pesada a un backend en
-            condiciones en 7 días — misma UI, mucho más rápido, y listo
-            para crecer sin reescribir desde cero.
+            Cuando le pides a la IA que optimice la base de datos, a menudo la
+            empeora o rompe otra cosa. Tu MVP hecho con IA va más lento porque
+            todo corre en el navegador del usuario. Movemos la lógica pesada a
+            un backend en condiciones en 7 días — misma UI, mucho más rápido, y
+            listo para crecer sin reescribir desde cero.
           </p>
 
           <div class="hero-stats">
@@ -836,7 +986,7 @@
     </section>
 
     <section class="testimonials-section">
-      <div class="container" style="padding: 0 2rem;">
+      <div class="container" style="padding: 0 2rem">
         <h3>
           <span class="en">What clients say</span>
           <span class="es">Qué dicen los clientes</span>
@@ -908,12 +1058,16 @@
             guessing.
           </p>
           <p class="feature-desc es">
-            Un diagnóstico claro de qué te está matando el rendimiento:
-            bundles de 5MB, volcados de 10k filas al navegador, índices que
-            faltan. Sin adivinar.
+            Un diagnóstico claro de qué te está matando el rendimiento: bundles
+            de 5MB, volcados de 10k filas al navegador, índices que faltan. Sin
+            adivinar.
           </p>
-          <span class="feature-tech en">→ Architecture audit + perf profiling</span>
-          <span class="feature-tech es">→ Auditoría de arquitectura + perf profiling</span>
+          <span class="feature-tech en"
+            >→ Architecture audit + perf profiling</span
+          >
+          <span class="feature-tech es"
+            >→ Auditoría de arquitectura + perf profiling</span
+          >
         </div>
         <div class="feature-card">
           <span class="feature-icon">⚙️</span>
@@ -922,17 +1076,20 @@
             <span class="es">Un servidor de verdad haciendo el trabajo</span>
           </h3>
           <p class="feature-desc en">
-            The browser stops choking. Your users get instant responses
-            because a real backend is now doing the work — not their laptop
-            on 4G.
+            The browser stops choking. Your users get instant responses because
+            a real backend is now doing the work — not their laptop on 4G.
           </p>
           <p class="feature-desc es">
             El navegador deja de ahogarse. Tus usuarios reciben respuestas
             instantáneas porque ahora hay un backend de verdad haciendo el
             trabajo — no su portátil con 4G.
           </p>
-          <span class="feature-tech en">→ Node.js/Express or Python/FastAPI, tuned for your flows</span>
-          <span class="feature-tech es">→ Node.js/Express o Python/FastAPI, afinado a tus flujos</span>
+          <span class="feature-tech en"
+            >→ Node.js/Express or Python/FastAPI, tuned for your flows</span
+          >
+          <span class="feature-tech es"
+            >→ Node.js/Express o Python/FastAPI, afinado a tus flujos</span
+          >
         </div>
         <div class="feature-card">
           <span class="feature-icon">🗄️</span>
@@ -942,67 +1099,91 @@
           </h3>
           <p class="feature-desc en">
             Filtering, sorting and pagination on the server. You return 50
-            relevant rows, not 10,000. Bounce rate goes down. Conversion
-            goes up.
+            relevant rows, not 10,000. Bounce rate goes down. Conversion goes
+            up.
           </p>
           <p class="feature-desc es">
-            Filtrado, ordenación y paginación en el servidor. Devuelves 50
-            filas relevantes, no 10.000. Baja el bounce. Sube la conversión.
+            Filtrado, ordenación y paginación en el servidor. Devuelves 50 filas
+            relevantes, no 10.000. Baja el bounce. Sube la conversión.
           </p>
-          <span class="feature-tech en">→ Pagination, server-side filters, DB indexes</span>
-          <span class="feature-tech es">→ Paginación, filtros en servidor, índices de BD</span>
+          <span class="feature-tech en"
+            >→ Pagination, server-side filters, DB indexes</span
+          >
+          <span class="feature-tech es"
+            >→ Paginación, filtros en servidor, índices de BD</span
+          >
         </div>
         <div class="feature-card">
           <span class="feature-icon">📦</span>
           <h3 class="feature-title">
-            <span class="en">Logic that doesn't break when 100 users hit at once</span>
-            <span class="es">Lógica que no se rompe con 100 usuarios a la vez</span>
+            <span class="en"
+              >Logic that doesn't break when 100 users hit at once</span
+            >
+            <span class="es"
+              >Lógica que no se rompe con 100 usuarios a la vez</span
+            >
           </h3>
           <p class="feature-desc en">
-            Pricing, calculations, AI calls, recommendations — all moved off
-            the browser. Same product, infinitely more reliable.
+            Pricing, calculations, AI calls, recommendations — all moved off the
+            browser. Same product, infinitely more reliable.
           </p>
           <p class="feature-desc es">
-            Precios, cálculos, llamadas a IA, recomendaciones — todo fuera
-            del navegador. Mismo producto, infinitamente más fiable.
+            Precios, cálculos, llamadas a IA, recomendaciones — todo fuera del
+            navegador. Mismo producto, infinitamente más fiable.
           </p>
-          <span class="feature-tech en">→ Business logic migrated to backend services</span>
-          <span class="feature-tech es">→ Lógica de negocio migrada a servicios backend</span>
+          <span class="feature-tech en"
+            >→ Business logic migrated to backend services</span
+          >
+          <span class="feature-tech es"
+            >→ Lógica de negocio migrada a servicios backend</span
+          >
         </div>
         <div class="feature-card">
           <span class="feature-icon">⚡</span>
           <h3 class="feature-title">
             <span class="en">Cut your Supabase/Firebase bill by 70%</span>
-            <span class="es">Reduce tu factura de Supabase/Firebase un 70%</span>
+            <span class="es"
+              >Reduce tu factura de Supabase/Firebase un 70%</span
+            >
           </h3>
           <p class="feature-desc en">
-            Smart caching means you stop hammering your DB for the same
-            queries 1,000 times a day. Faster for users, way cheaper for you.
+            Smart caching means you stop hammering your DB for the same queries
+            1,000 times a day. Faster for users, way cheaper for you.
           </p>
           <p class="feature-desc es">
-            Caché inteligente para que dejes de machacar tu BD con las
-            mismas queries 1.000 veces al día. Más rápido para los
-            usuarios, mucho más barato para ti.
+            Caché inteligente para que dejes de machacar tu BD con las mismas
+            queries 1.000 veces al día. Más rápido para los usuarios, mucho más
+            barato para ti.
           </p>
-          <span class="feature-tech en">→ Redis (if needed), query caching, edge caching</span>
-          <span class="feature-tech es">→ Redis (si hace falta), cache de queries, edge cache</span>
+          <span class="feature-tech en"
+            >→ Redis (if needed), query caching, edge caching</span
+          >
+          <span class="feature-tech es"
+            >→ Redis (si hace falta), cache de queries, edge cache</span
+          >
         </div>
         <div class="feature-card">
           <span class="feature-icon">🚀</span>
           <h3 class="feature-title">
             <span class="en">Know when it breaks (before users complain)</span>
-            <span class="es">Entérate antes que tus usuarios cuando algo falla</span>
+            <span class="es"
+              >Entérate antes que tus usuarios cuando algo falla</span
+            >
           </h3>
           <p class="feature-desc en">
             Deployed properly with logs, metrics and alerts. The next time
             something acts weird, you'll see it before your customers do.
           </p>
           <p class="feature-desc es">
-            Desplegado en condiciones con logs, métricas y alertas. La
-            próxima vez que algo vaya raro, lo verás antes que tus clientes.
+            Desplegado en condiciones con logs, métricas y alertas. La próxima
+            vez que algo vaya raro, lo verás antes que tus clientes.
           </p>
-          <span class="feature-tech en">→ Railway/Render deploy + monitoring + alerts</span>
-          <span class="feature-tech es">→ Deploy en Railway/Render + monitoreo + alertas</span>
+          <span class="feature-tech en"
+            >→ Railway/Render deploy + monitoring + alerts</span
+          >
+          <span class="feature-tech es"
+            >→ Deploy en Railway/Render + monitoreo + alertas</span
+          >
         </div>
       </div>
     </section>
@@ -1010,7 +1191,9 @@
     <section class="container" id="cases">
       <h2 class="section-title">
         <span class="en">Real apps that hit the wall. And got past it.</span>
-        <span class="es">Apps reales que pegaron contra el muro. Y lo pasaron.</span>
+        <span class="es"
+          >Apps reales que pegaron contra el muro. Y lo pasaron.</span
+        >
       </h2>
 
       <div class="case-study">
@@ -1018,7 +1201,10 @@
           <h3 class="case-title">The 10-second dashboard</h3>
           <span class="case-tag"
             ><span class="en">Course platform · built with Lovable</span>
-            <span class="es">Plataforma de cursos · hecha con Lovable</span></span>
+            <span class="es"
+              >Plataforma de cursos · hecha con Lovable</span
+            ></span
+          >
         </div>
         <div class="case-block">
           <h4 class="en">What was wrong</h4>
@@ -1029,9 +1215,8 @@
             crashed.
           </p>
           <p class="es">
-            Con 200 alumnos cargaba los 10.000 registros de curso al
-            navegador en cada vista y filtraba ahí. A los 500, simplemente
-            se caía.
+            Con 200 alumnos cargaba los 10.000 registros de curso al navegador
+            en cada vista y filtraba ahí. A los 500, simplemente se caía.
           </p>
         </div>
 
@@ -1043,8 +1228,8 @@
             indexes. Cache layer for the hot queries.
           </p>
           <p class="es">
-            API backend con paginación, filtros en servidor e índices
-            decentes en la BD. Capa de cache para las queries calientes.
+            API backend con paginación, filtros en servidor e índices decentes
+            en la BD. Capa de cache para las queries calientes.
           </p>
         </div>
 
@@ -1069,7 +1254,8 @@
           <h3 class="case-title">The 500-user wall</h3>
           <span class="case-tag"
             ><span class="en">Growing B2C SaaS · went semi-viral</span>
-            <span class="es">SaaS B2C en crecimiento · semi-viral</span></span>
+            <span class="es">SaaS B2C en crecimiento · semi-viral</span></span
+          >
         </div>
         <div class="case-block">
           <h4 class="en">What was wrong</h4>
@@ -1090,14 +1276,13 @@
           <h4 class="en">The fix (7 days)</h4>
           <h4 class="es">La solución (7 días)</h4>
           <p class="en">
-            Moved all heavy computation to a backend service. Frontend
-            became a thin render layer. Same UI, completely different
-            engine underneath.
+            Moved all heavy computation to a backend service. Frontend became a
+            thin render layer. Same UI, completely different engine underneath.
           </p>
           <p class="es">
-            Moví toda la computación pesada a un servicio backend. El
-            frontend pasó a ser una capa fina de render. Misma UI, motor
-            completamente diferente.
+            Moví toda la computación pesada a un servicio backend. El frontend
+            pasó a ser una capa fina de render. Misma UI, motor completamente
+            diferente.
           </p>
         </div>
 
@@ -1122,20 +1307,21 @@
           <h3 class="case-title">The $800/mo Supabase bill</h3>
           <span class="case-tag"
             ><span class="en">Data-heavy SaaS</span>
-            <span class="es">SaaS data-intensive</span></span>
+            <span class="es">SaaS data-intensive</span></span
+          >
         </div>
         <div class="case-block">
           <h4 class="en">What was wrong</h4>
           <h4 class="es">Qué estaba mal</h4>
           <p class="en">
             Every user was pulling huge datasets straight from Supabase to
-            filter in the browser. Every. Single. Time. Data egress was
-            eating their margins.
+            filter in the browser. Every. Single. Time. Data egress was eating
+            their margins.
           </p>
           <p class="es">
             Cada usuario tiraba datasets enormes directos de Supabase para
-            filtrar en el navegador. Cada. Vez. El egress de datos se
-            comía el margen.
+            filtrar en el navegador. Cada. Vez. El egress de datos se comía el
+            margen.
           </p>
         </div>
 
@@ -1143,14 +1329,14 @@
           <h4 class="en">The fix (7 days)</h4>
           <h4 class="es">La solución (7 días)</h4>
           <p class="en">
-            Backend handles all filtering. Only the exact UI payload goes
-            to the browser. Strict pagination everywhere. Smart cache on
-            the heavy queries.
+            Backend handles all filtering. Only the exact UI payload goes to the
+            browser. Strict pagination everywhere. Smart cache on the heavy
+            queries.
           </p>
           <p class="es">
-            El backend gestiona todo el filtrado. Solo el payload exacto
-            llega al navegador. Paginación estricta en todo. Cache
-            inteligente en las queries pesadas.
+            El backend gestiona todo el filtrado. Solo el payload exacto llega
+            al navegador. Paginación estricta en todo. Cache inteligente en las
+            queries pesadas.
           </p>
         </div>
 
@@ -1252,16 +1438,16 @@
         <div class="faq-question en">What tech stack for the backend?</div>
         <div class="faq-question es">¿Qué stack para el backend?</div>
         <div class="faq-answer en">
-          Default is Node.js for React/Next projects or Python (FastAPI)
-          when preferred. I adapt to your current stack when possible — if
-          it's built with Bolt, Cursor, Lovable, v0, or anything else built
-          in the last 5 years, I can work with it.
+          Default is Node.js for React/Next projects or Python (FastAPI) when
+          preferred. I adapt to your current stack when possible — if it's built
+          with Bolt, Cursor, Lovable, v0, or anything else built in the last 5
+          years, I can work with it.
         </div>
         <div class="faq-answer es">
-          Por defecto Node.js para proyectos React/Next o Python (FastAPI)
-          si lo prefieres. Me adapto a tu stack — si está hecho con Bolt,
-          Cursor, Lovable, v0 o cualquier cosa de los últimos 5 años, puedo
-          trabajar con ello.
+          Por defecto Node.js para proyectos React/Next o Python (FastAPI) si lo
+          prefieres. Me adapto a tu stack — si está hecho con Bolt, Cursor,
+          Lovable, v0 o cualquier cosa de los últimos 5 años, puedo trabajar con
+          ello.
         </div>
       </div>
 
@@ -1273,14 +1459,14 @@
           No soy técnico. ¿Entenderé lo que estás haciendo?
         </div>
         <div class="faq-answer en">
-          Yes. I explain everything in plain English. You just need to know
-          the outcome (your app is faster, stable under more users, and
-          your hosting bill makes sense), not the technical details.
+          Yes. I explain everything in plain English. You just need to know the
+          outcome (your app is faster, stable under more users, and your hosting
+          bill makes sense), not the technical details.
         </div>
         <div class="faq-answer es">
-          Sí. Te lo explico todo en lenguaje claro. Solo necesitas entender
-          el resultado (tu app va más rápido, aguanta más usuarios y la
-          factura de hosting tiene sentido), no los detalles técnicos.
+          Sí. Te lo explico todo en lenguaje claro. Solo necesitas entender el
+          resultado (tu app va más rápido, aguanta más usuarios y la factura de
+          hosting tiene sentido), no los detalles técnicos.
         </div>
       </div>
 
@@ -1292,17 +1478,16 @@
           ¿Y si construí mi app con Cursor/v0/Bolt/Lovable?
         </div>
         <div class="faq-answer en">
-          That's exactly who this is for. AI tools build great frontends
-          fast but rarely put the heavy logic where it belongs. I work
-          with that kind of codebase regularly and migrate incrementally so
-          your app keeps working the whole time.
+          That's exactly who this is for. AI tools build great frontends fast
+          but rarely put the heavy logic where it belongs. I work with that kind
+          of codebase regularly and migrate incrementally so your app keeps
+          working the whole time.
         </div>
         <div class="faq-answer es">
-          Es exactamente para quien está pensado esto. Las herramientas de
-          IA construyen frontends rápido pero rara vez ponen la lógica
-          pesada donde debe ir. Trabajo con ese tipo de código
-          regularmente y migro de forma incremental para que tu app siga
-          funcionando todo el tiempo.
+          Es exactamente para quien está pensado esto. Las herramientas de IA
+          construyen frontends rápido pero rara vez ponen la lógica pesada donde
+          debe ir. Trabajo con ese tipo de código regularmente y migro de forma
+          incremental para que tu app siga funcionando todo el tiempo.
         </div>
       </div>
     </section>
@@ -1310,16 +1495,22 @@
     <section class="container">
       <div class="cta-section">
         <h2>
-          <span class="en">Ready to get this done?</span>
-          <span class="es">¿Listo para dejarlo hecho?</span>
+          <span class="en"
+            >Don't let an AI hallucination collapse your database.</span
+          >
+          <span class="es"
+            >No dejes que una alucinación de IA colapse tu base de datos.</span
+          >
         </h2>
         <p class="en">
-          Book a 15-minute call. We'll discuss your app, confirm what you
-          need, and I'll give you a timeline.
+          Secure the backend, the data structure, and the future of your
+          software today. Book a 15-minute call — we’ll review your app, confirm
+          what’s needed, and give you a delivery date.
         </p>
         <p class="es">
-          Reserva una llamada de 15 minutos. Hablamos de tu app, confirmamos
-          el alcance y te doy un calendario.
+          Asegura el backend, la estructura de datos y el futuro de tu software
+          hoy mismo. Reserva una llamada de 15 minutos — revisamos tu app,
+          confirmamos el alcance y te damos una fecha de entrega.
         </p>
         <a
           href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1LhXEeHMGnVOsJms7pXlNsDwLhD4oYHPri5mjYeyq9KvTMWueOivjGzxzM0hXGYwy7ssOHwubZ"
