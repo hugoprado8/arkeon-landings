@@ -9,6 +9,21 @@
       gtag('js', new Date());
       gtag('config', 'AW-18179723592');
     </script>
+    <!-- Event snippet: conversion on CTA click -->
+    <script>
+      function gtag_report_conversion(url) {
+        var callback = function () {
+          if (typeof(url) != 'undefined') { window.location = url; }
+        };
+        gtag('event', 'conversion', {
+          'send_to': 'AW-18179723592/nziNCPC_xLEcEMii4txD',
+          'value': 1.0,
+          'currency': 'EUR',
+          'event_callback': callback
+        });
+        return false;
+      }
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Backend Migration - 7 Days, Fixed Price | Hugo Prado</title>
@@ -929,6 +944,7 @@
             <a
               href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1LhXEeHMGnVOsJms7pXlNsDwLhD4oYHPri5mjYeyq9KvTMWueOivjGzxzM0hXGYwy7ssOHwubZ"
               class="btn btn-primary"
+              onclick="return gtag_report_conversion(this.href);"
               ><span class="en">Schedule backend call →</span
               ><span class="es">Agendar migración →</span></a
             >
@@ -1530,6 +1546,7 @@
         <a
           href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1LhXEeHMGnVOsJms7pXlNsDwLhD4oYHPri5mjYeyq9KvTMWueOivjGzxzM0hXGYwy7ssOHwubZ"
           class="btn btn-primary"
+          onclick="return gtag_report_conversion(this.href);"
           ><span class="en">Schedule a call →</span>
           <span class="es">Agendar llamada →</span></a
         >
