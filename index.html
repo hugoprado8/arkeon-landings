@@ -9,6 +9,22 @@
       gtag('js', new Date());
       gtag('config', 'AW-18179723592');
     </script>
+
+    <!-- Event snippet: conversion on CTA click -->
+    <script>
+      function gtag_report_conversion(url) {
+        var callback = function () {
+          if (typeof(url) != 'undefined') { window.location = url; }
+        };
+        gtag('event', 'conversion', {
+          'send_to': 'AW-18179723592/nziNCPC_xLEcEMii4txD',
+          'value': 1.0,
+          'currency': 'EUR',
+          'event_callback': callback
+        });
+        return false;
+      }
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Arkeon — From AI to Production</title>
@@ -148,6 +164,32 @@
 
       .link:hover {
         filter: brightness(0.92);
+      }
+
+      /* Bottom CTA */
+      .cta-section {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 2rem;
+        text-align: center;
+        margin-bottom: 2.5rem;
+      }
+
+      .cta-section h2 {
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .cta-section p {
+        color: var(--muted);
+        margin-bottom: 1.25rem;
+        line-height: 1.6;
+      }
+
+      .cta-section .link {
+        font-size: 1rem;
+        padding: 0.7rem 1.5rem;
       }
 
       .footer-note {
@@ -370,6 +412,31 @@
             <span class="es">Migrar al backend →</span>
           </a>
         </article>
+      </section>
+
+      <section class="cta-section">
+        <h2>
+          <span class="en">Got a different problem?</span>
+          <span class="es">¿Tienes otro problema con tu proyecto?</span>
+        </h2>
+        <p>
+          <span class="en"
+            >Let's get unstuck — book a quick call and we'll figure out the
+            right fix together.</span
+          >
+          <span class="es"
+            >Vamos a resolverlo — reserva una llamada breve y lo vemos
+            juntos.</span
+          >
+        </p>
+        <a
+          class="link"
+          href="https://calendar.app.google/WmTZX6wxqDUmcjMcA"
+          onclick="return gtag_report_conversion(this.href);"
+        >
+          <span class="en">Schedule a call →</span>
+          <span class="es">Reservar llamada →</span>
+        </a>
       </section>
 
       <p class="footer-note">
