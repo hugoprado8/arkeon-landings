@@ -877,6 +877,279 @@
         color: #6a6a7a;
         font-size: 0.85rem;
       }
+
+      /* ========================
+         LOGO CLOUD
+         ======================== */
+      .logo-cloud {
+        padding: 2.5rem 2rem;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.01);
+      }
+      .logo-cloud-label {
+        text-align: center;
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: #6a6a7a;
+        margin-bottom: 1.75rem;
+        font-family: "JetBrains Mono", monospace;
+      }
+      .logo-cloud-items {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 1.25rem 3rem;
+        max-width: 760px;
+        margin: 0 auto;
+      }
+      .logo-item {
+        opacity: 0.3;
+        filter: grayscale(1);
+        transition: opacity 0.25s, filter 0.25s;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--text);
+        white-space: nowrap;
+        user-select: none;
+      }
+      .logo-item:hover {
+        opacity: 0.65;
+        filter: grayscale(0.2);
+      }
+
+      /* ========================
+         HYBRID UNSTUCK SECTION
+         ======================== */
+      .unstuck-section {
+        background: linear-gradient(
+          135deg,
+          var(--card-bg) 0%,
+          rgba(0, 255, 136, 0.03) 100%
+        );
+        border-radius: 24px;
+        padding: 3rem;
+        margin: 4rem 0;
+      }
+      .unstuck-section h2 {
+        font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+        margin-bottom: 0.75rem;
+        text-align: center;
+      }
+      .unstuck-subtitle {
+        color: #a0a0b0;
+        text-align: center;
+        max-width: 680px;
+        margin: 0 auto 2.5rem;
+        line-height: 1.7;
+      }
+      .unstuck-grid {
+        display: grid;
+        grid-template-columns: 3fr 2fr;
+        gap: 2rem;
+        align-items: start;
+      }
+      .unstuck-col {
+        background: rgba(0, 0, 0, 0.25);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 1.75rem;
+      }
+      .unstuck-col-title {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--accent);
+        font-family: "JetBrains Mono", monospace;
+        margin-bottom: 1.25rem;
+      }
+      .form-row-2col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+      .form-field {
+        margin-bottom: 1rem;
+      }
+      .form-field label {
+        display: block;
+        font-size: 0.8rem;
+        color: #a0a0b0;
+        margin-bottom: 0.4rem;
+      }
+      .form-input {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 0.7rem 0.9rem;
+        color: var(--text);
+        font-family: inherit;
+        font-size: 0.9rem;
+        transition: border-color 0.2s, background 0.2s;
+        appearance: none;
+        -webkit-appearance: none;
+      }
+      .form-input::placeholder {
+        color: #4a4a5a;
+      }
+      .form-input:focus {
+        outline: none;
+        border-color: var(--accent);
+        background: rgba(0, 255, 136, 0.03);
+      }
+      textarea.form-input {
+        min-height: 110px;
+        resize: vertical;
+      }
+      .btn-submit {
+        width: 100%;
+        background: var(--accent);
+        color: var(--bg);
+        border: none;
+        border-radius: 8px;
+        padding: 0.9rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-family: inherit;
+        margin-top: 0.25rem;
+      }
+      .btn-submit:hover {
+        background: var(--accent-dim);
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(0, 255, 136, 0.25);
+      }
+      .unstuck-call-col {
+        background: rgba(0, 0, 0, 0.25);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 1.75rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .unstuck-call-col .unstuck-col-title {
+        margin-bottom: 0.75rem;
+      }
+      .unstuck-call-col p {
+        color: #a0a0b0;
+        line-height: 1.7;
+        font-size: 0.95rem;
+        margin-bottom: 1.25rem;
+      }
+      .btn-call {
+        display: block;
+        text-align: center;
+        background: transparent;
+        color: var(--accent);
+        border: 1.5px solid var(--accent);
+        border-radius: 8px;
+        padding: 0.85rem 1.5rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background 0.2s;
+      }
+      .btn-call:hover {
+        background: rgba(0, 255, 136, 0.08);
+      }
+
+      /* ========================
+         MEET THE FOUNDER
+         ======================== */
+      .founder-section {
+        padding: 0 2rem 4rem;
+      }
+      .founder-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 2.5rem;
+        align-items: start;
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 2.5rem;
+      }
+      .founder-avatar {
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+        background: rgba(0, 255, 136, 0.06);
+        border: 2px solid rgba(0, 255, 136, 0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--accent);
+        flex-shrink: 0;
+      }
+      .founder-name {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 0.2rem;
+      }
+      .founder-role {
+        font-size: 0.82rem;
+        color: var(--accent);
+        font-family: "JetBrains Mono", monospace;
+        letter-spacing: 0.5px;
+        margin-bottom: 1rem;
+      }
+      .founder-bio {
+        color: #a0a0b0;
+        line-height: 1.75;
+        margin-bottom: 1.5rem;
+        max-width: 700px;
+      }
+      .btn-linkedin {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: transparent;
+        color: var(--accent);
+        border: 1px solid rgba(0, 255, 136, 0.35);
+        border-radius: 8px;
+        padding: 0.6rem 1.25rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+      .btn-linkedin:hover {
+        background: rgba(0, 255, 136, 0.08);
+        border-color: var(--accent);
+      }
+      @media (max-width: 760px) {
+        .unstuck-grid {
+          grid-template-columns: 1fr;
+        }
+        .unstuck-section {
+          padding: 2rem 1.25rem;
+        }
+        .form-row-2col {
+          grid-template-columns: 1fr;
+        }
+        .founder-inner {
+          grid-template-columns: 1fr;
+          text-align: center;
+          gap: 1.5rem;
+        }
+        .founder-avatar {
+          margin: 0 auto;
+        }
+        .btn-linkedin {
+          margin: 0 auto;
+        }
+      }
     </style>
 
     <!-- Umami Analytics -->
@@ -1008,6 +1281,22 @@
         </div>
       </div>
     </section>
+
+    <!-- Tech Stack Logo Cloud -->
+    <div class="logo-cloud">
+      <p class="logo-cloud-label">
+        <span class="en">Tech stack we secure &amp; deploy:</span>
+        <span class="es">Tecnologías con las que trabajamos:</span>
+      </p>
+      <div class="logo-cloud-items">
+        <span class="logo-item">Stripe</span>
+        <span class="logo-item">Supabase</span>
+        <span class="logo-item">Vercel</span>
+        <span class="logo-item">Railway</span>
+        <span class="logo-item">Claude</span>
+        <span class="logo-item">Cursor</span>
+      </div>
+    </div>
 
     <section class="testimonials-section">
       <div class="container" style="padding: 0 2rem">
@@ -1514,33 +1803,142 @@
       </div>
     </section>
 
+    <!-- Hybrid Unstuck Section -->
     <section class="container">
-      <div class="cta-section">
+      <div class="unstuck-section">
         <h2>
-          <span class="en"
-            >Don't leave your security to an AI hallucination.</span
-          >
-          <span class="es"
-            >No dejes tu seguridad en manos de una alucinación de IA.</span
-          >
+          <span class="en">Get Your Production Audit &amp; Unstuck Your SaaS</span>
+          <span class="es">Auditoría de Producción y Desatasca Tu SaaS</span>
         </h2>
-        <p class="en">
-          Secure the deployment, the payments, and the future of your software
-          today. Book a quick call — we'll review your app, confirm what's
-          exposed, and give you a delivery date.
+        <p class="unstuck-subtitle">
+          <span class="en">Tell us what is breaking right now and a Senior Engineer will review your issue via email within 24 hours. Or, if you prefer to chat face-to-face, you can book a call directly.</span>
+          <span class="es">Cuéntanos qué está fallando ahora mismo y un Senior Engineer revisará tu caso por email en menos de 24 horas. O, si prefieres hablar cara a cara, reserva una llamada directamente.</span>
         </p>
-        <p class="es">
-          Asegura el despliegue, los pagos y el futuro de tu software hoy mismo.
-          Reserva una llamada breve — revisamos tu app, confirmamos qué
-          está expuesto y te damos una fecha de entrega.
-        </p>
-        <a
-          href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1LhXEeHMGnVOsJms7pXlNsDwLhD4oYHPri5mjYeyq9KvTMWueOivjGzxzM0hXGYwy7ssOHwubZ"
-          class="btn btn-primary"
-          onclick="return gtag_report_conversion(this.href);"
-          ><span class="en">Schedule a call →</span>
-          <span class="es">Agendar llamada →</span></a
-        >
+        <div class="unstuck-grid">
+          <div class="unstuck-col">
+            <div class="unstuck-col-title">
+              <span class="en">→ Send your question</span>
+              <span class="es">→ Cuéntanos tu problema</span>
+            </div>
+            <form action="https://formspree.io/f/mjgdzkyp" method="POST">
+              <input type="hidden" name="source" value="security-landing" />
+              <div class="form-row-2col">
+                <div class="form-field">
+                  <label>
+                    <span class="en">Name</span>
+                    <span class="es">Nombre</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    class="form-input"
+                    data-ph-en="Your name"
+                    data-ph-es="Tu nombre"
+                    placeholder="Your name"
+                    required
+                  />
+                </div>
+                <div class="form-field">
+                  <label>Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    class="form-input"
+                    data-ph-en="you@company.com"
+                    data-ph-es="tu@empresa.com"
+                    placeholder="you@company.com"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-field">
+                <label>
+                  <span class="en">What's broken / what do you need?</span>
+                  <span class="es">¿Qué está fallando / qué necesitas?</span>
+                </label>
+                <textarea
+                  name="bug_description"
+                  class="form-input"
+                  data-ph-en="e.g., API keys exposed in repo, Supabase RLS not configured, env vars in frontend bundle..."
+                  data-ph-es="ej., API keys expuestas en el repo, RLS de Supabase sin configurar, vars de entorno en el bundle..."
+                  placeholder="e.g., API keys exposed in repo, Supabase RLS not configured, env vars in frontend bundle..."
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn-submit">
+                <span class="en">Secure My Launch →</span>
+                <span class="es">Asegurar Mi Lanzamiento →</span>
+              </button>
+            </form>
+          </div>
+          <div class="unstuck-call-col">
+            <div class="unstuck-col-title">
+              <span class="en">Prefer to talk?</span>
+              <span class="es">¿Prefieres hablar?</span>
+            </div>
+            <p class="en">
+              Skip the text and let's jump on a quick tech alignment call.
+              We'll review your stack and figure out the fastest path forward.
+            </p>
+            <p class="es">
+              Salta el formulario y hablemos directamente. Revisamos tu stack
+              y encontramos el camino más rápido hacia producción.
+            </p>
+            <a
+              href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1LhXEeHMGnVOsJms7pXlNsDwLhD4oYHPri5mjYeyq9KvTMWueOivjGzxzM0hXGYwy7ssOHwubZ"
+              class="btn-call"
+              onclick="return gtag_report_conversion(this.href);"
+            >
+              <span class="en">Schedule a call →</span>
+              <span class="es">Agendar llamada →</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Meet the Founder -->
+    <section class="founder-section">
+      <div class="founder-inner">
+        <div class="founder-avatar">HP</div>
+        <div>
+          <div class="founder-name">Hugo Prado</div>
+          <div class="founder-role">
+            <span class="en">Technical Founder</span>
+            <span class="es">Founder Técnico</span>
+          </div>
+          <p class="founder-bio en">
+            As a technical founder myself, I've built my own startup from the
+            ground up — taking a product from a blank canvas to real market
+            validation and actual revenue with paying customers. Having worked
+            with numerous startups — ranging from day-one idea validation to
+            scaling platforms with established user bases — I intimately
+            understand the fragile nature, technical bottlenecks, and unique
+            challenges of early-stage products. I bridge the gap between
+            business goals and secure, production-ready code.
+          </p>
+          <p class="founder-bio es">
+            Como founder técnico, he construido mi propio startup desde cero —
+            llevando un producto desde una hoja en blanco hasta validación real
+            de mercado e ingresos reales con clientes de pago. Habiendo
+            trabajado con numerosas startups — desde validación de idea en día
+            uno hasta plataformas con bases de usuarios consolidadas —
+            entiendo profundamente la naturaleza frágil, los cuellos de botella
+            técnicos y los retos únicos de los productos en etapa temprana.
+            Establezco el puente entre los objetivos de negocio y el código
+            seguro y listo para producción.
+          </p>
+          <a
+            href="https://www.linkedin.com/in/hugo-prado/"
+            class="btn-linkedin"
+            target="_blank"
+            rel="noopener"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            <span class="en">Connect on LinkedIn</span>
+            <span class="es">Conectar en LinkedIn</span>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -1561,6 +1959,10 @@
           .forEach((b) => b.classList.remove("active"));
         const b = document.getElementById("sw-" + l);
         if (b) b.classList.add("active");
+        document.querySelectorAll("[data-ph-en]").forEach(function (el) {
+          el.placeholder =
+            l === "es" ? el.dataset.phEs || "" : el.dataset.phEn || "";
+        });
       }
       (function () {
         const s = localStorage.getItem("ark-lang");
