@@ -1,0 +1,127 @@
+/* ========================
+   UNIFIED CONTACT FORM
+   Shared across index.html and all service landing pages.
+   Relies on each page's existing tokens: var(--bg), var(--text), var(--muted),
+   var(--accent), var(--accent-2), var(--border), and its own .form-field /
+   .form-input / .btn-submit (already defined per-page and visually
+   consistent across the site). The component classes below
+   (.option-btn, .btn-arrow, .step-title-wizard, .option-vertical-list,
+   .step2-header-badge, .form-field-label) are NOT defined on the older
+   service-page templates, so they're centralized here as the single
+   source of truth for every page that mounts this form.
+   ======================== */
+.step-title-wizard {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 2rem;
+  line-height: 1.4;
+}
+.option-vertical-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.option-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.4rem 1.5rem;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.option-btn:hover {
+  border-color: var(--accent-2);
+  background: rgba(45, 212, 191, 0.1);
+  box-shadow: 0 0 15px rgba(45, 212, 191, 0.15);
+}
+.btn-arrow {
+  color: var(--accent-2);
+  font-weight: 700;
+  transition: transform 0.2s;
+  margin-left: 1rem;
+}
+.option-btn:hover .btn-arrow {
+  transform: translateX(5px);
+}
+.step2-header-badge {
+  display: inline-block;
+  background: rgba(45, 212, 191, 0.12);
+  border: 1px solid rgba(45, 212, 191, 0.3);
+  color: var(--accent-2);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  margin-bottom: 2rem;
+}
+.form-field-label {
+  display: block;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.6rem;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.ucf-card {
+  width: 100%;
+}
+.ucf-step {
+  width: 100%;
+}
+.ucf-category-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+@media (max-width: 640px) {
+  .ucf-category-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.ucf-category-btn {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  text-align: left;
+}
+.ucf-emoji {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+.ucf-category-btn.is-selected {
+  border-color: var(--accent);
+  background: rgba(99, 102, 241, 0.12);
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);
+}
+.ucf-field-error {
+  color: #f87171;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 0.6rem;
+}
+.ucf-email-field {
+  margin-top: 0.25rem;
+  margin-bottom: 1.5rem;
+}
+#ucfStep3 {
+  margin-top: 0.5rem;
+}
+#ucfWriteBlock {
+  margin-top: 1.5rem;
+}

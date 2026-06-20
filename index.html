@@ -43,6 +43,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="assets/contact-form.css" />
 
     <style>
       :root {
@@ -469,19 +470,8 @@
       }
 
       /* ========================
-         SIDE-BY-SIDE DUAL CONTACT FORMS
+         CONTACT FORM CARD
          ======================== */
-      .dual-form-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-        align-items: stretch;
-      }
-      @media (min-width: 992px) {
-        .dual-form-grid {
-          grid-template-columns: 1fr 1fr;
-        }
-      }
       .contact-card-pane {
         background: var(--card);
         border: 1px solid rgba(255, 255, 255, 0.14);
@@ -491,94 +481,11 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-      }
-      .contact-card-pane.express-pane {
-        border-color: rgba(45, 212, 191, 0.25);
-        box-shadow: 0 0 50px rgba(45, 212, 191, 0.06);
-      }
-      .pane-header-title {
-        font-size: 1.35rem;
-        font-weight: 800;
-        margin-bottom: 0.5rem;
-        letter-spacing: -0.02em;
-        color: #ffffff;
-      }
-      .pane-header-desc {
-        color: var(--muted);
-        font-size: 0.925rem;
-        line-height: 1.6;
-        margin-bottom: 2.5rem;
-      }
-
-      .step-title-wizard {
-        font-size: 1.1rem;
-        font-weight: 700;
-        color: #ffffff;
-        margin-bottom: 2rem;
-        line-height: 1.4;
-      }
-      .option-vertical-list {
-        display: flex;
-        flex-direction: column;
-        gap: 1.25rem;
-      }
-      .option-btn {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 1.4rem 1.5rem;
-        color: #ffffff;
-        font-family: inherit;
-        font-size: 0.95rem;
-        font-weight: 600;
-        line-height: 1.5;
-        text-align: left;
-        cursor: pointer;
-        transition: all 0.2s;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-      }
-      .option-btn:hover {
-        border-color: var(--accent-2);
-        background: rgba(45, 212, 191, 0.1);
-        box-shadow: 0 0 15px rgba(45, 212, 191, 0.15);
-      }
-      .btn-arrow {
-        color: var(--accent-2);
-        font-weight: 700;
-        transition: transform 0.2s;
-        margin-left: 1rem;
-      }
-      .option-btn:hover .btn-arrow {
-        transform: translateX(5px);
-      }
-
-      .step2-header-badge {
-        display: inline-block;
-        background: rgba(45, 212, 191, 0.12);
-        border: 1px solid rgba(45, 212, 191, 0.3);
-        color: var(--accent-2);
-        font-family: "JetBrains Mono", monospace;
-        font-size: 0.75rem;
-        font-weight: 700;
-        padding: 0.4rem 0.8rem;
-        border-radius: 6px;
-        margin-bottom: 2rem;
+        max-width: 640px;
+        margin: 0 auto;
       }
 
       /* Form standard elements */
-      .form-field-label {
-        display: block;
-        color: #ffffff;
-        font-size: 0.8rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 0.6rem;
-        font-family: "JetBrains Mono", monospace;
-      }
       .form-input {
         width: 100%;
         background: #040407;
@@ -618,9 +525,6 @@
       .btn-submit:hover {
         background: var(--accent-dim);
         box-shadow: 0 4px 30px rgba(99, 102, 241, 0.5);
-      }
-      .btn-submit.express-submit {
-        background: linear-gradient(to right, var(--accent-dim), #3b82f6);
       }
 
       /* ========================
@@ -1112,218 +1016,8 @@
           <span class="es">Resolvamos Tu Arquitectura de Código</span>
         </h2>
 
-        <div class="dual-form-grid">
-          <div class="contact-card-pane express-pane">
-            <div class="pane-header-title">
-              ⚡ <span class="en">1-Click Express Route</span
-              ><span class="es">Ruta Express en 1-Clic</span>
-            </div>
-            <div class="pane-header-desc">
-              <span class="en"
-                >The fastest option. Select your technical blockage and
-                proceed.</span
-              >
-              <span class="es"
-                >La opción más rápida. Elige tu bloqueo técnico y avanza sin
-                escribir.</span
-              >
-            </div>
-
-            <form
-              action="https://formspree.io/f/mjgdzkyp"
-              method="POST"
-              id="expressWizardForm"
-            >
-              <input
-                type="hidden"
-                name="source"
-                value="homepage-express-wizard"
-              />
-              <input
-                type="hidden"
-                name="selected_blockage"
-                id="selectedOptionField"
-                value=""
-              />
-
-              <div id="step1">
-                <h3 class="step-title-wizard">
-                  <span class="en">Select your primary bottleneck:</span>
-                  <span class="es"
-                    >Selecciona tu cuello de botella principal:</span
-                  >
-                </h3>
-                <div class="option-vertical-list">
-                  <button
-                    type="button"
-                    class="option-btn"
-                    data-option-en="External Services Integration (Stripe, Supabase, Resend...)"
-                    data-option-es="Integración de Servicios Externos (Stripe, Supabase, Resend...)"
-                  >
-                    <span class="en"
-                      >External Services & API setup (Stripe, Supabase, Resend,
-                      WhatsApp, Maps...)</span
-                    >
-                    <span class="es"
-                      >Servicios Externos y APIs (Stripe, Supabase, Resend,
-                      WhatsApp, Maps...)</span
-                    >
-                    <span class="btn-arrow">→</span>
-                  </button>
-                  <button
-                    type="button"
-                    class="option-btn"
-                    data-option-en="Production Crash / Deployment Broken"
-                    data-option-es="Caída en Producción / Despliegue Roto"
-                  >
-                    <span class="en"
-                      >My AI-built app broke in production / Vercel & Railway
-                      pipeline error</span
-                    >
-                    <span class="es"
-                      >Mi app de IA se rompió en producción / Fallo en Vercel o
-                      Railway</span
-                    >
-                    <span class="btn-arrow">→</span>
-                  </button>
-                  <button
-                    type="button"
-                    class="option-btn"
-                    data-option-en="Looking for a Senior Partner to Scale"
-                    data-option-es="Busco un Partner Senior para Escalar"
-                  >
-                    <span class="en"
-                      >Looking for a long-term Senior Backend Partner to scale
-                      structural code</span
-                    >
-                    <span class="es"
-                      >Busco un Senior Backend Partner a largo plazo para
-                      escalar código</span
-                    >
-                    <span class="btn-arrow">→</span>
-                  </button>
-                </div>
-              </div>
-
-              <div id="step2" hidden>
-                <div class="step2-header-badge" id="step2Selected"></div>
-                <div class="form-field">
-                  <label class="form-field-label"
-                    ><span class="en">Email Address</span
-                    ><span class="es">Correo Electrónico</span></label
-                  >
-                  <input
-                    type="email"
-                    name="email"
-                    id="expressEmailInput"
-                    class="form-input"
-                    placeholder="you@company.com"
-                  />
-                </div>
-                <div class="form-field">
-                  <label class="form-field-label">
-                    <span class="en">Optional details</span>
-                    <span class="es"
-                      >Detalles opcionales (Un Ingeniero Senior revisará tu caso
-                      gratis en < 24h)</span
-                    >
-                  </label>
-                  <textarea
-                    name="additional_details"
-                    class="form-input"
-                    placeholder="e.g., Stripe webhooks returning 500, database structure issues..."
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  class="btn-submit express-submit"
-                  onclick="return gtag_report_conversion();"
-                >
-                  <span class="en">Get Free Senior Solution &rarr;</span>
-                  <span class="es">Consigue Tu Solución Gratis &rarr;</span>
-                </button>
-              </div>
-            </form>
-          </div>
-
-          <div class="contact-card-pane">
-            <div class="pane-header-title">
-              📝 <span class="en">Standard Contact Form</span
-              ><span class="es">Formulario de Contacto Tradicional</span>
-            </div>
-            <div class="pane-header-desc">
-              <span class="en"
-                >Describe your scenario. A Senior Dev will analyze it and answer
-                within 24h — 100% free structural feedback.</span
-              >
-              <span class="es"
-                >Cuéntanos tu caso. Un Dev Senior lo revisará y te responderá en
-                menos de 24 horas. Revisión estructural 100% gratis.</span
-              >
-            </div>
-
-            <form
-              action="https://formspree.io/f/mjgdzkyp"
-              method="POST"
-              id="standardContactForm"
-            >
-              <input
-                type="hidden"
-                name="source"
-                value="homepage-standard-form"
-              />
-
-              <div class="form-field">
-                <label class="form-field-label"
-                  ><span class="en">Name</span
-                  ><span class="es">Nombre</span></label
-                >
-                <input
-                  type="text"
-                  name="name"
-                  class="form-input"
-                  placeholder="Your name"
-                  required
-                />
-              </div>
-              <div class="form-field">
-                <label class="form-field-label"
-                  ><span class="en">Email</span
-                  ><span class="es">Email</span></label
-                >
-                <input
-                  type="email"
-                  name="email"
-                  id="standardEmailInput"
-                  class="form-input"
-                  placeholder="you@company.com"
-                  required
-                />
-              </div>
-              <div class="form-field">
-                <label class="form-field-label"
-                  ><span class="en">What is broken / what do you need?</span
-                  ><span class="es"
-                    >¿Qué se ha roto o qué necesitas exactamente?</span
-                  ></label
-                >
-                <textarea
-                  name="message"
-                  class="form-input"
-                  placeholder="e.g., Stripe webhooks returning 500, Supabase RLS leaks, FastAPI routing timeout error..."
-                  required
-                ></textarea>
-              </div>
-              <button
-                type="submit"
-                class="btn-submit"
-                onclick="return gtag_report_conversion();"
-              >
-                <span class="en">Send Message (Free Review) →</span>
-                <span class="es">Enviar Mensaje (Revisión Gratis) →</span>
-              </button>
-            </form>
-          </div>
+        <div class="contact-card-pane">
+          <div id="unified-contact-form" data-source="homepage"></div>
         </div>
       </section>
 
@@ -1385,53 +1079,24 @@
     </footer>
 
     <script>
-      // Gamified Wizard Router Logic
-      const step1 = document.getElementById("step1");
-      const step2 = document.getElementById("step2");
-      const selectedOptionField = document.getElementById(
-        "selectedOptionField",
-      );
-      const step2Selected = document.getElementById("step2Selected");
-      const optionButtons = document.querySelectorAll(".option-btn");
-      const expressEmailInput = document.getElementById("expressEmailInput");
-
-      optionButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-          const isEn = document.documentElement.lang === "en";
-          const optionText = isEn
-            ? button.getAttribute("data-option-en")
-            : button.getAttribute("data-option-es");
-
-          selectedOptionField.value = optionText;
-          step2Selected.innerText = `→ ${optionText}`;
-
-          step1.setAttribute("hidden", true);
-          step2.removeAttribute("hidden");
-          expressEmailInput.setAttribute("required", "true");
-        });
-      });
-
       // Global Language Synchronization Controller
       function setLang(lang) {
         document.documentElement.lang = lang;
         document
           .querySelectorAll(".lang-sw button")
           .forEach((b) => b.classList.remove("active"));
-        document.getElementById(`sw-${lang}`).classList.add("active");
-
-        const exprInput = document.getElementById("expressEmailInput");
-        const stdInput = document.getElementById("standardEmailInput");
-        if (exprInput)
-          exprInput.placeholder =
-            lang === "en" ? "you@company.com" : "tu@empresa.com";
-        if (stdInput)
-          stdInput.placeholder =
-            lang === "en" ? "you@company.com" : "tu@empresa.com";
+        const activeBtn = document.getElementById(`sw-${lang}`);
+        if (activeBtn) activeBtn.classList.add("active");
+        document.querySelectorAll("[data-ph-en]").forEach(function (el) {
+          el.placeholder =
+            lang === "es" ? el.dataset.phEs || "" : el.dataset.phEn || "";
+        });
       }
 
       // Initialize locale execution sync
       const locale = navigator.language.startsWith("es") ? "es" : "en";
       setLang(locale);
     </script>
+    <script src="assets/contact-form.js" defer></script>
   </body>
 </html>

@@ -44,6 +44,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="assets/contact-form.css" />
     <style>
       html {
         overflow-x: hidden;
@@ -1099,11 +1100,6 @@
         font-family: "JetBrains Mono", monospace;
         margin-bottom: 1.25rem;
       }
-      .form-row-2col {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-      }
       .form-field {
         margin-bottom: 1rem;
       }
@@ -1269,9 +1265,6 @@
         }
         .unstuck-section {
           padding: 2rem 1.25rem;
-        }
-        .form-row-2col {
-          grid-template-columns: 1fr;
         }
         .founder-inner {
           grid-template-columns: 1fr;
@@ -2066,60 +2059,7 @@
         </p>
         <div class="unstuck-grid">
           <div class="unstuck-col">
-            <div class="unstuck-col-title">
-              <span class="en">→ Send your question</span>
-              <span class="es">→ Cuéntanos tu problema</span>
-            </div>
-            <form action="https://formspree.io/f/mjgdzkyp" method="POST">
-              <input type="hidden" name="source" value="stripe-landing" />
-              <div class="form-row-2col">
-                <div class="form-field">
-                  <label>
-                    <span class="en">Name</span>
-                    <span class="es">Nombre</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    class="form-input"
-                    data-ph-en="Your name"
-                    data-ph-es="Tu nombre"
-                    placeholder="Your name"
-                    required
-                  />
-                </div>
-                <div class="form-field">
-                  <label>Email</label>
-                  <input
-                    type="email"
-                    name="email"
-                    class="form-input"
-                    data-ph-en="you@company.com"
-                    data-ph-es="tu@empresa.com"
-                    placeholder="you@company.com"
-                    required
-                  />
-                </div>
-              </div>
-              <div class="form-field">
-                <label>
-                  <span class="en">What’s broken / what do you need?</span>
-                  <span class="es">¿Qué está fallando / qué necesitas?</span>
-                </label>
-                <textarea
-                  name="bug_description"
-                  class="form-input"
-                  data-ph-en="e.g., Stripe webhook returning 500, Supabase RLS setup, Vercel build failing..."
-                  data-ph-es="ej., Webhook de Stripe devuelve 500, configuración RLS de Supabase, build de Vercel falla..."
-                  placeholder="e.g., Stripe webhook returning 500, Supabase RLS setup, Vercel build failing..."
-                  required
-                ></textarea>
-              </div>
-              <button type="submit" class="btn-submit">
-                <span class="en">Secure My Launch →</span>
-                <span class="es">Asegurar Mi Lanzamiento →</span>
-              </button>
-            </form>
+            <div id="unified-contact-form" data-source="stripe-landing"></div>
           </div>
           <div class="unstuck-call-col">
             <div class="unstuck-col-title">
@@ -2223,5 +2163,6 @@
         setLang(s || (navigator.language.startsWith("es") ? "es" : "en"));
       })();
     </script>
+    <script src="assets/contact-form.js" defer></script>
   </body>
 </html>
