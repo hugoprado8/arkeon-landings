@@ -1,7 +1,6 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
-    <!-- Google tag (gtag.js) -->
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=AW-18179723592"
@@ -15,7 +14,6 @@
       gtag("config", "AW-18179723592");
     </script>
 
-    <!-- Event snippet: conversion on CTA click -->
     <script>
       function gtag_report_conversion(url) {
         var callback = function () {
@@ -45,16 +43,18 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
     <style>
       :root {
-        --bg: #09090b;
-        --text: #f4f4f5;
-        --muted: #a1a1aa;
-        --accent: #00ff88;
-        --accent-dim: #00cc6e;
-        --card: #18181b;
-        --card-bg: #18181b;
-        --border: #27272a;
+        --bg: #030306;
+        --text: #ffffff;
+        --muted: #e2e8f0;
+        --accent: #818cf8;
+        --accent-dim: #4f46e5;
+        --accent-2: #2dd4bf;
+        --card: rgba(16, 16, 28, 0.85);
+        --border: rgba(255, 255, 255, 0.15);
+        --neon-glow: rgba(99, 102, 241, 0.22);
       }
 
       * {
@@ -63,459 +63,62 @@
         padding: 0;
       }
 
+      html {
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+      }
+
       body {
         font-family:
           "Inter",
           system-ui,
           -apple-system,
-          "Segoe UI",
-          Roboto,
           sans-serif;
-        background: var(--bg);
+        background:
+          radial-gradient(
+            circle at 85% 15%,
+            rgba(99, 102, 241, 0.32),
+            transparent 45%
+          ),
+          /* Dominio Morado Arriba Derecha */
+          radial-gradient(
+              circle at 15% 25%,
+              rgba(45, 212, 191, 0.12),
+              transparent 40%
+            ),
+          /* Verde sutil Izquierda */
+          radial-gradient(
+              circle at 50% 75%,
+              rgba(59, 130, 246, 0.18),
+              transparent 45%
+            ),
+          var(--bg);
         color: var(--text);
         min-height: 100vh;
-        padding: 3.5rem 2rem 4rem;
       }
 
       .wrap {
-        width: min(1100px, 100%);
+        width: min(1340px, 100%);
         margin: 0 auto;
-      }
-
-      h1 {
-        font-size: clamp(2rem, 5vw, 3rem);
-        margin-bottom: 1rem;
-        line-height: 1.15;
-      }
-
-      .sub {
-        color: var(--muted);
-        margin-bottom: 3.5rem;
-        max-width: 640px;
-        line-height: 1.65;
-      }
-
-      /* Pain-point row */
-      .pain-row {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 1rem;
-        margin-bottom: 3rem;
-      }
-
-      .pain-card {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid var(--border);
-        border-radius: 10px;
-        padding: 1.25rem 1.5rem;
-        display: flex;
-        align-items: flex-start;
-        gap: 0.75rem;
-      }
-
-      .pain-card p {
-        color: var(--muted);
-        font-size: 0.9rem;
-        line-height: 1.5;
-      }
-
-      .footer-note {
-        text-align: center;
-        color: var(--muted);
-        font-size: 0.9rem;
-        line-height: 1.7;
-      }
-
-      .footer-note strong {
-        color: var(--accent);
-      }
-
-      /* ========================
-         SCROLLING TICKER
-         ======================== */
-      .ticker-wrap {
-        overflow: hidden;
-        padding: 1.5rem 0;
-        border-bottom: 1px solid var(--border);
-        margin-bottom: 3rem;
-        -webkit-mask-image: linear-gradient(
-          to right,
-          transparent 0%,
-          #000 8%,
-          #000 92%,
-          transparent 100%
-        );
-        mask-image: linear-gradient(
-          to right,
-          transparent 0%,
-          #000 8%,
-          #000 92%,
-          transparent 100%
-        );
-      }
-      .ticker-track {
-        display: flex;
-        align-items: center;
-        gap: 2rem;
-        width: max-content;
-        animation: ticker-scroll 35s linear infinite;
-      }
-      .ticker-track:hover {
-        animation-play-state: paused;
-      }
-      .ticker-item {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 0.875rem;
-        font-weight: 700;
-        color: var(--text);
-        opacity: 0.32;
-        white-space: nowrap;
-        user-select: none;
-        letter-spacing: 0.3px;
-        display: flex;
-        align-items: center;
-      }
-      .ticker-svg {
-        height: 22px;
-        width: auto;
-        display: block;
-      }
-      .ticker-sep {
-        width: 3px;
-        height: 3px;
-        border-radius: 50%;
-        background: var(--border);
-        flex-shrink: 0;
-        opacity: 0.6;
-      }
-      @keyframes ticker-scroll {
-        0% {
-          transform: translateX(0);
-        }
-        100% {
-          transform: translateX(-50%);
-        }
-      }
-
-      /* ========================
-         HYBRID UNSTUCK SECTION
-         ======================== */
-      .unstuck-wrap {
-        margin-bottom: 4rem;
-      }
-      .unstuck-section {
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 14px;
-        padding: 2.5rem;
-      }
-      .unstuck-grid {
-        display: grid;
-        grid-template-columns: 3fr 2fr;
-        gap: 2rem;
-        align-items: start;
-      }
-      .unstuck-col {
-        background: rgba(0, 0, 0, 0.2);
-        border: 1px solid var(--border);
-        border-radius: 10px;
-        padding: 1.75rem;
-      }
-      .unstuck-col-title {
-        font-size: 0.7rem;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        color: var(--accent);
-        font-family: "JetBrains Mono", monospace;
-        margin-bottom: 1.1rem;
-      }
-      .form-field {
-        margin-bottom: 0.85rem;
-      }
-      .form-field label {
-        display: block;
-        font-size: 0.78rem;
-        color: var(--muted);
-        margin-bottom: 0.35rem;
-      }
-      .form-input {
-        width: 100%;
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        padding: 0.65rem 0.85rem;
-        color: var(--text);
-        font-family: inherit;
-        font-size: 0.9rem;
-        transition:
-          border-color 0.2s,
-          background 0.2s;
-        appearance: none;
-        -webkit-appearance: none;
-      }
-      .form-input::placeholder {
-        color: #4a4a5a;
-      }
-      .form-input:focus {
-        outline: none;
-        border-color: var(--accent);
-        background: rgba(0, 255, 136, 0.03);
-      }
-      textarea.form-input {
-        min-height: 100px;
-        resize: vertical;
-      }
-      .btn-submit {
-        width: 100%;
-        background: var(--accent);
-        color: var(--bg);
-        border: none;
-        border-radius: 8px;
-        padding: 0.85rem 1.25rem;
-        font-size: 0.95rem;
-        font-weight: 700;
-        cursor: pointer;
-        transition: all 0.2s;
-        font-family: inherit;
-        margin-top: 0.2rem;
-      }
-      .btn-submit:hover {
-        background: var(--accent-dim);
-        transform: translateY(-1px);
-      }
-      /* ========================
-         FOUNDER COLUMN + TESTIMONIAL
-         ======================== */
-      .founder-mini {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        margin-bottom: 1.25rem;
-      }
-      .founder-avatar {
-        width: 56px;
-        height: 56px;
-        border-radius: 50%;
-        background: rgba(0, 255, 136, 0.06);
-        border: 2px solid rgba(0, 255, 136, 0.25);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: "JetBrains Mono", monospace;
-        font-size: 1rem;
-        font-weight: 700;
-        color: var(--accent);
-        flex-shrink: 0;
-      }
-      .founder-name {
-        font-size: 1.05rem;
-        font-weight: 700;
-        margin-bottom: 0.1rem;
-      }
-      .founder-role {
-        font-size: 0.75rem;
-        color: var(--accent);
-        font-family: "JetBrains Mono", monospace;
-      }
-      .founder-bio {
-        color: var(--muted);
-        line-height: 1.7;
-        margin-bottom: 1.35rem;
-        font-size: 0.875rem;
-      }
-      .testimonial {
-        border-left: 3px solid var(--accent);
-        background: rgba(0, 255, 136, 0.04);
-        border-radius: 0 8px 8px 0;
-        padding: 1rem 1.25rem;
-        margin: 0 0 1.5rem;
-      }
-      .testimonial p {
-        color: var(--text);
-        font-size: 0.85rem;
-        font-style: italic;
-        line-height: 1.6;
-        margin-bottom: 0.4rem;
-      }
-      .testimonial cite {
-        display: block;
-        color: var(--accent);
-        font-size: 0.78rem;
-        font-weight: 700;
-        font-style: normal;
-        font-family: "JetBrains Mono", monospace;
-      }
-      .founder-actions {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.85rem;
-      }
-      .btn-linkedin {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;
-        background: transparent;
-        color: var(--accent);
-        border: 1px solid rgba(0, 255, 136, 0.35);
-        border-radius: 8px;
-        padding: 0.5rem 1rem;
-        font-size: 0.825rem;
-        font-weight: 600;
-        text-decoration: none;
-        transition: all 0.2s;
-      }
-      .btn-linkedin:hover {
-        background: rgba(0, 255, 136, 0.08);
-        border-color: var(--accent);
-      }
-      .btn-call-inline {
-        color: var(--accent);
-        font-size: 0.825rem;
-        font-weight: 600;
-        text-decoration: none;
-      }
-      .btn-call-inline:hover {
-        text-decoration: underline;
-      }
-      @media (max-width: 640px) {
-        .unstuck-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      /* ========================
-         PORTFOLIO
-         ======================== */
-      .section-title {
-        font-size: clamp(1.3rem, 3vw, 1.75rem);
-        text-align: center;
-        margin-bottom: 2.25rem;
-      }
-      .portfolio-section {
-        margin-bottom: 4rem;
-      }
-      .portfolio-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 1.25rem;
-      }
-      .portfolio-card {
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 14px;
-        padding: 1.75rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-      .portfolio-header h3 {
-        font-size: 1.05rem;
-        font-weight: 700;
-        margin-bottom: 0.35rem;
-      }
-      .portfolio-tag {
-        display: inline-block;
-        font-size: 0.7rem;
-        font-family: "JetBrains Mono", monospace;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: var(--accent);
-      }
-      .portfolio-label {
-        display: block;
-        font-size: 0.7rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-weight: 700;
-        color: var(--muted);
-        margin-bottom: 0.3rem;
-        font-family: "JetBrains Mono", monospace;
-      }
-      .portfolio-block p {
-        color: var(--muted);
-        font-size: 0.85rem;
-        line-height: 1.6;
-      }
-      .portfolio-stack {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-top: auto;
-        padding-top: 0.85rem;
-        border-top: 1px solid var(--border);
-      }
-      .stack-pill {
-        background: rgba(0, 255, 136, 0.07);
-        border: 1px solid rgba(0, 255, 136, 0.2);
-        color: var(--accent);
-        font-size: 0.7rem;
-        font-family: "JetBrains Mono", monospace;
-        padding: 0.25rem 0.55rem;
-        border-radius: 6px;
-        white-space: nowrap;
-      }
-
-      /* ========================
-         TECH STACK GRID
-         ======================== */
-      .techstack-section {
-        margin-bottom: 3.5rem;
-      }
-      .techstack-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1.25rem;
-      }
-      .techstack-category {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 1.5rem;
-      }
-      .techstack-category-title {
-        font-size: 0.75rem;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        color: var(--accent);
-        font-family: "JetBrains Mono", monospace;
-        margin-bottom: 1.1rem;
-      }
-      .techstack-pills {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-      }
-      .techstack-pill {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid var(--border);
-        color: var(--text);
-        font-family: "JetBrains Mono", monospace;
-        font-size: 0.78rem;
-        padding: 0.3rem 0.65rem;
-        border-radius: 6px;
-        white-space: nowrap;
+        padding: 0 2rem;
       }
 
       /* ========================
          SITE HEADER / NAV
          ======================== */
-      html {
-        scroll-behavior: smooth;
-      }
       .site-header {
         position: sticky;
         top: 0;
         z-index: 9999;
-        background: rgba(9, 9, 11, 0.85);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+        background: rgba(3, 3, 6, 0.85);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         border-bottom: 1px solid var(--border);
       }
       .header-inner {
-        width: min(1100px, 100%);
+        width: min(1340px, 100%);
         margin: 0 auto;
-        padding: 1rem 2rem;
+        padding: 1.25rem 2rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -523,16 +126,18 @@
       }
       .brand {
         font-weight: 800;
-        font-size: 1.05rem;
-        letter-spacing: -0.02em;
+        font-size: 1.35rem;
+        letter-spacing: -0.03em;
         color: var(--text);
         text-decoration: none;
-        flex-shrink: 0;
+        background: linear-gradient(to right, #ffffff, var(--accent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
       .main-nav {
         display: flex;
         align-items: center;
-        gap: 1.75rem;
+        gap: 2.5rem;
         flex: 1;
         justify-content: center;
       }
@@ -542,11 +147,9 @@
         border: none;
         color: var(--muted);
         text-decoration: none;
-        font-size: 0.875rem;
+        font-size: 0.9rem;
         font-weight: 600;
-        font-family: inherit;
         cursor: pointer;
-        padding: 0.4rem 0;
         transition: color 0.2s;
       }
       .nav-item:hover {
@@ -562,137 +165,582 @@
         top: 100%;
         left: 50%;
         transform: translateX(-50%);
-        background: var(--card);
+        background: #09090f;
         border: 1px solid var(--border);
-        border-radius: 10px;
-        padding: 0.6rem 0.4rem 0.4rem;
-        min-width: 230px;
+        border-radius: 12px;
+        padding: 0.5rem;
+        min-width: 250px;
         display: none;
         flex-direction: column;
-        gap: 0.15rem;
-        box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
+        gap: 0.2rem;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95);
       }
-      .has-dropdown:hover .dropdown,
-      .has-dropdown.open .dropdown {
+      .has-dropdown:hover .dropdown {
         display: flex;
       }
       .dropdown a {
         display: block;
-        padding: 0.6rem 0.8rem;
-        border-radius: 6px;
-        color: var(--text);
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        color: var(--muted);
         text-decoration: none;
-        font-size: 0.825rem;
+        font-size: 0.875rem;
         font-weight: 500;
-        white-space: nowrap;
-      }
-      .dropdown a:hover {
-        background: rgba(0, 255, 136, 0.08);
-        color: var(--accent);
-      }
-      #founder,
-      #contact-form {
-        scroll-margin-top: 90px;
-      }
-      @media (max-width: 640px) {
-        .header-inner {
-          padding: 0.75rem 1rem;
-          gap: 0.75rem;
-        }
-        .main-nav {
-          gap: 1rem;
-        }
-        .nav-item {
-          font-size: 0.78rem;
-        }
-        .brand {
-          font-size: 0.95rem;
-        }
-      }
-
-      /* ========================
-         STEP FORM
-         ======================== */
-      .step-title {
-        font-size: 1.05rem;
-        font-weight: 700;
-        margin-bottom: 1.25rem;
-        line-height: 1.4;
-      }
-      .option-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 0.85rem;
-      }
-      .option-btn {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid var(--border);
-        border-radius: 10px;
-        padding: 1.15rem 1.25rem;
-        color: var(--text);
-        font-family: inherit;
-        font-size: 0.85rem;
-        font-weight: 600;
-        line-height: 1.45;
-        text-align: left;
-        cursor: pointer;
         transition: all 0.2s;
       }
-      .option-btn:hover {
-        border-color: var(--accent);
-        background: rgba(0, 255, 136, 0.06);
-        transform: translateY(-1px);
+      .dropdown a:hover {
+        background: rgba(99, 102, 241, 0.15);
+        color: var(--text);
       }
-      .step2-selected {
-        color: var(--accent);
-        font-size: 0.8rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-        font-family: "JetBrains Mono", monospace;
-      }
-      .step2-label {
-        display: block;
-        color: var(--muted);
-        font-size: 0.85rem;
-        line-height: 1.55;
-        margin-bottom: 0.6rem;
-      }
-      /* Language switcher */
+
       .lang-sw {
         display: flex;
         gap: 0.35rem;
-        background: rgba(24, 24, 27, 0.93);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+        background: rgba(16, 16, 24, 0.8);
         border: 1px solid var(--border);
-        border-radius: 10px;
-        padding: 0.35rem 0.5rem;
-        flex-shrink: 0;
+        border-radius: 8px;
+        padding: 0.25rem;
       }
-
       .lang-sw button {
         background: none;
         border: none;
         cursor: pointer;
-        padding: 0.2rem 0.35rem;
-        border-radius: 6px;
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
         opacity: 0.4;
-        transition:
-          opacity 0.2s,
-          background 0.2s;
-        display: flex;
-        align-items: center;
+        transition: all 0.2s;
       }
       .flag-img {
-        width: 26px;
+        width: 22px;
         height: auto;
         display: block;
-        border-radius: 2px;
+        border-radius: 1px;
       }
-
       .lang-sw button.active {
         opacity: 1;
-        background: rgba(0, 255, 136, 0.13);
+        background: rgba(99, 102, 241, 0.25);
+      }
+
+      /* ========================
+         LANDING SECTIONS BREAKDOWN
+         ======================== */
+      .section-block {
+        padding: 9rem 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .section-block.hero-block {
+        border-top: none;
+        padding: 10rem 0 5rem;
+      }
+
+      /* ========================
+         HERO SECTION
+         ======================== */
+      h1 {
+        font-size: clamp(2.6rem, 6vw, 4rem);
+        margin-bottom: 2rem;
+        line-height: 1.1;
+        letter-spacing: -0.04em;
+        font-weight: 800;
+        color: #ffffff;
+      }
+      .sub {
+        color: var(--muted);
+        max-width: 800px;
+        line-height: 1.8;
+        font-size: clamp(1.1rem, 2vw, 1.25rem);
+      }
+
+      /* ========================
+         PORTFOLIO GRID WITH STARTUP TAGS
+         ======================== */
+      .section-title {
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        margin-bottom: 5rem;
+        text-align: center;
+        color: #ffffff;
+      }
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      @media (min-width: 768px) {
+        .portfolio-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (min-width: 1200px) {
+        .portfolio-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      .portfolio-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 2.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 2rem;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+      }
+      .portfolio-card:hover {
+        border-color: rgba(99, 102, 241, 0.4);
+        box-shadow: 0 15px 40px rgba(99, 102, 241, 0.08);
+      }
+      .portfolio-header-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+      .portfolio-meta h3 {
+        font-size: 1.35rem;
+        font-weight: 800;
+        color: #ffffff;
+        margin-bottom: 0.25rem;
+      }
+      .portfolio-category {
+        font-size: 0.85rem;
+        color: var(--accent);
+        font-weight: 600;
+        font-family: "JetBrains Mono", monospace;
+      }
+      .startup-badge {
+        background: rgba(45, 212, 191, 0.12);
+        border: 1px solid rgba(45, 212, 191, 0.4);
+        color: var(--accent-2);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.65rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        padding: 0.25rem 0.55rem;
+        border-radius: 4px;
+        white-space: nowrap;
+        box-shadow: 0 0 10px rgba(45, 212, 191, 0.1);
+      }
+      .portfolio-context {
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.7;
+      }
+      .portfolio-field-label {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 800;
+        color: #ffffff;
+        display: block;
+        margin-bottom: 0.5rem;
+        font-family: "JetBrains Mono", monospace;
+      }
+      .portfolio-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+      }
+      .stack-pill {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--border);
+        color: #ffffff;
+        font-size: 0.75rem;
+        font-family: "JetBrains Mono", monospace;
+        padding: 0.3rem 0.7rem;
+        border-radius: 4px;
+        font-weight: 500;
+      }
+
+      /* ========================
+         FOUNDER + TESTIMONIAL
+         ======================== */
+      .founder-row-layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 4.5rem;
+        align-items: center;
+      }
+      @media (min-width: 992px) {
+        .founder-row-layout {
+          grid-template-columns: 5.5fr 4.5fr;
+        }
+      }
+      .founder-identity {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+      .founder-avatar {
+        width: 68px;
+        height: 68px;
+        border-radius: 50%;
+        background: rgba(99, 102, 241, 0.2);
+        border: 2px solid var(--accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 1.25rem;
+        color: #ffffff;
+      }
+      .founder-name {
+        font-weight: 800;
+        font-size: 1.35rem;
+      }
+      .founder-role {
+        font-size: 0.85rem;
+        color: var(--accent-2);
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+      }
+      .founder-text-bio {
+        color: var(--muted);
+        line-height: 1.8;
+        font-size: 1.05rem;
+        margin-bottom: 2.5rem;
+      }
+      .founder-button-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        align-items: center;
+      }
+      .btn-linkedin {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        background: rgba(255, 255, 255, 0.04);
+        color: #ffffff;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+      .btn-linkedin:hover {
+        border-color: var(--accent);
+        background: rgba(99, 102, 241, 0.2);
+      }
+      .btn-call-inline {
+        color: var(--accent-2);
+        font-size: 0.95rem;
+        font-weight: 700;
+        text-decoration: none;
+      }
+      .btn-call-inline:hover {
+        text-decoration: underline;
+      }
+      .testimonial-quote-box {
+        border-left: 4px solid var(--accent-2);
+        background: rgba(45, 212, 191, 0.04);
+        padding: 2.5rem;
+        border-radius: 0 16px 16px 0;
+        border: 1px solid var(--border);
+        border-left: 4px solid var(--accent-2);
+      }
+      .testimonial-quote-box p {
+        font-size: 1.15rem;
+        font-style: italic;
+        line-height: 1.7;
+        color: #ffffff;
+        margin-bottom: 1.25rem;
+        font-weight: 500;
+      }
+      .testimonial-quote-box cite {
+        display: block;
+        color: var(--accent-2);
+        font-size: 0.9rem;
+        font-weight: 700;
+        font-style: normal;
+        font-family: "JetBrains Mono", monospace;
+      }
+
+      /* ========================
+         SIDE-BY-SIDE DUAL CONTACT FORMS
+         ======================== */
+      .dual-form-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        align-items: stretch;
+      }
+      @media (min-width: 992px) {
+        .dual-form-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      .contact-card-pane {
+        background: var(--card);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 20px;
+        padding: 3.5rem 2.5rem;
+        box-shadow: 0 0 50px rgba(99, 102, 241, 0.08);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+      .contact-card-pane.express-pane {
+        border-color: rgba(45, 212, 191, 0.25);
+        box-shadow: 0 0 50px rgba(45, 212, 191, 0.06);
+      }
+      .pane-header-title {
+        font-size: 1.35rem;
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+        letter-spacing: -0.02em;
+        color: #ffffff;
+      }
+      .pane-header-desc {
+        color: var(--muted);
+        font-size: 0.925rem;
+        line-height: 1.6;
+        margin-bottom: 2.5rem;
+      }
+
+      .step-title-wizard {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 2rem;
+        line-height: 1.4;
+      }
+      .option-vertical-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+      }
+      .option-btn {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.4rem 1.5rem;
+        color: #ffffff;
+        font-family: inherit;
+        font-size: 0.95rem;
+        font-weight: 600;
+        line-height: 1.5;
+        text-align: left;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+      .option-btn:hover {
+        border-color: var(--accent-2);
+        background: rgba(45, 212, 191, 0.1);
+        box-shadow: 0 0 15px rgba(45, 212, 191, 0.15);
+      }
+      .btn-arrow {
+        color: var(--accent-2);
+        font-weight: 700;
+        transition: transform 0.2s;
+        margin-left: 1rem;
+      }
+      .option-btn:hover .btn-arrow {
+        transform: translateX(5px);
+      }
+
+      .step2-header-badge {
+        display: inline-block;
+        background: rgba(45, 212, 191, 0.12);
+        border: 1px solid rgba(45, 212, 191, 0.3);
+        color: var(--accent-2);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 0.4rem 0.8rem;
+        border-radius: 6px;
+        margin-bottom: 2rem;
+      }
+
+      /* Form standard elements */
+      .form-field-label {
+        display: block;
+        color: #ffffff;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 0.6rem;
+        font-family: "JetBrains Mono", monospace;
+      }
+      .form-input {
+        width: 100%;
+        background: #040407;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1.1rem 1.25rem;
+        color: #ffffff;
+        font-family: inherit;
+        font-size: 1rem;
+        transition: border-color 0.2s;
+      }
+      .form-input:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 15px rgba(99, 102, 241, 0.25);
+      }
+      .form-field {
+        margin-bottom: 1.5rem;
+      }
+      textarea.form-input {
+        min-height: 120px;
+        resize: vertical;
+      }
+      .btn-submit {
+        width: 100%;
+        background: var(--accent);
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        padding: 1.1rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s;
+        box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+      }
+      .btn-submit:hover {
+        background: var(--accent-dim);
+        box-shadow: 0 4px 30px rgba(99, 102, 241, 0.5);
+      }
+      .btn-submit.express-submit {
+        background: linear-gradient(to right, var(--accent-dim), #3b82f6);
+      }
+
+      /* ========================
+         SCROLLING TICKER
+         ======================== */
+      .ticker-wrap {
+        overflow: hidden;
+        padding: 2.5rem 0;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        -webkit-mask-image: linear-gradient(
+          to right,
+          transparent,
+          #000 15%,
+          #000 85%,
+          transparent
+        );
+        mask-image: linear-gradient(
+          to right,
+          transparent,
+          #000 15%,
+          #000 85%,
+          transparent
+        );
+        background: rgba(255, 255, 255, 0.01);
+      }
+      .ticker-track {
+        display: flex;
+        align-items: center;
+        gap: 4rem;
+        width: max-content;
+        animation: ticker-scroll 25s linear infinite;
+      }
+      .ticker-item {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.95rem;
+        font-weight: 600;
+        opacity: 0.5;
+        white-space: nowrap;
+        color: #ffffff;
+      }
+      @keyframes ticker-scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* ========================
+         TECH STACK GRID
+         ======================== */
+      .techstack-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+      }
+      .techstack-category {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 2.25rem;
+      }
+      .techstack-category-title {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--accent);
+        font-family: "JetBrains Mono", monospace;
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+      }
+      .techstack-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+      }
+      .techstack-pill {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border);
+        color: #ffffff;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.85rem;
+        padding: 0.35rem 0.75rem;
+        border-radius: 6px;
+      }
+
+      /* ========================
+         FINAL BOTTOM CTA
+         ======================== */
+      .final-scroll-cta {
+        text-align: center;
+        padding: 4rem 0 8rem;
+      }
+      .btn-scroll-up {
+        display: inline-block;
+        background: transparent;
+        color: var(--accent-2);
+        border: 2px solid var(--accent-2);
+        padding: 1.1rem 2.5rem;
+        font-size: 1rem;
+        font-weight: 700;
+        border-radius: 10px;
+        text-decoration: none;
+        transition: all 0.2s;
+        box-shadow: 0 0 20px rgba(45, 212, 191, 0.1);
+      }
+      .btn-scroll-up:hover {
+        background: var(--accent-2);
+        color: #030306;
+        box-shadow: 0 0 35px rgba(45, 212, 191, 0.4);
+        transform: translateY(-2px);
+      }
+
+      footer {
+        padding: 5rem 0;
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.95rem;
+        border-top: 1px solid var(--border);
       }
 
       html[lang="en"] .es {
@@ -703,14 +751,12 @@
       }
     </style>
 
-    <!-- Umami Analytics -->
     <script
       defer
       src="https://cloud.umami.is/script.js"
       data-website-id="e871ced2-a6d3-4425-964e-c3f0a55f792f"
     ></script>
 
-    <!-- Reddit Pixel -->
     <script>
       !(function (w, d) {
         if (!w.rdt) {
@@ -731,24 +777,6 @@
       rdt("init", "a2_j6f1034oocg4");
       rdt("track", "PageVisit");
     </script>
-    <!-- DO NOT MODIFY UNLESS TO REPLACE A USER IDENTIFIER -->
-    <!-- End Reddit Pixel -->
-
-    <!-- Microsoft Clarity -->
-    <script type="text/javascript">
-      (function (c, l, a, r, i, t, y) {
-        c[a] =
-          c[a] ||
-          function () {
-            (c[a].q = c[a].q || []).push(arguments);
-          };
-        t = l.createElement(r);
-        t.async = 1;
-        t.src = "https://www.clarity.ms/tag/" + i;
-        y = l.getElementsByTagName(r)[0];
-        y.parentNode.insertBefore(t, y);
-      })(window, document, "clarity", "script", "x8insalyd6");
-    </script>
   </head>
   <body>
     <header class="site-header">
@@ -756,33 +784,36 @@
         <a class="brand" href="#top">Arkeon</a>
         <nav class="main-nav">
           <div class="nav-item has-dropdown" id="servicesNav">
-            <span class="en">What We Fix</span><span class="es">Lo Que Arreglamos</span>
+            <span class="en">What We Fix</span
+            ><span class="es">Lo Que Arreglamos</span>
             <span class="caret">▾</span>
             <div class="dropdown">
-              <a href="./stripe/">
-                <span class="en">Payments Integration</span>
-                <span class="es">Integración de Pagos</span>
-              </a>
-              <a href="./deployment/">
-                <span class="en">Cloud Deployment</span>
-                <span class="es">Despliegue en la Nube</span>
-              </a>
-              <a href="./security-audit.html">
-                <span class="en">Security Audit</span>
-                <span class="es">Auditoría de Seguridad</span>
-              </a>
-              <a href="./backend-migration.html">
-                <span class="en">Backend Structure</span>
-                <span class="es">Estructura de Backend</span>
-              </a>
+              <a href="./stripe/"
+                ><span class="en">Payments Integration</span
+                ><span class="es">Integración de Pagos</span></a
+              >
+              <a href="./deployment/"
+                ><span class="en">Cloud Deployment</span
+                ><span class="es">Despliegue en la Nube</span></a
+              >
+              <a href="./security-audit.html"
+                ><span class="en">Security Audit</span
+                ><span class="es">Auditoría de Seguridad</span></a
+              >
+              <a href="./backend-migration.html"
+                ><span class="en">Backend Structure</span
+                ><span class="es">Estructura de Backend</span></a
+              >
             </div>
           </div>
-          <a href="#founder" class="nav-item">
-            <span class="en">Meet the Founder</span><span class="es">Conoce al Founder</span>
-          </a>
-          <a href="#contact-form" class="nav-item">
-            <span class="en">Get Free Audit</span><span class="es">Auditoría Gratis</span>
-          </a>
+          <a href="#founder-profile" class="nav-item"
+            ><span class="en">Meet the Founder</span
+            ><span class="es">Sobre mí</span></a
+          >
+          <a href="#contact-form" class="nav-item"
+            ><span class="en">Get Free Audit</span
+            ><span class="es">Contacto</span></a
+          >
         </nav>
         <div class="lang-sw">
           <button id="sw-en" onclick="setLang('en')" title="English">
@@ -796,858 +827,610 @@
     </header>
 
     <main class="wrap" id="top">
-      <h1>
-        <span class="en"
-          >You got 80% there with AI.<br />We take you to production.</span
-        >
-        <span class="es"
-          >Llegaste al 80% con la IA.<br />Nosotros te llevamos a
-          producción.</span
-        >
-      </h1>
-      <p class="sub">
-        <span class="en"
-          >Your app built with Cursor, Lovable or Claude works locally —
-          deploying it safely, integrating real payments, or wiring up the
-          database without breaking everything? That's where we take over.</span
-        >
-        <span class="es"
-          >Tu app hecha con Cursor, Bolt o Claude funciona en local —
-          desplegarla de forma segura, integrar pagos reales o conectar la base
-          de datos sin romper nada… ahí tomamos el relevo.</span
-        >
-      </p>
+      <section class="section-block hero-block">
+        <h1>
+          <span class="en"
+            >You got 80% there with AI.<br />We take you to production.</span
+          >
+          <span class="es"
+            >Llegaste al 80% con la IA.<br />Nosotros te llevamos a
+            producción.</span
+          >
+        </h1>
+        <p class="sub">
+          <span class="en"
+            >Your app built with Cursor, Lovable or Claude works locally —
+            deploying it safely, integrating real payments, or connecting a
+            database without breaking everything? That's where we take
+            over.</span
+          >
+          <span class="es"
+            >Tu app hecha con Cursor, Bolt o Claude funciona en local —
+            desplegarla de forma segura, integrar pagos reales o conectar la
+            base de datos sin romper nada… ahí tomamos el relevo.</span
+          >
+        </p>
+      </section>
 
-      <!-- Hybrid Unstuck Section -->
-      <div class="unstuck-wrap" id="contact-form">
-        <div class="unstuck-section">
-          <div class="unstuck-grid">
-            <div class="unstuck-col founder-col" id="founder">
-              <div class="founder-mini">
-                <div class="founder-avatar">HP</div>
-                <div>
-                  <div class="founder-name">Hugo Prado</div>
-                  <div class="founder-role">
-                    <span class="en">Technical Founder</span>
-                    <span class="es">Founder Técnico</span>
-                  </div>
-                </div>
-              </div>
-              <p class="founder-bio en">
-                As a technical founder myself, I've built my own startup from
-                the ground up — taking a product from a blank canvas to real
-                market validation and actual revenue with paying customers.
-                Having worked with numerous startups — ranging from day-one
-                idea validation to scaling platforms with established user
-                bases — I intimately understand the fragile nature, technical
-                bottlenecks, and unique challenges of early-stage products. I
-                bridge the gap between business goals and secure,
-                production-ready code.
-              </p>
-              <p class="founder-bio es">
-                Como founder técnico, he construido mi propio startup desde
-                cero — llevando un producto desde una hoja en blanco hasta
-                validación real de mercado e ingresos reales con clientes de
-                pago. Habiendo trabajado con numerosas startups — desde
-                validación de idea en día uno hasta plataformas con bases de
-                usuarios consolidadas — entiendo profundamente la naturaleza
-                frágil, los cuellos de botella técnicos y los retos únicos de
-                los productos en etapa temprana. Establezco el puente entre
-                los objetivos de negocio y el código seguro y listo para
-                producción.
-              </p>
-              <blockquote class="testimonial">
-                <p class="en">
-                  "We chose Hugo for his potential, his experience building
-                  MVPs, and his deep knowledge of the tech stack we needed."
-                </p>
-                <p class="es">
-                  "Elegimos a Hugo por su potencial, su experiencia montando
-                  MVPs y el profundo conocimiento del Stack tecnológico que
-                  necesitábamos."
-                </p>
-                <cite>— Javier</cite>
-              </blockquote>
-              <div class="founder-actions">
-                <a
-                  href="https://www.linkedin.com/in/hugo-prado-romero"
-                  class="btn-linkedin"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-                    />
-                  </svg>
-                  <span class="en">Connect on LinkedIn</span>
-                  <span class="es">Conectar en LinkedIn</span>
-                </a>
-                <a
-                  href="https://calendar.app.google/WmTZX6wxqDUmcjMcA"
-                  class="btn-call-inline"
-                  onclick="return gtag_report_conversion(this.href);"
-                >
-                  <span class="en">Prefer to talk? Schedule a call →</span>
-                  <span class="es"
-                    >¿Prefieres hablar? Reserva una llamada →</span
-                  >
-                </a>
-              </div>
-            </div>
-            <div class="unstuck-col wizard-col">
-              <form
-                action="https://formspree.io/f/mjgdzkyp"
-                method="POST"
-                id="stepForm"
-              >
-                <input type="hidden" name="source" value="homepage-stepform" />
-                <input
-                  type="hidden"
-                  name="selected_option"
-                  id="selectedOptionField"
-                  value=""
-                />
-
-                <div class="step step-1" id="step1">
-                  <h2 class="step-title">
-                    <span class="en">What's blocking your SaaS right now?</span>
-                    <span class="es"
-                      >¿Qué está bloqueando tu SaaS ahora mismo?</span
-                    >
-                  </h2>
-                  <div class="option-grid">
-                    <button
-                      type="button"
-                      class="option-btn"
-                      data-option-en="API keys &amp; External Services integration (Stripe, Supabase, Verifactu, Maps, Emails...)"
-                      data-option-es="Integración de API Keys y Servicios Externos (Stripe, Supabase, Verifactu, Maps, Emails...)"
-                    >
-                      <span class="en"
-                        >API keys &amp; External Services integration (Stripe,
-                        Supabase, Verifactu, Maps, Emails...)</span
-                      >
-                      <span class="es"
-                        >Integración de API Keys y Servicios Externos
-                        (Stripe, Supabase, Verifactu, Maps, Emails...)</span
-                      >
-                    </button>
-                    <button
-                      type="button"
-                      class="option-btn"
-                      data-option-en="My AI-built app broke in production / Vercel or Railway deployment failed"
-                      data-option-es="Mi app hecha con IA se rompió en producción / Falló el despliegue en Vercel o Railway"
-                    >
-                      <span class="en"
-                        >My AI-built app broke in production / Vercel or
-                        Railway deployment failed</span
-                      >
-                      <span class="es"
-                        >Mi app hecha con IA se rompió en producción / Falló
-                        el despliegue en Vercel o Railway</span
-                      >
-                    </button>
-                    <button
-                      type="button"
-                      class="option-btn"
-                      data-option-en="Looking for a long-term Senior Backend Partner to scale"
-                      data-option-es="Busco un Senior Backend Partner a largo plazo para escalar"
-                    >
-                      <span class="en"
-                        >Looking for a long-term Senior Backend Partner to
-                        scale</span
-                      >
-                      <span class="es"
-                        >Busco un Senior Backend Partner a largo plazo para
-                        escalar</span
-                      >
-                    </button>
-                  </div>
-                </div>
-
-                <div class="step step-2" id="step2" hidden>
-                  <p class="step2-selected" id="step2Selected"></p>
-                  <div class="form-field">
-                    <label class="step2-label">
-                      <span class="en"
-                        >Drop your email. A Senior Engineer will review your
-                        issue and send you a custom solution or snippet fix
-                        within 24 hours. No sales calls.</span
-                      >
-                      <span class="es"
-                        >Déjanos tu email. Un Senior Engineer revisará tu
-                        problema y te enviará una solución personalizada o un
-                        fix en menos de 24 horas. Sin llamadas de ventas.</span
-                      >
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      class="form-input"
-                      data-ph-en="you@company.com"
-                      data-ph-es="tu@empresa.com"
-                      placeholder="you@company.com"
-                      required
-                    />
-                  </div>
-                  <button type="submit" class="btn-submit">
-                    <span class="en">Get My 5-Minute Solution →</span>
-                    <span class="es"
-                      >Consigue Tu Solución en 5 Minutos →</span
-                    >
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
+      <div class="ticker-wrap">
+        <div class="ticker-track">
+          <span class="ticker-item">Lovable</span>
+          <span class="ticker-item">Cursor</span>
+          <span class="ticker-item">Bolt</span>
+          <span class="ticker-item">Supabase</span>
+          <span class="ticker-item">React</span>
+          <span class="ticker-item">Stripe</span>
+          <span class="ticker-item">Claude API</span>
+          <span class="ticker-item">Vercel</span>
+          <span class="ticker-item">Next.js</span>
+          <span class="ticker-item">Railway</span>
+          <span class="ticker-item">Lovable</span>
+          <span class="ticker-item">Cursor</span>
+          <span class="ticker-item">Bolt</span>
+          <span class="ticker-item">Supabase</span>
+          <span class="ticker-item">React</span>
+          <span class="ticker-item">Stripe</span>
+          <span class="ticker-item">Claude API</span>
+          <span class="ticker-item">Vercel</span>
+          <span class="ticker-item">Next.js</span>
+          <span class="ticker-item">Railway</span>
         </div>
       </div>
 
-      <!-- Portfolio -->
-      <section class="portfolio-section" id="portfolio">
+      <section class="section-block portfolio-section" id="portfolio">
         <h2 class="section-title">
           <span class="en">Battle-Tested Code: Startups We've Unstuck</span>
-          <span class="es"
-            >Código Probado en Batalla: Startups Que Hemos Desatascado</span
-          >
+          <span class="es">Casos reales: Startups que hemos desatascado</span>
         </h2>
+
         <div class="portfolio-grid">
           <article class="portfolio-card">
-            <div class="portfolio-header">
-              <h3>Tweedy</h3>
-              <span class="portfolio-tag">
-                <span class="en">FinTech SaaS (Multi-Tenant)</span>
-                <span class="es">SaaS FinTech (Multi-Inquilino)</span>
-              </span>
+            <div class="portfolio-header-row">
+              <div class="portfolio-meta">
+                <h3>Tweedy</h3>
+                <span class="portfolio-category">FinTech SaaS</span>
+              </div>
+              <span class="startup-badge">Startup</span>
             </div>
-            <div class="portfolio-block">
-              <span class="portfolio-label">The Mess</span>
-              <p class="en">
-                The client needed a secure multi-tenant architecture for
-                invoicing Spanish freelancers that automatically calculated
-                VAT and generated PDFs without crashing the server.
-              </p>
-              <p class="es">
-                El cliente necesitaba una arquitectura multi-inquilino segura
-                para facturación de autónomos españoles que calculara el IVA
-                automáticamente y generara PDFs sin romper el servidor.
-              </p>
-            </div>
-            <div class="portfolio-block">
-              <span class="portfolio-label">The Fix</span>
-              <p class="en">
-                Full-stack development of a multi-tenant platform in 3
-                phases.
-              </p>
-              <p class="es">
-                Desarrollo Full-Stack de una plataforma multi-tenant en 3
-                fases.
-              </p>
-            </div>
+            <p class="portfolio-context">
+              <span class="portfolio-field-label">Context</span>
+              <span class="en"
+                >Multi-tenant architecture and automated invoicing with VAT
+                calculation for Spanish freelancers.</span
+              >
+              <span class="es"
+                >Arquitectura multi-tenant y facturación automatizada con
+                cálculo de IVA para autónomos españoles.</span
+              >
+            </p>
             <div class="portfolio-stack">
               <span class="stack-pill">Node.js</span>
-              <span class="stack-pill">Multi-Tenant Architecture</span>
-              <span class="stack-pill">Automated Billing Systems</span>
+              <span class="stack-pill">PostgreSQL</span>
+              <span class="stack-pill">Multi-tenant</span>
             </div>
           </article>
 
           <article class="portfolio-card">
-            <div class="portfolio-header">
-              <h3>Endless Racing</h3>
-              <span class="portfolio-tag">
-                <span class="en">Logistics MVP</span>
-                <span class="es">MVP de Logística</span>
-              </span>
+            <div class="portfolio-header-row">
+              <div class="portfolio-meta">
+                <h3>Endless Racing</h3>
+                <span class="portfolio-category"
+                  ><span class="en">Logistics MVP</span
+                  ><span class="es">MVP de Logística</span></span
+                >
+              </div>
+              <span class="startup-badge">Startup</span>
             </div>
-            <div class="portfolio-block">
-              <span class="portfolio-label">The Mess</span>
-              <p class="en">
-                Coordinating carpooling, accommodation and equipment rental
-                between athletes required verifying identities and importing
-                massive data from Excel/CSV without lag.
-              </p>
-              <p class="es">
-                Coordinar carpooling, alojamiento y alquiler de equipamiento
-                entre atletas requería verificar identidades e importar datos
-                masivos desde Excel/CSV sin lag.
-              </p>
-            </div>
-            <div class="portfolio-block">
-              <span class="portfolio-label">The Fix</span>
-              <p class="en">
-                Complete MVP with optimized data import and AI-powered
-                profile automation.
-              </p>
-              <p class="es">
-                MVP completo con importación optimizada de datos y
-                automatización de perfiles con IA.
-              </p>
-            </div>
+            <p class="portfolio-context">
+              <span class="portfolio-field-label">Context</span>
+              <span class="en"
+                >MVP for sports logistics management, identity verification and
+                bulk CSV file imports.</span
+              >
+              <span class="es"
+                >MVP para gestión de logística deportiva, verificación de
+                identidad e importación masiva de archivos CSV.</span
+              >
+            </p>
             <div class="portfolio-stack">
               <span class="stack-pill">Next.js</span>
               <span class="stack-pill">Supabase</span>
               <span class="stack-pill">Vercel</span>
-              <span class="stack-pill">Generative AI</span>
             </div>
           </article>
 
           <article class="portfolio-card">
-            <div class="portfolio-header">
-              <h3>Gastrovisual</h3>
-              <span class="portfolio-tag">
-                <span class="en">Complex Stripe Integration</span>
-                <span class="es">Integración Compleja de Stripe</span>
-              </span>
+            <div class="portfolio-header-row">
+              <div class="portfolio-meta">
+                <h3>Gastrovisual</h3>
+                <span class="portfolio-category"
+                  ><span class="en">Stripe Integration</span
+                  ><span class="es">Integración Stripe</span></span
+                >
+              </div>
+              <span class="startup-badge">Startup</span>
             </div>
-            <div class="portfolio-block">
-              <span class="portfolio-label">The Mess</span>
-              <p class="en">
-                A hospitality marketplace stuck with recurring charges, setup
-                fees, commission holdbacks and automatic SEPA invoicing.
-              </p>
-              <p class="es">
-                Un marketplace de hostelería atascado con cobros recurrentes,
-                setup fees, retenciones de comisiones y facturación SEPA
-                automática.
-              </p>
-            </div>
-            <div class="portfolio-block">
-              <span class="portfolio-label">The Fix</span>
-              <p class="en">
-                Advanced integration of the Stripe Connect and Stripe Billing
-                ecosystem.
-              </p>
-              <p class="es">
-                Integración avanzada del ecosistema Stripe Connect y Stripe
-                Billing.
-              </p>
-            </div>
+            <p class="portfolio-context">
+              <span class="portfolio-field-label">Context</span>
+              <span class="en"
+                >Payments ecosystem for a hospitality marketplace with Stripe
+                Connect, subscriptions and SEPA invoicing.</span
+              >
+              <span class="es"
+                >Ecosistema de pagos para marketplace de hostelería con Stripe
+                Connect, suscripciones y facturación SEPA.</span
+              >
+            </p>
             <div class="portfolio-stack">
-              <span class="stack-pill">Stripe (Connect, Billing, Checkout)</span>
+              <span class="stack-pill">Stripe Connect</span>
+              <span class="stack-pill">Stripe Billing</span>
               <span class="stack-pill">Node.js</span>
-              <span class="stack-pill">SEPA Direct Debit</span>
             </div>
           </article>
 
           <article class="portfolio-card">
-            <div class="portfolio-header">
-              <h3>NAUA</h3>
-              <span class="portfolio-tag">
-                <span class="en">Energy AI Scheduling</span>
-                <span class="es">Scheduling de IA para Energía</span>
-              </span>
+            <div class="portfolio-header-row">
+              <div class="portfolio-meta">
+                <h3>NAUA</h3>
+                <span class="portfolio-category"
+                  ><span class="en">Energy Optimization</span
+                  ><span class="es">Optimización Energética</span></span
+                >
+              </div>
+              <span class="startup-badge">Startup</span>
             </div>
-            <div class="portfolio-block">
-              <span class="portfolio-label">The Mess</span>
-              <p class="en">
-                Managing optimal water pump scenarios required ultra-secure
-                authentication (2FA) and critical approval logic via
-                WhatsApp/Email.
-              </p>
-              <p class="es">
-                Gestionar escenarios óptimos de bombas de agua requería
-                autenticación ultra-segura (2FA) y lógica de aprobación
-                crítica vía WhatsApp/Email.
-              </p>
-            </div>
-            <div class="portfolio-block">
-              <span class="portfolio-label">The Fix</span>
-              <p class="en">
-                Scheduling system with SMS two-factor authentication and
-                multi-role workflow automation.
-              </p>
-              <p class="es">
-                Sistema de scheduling con doble factor por SMS y
-                automatización de flujos multi-rol.
-              </p>
-            </div>
+            <p class="portfolio-context">
+              <span class="portfolio-field-label">Context</span>
+              <span class="en"
+                >Multi-role authentication with two-factor (SMS 2FA) and
+                critical operational scheduling logic.</span
+              >
+              <span class="es"
+                >Autenticación multi-rol con doble factor (2FA por SMS) y lógica
+                crítica de scheduling operativo.</span
+              >
+            </p>
             <div class="portfolio-stack">
               <span class="stack-pill">React</span>
               <span class="stack-pill">Django</span>
-              <span class="stack-pill">SMS Multi-Factor Auth</span>
+              <span class="stack-pill">SMS Gateway</span>
             </div>
           </article>
 
           <article class="portfolio-card">
-            <div class="portfolio-header">
-              <h3>CTRL-F</h3>
-              <span class="portfolio-tag">
-                <span class="en">AI Content Automation</span>
-                <span class="es">Automatización de Contenido con IA</span>
-              </span>
+            <div class="portfolio-header-row">
+              <div class="portfolio-meta">
+                <h3>Ingenia Agency</h3>
+                <span class="portfolio-category"
+                  ><span class="en">AI Automation</span
+                  ><span class="es">Automatización con IA</span></span
+                >
+              </div>
             </div>
-            <div class="portfolio-block">
-              <span class="portfolio-label">The Mess</span>
-              <p class="en">
-                Automating the trimming of YouTube videos into social media
-                clips consumed too many APIs and failed on scheduled timing.
-              </p>
-              <p class="es">
-                Automatizar el recorte de vídeos de YouTube a clips en redes
-                sociales consumía demasiadas APIs y fallaba en la
-                programación horaria.
-              </p>
-            </div>
-            <div class="portfolio-block">
-              <span class="portfolio-label">The Fix</span>
-              <p class="en">
-                Backend orchestration connecting AI LLMs with real-time
-                social media APIs.
-              </p>
-              <p class="es">
-                Orquestación backend para conectar LLMs de IA con APIs de
-                redes sociales en tiempo real.
-              </p>
-            </div>
+            <p class="portfolio-context">
+              <span class="portfolio-field-label">Context</span>
+              <span class="en"
+                >Automated video processing and real-time connection with LLMs
+                for analysis and social media publishing.</span
+              >
+              <span class="es"
+                >Procesamiento automatizado de vídeo y conexión en tiempo real
+                con LLMs para análisis y publicación en RRSS.</span
+              >
+            </p>
             <div class="portfolio-stack">
               <span class="stack-pill">React</span>
               <span class="stack-pill">Django</span>
               <span class="stack-pill">Claude API</span>
-              <span class="stack-pill">Social Media APIs</span>
             </div>
           </article>
         </div>
       </section>
 
-      <!-- Scrolling Tech Ticker -->
-      <div class="ticker-wrap">
-        <div class="ticker-track">
-          <span class="ticker-item" title="Lovable">Lovable</span
-          ><span class="ticker-sep"></span>
-          <span class="ticker-item" title="Cursor"
-            ><svg
-              class="ticker-svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M11.503.131 1.891 5.678a.84.84 0 0 0-.42.726v11.188c0 .3.162.575.42.724l9.609 5.55a1 1 0 0 0 .998 0l9.61-5.55a.84.84 0 0 0 .42-.724V6.404a.84.84 0 0 0-.42-.726L12.497.131a1.01 1.01 0 0 0-.996 0M2.657 6.338h18.55c.263 0 .43.287.297.515L12.23 22.918c-.062.107-.229.064-.229-.06V12.335a.59.59 0 0 0-.295-.51l-9.11-5.257c-.109-.063-.064-.23.061-.23"
-              /></svg></span
-          ><span class="ticker-sep"></span>
-          <span class="ticker-item" title="Bolt"
-            ><svg
-              class="ticker-svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M10.797 14.182H3.635L16.728 0l-3.525 9.818h7.162L7.272 24l3.524-9.818Z"
-              /></svg></span
-          ><span class="ticker-sep"></span>
-          <span class="ticker-item" title="Supabase"
-            ><svg
-              class="ticker-svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M11.9 1.036c-.015-.986-1.26-1.41-1.874-.637L.764 12.05C-.33 13.427.65 15.455 2.409 15.455h9.579l.113 7.51c.014.985 1.259 1.408 1.873.636l9.262-11.653c1.093-1.375.113-3.403-1.645-3.403h-9.642z"
-              /></svg></span
-          ><span class="ticker-sep"></span>
-          <span class="ticker-item" title="React"
-            ><svg
-              class="ticker-svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38-.318-.184-.688-.277-1.092-.278zm-.005 1.09v.006c.225 0 .406.044.558.127.666.382.955 1.835.73 3.704-.054.46-.142.945-.25 1.44-.96-.236-2.006-.417-3.107-.534-.66-.905-1.345-1.727-2.035-2.447 1.592-1.48 3.087-2.292 4.105-2.295zm-9.77.02c1.012 0 2.514.808 4.11 2.28-.686.72-1.37 1.537-2.02 2.442-1.107.117-2.154.298-3.113.538-.112-.49-.195-.964-.254-1.42-.23-1.868.054-3.32.714-3.707.19-.09.4-.127.563-.132zm4.882 3.05c.455.468.91.992 1.36 1.564-.44-.02-.89-.034-1.345-.034-.46 0-.915.01-1.36.034.44-.572.895-1.096 1.345-1.565zM12 8.1c.74 0 1.477.034 2.202.093.406.582.802 1.203 1.183 1.86.372.64.71 1.29 1.018 1.946-.308.655-.646 1.31-1.013 1.95-.38.66-.773 1.288-1.18 1.87-.728.063-1.466.098-2.21.098-.74 0-1.477-.035-2.202-.093-.406-.582-.802-1.204-1.183-1.86-.372-.64-.71-1.29-1.018-1.946.303-.657.646-1.313 1.013-1.954.38-.66.773-1.286 1.18-1.868.728-.064 1.466-.098 2.21-.098zm-3.635.254c-.24.377-.48.763-.704 1.16-.225.39-.435.782-.635 1.174-.265-.656-.49-1.31-.676-1.947.64-.15 1.315-.283 2.015-.386zm7.26 0c.695.103 1.365.23 2.006.387-.18.632-.405 1.282-.66 1.933-.2-.39-.41-.783-.64-1.174-.225-.392-.465-.774-.705-1.146zm3.063.675c.484.15.944.317 1.375.498 1.732.74 2.852 1.708 2.852 2.476-.005.768-1.125 1.74-2.857 2.475-.42.18-.88.342-1.355.493-.28-.958-.646-1.956-1.1-2.98.45-1.017.81-2.01 1.085-2.964zm-13.395.004c.278.96.645 1.957 1.1 2.98-.45 1.017-.812 2.01-1.086 2.964-.484-.15-.944-.318-1.37-.5-1.732-.737-2.852-1.706-2.852-2.474 0-.768 1.12-1.742 2.852-2.476.42-.18.88-.342 1.356-.494zm11.678 4.28c.265.657.49 1.312.676 1.948-.64.157-1.316.29-2.016.39.24-.375.48-.762.705-1.158.225-.39.435-.788.636-1.18zm-9.945.02c.2.392.41.783.64 1.175.23.39.465.772.705 1.143-.695-.102-1.365-.23-2.006-.386.18-.63.406-1.282.66-1.933zM17.92 16.32c.112.493.2.968.254 1.423.23 1.868-.054 3.32-.714 3.708-.147.09-.338.128-.563.128-1.012 0-2.514-.807-4.11-2.28.686-.72 1.37-1.536 2.02-2.44 1.107-.118 2.154-.3 3.113-.54zm-11.83.01c.96.234 2.006.415 3.107.532.66.905 1.345 1.727 2.035 2.446-1.595 1.483-3.092 2.295-4.11 2.295-.22-.005-.406-.05-.553-.132-.666-.38-.955-1.834-.73-3.703.054-.46.142-.944.25-1.438zm4.56.64c.44.02.89.034 1.345.034.46 0 .915-.01 1.36-.034-.44.572-.895 1.095-1.345 1.565-.455-.47-.91-.993-1.36-1.565z"
-              /></svg></span
-          ><span class="ticker-sep"></span>
-          <span class="ticker-item" title="Stripe"
-            ><svg
-              class="ticker-svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.594-7.305h.003z"
-              /></svg></span
-          ><span class="ticker-sep"></span>
-          <span class="ticker-item" title="Claude"
-            ><svg
-              class="ticker-svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M17.3041 3.541h-3.6718l6.696 16.918H24Zm-10.6082 0L0 20.459h3.7442l1.3693-3.5527h7.0052l1.3693 3.5528h3.7442L10.5363 3.5409Zm-.3712 10.2232 2.2914-5.9456 2.2914 5.9456Z"
-              /></svg></span
-          ><span class="ticker-sep"></span>
-          <span class="ticker-item" title="Vercel"
-            ><svg
-              class="ticker-svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="m12 1.608 12 20.784H0Z" /></svg></span
-          ><span class="ticker-sep"></span>
-          <span class="ticker-item" title="Next.js"
-            ><svg
-              class="ticker-svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M18.665 21.978C16.758 23.255 14.465 24 12 24 5.377 24 0 18.623 0 12S5.377 0 12 0s12 5.377 12 12c0 3.583-1.574 6.801-4.067 9.001L9.219 7.2H7.2v9.596h1.615V9.251l9.85 12.727Zm-3.332-8.533 1.6 2.061V7.2h-1.6v6.245Z"
-              /></svg></span
-          ><span class="ticker-sep"></span>
-          <span class="ticker-item" title="Railway"
-            ><svg
-              class="ticker-svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M.113 10.27A13.026 13.026 0 000 11.48h18.23c-.064-.125-.15-.237-.235-.347-3.117-4.027-4.793-3.677-7.19-3.78-.8-.034-1.34-.048-4.524-.048-1.704 0-3.555.005-5.358.01-.234.63-.459 1.24-.567 1.737h9.342v1.216H.113v.002zm18.26 2.426H.009c.02.326.05.645.094.961h16.955c.754 0 1.179-.429 1.315-.96zm-17.318 4.28s2.81 6.902 10.93 7.024c4.855 0 9.027-2.883 10.92-7.024H1.056zM11.988 0C7.5 0 3.593 2.466 1.531 6.108l4.75-.005v-.002c3.71 0 3.849.016 4.573.047l.448.016c1.563.052 3.485.22 4.996 1.364.82.621 2.007 1.99 2.712 2.965.654.902.842 1.94.396 2.934-.408.914-1.289 1.458-2.353 1.458H.391s.099.42.249.886h22.748A12.026 12.026 0 0024 12.005C24 5.377 18.621 0 11.988 0z"
-              /></svg></span
-          ><span class="ticker-sep"></span>
-          <span class="ticker-item" title="Firebase"
-            ><svg
-              class="ticker-svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M19.455 8.369c-.538-.748-1.778-2.285-3.681-4.569-.826-.991-1.535-1.832-1.884-2.245a146 146 0 0 0-.488-.576l-.207-.245-.113-.133-.022-.032-.01-.005L12.57 0l-.609.488c-1.555 1.246-2.828 2.851-3.681 4.64-.523 1.064-.864 2.105-1.043 3.176-.047.241-.088.489-.121.738-.209-.017-.421-.028-.632-.033-.018-.001-.035-.002-.059-.003a7.46 7.46 0 0 0-2.28.274l-.317.089-.163.286c-.765 1.342-1.198 2.869-1.252 4.416-.07 2.01.477 3.954 1.583 5.625 1.082 1.633 2.61 2.882 4.42 3.611l.236.095.071.025.003-.001a9.59 9.59 0 0 0 2.941.568q.171.006.342.006c1.273 0 2.513-.249 3.69-.742l.008.004.313-.145a9.63 9.63 0 0 0 3.927-3.335c1.01-1.49 1.577-3.234 1.641-5.042.075-2.161-.643-4.304-2.133-6.371m-7.083 6.695c.328 1.244.264 2.44-.191 3.558-1.135-1.12-1.967-2.352-2.475-3.665-.543-1.404-.87-2.74-.974-3.975.48.157.922.366 1.315.622 1.132.737 1.914 1.902 2.325 3.461zm.207 6.022c.482.368.99.712 1.513 1.028-.771.21-1.565.302-2.369.273a8 8 0 0 1-.373-.022c.458-.394.869-.823 1.228-1.279zm1.347-6.431c-.516-1.957-1.527-3.437-3.002-4.398-.647-.421-1.385-.741-2.194-.95.011-.134.026-.268.043-.4.014-.113.03-.216.046-.313.133-.689.332-1.37.589-2.025.099-.25.206-.499.321-.74l.004-.008c.177-.358.376-.719.61-1.105l.092-.152-.003-.001c.544-.851 1.197-1.627 1.942-2.311l.288.341c.672.796 1.304 1.548 1.878 2.237 1.291 1.549 2.966 3.583 3.612 4.48 1.277 1.771 1.893 3.579 1.83 5.375-.049 1.395-.461 2.755-1.195 3.933-.694 1.116-1.661 2.05-2.8 2.708-.636-.318-1.559-.839-2.539-1.599.79-1.575.952-3.28.479-5.072zm-2.575 5.397c-.725.939-1.587 1.55-2.09 1.856-.081-.029-.163-.06-.243-.093l-.065-.026c-1.49-.616-2.747-1.656-3.635-3.01-.907-1.384-1.356-2.993-1.298-4.653.041-1.19.338-2.327.882-3.379.316-.07.638-.114.96-.131l.084-.002c.162-.003.324-.003.478 0 .227.011.454.035.677.07.073 1.513.445 3.145 1.105 4.852.637 1.644 1.694 3.162 3.144 4.515z"
-              /></svg></span
-          ><span class="ticker-sep"></span>
-          <span class="ticker-item" title="Tailwind CSS"
-            ><svg
-              class="ticker-svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z"
-              /></svg></span
-          ><span class="ticker-sep"></span>
-          <span class="ticker-item" title="v0">v0</span
-          ><span class="ticker-sep"></span>
-          <!-- duplicate for seamless loop -->
-          <span class="ticker-item" title="Lovable">Lovable</span
-          ><span class="ticker-sep"></span>
-          <span class="ticker-item" title="Cursor"
-            ><svg
-              class="ticker-svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M11.503.131 1.891 5.678a.84.84 0 0 0-.42.726v11.188c0 .3.162.575.42.724l9.609 5.55a1 1 0 0 0 .998 0l9.61-5.55a.84.84 0 0 0 .42-.724V6.404a.84.84 0 0 0-.42-.726L12.497.131a1.01 1.01 0 0 0-.996 0M2.657 6.338h18.55c.263 0 .43.287.297.515L12.23 22.918c-.062.107-.229.064-.229-.06V12.335a.59.59 0 0 0-.295-.51l-9.11-5.257c-.109-.063-.064-.23.061-.23"
-              /></svg></span
-          ><span class="ticker-sep"></span>
-          <span class="ticker-item" title="Bolt"
-            ><svg
-              class="ticker-svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M10.797 14.182H3.635L16.728 0l-3.525 9.818h7.162L7.272 24l3.524-9.818Z"
-              /></svg></span
-          ><span class="ticker-sep"></span>
-          <span class="ticker-item" title="Supabase"
-            ><svg
-              class="ticker-svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M11.9 1.036c-.015-.986-1.26-1.41-1.874-.637L.764 12.05C-.33 13.427.65 15.455 2.409 15.455h9.579l.113 7.51c.014.985 1.259 1.408 1.873.636l9.262-11.653c1.093-1.375.113-3.403-1.645-3.403h-9.642z"
-              /></svg></span
-          ><span class="ticker-sep"></span>
-          <span class="ticker-item" title="React"
-            ><svg
-              class="ticker-svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38-.318-.184-.688-.277-1.092-.278zm-.005 1.09v.006c.225 0 .406.044.558.127.666.382.955 1.835.73 3.704-.054.46-.142.945-.25 1.44-.96-.236-2.006-.417-3.107-.534-.66-.905-1.345-1.727-2.035-2.447 1.592-1.48 3.087-2.292 4.105-2.295zm-9.77.02c1.012 0 2.514.808 4.11 2.28-.686.72-1.37 1.537-2.02 2.442-1.107.117-2.154.298-3.113.538-.112-.49-.195-.964-.254-1.42-.23-1.868.054-3.32.714-3.707.19-.09.4-.127.563-.132zm4.882 3.05c.455.468.91.992 1.36 1.564-.44-.02-.89-.034-1.345-.034-.46 0-.915.01-1.36.034.44-.572.895-1.096 1.345-1.565zM12 8.1c.74 0 1.477.034 2.202.093.406.582.802 1.203 1.183 1.86.372.64.71 1.29 1.018 1.946-.308.655-.646 1.31-1.013 1.95-.38.66-.773 1.288-1.18 1.87-.728.063-1.466.098-2.21.098-.74 0-1.477-.035-2.202-.093-.406-.582-.802-1.204-1.183-1.86-.372-.64-.71-1.29-1.018-1.946.303-.657.646-1.313 1.013-1.954.38-.66.773-1.286 1.18-1.868.728-.064 1.466-.098 2.21-.098zm-3.635.254c-.24.377-.48.763-.704 1.16-.225.39-.435.782-.635 1.174-.265-.656-.49-1.31-.676-1.947.64-.15 1.315-.283 2.015-.386zm7.26 0c.695.103 1.365.23 2.006.387-.18.632-.405 1.282-.66 1.933-.2-.39-.41-.783-.64-1.174-.225-.392-.465-.774-.705-1.146zm3.063.675c.484.15.944.317 1.375.498 1.732.74 2.852 1.708 2.852 2.476-.005.768-1.125 1.74-2.857 2.475-.42.18-.88.342-1.355.493-.28-.958-.646-1.956-1.1-2.98.45-1.017.81-2.01 1.085-2.964zm-13.395.004c.278.96.645 1.957 1.1 2.98-.45 1.017-.812 2.01-1.086 2.964-.484-.15-.944-.318-1.37-.5-1.732-.737-2.852-1.706-2.852-2.474 0-.768 1.12-1.742 2.852-2.476.42-.18.88-.342 1.356-.494zm11.678 4.28c.265.657.49 1.312.676 1.948-.64.157-1.316.29-2.016.39.24-.375.48-.762.705-1.158.225-.39.435-.788.636-1.18zm-9.945.02c.2.392.41.783.64 1.175.23.39.465.772.705 1.143-.695-.102-1.365-.23-2.006-.386.18-.63.406-1.282.66-1.933zM17.92 16.32c.112.493.2.968.254 1.423.23 1.868-.054 3.32-.714 3.708-.147.09-.338.128-.563.128-1.012 0-2.514-.807-4.11-2.28.686-.72 1.37-1.536 2.02-2.44 1.107-.118 2.154-.3 3.113-.54zm-11.83.01c.96.234 2.006.415 3.107.532.66.905 1.345 1.727 2.035 2.446-1.595 1.483-3.092 2.295-4.11 2.295-.22-.005-.406-.05-.553-.132-.666-.38-.955-1.834-.73-3.703.054-.46.142-.944.25-1.438zm4.56.64c.44.02.89.034 1.345.034.46 0 .915-.01 1.36-.034-.44.572-.895 1.095-1.345 1.565-.455-.47-.91-.993-1.36-1.565z"
-              /></svg></span
-          ><span class="ticker-sep"></span>
-          <span class="ticker-item" title="Stripe"
-            ><svg
-              class="ticker-svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.594-7.305h.003z"
-              /></svg></span
-          ><span class="ticker-sep"></span>
-          <span class="ticker-item" title="Claude"
-            ><svg
-              class="ticker-svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M17.3041 3.541h-3.6718l6.696 16.918H24Zm-10.6082 0L0 20.459h3.7442l1.3693-3.5527h7.0052l1.3693 3.5528h3.7442L10.5363 3.5409Zm-.3712 10.2232 2.2914-5.9456 2.2914 5.9456Z"
-              /></svg></span
-          ><span class="ticker-sep"></span>
-          <span class="ticker-item" title="Vercel"
-            ><svg
-              class="ticker-svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="m12 1.608 12 20.784H0Z" /></svg></span
-          ><span class="ticker-sep"></span>
-          <span class="ticker-item" title="Next.js"
-            ><svg
-              class="ticker-svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M18.665 21.978C16.758 23.255 14.465 24 12 24 5.377 24 0 18.623 0 12S5.377 0 12 0s12 5.377 12 12c0 3.583-1.574 6.801-4.067 9.001L9.219 7.2H7.2v9.596h1.615V9.251l9.85 12.727Zm-3.332-8.533 1.6 2.061V7.2h-1.6v6.245Z"
-              /></svg></span
-          ><span class="ticker-sep"></span>
-          <span class="ticker-item" title="Railway"
-            ><svg
-              class="ticker-svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M.113 10.27A13.026 13.026 0 000 11.48h18.23c-.064-.125-.15-.237-.235-.347-3.117-4.027-4.793-3.677-7.19-3.78-.8-.034-1.34-.048-4.524-.048-1.704 0-3.555.005-5.358.01-.234.63-.459 1.24-.567 1.737h9.342v1.216H.113v.002zm18.26 2.426H.009c.02.326.05.645.094.961h16.955c.754 0 1.179-.429 1.315-.96zm-17.318 4.28s2.81 6.902 10.93 7.024c4.855 0 9.027-2.883 10.92-7.024H1.056zM11.988 0C7.5 0 3.593 2.466 1.531 6.108l4.75-.005v-.002c3.71 0 3.849.016 4.573.047l.448.016c1.563.052 3.485.22 4.996 1.364.82.621 2.007 1.99 2.712 2.965.654.902.842 1.94.396 2.934-.408.914-1.289 1.458-2.353 1.458H.391s.099.42.249.886h22.748A12.026 12.026 0 0024 12.005C24 5.377 18.621 0 11.988 0z"
-              /></svg></span
-          ><span class="ticker-sep"></span>
-          <span class="ticker-item" title="Firebase"
-            ><svg
-              class="ticker-svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M19.455 8.369c-.538-.748-1.778-2.285-3.681-4.569-.826-.991-1.535-1.832-1.884-2.245a146 146 0 0 0-.488-.576l-.207-.245-.113-.133-.022-.032-.01-.005L12.57 0l-.609.488c-1.555 1.246-2.828 2.851-3.681 4.64-.523 1.064-.864 2.105-1.043 3.176-.047.241-.088.489-.121.738-.209-.017-.421-.028-.632-.033-.018-.001-.035-.002-.059-.003a7.46 7.46 0 0 0-2.28.274l-.317.089-.163.286c-.765 1.342-1.198 2.869-1.252 4.416-.07 2.01.477 3.954 1.583 5.625 1.082 1.633 2.61 2.882 4.42 3.611l.236.095.071.025.003-.001a9.59 9.59 0 0 0 2.941.568q.171.006.342.006c1.273 0 2.513-.249 3.69-.742l.008.004.313-.145a9.63 9.63 0 0 0 3.927-3.335c1.01-1.49 1.577-3.234 1.641-5.042.075-2.161-.643-4.304-2.133-6.371m-7.083 6.695c.328 1.244.264 2.44-.191 3.558-1.135-1.12-1.967-2.352-2.475-3.665-.543-1.404-.87-2.74-.974-3.975.48.157.922.366 1.315.622 1.132.737 1.914 1.902 2.325 3.461zm.207 6.022c.482.368.99.712 1.513 1.028-.771.21-1.565.302-2.369.273a8 8 0 0 1-.373-.022c.458-.394.869-.823 1.228-1.279zm1.347-6.431c-.516-1.957-1.527-3.437-3.002-4.398-.647-.421-1.385-.741-2.194-.95.011-.134.026-.268.043-.4.014-.113.03-.216.046-.313.133-.689.332-1.37.589-2.025.099-.25.206-.499.321-.74l.004-.008c.177-.358.376-.719.61-1.105l.092-.152-.003-.001c.544-.851 1.197-1.627 1.942-2.311l.288.341c.672.796 1.304 1.548 1.878 2.237 1.291 1.549 2.966 3.583 3.612 4.48 1.277 1.771 1.893 3.579 1.83 5.375-.049 1.395-.461 2.755-1.195 3.933-.694 1.116-1.661 2.05-2.8 2.708-.636-.318-1.559-.839-2.539-1.599.79-1.575.952-3.28.479-5.072zm-2.575 5.397c-.725.939-1.587 1.55-2.09 1.856-.081-.029-.163-.06-.243-.093l-.065-.026c-1.49-.616-2.747-1.656-3.635-3.01-.907-1.384-1.356-2.993-1.298-4.653.041-1.19.338-2.327.882-3.379.316-.07.638-.114.96-.131l.084-.002c.162-.003.324-.003.478 0 .227.011.454.035.677.07.073 1.513.445 3.145 1.105 4.852.637 1.644 1.694 3.162 3.144 4.515z"
-              /></svg></span
-          ><span class="ticker-sep"></span>
-          <span class="ticker-item" title="Tailwind CSS"
-            ><svg
-              class="ticker-svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z"
-              /></svg></span
-          ><span class="ticker-sep"></span>
-          <span class="ticker-item" title="v0">v0</span>
-        </div>
-      </div>
-
-      <section class="pain-row">
-        <div class="pain-card">
-          <p>
-            <span class="en"
-              >AI is great for prototyping — risky when real money, users or
-              servers are involved.</span
-            >
-            <span class="es"
-              >La IA es genial para prototipar — riesgosa cuando entran dinero
-              real, usuarios o servidores.</span
-            >
-          </p>
-        </div>
-        <div class="pain-card">
-          <p>
-            <span class="en"
-              >Ask AI to fix one bug in production and it quietly breaks three
-              more.</span
-            >
-            <span class="es"
-              >Le pides a la IA que arregle un bug en producción y rompe tres
-              cosas más.</span
-            >
-          </p>
-        </div>
-        <div class="pain-card">
-          <p>
-            <span class="en"
-              >Afraid to launch because you're not sure if your API keys are
-              exposed.</span
-            >
-            <span class="es"
-              >Miedo de lanzar porque no sabes si tus API keys están expuestas
-              al mundo.</span
-            >
-          </p>
+      <section class="section-block" id="founder-profile">
+        <div class="founder-row-layout">
+          <div class="founder-info-side">
+            <div class="founder-identity">
+              <div class="founder-avatar">HP</div>
+              <div>
+                <div class="founder-name">Hugo Prado</div>
+                <div class="founder-role">
+                  <span class="en">Startup Technical Specialist</span
+                  ><span class="es">Especialista Técnico en Startups</span>
+                </div>
+              </div>
+            </div>
+            <p class="founder-text-bio en">
+              As a startup founder myself, I've built and deployed my own
+              software platforms from a blank canvas to market validation and
+              paying customers. Having specialized in agile environments and
+              high-growth products, I intimately understand the fragile tech
+              structures of early-stage startups and how to turn quick MVPs into
+              production-ready architecture.
+            </p>
+            <p class="founder-text-bio es">
+              Como founder de mi propia startup, sé lo que es programar,
+              desplegar y validar un producto desde cero hasta facturar. Me he
+              especializado en ayudar a startups y proyectos ágiles a solucionar
+              cuellos de botella críticos, integrando servicios complejos y
+              blindando el código para que un MVP aguante tracción real en
+              producción.
+            </p>
+            <div class="founder-button-group">
+              <a
+                href="https://www.linkedin.com/in/hugo-prado-romero"
+                class="btn-linkedin"
+                target="_blank"
+                rel="noopener"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                  />
+                </svg>
+                <span class="en">Connect on LinkedIn</span
+                ><span class="es">Conectar en LinkedIn</span>
+              </a>
+              <a
+                href="https://calendar.app.google/WmTZX6wxqDUmcjMcA"
+                class="btn-call-inline"
+                onclick="return gtag_report_conversion(this.href);"
+              >
+                <span class="en">Prefer to talk? Schedule a call →</span
+                ><span class="es"
+                  >¿Prefieres hablar? Reserva una llamada →</span
+                >
+              </a>
+            </div>
+          </div>
+          <div class="founder-testimonial-side">
+            <blockquote class="testimonial-quote-box">
+              <p class="en">
+                "We chose Hugo for his potential, his experience building MVPs,
+                and his deep knowledge of the tech stack we needed."
+              </p>
+              <p class="es">
+                "Elegimos a Hugo por su potencial, su experiencia montando MVPs
+                y el profundo conocimiento del Stack tecnológico que
+                necesitábamos."
+              </p>
+              <cite>— Javier (Tweedy / FIRAL)</cite>
+            </blockquote>
+          </div>
         </div>
       </section>
 
-      <!-- Tech Stack Grid -->
-      <section class="techstack-section" id="techstack">
+      <section class="section-block" id="contact-form">
         <h2 class="section-title">
-          <span class="en">The Engine Room: Our Tech Stack</span>
-          <span class="es"
-            >La Sala de Máquinas: Nuestro Stack Tecnológico</span
-          >
+          <span class="en">Let's Fix Your Code Architecture</span>
+          <span class="es">Resolvamos Tu Arquitectura de Código</span>
+        </h2>
+
+        <div class="dual-form-grid">
+          <div class="contact-card-pane express-pane">
+            <div class="pane-header-title">
+              ⚡ <span class="en">1-Click Express Route</span
+              ><span class="es">Ruta Express en 1-Clic</span>
+            </div>
+            <div class="pane-header-desc">
+              <span class="en"
+                >The fastest option. Select your technical blockage and
+                proceed.</span
+              >
+              <span class="es"
+                >La opción más rápida. Elige tu bloqueo técnico y avanza sin
+                escribir.</span
+              >
+            </div>
+
+            <form
+              action="https://formspree.io/f/mjgdzkyp"
+              method="POST"
+              id="expressWizardForm"
+            >
+              <input
+                type="hidden"
+                name="source"
+                value="homepage-express-wizard"
+              />
+              <input
+                type="hidden"
+                name="selected_blockage"
+                id="selectedOptionField"
+                value=""
+              />
+
+              <div id="step1">
+                <h3 class="step-title-wizard">
+                  <span class="en">Select your primary bottleneck:</span>
+                  <span class="es"
+                    >Selecciona tu cuello de botella principal:</span
+                  >
+                </h3>
+                <div class="option-vertical-list">
+                  <button
+                    type="button"
+                    class="option-btn"
+                    data-option-en="External Services Integration (Stripe, Supabase, Resend...)"
+                    data-option-es="Integración de Servicios Externos (Stripe, Supabase, Resend...)"
+                  >
+                    <span class="en"
+                      >External Services & API setup (Stripe, Supabase, Resend,
+                      WhatsApp, Maps...)</span
+                    >
+                    <span class="es"
+                      >Servicios Externos y APIs (Stripe, Supabase, Resend,
+                      WhatsApp, Maps...)</span
+                    >
+                    <span class="btn-arrow">→</span>
+                  </button>
+                  <button
+                    type="button"
+                    class="option-btn"
+                    data-option-en="Production Crash / Deployment Broken"
+                    data-option-es="Caída en Producción / Despliegue Roto"
+                  >
+                    <span class="en"
+                      >My AI-built app broke in production / Vercel & Railway
+                      pipeline error</span
+                    >
+                    <span class="es"
+                      >Mi app de IA se rompió en producción / Fallo en Vercel o
+                      Railway</span
+                    >
+                    <span class="btn-arrow">→</span>
+                  </button>
+                  <button
+                    type="button"
+                    class="option-btn"
+                    data-option-en="Looking for a Senior Partner to Scale"
+                    data-option-es="Busco un Partner Senior para Escalar"
+                  >
+                    <span class="en"
+                      >Looking for a long-term Senior Backend Partner to scale
+                      structural code</span
+                    >
+                    <span class="es"
+                      >Busco un Senior Backend Partner a largo plazo para
+                      escalar código</span
+                    >
+                    <span class="btn-arrow">→</span>
+                  </button>
+                </div>
+              </div>
+
+              <div id="step2" hidden>
+                <div class="step2-header-badge" id="step2Selected"></div>
+                <div class="form-field">
+                  <label class="form-field-label"
+                    ><span class="en">Email Address</span
+                    ><span class="es">Correo Electrónico</span></label
+                  >
+                  <input
+                    type="email"
+                    name="email"
+                    id="expressEmailInput"
+                    class="form-input"
+                    placeholder="you@company.com"
+                  />
+                </div>
+                <div class="form-field">
+                  <label class="form-field-label">
+                    <span class="en">Optional details</span>
+                    <span class="es"
+                      >Detalles opcionales (Un Ingeniero Senior revisará tu caso
+                      gratis en < 24h)</span
+                    >
+                  </label>
+                  <textarea
+                    name="additional_details"
+                    class="form-input"
+                    placeholder="e.g., Stripe webhooks returning 500, database structure issues..."
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  class="btn-submit express-submit"
+                  onclick="return gtag_report_conversion();"
+                >
+                  <span class="en">Get Free Senior Solution &rarr;</span>
+                  <span class="es">Consigue Tu Solución Gratis &rarr;</span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="contact-card-pane">
+            <div class="pane-header-title">
+              📝 <span class="en">Standard Contact Form</span
+              ><span class="es">Formulario de Contacto Tradicional</span>
+            </div>
+            <div class="pane-header-desc">
+              <span class="en"
+                >Describe your scenario. A Senior Dev will analyze it and answer
+                within 24h — 100% free structural feedback.</span
+              >
+              <span class="es"
+                >Cuéntanos tu caso. Un Dev Senior lo revisará y te responderá en
+                menos de 24 horas. Revisión estructural 100% gratis.</span
+              >
+            </div>
+
+            <form
+              action="https://formspree.io/f/mjgdzkyp"
+              method="POST"
+              id="standardContactForm"
+            >
+              <input
+                type="hidden"
+                name="source"
+                value="homepage-standard-form"
+              />
+
+              <div class="form-field">
+                <label class="form-field-label"
+                  ><span class="en">Name</span
+                  ><span class="es">Nombre</span></label
+                >
+                <input
+                  type="text"
+                  name="name"
+                  class="form-input"
+                  placeholder="Your name"
+                  required
+                />
+              </div>
+              <div class="form-field">
+                <label class="form-field-label"
+                  ><span class="en">Email</span
+                  ><span class="es">Email</span></label
+                >
+                <input
+                  type="email"
+                  name="email"
+                  id="standardEmailInput"
+                  class="form-input"
+                  placeholder="you@company.com"
+                  required
+                />
+              </div>
+              <div class="form-field">
+                <label class="form-field-label"
+                  ><span class="en">What is broken / what do you need?</span
+                  ><span class="es"
+                    >¿Qué se ha roto o qué necesitas exactamente?</span
+                  ></label
+                >
+                <textarea
+                  name="message"
+                  class="form-input"
+                  placeholder="e.g., Stripe webhooks returning 500, Supabase RLS leaks, FastAPI routing timeout error..."
+                  required
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="btn-submit"
+                onclick="return gtag_report_conversion();"
+              >
+                <span class="en">Send Message (Free Review) →</span>
+                <span class="es">Enviar Mensaje (Revisión Gratis) →</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block techstack-section" id="tech-stack">
+        <h2 class="section-title">
+          <span class="en">Core Technical Architecture</span>
+          <span class="es">Arquitectura e Infraestructura Core</span>
         </h2>
         <div class="techstack-grid">
           <div class="techstack-category">
-            <div class="techstack-category-title">
-              <span class="en">Languages &amp; Frameworks</span>
-              <span class="es">Lenguajes y Frameworks</span>
-            </div>
+            <div class="techstack-category-title">Languages & Frameworks</div>
             <div class="techstack-pills">
-              <span class="techstack-pill">React</span>
-              <span class="techstack-pill">Next.js</span>
-              <span class="techstack-pill">Node.js</span>
-              <span class="techstack-pill">JavaScript</span>
-              <span class="techstack-pill">TypeScript</span>
-              <span class="techstack-pill">Python</span>
+              <span class="techstack-pill">React</span
+              ><span class="techstack-pill">Next.js</span>
+              <span class="techstack-pill">Node.js</span
+              ><span class="techstack-pill">TypeScript</span>
+              <span class="techstack-pill">Python</span
+              ><span class="techstack-pill">FastAPI</span>
               <span class="techstack-pill">Django</span>
-              <span class="techstack-pill">Express</span>
             </div>
           </div>
           <div class="techstack-category">
-            <div class="techstack-category-title">
-              <span class="en">Infra &amp; DB</span>
-              <span class="es">Infraestructura y BD</span>
-            </div>
+            <div class="techstack-category-title">Infra & DB</div>
             <div class="techstack-pills">
-              <span class="techstack-pill">Supabase</span>
-              <span class="techstack-pill">PostgreSQL</span>
-              <span class="techstack-pill">Row Level Security (RLS)</span>
-              <span class="techstack-pill">Vercel</span>
-              <span class="techstack-pill">Railway</span>
-              <span class="techstack-pill">Edge Functions</span>
+              <span class="techstack-pill">Supabase</span
+              ><span class="techstack-pill">PostgreSQL</span>
+              <span class="techstack-pill">Vercel</span
+              ><span class="techstack-pill">Railway</span>
+              <span class="techstack-pill">RLS Security</span
+              ><span class="techstack-pill">LangChain</span>
             </div>
           </div>
           <div class="techstack-category">
-            <div class="techstack-category-title">Fintech</div>
+            <div class="techstack-category-title">APIs & External Services</div>
             <div class="techstack-pills">
-              <span class="techstack-pill">Stripe Connect</span>
-              <span class="techstack-pill">Stripe Billing</span>
-              <span class="techstack-pill">SEPA Direct Debit</span>
-              <span class="techstack-pill">Webhooks</span>
-            </div>
-          </div>
-          <div class="techstack-category">
-            <div class="techstack-category-title">
-              <span class="en">AI &amp; Automation</span>
-              <span class="es">IA y Automatización</span>
-            </div>
-            <div class="techstack-pills">
-              <span class="techstack-pill">Claude API</span>
-              <span class="techstack-pill">LLMs Integration</span>
-              <span class="techstack-pill">Make</span>
-              <span class="techstack-pill">n8n</span>
-              <span class="techstack-pill">Zapier</span>
-            </div>
-          </div>
-          <div class="techstack-category">
-            <div class="techstack-category-title">
-              <span class="en">Compliance</span>
-              <span class="es">Cumplimiento Normativo</span>
-            </div>
-            <div class="techstack-pills">
-              <span class="techstack-pill">Verifactu</span>
-              <span class="techstack-pill">
-                <span class="en">Electronic Invoicing</span>
-                <span class="es">Facturación Electrónica</span>
-              </span>
-              <span class="techstack-pill">
-                <span class="en">VAT / Form 303</span>
-                <span class="es">IVA / Modelo 303</span>
-              </span>
+              <span class="techstack-pill">Stripe Connect</span
+              ><span class="techstack-pill">Stripe Billing</span>
+              <span class="techstack-pill">Webhooks</span
+              ><span class="techstack-pill">Emails Pipeline</span>
+              <span class="techstack-pill">Resend</span
+              ><span class="techstack-pill">WhatsApp API</span>
+              <span class="techstack-pill">Google Maps</span
+              ><span class="techstack-pill">VeriFactu</span>
             </div>
           </div>
         </div>
       </section>
 
-      <p class="footer-note">
-        <span class="en"
-          >Don't leave your infrastructure to an AI hallucination.<br /><strong
-            >Secure your deployment, payments, and software today.</strong
-          ></span
-        >
-        <span class="es"
-          >No dejes tu infraestructura en manos de una alucinación de IA.<br /><strong
-            >Asegura el despliegue, los pagos y el futuro de tu software hoy
-            mismo.</strong
-          ></span
-        >
-      </p>
+      <section class="final-scroll-cta">
+        <a href="#contact-form" class="btn-scroll-up">
+          <span class="en">Get Your Free Production Review →</span>
+          <span class="es">Solicita Tu Auditoría Gratuita de Producción →</span>
+        </a>
+      </section>
     </main>
 
-    <script>
-      function setLang(l) {
-        document.documentElement.lang = l;
-        localStorage.setItem("ark-lang", l);
-        document
-          .querySelectorAll(".lang-sw button")
-          .forEach((b) => b.classList.remove("active"));
-        const b = document.getElementById("sw-" + l);
-        if (b) b.classList.add("active");
-        document.querySelectorAll("[data-ph-en]").forEach(function (el) {
-          el.placeholder =
-            l === "es" ? el.dataset.phEs || "" : el.dataset.phEn || "";
-        });
-      }
-      (function () {
-        const s = localStorage.getItem("ark-lang");
-        setLang(s || (navigator.language.startsWith("es") ? "es" : "en"));
-      })();
+    <footer>
+      <p>&copy; 2026 Arkeon Data. Built for production.</p>
+    </footer>
 
-      // Step form: option select -> reveal email step
-      document.querySelectorAll(".option-btn").forEach(function (btn) {
-        btn.addEventListener("click", function () {
-          document.getElementById("selectedOptionField").value =
-            btn.dataset.optionEn;
-          const lang = document.documentElement.lang;
-          const label = lang === "es" ? btn.dataset.optionEs : btn.dataset.optionEn;
-          const prefix = lang === "es" ? "Tu selección: " : "Your selection: ";
-          document.getElementById("step2Selected").textContent = prefix + label;
-          document.getElementById("step1").hidden = true;
-          document.getElementById("step2").hidden = false;
+    <script>
+      // Gamified Wizard Router Logic
+      const step1 = document.getElementById("step1");
+      const step2 = document.getElementById("step2");
+      const selectedOptionField = document.getElementById(
+        "selectedOptionField",
+      );
+      const step2Selected = document.getElementById("step2Selected");
+      const optionButtons = document.querySelectorAll(".option-btn");
+      const expressEmailInput = document.getElementById("expressEmailInput");
+
+      optionButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const isEn = document.documentElement.lang === "en";
+          const optionText = isEn
+            ? button.getAttribute("data-option-en")
+            : button.getAttribute("data-option-es");
+
+          selectedOptionField.value = optionText;
+          step2Selected.innerText = `→ ${optionText}`;
+
+          step1.setAttribute("hidden", true);
+          step2.removeAttribute("hidden");
+          expressEmailInput.setAttribute("required", "true");
         });
       });
 
-      // Services dropdown: toggle on tap for touch devices
-      (function () {
-        const servicesNav = document.getElementById("servicesNav");
-        if (!servicesNav) return;
-        servicesNav.addEventListener("click", function (e) {
-          if (e.target.closest("a")) return;
-          servicesNav.classList.toggle("open");
-        });
-        document.addEventListener("click", function (e) {
-          if (!servicesNav.contains(e.target)) {
-            servicesNav.classList.remove("open");
-          }
-        });
-      })();
+      // Global Language Synchronization Controller
+      function setLang(lang) {
+        document.documentElement.lang = lang;
+        document
+          .querySelectorAll(".lang-sw button")
+          .forEach((b) => b.classList.remove("active"));
+        document.getElementById(`sw-${lang}`).classList.add("active");
+
+        const exprInput = document.getElementById("expressEmailInput");
+        const stdInput = document.getElementById("standardEmailInput");
+        if (exprInput)
+          exprInput.placeholder =
+            lang === "en" ? "you@company.com" : "tu@empresa.com";
+        if (stdInput)
+          stdInput.placeholder =
+            lang === "en" ? "you@company.com" : "tu@empresa.com";
+      }
+
+      // Initialize locale execution sync
+      const locale = navigator.language.startsWith("es") ? "es" : "en";
+      setLang(locale);
     </script>
   </body>
 </html>
