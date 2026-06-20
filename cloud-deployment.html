@@ -40,18 +40,28 @@
       name="description"
       content="Despliega tu app creada con IA en internet en 7 dias: dominio, SSL, backend, base de datos, backups y monitoreo. Servicio ideal para perfiles no tecnicos."
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <style>
+      html {
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+      }
+
       :root {
-        --bg: #0a0a0f;
-        --text: #e8e8e8;
-        --accent: #00ff88;
-        --accent-dim: #00cc6e;
-        --border: #2a2a35;
-        --card-bg: #1a1a24;
+        --bg: #030306;
+        --text: #ffffff;
+        --muted: #e2e8f0;
+        --accent: #818cf8;
+        --accent-dim: #4f46e5;
+        --accent-2: #2dd4bf;
+        --border: rgba(255, 255, 255, 0.15);
+        --card-bg: rgba(16, 16, 28, 0.85);
+        --neon-glow: rgba(99, 102, 241, 0.22);
       }
 
       * {
@@ -85,15 +95,15 @@
         background:
           radial-gradient(
             circle at 20% 50%,
-            rgba(0, 255, 136, 0.15) 0%,
+            rgba(129, 140, 248, 0.15) 0%,
             transparent 50%
           ),
           radial-gradient(
             circle at 80% 80%,
-            rgba(0, 255, 136, 0.1) 0%,
+            rgba(129, 140, 248, 0.1) 0%,
             transparent 50%
           ),
-          linear-gradient(135deg, #0a0a0f 0%, #1a1a24 100%);
+          linear-gradient(135deg, #030306 0%, #10101c 100%);
         z-index: 0;
       }
 
@@ -104,8 +114,8 @@
         width: 100%;
         height: 100%;
         background-image:
-          linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+          linear-gradient(rgba(129, 140, 248, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(129, 140, 248, 0.03) 1px, transparent 1px);
         background-size: 100px 100px;
         z-index: 1;
         animation: gridMove 20s linear infinite;
@@ -166,7 +176,7 @@
 
       .hero-subtitle {
         font-size: 1.2rem;
-        color: #a0a0b0;
+        color: #e2e8f0;
         margin-bottom: 2rem;
         line-height: 1.6;
       }
@@ -192,7 +202,7 @@
 
       .stat-label {
         font-size: 0.875rem;
-        color: #6a6a7a;
+        color: rgba(226, 232, 240, 0.55);
         margin-top: 0.5rem;
       }
 
@@ -222,7 +232,7 @@
       .btn-primary:hover {
         background: var(--accent-dim);
         transform: translateY(-2px);
-        box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+        box-shadow: 0 10px 30px rgba(129, 140, 248, 0.3);
       }
 
       .btn-secondary {
@@ -277,7 +287,7 @@
       }
 
       .code-comment {
-        color: #6a6a7a;
+        color: rgba(226, 232, 240, 0.55);
       }
 
       .code-string {
@@ -316,7 +326,7 @@
 
       .price-detail {
         font-size: 1.125rem;
-        color: #a0a0b0;
+        color: #e2e8f0;
       }
 
       .features-grid {
@@ -356,7 +366,7 @@
       .feature-card:hover {
         transform: translateY(-5px);
         border-color: var(--accent);
-        box-shadow: 0 10px 40px rgba(0, 255, 136, 0.1);
+        box-shadow: 0 10px 40px rgba(129, 140, 248, 0.1);
       }
 
       .feature-icon {
@@ -372,7 +382,7 @@
       }
 
       .feature-desc {
-        color: #a0a0b0;
+        color: #e2e8f0;
         line-height: 1.7;
       }
 
@@ -420,7 +430,7 @@
 
       .case-problem p,
       .case-solution li {
-        color: #a0a0b0;
+        color: #e2e8f0;
       }
 
       .case-solution ul {
@@ -457,7 +467,7 @@
       }
 
       .faq-answer {
-        color: #a0a0b0;
+        color: #e2e8f0;
         line-height: 1.7;
       }
 
@@ -467,7 +477,7 @@
         background: linear-gradient(
           135deg,
           var(--card-bg) 0%,
-          rgba(0, 255, 136, 0.05) 100%
+          rgba(129, 140, 248, 0.05) 100%
         );
         border-radius: 24px;
         margin: 4rem 0;
@@ -480,7 +490,7 @@
 
       .cta-section p {
         font-size: 1.25rem;
-        color: #a0a0b0;
+        color: #e2e8f0;
         margin-bottom: 2rem;
         max-width: 700px;
         margin-left: auto;
@@ -491,7 +501,7 @@
         padding: 3rem 2rem;
         border-top: 1px solid var(--border);
         text-align: center;
-        color: #6a6a7a;
+        color: rgba(226, 232, 240, 0.55);
         font-size: 0.9rem;
       }
 
@@ -530,37 +540,124 @@
         }
       }
 
+      /* ========================
+         SITE HEADER / NAV
+         ======================== */
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 9999;
+        background: rgba(3, 3, 6, 0.85);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border);
+      }
+      .header-inner {
+        width: min(1340px, 100%);
+        margin: 0 auto;
+        padding: 1.25rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+      }
+      .brand {
+        font-weight: 800;
+        font-size: 1.35rem;
+        letter-spacing: -0.03em;
+        color: var(--text);
+        text-decoration: none;
+        background: linear-gradient(to right, #ffffff, var(--accent));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .main-nav {
+        display: flex;
+        align-items: center;
+        gap: 2.5rem;
+        flex: 1;
+        justify-content: center;
+      }
+      .nav-item {
+        position: relative;
+        background: none;
+        border: none;
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: color 0.2s;
+      }
+      .nav-item:hover {
+        color: var(--text);
+      }
+      .nav-item .caret {
+        font-size: 0.65em;
+        opacity: 0.6;
+        margin-left: 0.2em;
+      }
+      .has-dropdown .dropdown {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #09090f;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 0.5rem;
+        min-width: 250px;
+        display: none;
+        flex-direction: column;
+        gap: 0.2rem;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95);
+      }
+      .has-dropdown:hover .dropdown {
+        display: flex;
+      }
+      .dropdown a {
+        display: block;
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.875rem;
+        font-weight: 500;
+        transition: all 0.2s;
+      }
+      .dropdown a:hover {
+        background: rgba(129, 140, 248, 0.15);
+        color: var(--text);
+      }
+
       /* Language switcher */
       .lang-sw {
-        position: fixed;
-        top: 1.25rem;
-        right: 1.25rem;
-        z-index: 9999;
         display: flex;
         gap: 0.35rem;
-        background: rgba(26, 26, 36, 0.93);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border: 1px solid #2a2a35;
-        border-radius: 10px;
-        padding: 0.35rem 0.5rem;
+        background: rgba(16, 16, 24, 0.8);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 0.25rem;
       }
       .lang-sw button {
         background: none;
         border: none;
-        font-size: 1.35rem;
-        line-height: 1;
         cursor: pointer;
-        padding: 0.2rem 0.35rem;
-        border-radius: 6px;
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
         opacity: 0.4;
-        transition:
-          opacity 0.2s,
-          background 0.2s;
+        transition: all 0.2s;
+      }
+      .flag-img {
+        width: 22px;
+        height: auto;
+        display: block;
+        border-radius: 1px;
       }
       .lang-sw button.active {
         opacity: 1;
-        background: rgba(0, 255, 136, 0.13);
+        background: rgba(129, 140, 248, 0.25);
       }
       html[lang="en"] .es {
         display: none !important;
@@ -574,8 +671,8 @@
         align-items: center;
         gap: 0.6rem;
         padding: 0.5rem 1rem;
-        background: rgba(0, 255, 136, 0.08);
-        border: 1px solid rgba(0, 255, 136, 0.3);
+        background: rgba(129, 140, 248, 0.08);
+        border: 1px solid rgba(129, 140, 248, 0.3);
         border-radius: 999px;
         font-family: "JetBrains Mono", monospace;
         font-size: 0.8rem;
@@ -591,20 +688,20 @@
       }
       @keyframes pulseDot {
         0% {
-          box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7);
+          box-shadow: 0 0 0 0 rgba(129, 140, 248, 0.7);
         }
         70% {
-          box-shadow: 0 0 0 10px rgba(0, 255, 136, 0);
+          box-shadow: 0 0 0 10px rgba(129, 140, 248, 0);
         }
         100% {
-          box-shadow: 0 0 0 0 rgba(0, 255, 136, 0);
+          box-shadow: 0 0 0 0 rgba(129, 140, 248, 0);
         }
       }
       .social-proof {
         background: linear-gradient(
           180deg,
           transparent 0%,
-          rgba(0, 255, 136, 0.025) 100%
+          rgba(129, 140, 248, 0.025) 100%
         );
         border-top: 1px solid var(--border);
         border-bottom: 1px solid var(--border);
@@ -625,7 +722,7 @@
       }
       .proof-stat .proof-label {
         font-size: 0.95rem;
-        color: #a0a0b0;
+        color: #e2e8f0;
         margin-top: 0.75rem;
       }
       .testimonials {
@@ -658,7 +755,7 @@
       }
       .testimonial-text {
         font-size: 1.05rem;
-        color: #e8e8e8;
+        color: #ffffff;
         line-height: 1.7;
         margin-bottom: 1.5rem;
         padding-top: 0.5rem;
@@ -688,7 +785,7 @@
       }
       .testimonial-meta span {
         font-size: 0.85rem;
-        color: #6a6a7a;
+        color: rgba(226, 232, 240, 0.55);
       }
       .urgency-banner {
         background: linear-gradient(
@@ -726,7 +823,7 @@
         padding-top: 0.85rem;
         border-top: 1px dashed rgba(255, 255, 255, 0.08);
         font-size: 0.78rem;
-        color: #6a6a7a;
+        color: rgba(226, 232, 240, 0.55);
         font-family: "JetBrains Mono", monospace;
         line-height: 1.5;
       }
@@ -751,11 +848,11 @@
       }
       .case-block p,
       .case-block li {
-        color: #a0a0b0;
+        color: #e2e8f0;
         line-height: 1.7;
       }
       .case-wins {
-        background: rgba(0, 255, 136, 0.08);
+        background: rgba(129, 140, 248, 0.08);
         border-left: 4px solid var(--accent);
         padding: 1.25rem 1.5rem;
         border-radius: 4px;
@@ -768,7 +865,7 @@
       .cta-ps {
         margin-top: 2rem;
         font-size: 0.95rem;
-        color: #a0a0b0;
+        color: #e2e8f0;
         font-style: italic;
         max-width: 640px;
         margin-left: auto;
@@ -794,7 +891,7 @@
       }
 
       .testimonials-section {
-        background: rgba(0, 255, 136, 0.02);
+        background: rgba(129, 140, 248, 0.02);
         padding: 4rem 0;
         border-top: 1px solid var(--border);
         border-bottom: 1px solid var(--border);
@@ -815,7 +912,7 @@
       .testimonial-quote {
         font-size: 1rem;
         line-height: 1.6;
-        color: #e8e8e8;
+        color: #ffffff;
         margin-bottom: 1.5rem;
       }
       .author-avatar {
@@ -833,12 +930,12 @@
       }
       .author-info strong {
         display: block;
-        color: #e8e8e8;
+        color: #ffffff;
         font-size: 0.95rem;
       }
       .author-info span {
         display: block;
-        color: #6a6a7a;
+        color: rgba(226, 232, 240, 0.55);
         font-size: 0.85rem;
       }
 
@@ -856,7 +953,7 @@
         font-size: 0.72rem;
         text-transform: uppercase;
         letter-spacing: 3px;
-        color: #6a6a7a;
+        color: rgba(226, 232, 240, 0.55);
         margin-bottom: 1.75rem;
         font-family: "JetBrains Mono", monospace;
       }
@@ -894,7 +991,7 @@
         background: linear-gradient(
           135deg,
           var(--card-bg) 0%,
-          rgba(0, 255, 136, 0.03) 100%
+          rgba(129, 140, 248, 0.03) 100%
         );
         border-radius: 24px;
         padding: 3rem;
@@ -906,7 +1003,7 @@
         text-align: center;
       }
       .unstuck-subtitle {
-        color: #a0a0b0;
+        color: #e2e8f0;
         text-align: center;
         max-width: 680px;
         margin: 0 auto 2.5rem;
@@ -943,7 +1040,7 @@
       .form-field label {
         display: block;
         font-size: 0.8rem;
-        color: #a0a0b0;
+        color: #e2e8f0;
         margin-bottom: 0.4rem;
       }
       .form-input {
@@ -962,12 +1059,12 @@
         -webkit-appearance: none;
       }
       .form-input::placeholder {
-        color: #4a4a5a;
+        color: rgba(226, 232, 240, 0.4);
       }
       .form-input:focus {
         outline: none;
         border-color: var(--accent);
-        background: rgba(0, 255, 136, 0.03);
+        background: rgba(129, 140, 248, 0.03);
       }
       textarea.form-input {
         min-height: 110px;
@@ -990,7 +1087,7 @@
       .btn-submit:hover {
         background: var(--accent-dim);
         transform: translateY(-1px);
-        box-shadow: 0 6px 20px rgba(0, 255, 136, 0.25);
+        box-shadow: 0 6px 20px rgba(129, 140, 248, 0.25);
       }
       .unstuck-call-col {
         background: rgba(0, 0, 0, 0.25);
@@ -1005,7 +1102,7 @@
         margin-bottom: 0.75rem;
       }
       .unstuck-call-col p {
-        color: #a0a0b0;
+        color: #e2e8f0;
         line-height: 1.7;
         font-size: 0.95rem;
         margin-bottom: 1.25rem;
@@ -1024,7 +1121,7 @@
         transition: background 0.2s;
       }
       .btn-call:hover {
-        background: rgba(0, 255, 136, 0.08);
+        background: rgba(129, 140, 248, 0.08);
       }
 
       /* ========================
@@ -1049,8 +1146,8 @@
         width: 96px;
         height: 96px;
         border-radius: 50%;
-        background: rgba(0, 255, 136, 0.06);
-        border: 2px solid rgba(0, 255, 136, 0.25);
+        background: rgba(129, 140, 248, 0.06);
+        border: 2px solid rgba(129, 140, 248, 0.25);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1073,7 +1170,7 @@
         margin-bottom: 1rem;
       }
       .founder-bio {
-        color: #a0a0b0;
+        color: #e2e8f0;
         line-height: 1.75;
         margin-bottom: 1.5rem;
         max-width: 700px;
@@ -1084,7 +1181,7 @@
         gap: 0.5rem;
         background: transparent;
         color: var(--accent);
-        border: 1px solid rgba(0, 255, 136, 0.35);
+        border: 1px solid rgba(129, 140, 248, 0.35);
         border-radius: 8px;
         padding: 0.6rem 1.25rem;
         font-size: 0.875rem;
@@ -1093,7 +1190,7 @@
         transition: all 0.2s;
       }
       .btn-linkedin:hover {
-        background: rgba(0, 255, 136, 0.08);
+        background: rgba(129, 140, 248, 0.08);
         border-color: var(--accent);
       }
       @media (max-width: 760px) {
@@ -1168,10 +1265,52 @@
     </script>
   </head>
   <body>
-    <div class="lang-sw">
-      <button id="sw-es" onclick="setLang('es')">🇪🇸</button>
-      <button id="sw-en" onclick="setLang('en')">🇬🇧</button>
-    </div>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="index.html">Arkeon</a>
+        <nav class="main-nav">
+          <div class="nav-item has-dropdown">
+            <span class="en">What We Fix</span
+            ><span class="es">Lo Que Arreglamos</span>
+            <span class="caret">▾</span>
+            <div class="dropdown">
+              <a href="./stripe/"
+                ><span class="en">Payments Integration</span
+                ><span class="es">Integración de Pagos</span></a
+              >
+              <a href="./deployment/"
+                ><span class="en">Cloud Deployment</span
+                ><span class="es">Despliegue en la Nube</span></a
+              >
+              <a href="./security-audit.html"
+                ><span class="en">Security Audit</span
+                ><span class="es">Auditoría de Seguridad</span></a
+              >
+              <a href="./backend-migration.html"
+                ><span class="en">Backend Structure</span
+                ><span class="es">Estructura de Backend</span></a
+              >
+            </div>
+          </div>
+          <a href="index.html#founder-profile" class="nav-item"
+            ><span class="en">Meet the Founder</span
+            ><span class="es">Sobre mí</span></a
+          >
+          <a href="index.html#contact-form" class="nav-item"
+            ><span class="en">Get Free Audit</span
+            ><span class="es">Contacto</span></a
+          >
+        </nav>
+        <div class="lang-sw">
+          <button id="sw-es" onclick="setLang('es')" title="Español">
+            <img src="https://flagcdn.com/es.svg" alt="ES" class="flag-img" />
+          </button>
+          <button id="sw-en" onclick="setLang('en')" title="English">
+            <img src="https://flagcdn.com/gb.svg" alt="EN" class="flag-img" />
+          </button>
+        </div>
+      </div>
+    </header>
     <section class="hero">
       <div class="hero-bg"></div>
       <div class="hero-grid"></div>
