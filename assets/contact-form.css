@@ -115,6 +115,10 @@
   font-weight: 600;
   margin-top: 0.6rem;
 }
+.ucf-other-detail {
+  margin-top: -0.25rem;
+  margin-bottom: 1.5rem;
+}
 .ucf-email-field {
   margin-top: 0.25rem;
   margin-bottom: 1.5rem;

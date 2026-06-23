@@ -9,6 +9,11 @@
 
   var CATEGORIES = [
     {
+      emoji: "🤝",
+      en: "Long-term technical partner",
+      es: "Acompañamiento técnico a largo plazo",
+    },
+    {
       emoji: "🔌",
       en: "Payment integration (Stripe)",
       es: "Integración de pagos (Stripe)",
@@ -24,11 +29,50 @@
       es: "Seguridad de código hecho con IA",
     },
     {
-      emoji: "🤝",
-      en: "Long-term technical partner",
-      es: "Acompañamiento técnico a largo plazo",
+      emoji: "✏️",
+      en: "Other",
+      es: "Otro",
+      other: true,
     },
   ];
+
+  // FUNCIÓN SINCRO-CRIPTOGRÁFICA: Encripta el email en SHA-256 de forma segura antes de enviarlo a Reddit
+  async function hashSHA256(text) {
+    var cleanText = String(text || "")
+      .trim()
+      .toLowerCase();
+    if (!cleanText) return null;
+    var msgBuffer = new TextEncoder().encode(cleanText);
+    var hashBuffer = await crypto.subtle.digest("SHA-256", msgBuffer);
+    var hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray
+      .map(function (b) {
+        return b.toString(16).padStart(2, "0");
+      })
+      .join("");
+  }
+
+  // Disparador centralizado de conversiones
+  async function fireRedditLead(emailValue) {
+    if (typeof window.rdt === "function") {
+      if (emailValue) {
+        try {
+          var hashedEmail = await hashSHA256(emailValue);
+          window.rdt("track", "Lead", { userEmail: hashedEmail });
+        } catch (e) {
+          window.rdt("track", "Lead");
+        }
+      } else {
+        window.rdt("track", "Lead");
+      }
+    }
+  }
+
+  function fireGoogleConversion() {
+    if (typeof window.gtag === "function") {
+      window.gtag("event", "conversion", { send_to: CONVERSION_SEND_TO });
+    }
+  }
 
   function escapeAttr(value) {
     return String(value).replace(/"/g, "&quot;");
@@ -41,7 +85,9 @@
         escapeAttr(cat.en) +
         '" data-category-es="' +
         escapeAttr(cat.es) +
-        '">' +
+        '"' +
+        (cat.other ? ' data-other="true"' : "") +
+        ">" +
         '<span class="ucf-emoji">' +
         cat.emoji +
         "</span>" +
@@ -78,6 +124,20 @@
       '<span class="en">Please select a category to continue.</span>' +
       '<span class="es">Selecciona una categoría para continuar.</span>' +
       "</p>" +
+      '<div class="form-field ucf-other-detail" id="ucfOtherDetail" hidden>' +
+      '<label class="form-field-label">' +
+      '<span class="en">Tell us what you need</span>' +
+      '<span class="es">Cuéntanos qué necesitas</span>' +
+      "</label>" +
+      '<textarea name="other_detail" id="ucfOtherDetailInput" class="form-input" ' +
+      'data-ph-en="Describe what you\'re looking for..." ' +
+      'data-ph-es="Describe lo que necesitas..." ' +
+      "></textarea>" +
+      '<p class="ucf-field-error" id="ucfOtherDetailError" hidden>' +
+      '<span class="en">Please tell us a bit more.</span>' +
+      '<span class="es">Cuéntanos un poco más.</span>' +
+      "</p>" +
+      "</div>" +
       '<div class="form-field ucf-email-field">' +
       '<label class="form-field-label">' +
       '<span class="en">Your email</span>' +
@@ -91,7 +151,7 @@
       '<span class="es">Introduce un email válido.</span>' +
       "</p>" +
       "</div>" +
-      '<button type="button" class="btn-submit" id="ucfContinueBtn">' +
+      '<button type="button" class="button btn-submit" id="ucfContinueBtn">' +
       '<span class="en">Continue →</span>' +
       '<span class="es">Continuar →</span>' +
       "</button>" +
@@ -131,7 +191,7 @@
       'data-ph-es="ej., Webhooks de Stripe devuelven 500, falla el despliegue, API keys expuestas..." ' +
       "></textarea>" +
       "</div>" +
-      '<button type="submit" class="btn-submit" id="ucfSendBtn">' +
+      '<button type="submit" class="button btn-submit" id="ucfSendBtn">' +
       '<span class="en">Send message →</span>' +
       '<span class="es">Enviar mensaje →</span>' +
       "</button>" +
@@ -150,16 +210,13 @@
     return document.documentElement.lang === "es" ? "es" : "en";
   }
 
-  function fireConversion() {
-    if (typeof window.gtag === "function") {
-      window.gtag("event", "conversion", { send_to: CONVERSION_SEND_TO });
-    }
-  }
-
   function wireForm(root) {
     var categoryButtons = root.querySelectorAll(".ucf-category-btn");
     var categoryField = root.querySelector("#ucfCategoryField");
     var categoryError = root.querySelector("#ucfCategoryError");
+    var otherDetail = root.querySelector("#ucfOtherDetail");
+    var otherDetailInput = root.querySelector("#ucfOtherDetailInput");
+    var otherDetailError = root.querySelector("#ucfOtherDetailError");
     var emailInput = root.querySelector("#ucfEmailInput");
     var emailError = root.querySelector("#ucfEmailError");
     var continueBtn = root.querySelector("#ucfContinueBtn");
@@ -174,6 +231,18 @@
     var sourceInput = form.querySelector('input[name="source"]');
 
     var selectedLabel = { en: "", es: "" };
+    var isOtherSelected = false;
+
+    // GATILLO MID-FUNNEL REDDIT: Avisa a Reddit cuando el usuario hace focus en el campo email
+    emailInput.addEventListener(
+      "focus",
+      function () {
+        if (typeof window.rdt === "function") {
+          window.rdt("track", "ViewContent");
+        }
+      },
+      { once: true },
+    );
 
     categoryButtons.forEach(function (btn) {
       btn.addEventListener("click", function () {
@@ -185,6 +254,14 @@
         selectedLabel.es = btn.getAttribute("data-category-es");
         categoryField.value = selectedLabel.en;
         categoryError.hidden = true;
+
+        isOtherSelected = btn.hasAttribute("data-other");
+        otherDetail.hidden = !isOtherSelected;
+        if (isOtherSelected) {
+          otherDetailInput.focus();
+        } else {
+          otherDetailError.hidden = true;
+        }
       });
     });
 
@@ -192,11 +269,21 @@
       emailError.hidden = true;
     });
 
+    otherDetailInput.addEventListener("input", function () {
+      otherDetailError.hidden = true;
+    });
+
     continueBtn.addEventListener("click", function () {
       var valid = true;
       if (!categoryField.value) {
         categoryError.hidden = false;
         valid = false;
+      }
+      if (isOtherSelected && !otherDetailInput.value.trim()) {
+        otherDetailError.hidden = false;
+        valid = false;
+      } else {
+        otherDetailError.hidden = true;
       }
       if (!isValidEmail(emailInput.value)) {
         emailError.hidden = false;
@@ -208,30 +295,45 @@
 
       var lang = currentLang();
       var prefix = lang === "es" ? "Categoría: " : "Category: ";
-      step3Selected.textContent = prefix + selectedLabel[lang];
+      var label = selectedLabel[lang];
+      if (isOtherSelected) {
+        var detail = otherDetailInput.value.trim();
+        if (detail) {
+          label +=
+            ": " + (detail.length > 60 ? detail.slice(0, 60) + "…" : detail);
+        }
+      }
+      step3Selected.textContent = prefix + label;
 
       step12.hidden = true;
       step3.hidden = false;
       step3.scrollIntoView({ behavior: "smooth", block: "nearest" });
     });
 
+    // CASO DE CONVERSIÓN 1: El usuario decide reservar llamada directa en el paso 2
     bookCallBtn.addEventListener("click", function () {
       window.open(CALENDAR_URL, "_blank", "noopener");
-      fireConversion();
-      try {
-        var data = new FormData();
-        data.append("source", sourceInput.value);
-        data.append("category", categoryField.value);
-        data.append("email", emailInput.value);
-        data.append("intent", "book_call");
-        fetch(FORMSPREE_ACTION, {
-          method: "POST",
-          body: data,
-          headers: { Accept: "application/json" },
-        }).catch(function () {});
-      } catch (err) {
-        /* lead is best-effort here; the calendar booking itself still works */
-      }
+
+      fireGoogleConversion();
+
+      var emailValue = emailInput.value;
+      fireRedditLead(emailValue).then(function () {
+        try {
+          var data = new FormData();
+          data.append("source", sourceInput.value);
+          data.append("category", categoryField.value);
+          data.append("email", emailValue);
+          data.append("intent", "book_call");
+          if (isOtherSelected && otherDetailInput.value.trim()) {
+            data.append("other_detail", otherDetailInput.value.trim());
+          }
+          fetch(FORMSPREE_ACTION, {
+            method: "POST",
+            body: data,
+            headers: { Accept: "application/json" },
+          }).catch(function () {});
+        } catch (err) {}
+      });
     });
 
     writeFirstBtn.addEventListener("click", function () {
@@ -239,9 +341,16 @@
       messageInput.focus();
     });
 
-    form.addEventListener("submit", function () {
-      fireConversion();
-      // No preventDefault: native submission to Formspree proceeds.
+    // CASO DE CONVERSIÓN 2: El usuario envía el formulario de texto tradicional
+    form.addEventListener("submit", function (e) {
+      e.preventDefault(); // Pausamos el envío nativo transitoriamente
+
+      fireGoogleConversion();
+
+      var emailValue = emailInput.value;
+      fireRedditLead(emailValue).then(function () {
+        form.submit(); // Liberamos el envío final nativo hacia Formspree
+      });
     });
   }
 
