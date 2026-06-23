@@ -36,7 +36,7 @@
     },
   ];
 
-  // FUNCIÓN SINCRO-CRIPTOGRÁFICA: Encripta el email en SHA-256 de forma segura antes de enviarlo a Reddit
+  // FUNCIÓN CRIPTOGRÁFICA: Convierte el email a SHA-256
   async function hashSHA256(text) {
     var cleanText = String(text || "")
       .trim()
@@ -52,13 +52,13 @@
       .join("");
   }
 
-  // Disparador centralizado de conversiones
+  // Envió de Lead a Reddit con la clave correcta exigida por su API
   async function fireRedditLead(emailValue) {
     if (typeof window.rdt === "function") {
       if (emailValue) {
         try {
           var hashedEmail = await hashSHA256(emailValue);
-          window.rdt("track", "Lead", { userEmail: hashedEmail });
+          window.rdt("track", "Lead", { email: hashedEmail }); // <-- CORREGIDO: 'email' activa los Match Keys
         } catch (e) {
           window.rdt("track", "Lead");
         }
@@ -233,7 +233,6 @@
     var selectedLabel = { en: "", es: "" };
     var isOtherSelected = false;
 
-    // GATILLO MID-FUNNEL REDDIT: Avisa a Reddit cuando el usuario hace focus en el campo email
     emailInput.addEventListener(
       "focus",
       function () {
@@ -310,7 +309,6 @@
       step3.scrollIntoView({ behavior: "smooth", block: "nearest" });
     });
 
-    // CASO DE CONVERSIÓN 1: El usuario decide reservar llamada directa en el paso 2
     bookCallBtn.addEventListener("click", function () {
       window.open(CALENDAR_URL, "_blank", "noopener");
 
@@ -341,15 +339,14 @@
       messageInput.focus();
     });
 
-    // CASO DE CONVERSIÓN 2: El usuario envía el formulario de texto tradicional
     form.addEventListener("submit", function (e) {
-      e.preventDefault(); // Pausamos el envío nativo transitoriamente
+      e.preventDefault();
 
       fireGoogleConversion();
 
       var emailValue = emailInput.value;
       fireRedditLead(emailValue).then(function () {
-        form.submit(); // Liberamos el envío final nativo hacia Formspree
+        form.submit();
       });
     });
   }
