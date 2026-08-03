@@ -1,0 +1,8 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>Arkeon - icono favicon alto contraste</title>
+<desc>Icono de favicon con fondo solido saturado y el arco en color solido cian brillante, sin degradado ni detalle interior, optimizado para verse a tamano diminuto.</desc>
+<rect width="200" height="200" rx="44" fill="#3B2A78"/>
+<g transform="translate(48,32) scale(0.8)">
+<path d="M 20 150 L 20 65 A 45 45 0 0 1 110 65 L 110 150" stroke="#4DEDDB" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</g>
+</svg>

@@ -45,7 +45,7 @@
       rel="stylesheet"
     />
     <link rel="icon" type="image/x-icon" href="assets/brand/favicon.ico" />
-    <link rel="icon" type="image/svg+xml" href="assets/brand/arkeon-icon-circle.svg" />
+    <link rel="icon" type="image/svg+xml" href="assets/brand/arkeon-icon-favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/arkeon-icon-32.png" />
     <link rel="icon" type="image/png" sizes="48x48" href="assets/brand/arkeon-icon-48.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="assets/brand/arkeon-icon-180.png" />
@@ -611,20 +611,26 @@
         gap: 1.5rem;
       }
       .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+      }
+      .brand-icon {
+        height: 36px;
+        width: 36px;
+        border-radius: 8px;
+        display: block;
+        flex-shrink: 0;
+      }
+      .brand-name {
         font-weight: 800;
         font-size: 1.35rem;
         letter-spacing: -0.03em;
-        color: var(--text);
-        text-decoration: none;
-        background: linear-gradient(to right, #ffffff, var(--accent));
+        background: linear-gradient(to right, #8B5CF6, #2DD4BF);
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
-      }
-      .brand-logo {
-        height: 40px;
-        width: auto;
-        display: block;
       }
       .main-nav {
         display: flex;
@@ -1314,7 +1320,7 @@
     <header class="site-header">
       <div class="header-inner">
         <a class="brand" href="index.html">
-          <img src="assets/brand/arkeon-logo-full.svg" alt="Arkeon" class="brand-logo" />
+          <img src="assets/brand/arkeon-icon.svg" alt="Arkeon icon" class="brand-icon" /><span class="brand-name">Arkeon</span>
         </a>
         <nav class="main-nav">
           <div class="nav-item has-dropdown">
