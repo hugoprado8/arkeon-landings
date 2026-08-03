@@ -44,6 +44,11 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="icon" type="image/x-icon" href="assets/brand/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="assets/brand/arkeon-icon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/arkeon-icon-32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="assets/brand/arkeon-icon-48.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/brand/arkeon-icon-180.png" />
     <link rel="stylesheet" href="assets/contact-form.css" />
     <style>
       html {
@@ -611,6 +616,11 @@
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
+      }
+      .brand-logo {
+        height: 28px;
+        width: auto;
+        display: block;
       }
       .main-nav {
         display: flex;
@@ -1299,7 +1309,9 @@
   <body>
     <header class="site-header">
       <div class="header-inner">
-        <a class="brand" href="index.html">Arkeon</a>
+        <a class="brand" href="index.html">
+          <img src="assets/brand/arkeon-logo-full.svg" alt="Arkeon" class="brand-logo" />
+        </a>
         <nav class="main-nav">
           <div class="nav-item has-dropdown">
             <span class="en">What We Fix</span
