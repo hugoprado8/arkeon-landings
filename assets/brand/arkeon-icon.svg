@@ -1,12 +1,12 @@
 <svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img">
-<title>Arkeon - icono con fondo claro de alto contraste</title>
-<desc>Icono cuadrado redondeado con fondo blanco y el arco de Arkeon grande y centrado, con una barra vertical tipo boton de encendido dentro, en degradado morado a cian.</desc>
+<title>Arkeon - icono, colores unificados con el logo completo</title>
+<desc>Icono cuadrado redondeado con fondo blanco y el arco de Arkeon con trazo grueso, en el mismo degradado morado a cian que el logo completo, con una barra vertical tipo boton de encendido dentro.</desc>
 <defs>
-<linearGradient id="gIcon" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#7C3AED"/><stop offset="55%" stop-color="#4F46E5"/><stop offset="100%" stop-color="#0D9488"/></linearGradient>
+<linearGradient id="gIcon" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#8B5CF6"/><stop offset="55%" stop-color="#5B6EF5"/><stop offset="100%" stop-color="#2DD4BF"/></linearGradient>
 </defs>
 <rect width="512" height="512" rx="112" fill="#FAFAFF"/>
-<g transform="translate(87,35) scale(2.6)">
-<path d="M 20 150 L 20 65 A 45 45 0 0 1 110 65 L 110 150" stroke="url(#gIcon)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-<rect x="59" y="98" width="18" height="42" rx="9" fill="#0D9488"/>
+<g transform="translate(93.5,43.5) scale(2.5)">
+<path d="M 20 150 L 20 65 A 45 45 0 0 1 110 65 L 110 150" stroke="url(#gIcon)" stroke-width="30" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<rect x="54" y="94" width="28" height="50" rx="14" fill="#2DD4BF"/>
 </g>
 </svg>
