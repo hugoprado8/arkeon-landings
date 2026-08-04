@@ -48,7 +48,7 @@
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Arkeon — Agencia de Desarrollo e IA</title>
+    <title>Arkeon — Desarrollo e IA</title>
     <meta
       name="description"
       content="Desarrollamos software a medida e integramos IA en productos digitales. Desde MVPs hasta plataformas de producción escalables."
@@ -142,12 +142,13 @@
       }
       .header-inner {
         pointer-events: all;
-        width: min(920px, 100%);
-        padding: 0.5rem 0.5rem 0.5rem 1.25rem;
+        width: auto;
+        max-width: 100%;
+        padding: 0.3rem 0.3rem 0.3rem 0.9rem;
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        gap: 1rem;
+        justify-content: center;
+        gap: 1.5rem;
         background: rgba(10, 10, 18, 0.75);
         backdrop-filter: blur(24px);
         -webkit-backdrop-filter: blur(24px);
@@ -171,31 +172,31 @@
         flex-shrink: 0;
       }
       .brand-logo {
-        height: 34px;
+        height: 26px;
         width: auto;
         display: block;
         flex-shrink: 0;
       }
       @media (max-width: 768px) {
         .brand-logo {
-          height: 30px;
+          height: 24px;
         }
         .brand-icon {
-          height: 30px;
-          width: 30px;
+          height: 24px;
+          width: 24px;
         }
       }
       .main-nav {
         display: flex;
         align-items: center;
-        gap: 1.75rem;
-        flex: 1;
+        gap: 1.25rem;
+        flex: 0 0 auto;
         justify-content: center;
       }
       .nav-item {
         color: rgba(255, 255, 255, 0.55);
         text-decoration: none;
-        font-size: 0.875rem;
+        font-size: 0.8125rem;
         font-weight: 600;
         cursor: pointer;
         transition: color 0.2s;
@@ -211,8 +212,8 @@
         background: var(--accent-2);
         color: #030306;
         border: none;
-        padding: 0.5rem 1.1rem;
-        font-size: 0.85rem;
+        padding: 0.45rem 0.95rem;
+        font-size: 0.8rem;
         font-weight: 700;
         border-radius: 100px;
         text-decoration: none;
@@ -232,20 +233,20 @@
         background: rgba(255, 255, 255, 0.05);
         border: 1px solid rgba(255, 255, 255, 0.08);
         border-radius: 100px;
-        padding: 0.2rem;
+        padding: 0.15rem;
         flex-shrink: 0;
       }
       .lang-sw button {
         background: none;
         border: none;
         cursor: pointer;
-        padding: 0.2rem 0.4rem;
+        padding: 0.15rem 0.35rem;
         border-radius: 100px;
         opacity: 0.35;
         transition: all 0.2s;
       }
       .flag-img {
-        width: 18px;
+        width: 16px;
         height: auto;
         display: block;
         border-radius: 2px;
@@ -266,7 +267,9 @@
           display: none;
         }
         .header-inner {
-          padding: 0.45rem 0.45rem 0.45rem 1rem;
+          width: 100%;
+          justify-content: space-between;
+          padding: 0.3rem 0.3rem 0.3rem 0.85rem;
         }
       }
 
@@ -1139,7 +1142,7 @@
           </a>
           <a href="#faq" class="nav-item">FAQ</a>
         </nav>
-        <div style="display: flex; align-items: center; gap: 0.75rem">
+        <div style="display: flex; align-items: center; gap: 0.6rem">
           <div class="lang-sw">
             <button id="sw-en" onclick="setLang('en')" title="English">
               <img src="https://flagcdn.com/gb.svg" alt="EN" class="flag-img" />
