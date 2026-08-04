@@ -149,10 +149,13 @@
         flex-shrink: 0;
       }
       .brand-logo {
-        height: 30px;
+        height: 40px;
         width: auto;
         display: block;
         flex-shrink: 0;
+      }
+      @media (max-width: 768px) {
+        .brand-logo { height: 36px; }
       }
       .main-nav {
         display: flex;
@@ -1712,7 +1715,7 @@
         if (!isOpen) item.classList.add("open");
       }
 
-      var locale = navigator.language.startsWith("en") ? "en" : "es";
+      var locale = navigator.language.startsWith("es") ? "es" : "en";
       setLang(locale);
     </script>
     <script src="assets/contact-form.js" defer></script>
