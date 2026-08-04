@@ -3,30 +3,30 @@
 (function () {
   "use strict";
 
-  var CALENDAR_URL = "https://calendar.app.google/WmTZX6wxqDUmcjMcA";
+  var CALENDAR_URL = "https://calendar.app.google/hz4igAA6NwYTUoqGA";
   var FORMSPREE_ACTION = "https://formspree.io/f/mjgdzkyp";
   var CONVERSION_SEND_TO = "AW-18179723592/nziNCPC_xLEcEMii4txD";
 
   var CATEGORIES = [
     {
+      emoji: "🌐",
+      en: "Web or mobile app development",
+      es: "Desarrollo web o app móvil",
+    },
+    {
+      emoji: "🤖",
+      en: "AI integration into existing product",
+      es: "Integración de IA en producto existente",
+    },
+    {
+      emoji: "⚙️",
+      en: "SaaS platform or backend",
+      es: "Plataforma SaaS o backend",
+    },
+    {
       emoji: "🤝",
-      en: "Long-term technical partner",
+      en: "Long-term technical partnership",
       es: "Acompañamiento técnico a largo plazo",
-    },
-    {
-      emoji: "🔌",
-      en: "Payment integration (Stripe)",
-      es: "Integración de pagos (Stripe)",
-    },
-    {
-      emoji: "☁️",
-      en: "Production deployment issues",
-      es: "Problemas de despliegue en producción",
-    },
-    {
-      emoji: "🔒",
-      en: "Security concerns with AI-generated code",
-      es: "Seguridad de código hecho con IA",
     },
     {
       emoji: "✏️",
