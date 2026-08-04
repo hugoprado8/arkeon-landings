@@ -61,9 +61,23 @@
     />
     <link rel="icon" type="image/x-icon" href="assets/brand/favicon.ico" />
     <link rel="icon" type="image/svg+xml" href="assets/brand/arkeon-icon.svg" />
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/arkeon-icon-32.png" />
-    <link rel="icon" type="image/png" sizes="48x48" href="assets/brand/arkeon-icon-48.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/brand/arkeon-icon-180.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/brand/arkeon-icon-32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="48x48"
+      href="assets/brand/arkeon-icon-48.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/brand/arkeon-icon-180.png"
+    />
     <link rel="manifest" href="assets/brand/site.webmanifest" />
     <link rel="stylesheet" href="assets/contact-form.css" />
 
@@ -93,7 +107,11 @@
       }
 
       body {
-        font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+        font-family:
+          "Plus Jakarta Sans",
+          system-ui,
+          -apple-system,
+          sans-serif;
         background: var(--bg);
         color: var(--text);
         min-height: 100vh;
@@ -135,8 +153,12 @@
         -webkit-backdrop-filter: blur(24px);
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 100px;
-        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
-        transition: background 0.3s, box-shadow 0.3s;
+        box-shadow:
+          0 8px 40px rgba(0, 0, 0, 0.5),
+          inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        transition:
+          background 0.3s,
+          box-shadow 0.3s;
       }
       .header-inner:hover {
         background: rgba(10, 10, 18, 0.88);
@@ -149,13 +171,19 @@
         flex-shrink: 0;
       }
       .brand-logo {
-        height: 40px;
+        height: 60px;
         width: auto;
         display: block;
         flex-shrink: 0;
       }
       @media (max-width: 768px) {
-        .brand-logo { height: 36px; }
+        .brand-logo {
+          height: 54px;
+        }
+        .brand-icon {
+          height: 50px;
+          width: 50px;
+        }
       }
       .main-nav {
         display: flex;
@@ -228,10 +256,18 @@
       }
 
       @media (max-width: 768px) {
-        .site-header { top: 0.75rem; }
-        .main-nav { display: none; }
-        .lang-sw { display: none; }
-        .header-inner { padding: 0.45rem 0.45rem 0.45rem 1rem; }
+        .site-header {
+          top: 0.75rem;
+        }
+        .main-nav {
+          display: none;
+        }
+        .lang-sw {
+          display: none;
+        }
+        .header-inner {
+          padding: 0.45rem 0.45rem 0.45rem 1rem;
+        }
       }
 
       /* ========================
@@ -328,20 +364,31 @@
         animation: pulse-dot 2s ease-in-out infinite;
       }
       @keyframes pulse-dot {
-        0%, 100% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.5; transform: scale(0.75); }
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.5;
+          transform: scale(0.75);
+        }
       }
       h1 {
         font-size: clamp(3rem, 7vw, 5.5rem);
         font-weight: 800;
         letter-spacing: -0.04em;
-        line-height: 1.0;
+        line-height: 1;
         color: #ffffff;
         margin-bottom: 2rem;
       }
       h1 em {
         font-style: normal;
-        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+        background: linear-gradient(
+          135deg,
+          var(--accent) 0%,
+          var(--accent-2) 100%
+        );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -401,8 +448,20 @@
         padding: 2rem 0;
         border-top: 1px solid var(--border);
         border-bottom: 1px solid var(--border);
-        -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
-        mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+        -webkit-mask-image: linear-gradient(
+          to right,
+          transparent,
+          #000 12%,
+          #000 88%,
+          transparent
+        );
+        mask-image: linear-gradient(
+          to right,
+          transparent,
+          #000 12%,
+          #000 88%,
+          transparent
+        );
       }
       .ticker-track {
         display: flex;
@@ -425,8 +484,12 @@
         font-size: 0.75rem;
       }
       @keyframes ticker-scroll {
-        from { transform: translateX(0); }
-        to   { transform: translateX(-50%); }
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
       }
 
       /* ========================
@@ -445,9 +508,12 @@
         gap: 3rem 4rem;
       }
       @media (min-width: 768px) {
-        .stats-grid { grid-template-columns: repeat(4, 1fr); }
+        .stats-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
       }
-      .stat-item {}
+      .stat-item {
+      }
       .stat-number {
         font-size: clamp(2.5rem, 5vw, 3.5rem);
         font-weight: 800;
@@ -481,14 +547,18 @@
         margin-top: 4rem;
       }
       @media (min-width: 900px) {
-        .services-layout { grid-template-columns: 1fr 1fr; }
+        .services-layout {
+          grid-template-columns: 1fr 1fr;
+        }
       }
       .service-card {
         background: rgba(255, 255, 255, 0.02);
         border: 1px solid var(--border);
         border-radius: 16px;
         padding: 2.5rem;
-        transition: border-color 0.25s, background 0.25s;
+        transition:
+          border-color 0.25s,
+          background 0.25s;
         display: flex;
         flex-direction: column;
         gap: 1rem;
@@ -548,10 +618,14 @@
         gap: 1.5rem;
       }
       @media (min-width: 768px) {
-        .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+        .portfolio-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
       }
       @media (min-width: 1100px) {
-        .portfolio-grid { grid-template-columns: repeat(3, 1fr); }
+        .portfolio-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
       }
       .portfolio-card {
         background: rgba(255, 255, 255, 0.02);
@@ -561,7 +635,9 @@
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
-        transition: border-color 0.25s, background 0.25s;
+        transition:
+          border-color 0.25s,
+          background 0.25s;
       }
       .portfolio-card:hover {
         border-color: rgba(129, 140, 248, 0.3);
@@ -650,7 +726,8 @@
         opacity: 0.6;
         padding-top: 0.25rem;
       }
-      .process-body {}
+      .process-body {
+      }
       .process-title {
         font-size: 1.15rem;
         font-weight: 800;
@@ -673,7 +750,9 @@
         align-items: center;
       }
       @media (min-width: 992px) {
-        .founder-row-layout { grid-template-columns: 1.1fr 0.9fr; }
+        .founder-row-layout {
+          grid-template-columns: 1.1fr 0.9fr;
+        }
       }
       .founder-identity {
         display: flex;
@@ -803,7 +882,9 @@
         color: #ffffff;
         transition: color 0.2s;
       }
-      .faq-question:hover { color: var(--accent); }
+      .faq-question:hover {
+        color: var(--accent);
+      }
       .faq-icon {
         font-size: 1.2rem;
         color: var(--accent);
@@ -811,7 +892,9 @@
         transition: transform 0.3s;
         font-style: normal;
       }
-      .faq-item.open .faq-icon { transform: rotate(45deg); }
+      .faq-item.open .faq-icon {
+        transform: rotate(45deg);
+      }
       .faq-answer {
         display: none;
         padding: 0 0 1.75rem;
@@ -820,7 +903,9 @@
         line-height: 1.8;
         max-width: 720px;
       }
-      .faq-item.open .faq-answer { display: block; }
+      .faq-item.open .faq-answer {
+        display: block;
+      }
 
       /* ========================
          CONTACT / CTA
@@ -851,8 +936,13 @@
         border-color: var(--accent);
         box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
       }
-      .form-field { margin-bottom: 1.25rem; }
-      textarea.form-input { min-height: 120px; resize: vertical; }
+      .form-field {
+        margin-bottom: 1.25rem;
+      }
+      textarea.form-input {
+        min-height: 120px;
+        resize: vertical;
+      }
       .btn-submit {
         width: 100%;
         background: var(--accent);
@@ -884,10 +974,17 @@
         content: "";
         position: absolute;
         inset: 0;
-        background: radial-gradient(ellipse at 50% 0%, rgba(99, 102, 241, 0.15), transparent 65%);
+        background: radial-gradient(
+          ellipse at 50% 0%,
+          rgba(99, 102, 241, 0.15),
+          transparent 65%
+        );
         pointer-events: none;
       }
-      .final-cta-inner { position: relative; z-index: 1; }
+      .final-cta-inner {
+        position: relative;
+        z-index: 1;
+      }
       .final-cta h2 {
         font-size: clamp(2rem, 5vw, 3.5rem);
         font-weight: 800;
@@ -931,13 +1028,19 @@
         text-decoration: none;
         transition: color 0.2s;
       }
-      .footer-links a:hover { color: #ffffff; }
+      .footer-links a:hover {
+        color: #ffffff;
+      }
 
       /* ========================
          LANGUAGE VISIBILITY
          ======================== */
-      html[lang="en"] .es { display: none !important; }
-      html[lang="es"] .en { display: none !important; }
+      html[lang="en"] .es {
+        display: none !important;
+      }
+      html[lang="es"] .en {
+        display: none !important;
+      }
     </style>
 
     <script
@@ -961,7 +1064,8 @@
           });
           p.callQueue = [];
           var t = d.createElement("script");
-          t.src = "https://www.redditstatic.com/ads/pixel.js?pixel_id=a2_j6f1034oocg4";
+          t.src =
+            "https://www.redditstatic.com/ads/pixel.js?pixel_id=a2_j6f1034oocg4";
           t.async = !0;
           var s = d.getElementsByTagName("script")[0];
           s.parentNode.insertBefore(t, s);
@@ -972,24 +1076,52 @@
     </script>
   </head>
   <body>
-
     <!-- ==================== HEADER ==================== -->
     <header class="site-header">
       <div class="header-inner">
         <a class="brand" href="#top">
-          <svg class="brand-logo" viewBox="5 30 405 162" xmlns="http://www.w3.org/2000/svg" aria-label="Arkeon">
+          <svg
+            class="brand-logo"
+            viewBox="5 30 405 162"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-label="Arkeon"
+          >
             <defs>
               <linearGradient id="gFull" x1="0%" y1="100%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#8B5CF6"/>
-                <stop offset="55%" stop-color="#5B6EF5"/>
-                <stop offset="100%" stop-color="#2DD4BF"/>
+                <stop offset="0%" stop-color="#8B5CF6" />
+                <stop offset="55%" stop-color="#5B6EF5" />
+                <stop offset="100%" stop-color="#2DD4BF" />
               </linearGradient>
             </defs>
             <g transform="translate(0,27)">
-              <path d="M 20 150 L 20 65 A 45 45 0 0 1 110 65 L 110 150" stroke="url(#gFull)" stroke-width="30" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-              <rect x="54" y="94" width="28" height="50" rx="14" fill="#2DD4BF"/>
+              <path
+                d="M 20 150 L 20 65 A 45 45 0 0 1 110 65 L 110 150"
+                stroke="url(#gFull)"
+                stroke-width="30"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                fill="none"
+              />
+              <rect
+                x="54"
+                y="94"
+                width="28"
+                height="50"
+                rx="14"
+                fill="#2DD4BF"
+              />
             </g>
-            <text x="150" y="132" font-size="54" font-weight="800" fill="url(#gFull)" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" text-anchor="start">Arkeon</text>
+            <text
+              x="150"
+              y="132"
+              font-size="54"
+              font-weight="800"
+              fill="url(#gFull)"
+              font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif"
+              text-anchor="start"
+            >
+              Arkeon
+            </text>
           </svg>
         </a>
         <nav class="main-nav">
@@ -1007,7 +1139,7 @@
           </a>
           <a href="#faq" class="nav-item">FAQ</a>
         </nav>
-        <div style="display:flex;align-items:center;gap:0.75rem;">
+        <div style="display: flex; align-items: center; gap: 0.75rem">
           <div class="lang-sw">
             <button id="sw-en" onclick="setLang('en')" title="English">
               <img src="https://flagcdn.com/gb.svg" alt="EN" class="flag-img" />
@@ -1031,7 +1163,6 @@
     </header>
 
     <main id="top">
-
       <!-- ==================== HERO ==================== -->
       <section class="hero">
         <div class="wrap hero-inner">
@@ -1042,13 +1173,29 @@
           </div>
 
           <h1>
-            <span class="es">Desarrollo e IA<br>para productos<br><em>de alto impacto</em></span>
-            <span class="en">Software & AI<br>for products that<br><em>truly scale</em></span>
+            <span class="es"
+              >Desarrollo e IA<br />para productos<br /><em
+                >de alto impacto</em
+              ></span
+            >
+            <span class="en"
+              >Software & AI<br />for products that<br /><em
+                >truly scale</em
+              ></span
+            >
           </h1>
 
           <p class="hero-sub">
-            <span class="es">Diseñamos y construimos software a medida, integramos inteligencia artificial y llevamos tus ideas desde el MVP hasta producción escalable.</span>
-            <span class="en">We design and build custom software, integrate AI into your product, and take your ideas from MVP to scalable production.</span>
+            <span class="es"
+              >Diseñamos y construimos software a medida, integramos
+              inteligencia artificial y llevamos tus ideas desde el MVP hasta
+              producción escalable.</span
+            >
+            <span class="en"
+              >We design and build custom software, integrate AI into your
+              product, and take your ideas from MVP to scalable
+              production.</span
+            >
           </p>
 
           <div class="hero-actions">
@@ -1073,37 +1220,67 @@
       <!-- ==================== TICKER ==================== -->
       <div class="ticker-wrap">
         <div class="ticker-track">
-          <span class="ticker-item">React</span><span class="ticker-sep">·</span>
-          <span class="ticker-item">Next.js</span><span class="ticker-sep">·</span>
-          <span class="ticker-item">Node.js</span><span class="ticker-sep">·</span>
-          <span class="ticker-item">TypeScript</span><span class="ticker-sep">·</span>
-          <span class="ticker-item">Python</span><span class="ticker-sep">·</span>
-          <span class="ticker-item">FastAPI</span><span class="ticker-sep">·</span>
-          <span class="ticker-item">Claude API</span><span class="ticker-sep">·</span>
-          <span class="ticker-item">OpenAI</span><span class="ticker-sep">·</span>
-          <span class="ticker-item">LangChain</span><span class="ticker-sep">·</span>
-          <span class="ticker-item">Supabase</span><span class="ticker-sep">·</span>
-          <span class="ticker-item">PostgreSQL</span><span class="ticker-sep">·</span>
-          <span class="ticker-item">Stripe</span><span class="ticker-sep">·</span>
-          <span class="ticker-item">Vercel</span><span class="ticker-sep">·</span>
-          <span class="ticker-item">Railway</span><span class="ticker-sep">·</span>
-          <span class="ticker-item">React Native</span><span class="ticker-sep">·</span>
+          <span class="ticker-item">React</span
+          ><span class="ticker-sep">·</span>
+          <span class="ticker-item">Next.js</span
+          ><span class="ticker-sep">·</span>
+          <span class="ticker-item">Node.js</span
+          ><span class="ticker-sep">·</span>
+          <span class="ticker-item">TypeScript</span
+          ><span class="ticker-sep">·</span>
+          <span class="ticker-item">Python</span
+          ><span class="ticker-sep">·</span>
+          <span class="ticker-item">FastAPI</span
+          ><span class="ticker-sep">·</span>
+          <span class="ticker-item">Claude API</span
+          ><span class="ticker-sep">·</span>
+          <span class="ticker-item">OpenAI</span
+          ><span class="ticker-sep">·</span>
+          <span class="ticker-item">LangChain</span
+          ><span class="ticker-sep">·</span>
+          <span class="ticker-item">Supabase</span
+          ><span class="ticker-sep">·</span>
+          <span class="ticker-item">PostgreSQL</span
+          ><span class="ticker-sep">·</span>
+          <span class="ticker-item">Stripe</span
+          ><span class="ticker-sep">·</span>
+          <span class="ticker-item">Vercel</span
+          ><span class="ticker-sep">·</span>
+          <span class="ticker-item">Railway</span
+          ><span class="ticker-sep">·</span>
+          <span class="ticker-item">React Native</span
+          ><span class="ticker-sep">·</span>
           <!-- duplicate for seamless loop -->
-          <span class="ticker-item">React</span><span class="ticker-sep">·</span>
-          <span class="ticker-item">Next.js</span><span class="ticker-sep">·</span>
-          <span class="ticker-item">Node.js</span><span class="ticker-sep">·</span>
-          <span class="ticker-item">TypeScript</span><span class="ticker-sep">·</span>
-          <span class="ticker-item">Python</span><span class="ticker-sep">·</span>
-          <span class="ticker-item">FastAPI</span><span class="ticker-sep">·</span>
-          <span class="ticker-item">Claude API</span><span class="ticker-sep">·</span>
-          <span class="ticker-item">OpenAI</span><span class="ticker-sep">·</span>
-          <span class="ticker-item">LangChain</span><span class="ticker-sep">·</span>
-          <span class="ticker-item">Supabase</span><span class="ticker-sep">·</span>
-          <span class="ticker-item">PostgreSQL</span><span class="ticker-sep">·</span>
-          <span class="ticker-item">Stripe</span><span class="ticker-sep">·</span>
-          <span class="ticker-item">Vercel</span><span class="ticker-sep">·</span>
-          <span class="ticker-item">Railway</span><span class="ticker-sep">·</span>
-          <span class="ticker-item">React Native</span><span class="ticker-sep">·</span>
+          <span class="ticker-item">React</span
+          ><span class="ticker-sep">·</span>
+          <span class="ticker-item">Next.js</span
+          ><span class="ticker-sep">·</span>
+          <span class="ticker-item">Node.js</span
+          ><span class="ticker-sep">·</span>
+          <span class="ticker-item">TypeScript</span
+          ><span class="ticker-sep">·</span>
+          <span class="ticker-item">Python</span
+          ><span class="ticker-sep">·</span>
+          <span class="ticker-item">FastAPI</span
+          ><span class="ticker-sep">·</span>
+          <span class="ticker-item">Claude API</span
+          ><span class="ticker-sep">·</span>
+          <span class="ticker-item">OpenAI</span
+          ><span class="ticker-sep">·</span>
+          <span class="ticker-item">LangChain</span
+          ><span class="ticker-sep">·</span>
+          <span class="ticker-item">Supabase</span
+          ><span class="ticker-sep">·</span>
+          <span class="ticker-item">PostgreSQL</span
+          ><span class="ticker-sep">·</span>
+          <span class="ticker-item">Stripe</span
+          ><span class="ticker-sep">·</span>
+          <span class="ticker-item">Vercel</span
+          ><span class="ticker-sep">·</span>
+          <span class="ticker-item">Railway</span
+          ><span class="ticker-sep">·</span>
+          <span class="ticker-item">React Native</span
+          ><span class="ticker-sep">·</span>
         </div>
       </div>
 
@@ -1116,8 +1293,12 @@
               <span class="en">Impact</span>
             </p>
             <h2 class="section-headline">
-              <span class="es">Simplificamos el proceso<br>y entregamos resultados.</span>
-              <span class="en">We simplify the process<br>and deliver results.</span>
+              <span class="es"
+                >Simplificamos el proceso<br />y entregamos resultados.</span
+              >
+              <span class="en"
+                >We simplify the process<br />and deliver results.</span
+              >
             </h2>
           </div>
 
@@ -1129,8 +1310,14 @@
                 <span class="en">Projects launched</span>
               </div>
               <div class="stat-desc">
-                <span class="es">Desde webs y apps hasta plataformas SaaS con foco en calidad y escalabilidad.</span>
-                <span class="en">From web apps to SaaS platforms, always focused on quality and scalability.</span>
+                <span class="es"
+                  >Desde webs y apps hasta plataformas SaaS con foco en calidad
+                  y escalabilidad.</span
+                >
+                <span class="en"
+                  >From web apps to SaaS platforms, always focused on quality
+                  and scalability.</span
+                >
               </div>
             </div>
             <div class="stat-item">
@@ -1140,8 +1327,14 @@
                 <span class="en">Different industries</span>
               </div>
               <div class="stat-desc">
-                <span class="es">FinTech, logística, hostelería, energía, medios… soluciones que se adaptan a cualquier contexto.</span>
-                <span class="en">FinTech, logistics, hospitality, energy, media… solutions that adapt to any context.</span>
+                <span class="es"
+                  >FinTech, logística, hostelería, energía, medios… soluciones
+                  que se adaptan a cualquier contexto.</span
+                >
+                <span class="en"
+                  >FinTech, logistics, hospitality, energy, media… solutions
+                  that adapt to any context.</span
+                >
               </div>
             </div>
             <div class="stat-item">
@@ -1151,8 +1344,14 @@
                 <span class="en">Years of experience</span>
               </div>
               <div class="stat-desc">
-                <span class="es">Equipo con experiencia real como founders y técnicos en productos de alto crecimiento.</span>
-                <span class="en">Team with real experience as founders and engineers in high-growth products.</span>
+                <span class="es"
+                  >Equipo con experiencia real como founders y técnicos en
+                  productos de alto crecimiento.</span
+                >
+                <span class="en"
+                  >Team with real experience as founders and engineers in
+                  high-growth products.</span
+                >
               </div>
             </div>
             <div class="stat-item">
@@ -1162,8 +1361,14 @@
                 <span class="en">Delivery speed</span>
               </div>
               <div class="stat-desc">
-                <span class="es">Procesos ágiles y equipos multidisciplinares: lanzamos en semanas, no en meses.</span>
-                <span class="en">Agile processes and multidisciplinary teams: we launch in weeks, not months.</span>
+                <span class="es"
+                  >Procesos ágiles y equipos multidisciplinares: lanzamos en
+                  semanas, no en meses.</span
+                >
+                <span class="en"
+                  >Agile processes and multidisciplinary teams: we launch in
+                  weeks, not months.</span
+                >
               </div>
             </div>
           </div>
@@ -1178,12 +1383,20 @@
             <span class="en">Services</span>
           </p>
           <h2 class="section-headline">
-            <span class="es">Convertimos ideas<br>en productos de alto impacto</span>
-            <span class="en">We turn ideas<br>into high-impact products</span>
+            <span class="es"
+              >Convertimos ideas<br />en productos de alto impacto</span
+            >
+            <span class="en">We turn ideas<br />into high-impact products</span>
           </h2>
-          <p class="section-sub" style="margin-top:0.75rem;">
-            <span class="es">Cubrimos todo el ciclo: diseño, desarrollo, integración de IA e infraestructura. Un equipo, un proyecto, cero fricciones.</span>
-            <span class="en">We cover the full cycle: design, development, AI integration, and infrastructure. One team, one project, zero friction.</span>
+          <p class="section-sub" style="margin-top: 0.75rem">
+            <span class="es"
+              >Cubrimos todo el ciclo: diseño, desarrollo, integración de IA e
+              infraestructura. Un equipo, un proyecto, cero fricciones.</span
+            >
+            <span class="en"
+              >We cover the full cycle: design, development, AI integration, and
+              infrastructure. One team, one project, zero friction.</span
+            >
           </p>
 
           <div class="services-layout">
@@ -1194,8 +1407,14 @@
                 <span class="en">Web & App Development</span>
               </div>
               <div class="service-desc">
-                <span class="es">Webs corporativas, plataformas web y aplicaciones móviles a medida. Rápidas de construir, diseñadas para crecer.</span>
-                <span class="en">Corporate sites, web platforms, and custom mobile apps. Fast to build, designed to grow.</span>
+                <span class="es"
+                  >Webs corporativas, plataformas web y aplicaciones móviles a
+                  medida. Rápidas de construir, diseñadas para crecer.</span
+                >
+                <span class="en"
+                  >Corporate sites, web platforms, and custom mobile apps. Fast
+                  to build, designed to grow.</span
+                >
               </div>
               <div class="service-stack">
                 <span class="service-pill">React</span>
@@ -1213,8 +1432,15 @@
                 <span class="en">AI Integration</span>
               </div>
               <div class="service-desc">
-                <span class="es">Conectamos tu producto con los mejores modelos de lenguaje. Agentes, automatizaciones, análisis de datos y pipelines de IA.</span>
-                <span class="en">We connect your product to the best language models. Agents, automations, data analysis, and AI pipelines.</span>
+                <span class="es"
+                  >Conectamos tu producto con los mejores modelos de lenguaje.
+                  Agentes, automatizaciones, análisis de datos y pipelines de
+                  IA.</span
+                >
+                <span class="en"
+                  >We connect your product to the best language models. Agents,
+                  automations, data analysis, and AI pipelines.</span
+                >
               </div>
               <div class="service-stack">
                 <span class="service-pill">Claude API</span>
@@ -1232,8 +1458,16 @@
                 <span class="en">SaaS Platforms</span>
               </div>
               <div class="service-desc">
-                <span class="es">Arquitectura escalable para productos B2B y B2C con multi-tenancy, suscripciones, billing y portales de clientes.</span>
-                <span class="en">Scalable architecture for B2B and B2C products with multi-tenancy, subscriptions, billing, and customer portals.</span>
+                <span class="es"
+                  >Arquitectura escalable para productos B2B y B2C con
+                  multi-tenancy, suscripciones, billing y portales de
+                  clientes.</span
+                >
+                <span class="en"
+                  >Scalable architecture for B2B and B2C products with
+                  multi-tenancy, subscriptions, billing, and customer
+                  portals.</span
+                >
               </div>
               <div class="service-stack">
                 <span class="service-pill">Node.js</span>
@@ -1251,8 +1485,16 @@
                 <span class="en">Backend & APIs</span>
               </div>
               <div class="service-desc">
-                <span class="es">Backends robustos, APIs REST y GraphQL, integraciones con terceros e infraestructura cloud optimizada para producción.</span>
-                <span class="en">Robust backends, REST and GraphQL APIs, third-party integrations, and cloud infrastructure optimized for production.</span>
+                <span class="es"
+                  >Backends robustos, APIs REST y GraphQL, integraciones con
+                  terceros e infraestructura cloud optimizada para
+                  producción.</span
+                >
+                <span class="en"
+                  >Robust backends, REST and GraphQL APIs, third-party
+                  integrations, and cloud infrastructure optimized for
+                  production.</span
+                >
               </div>
               <div class="service-stack">
                 <span class="service-pill">Node.js</span>
@@ -1276,13 +1518,19 @@
                 <span class="en">Our work</span>
               </p>
               <h2 class="section-headline">
-                <span class="es">Cómo hemos ayudado<br>a otras empresas</span>
-                <span class="en">How we've helped<br>other companies</span>
+                <span class="es">Cómo hemos ayudado<br />a otras empresas</span>
+                <span class="en">How we've helped<br />other companies</span>
               </h2>
             </div>
-            <p class="section-sub" style="max-width:320px;">
-              <span class="es">Proyectos reales, con retos reales y resultados que hablan por sí solos.</span>
-              <span class="en">Real projects, real challenges, and results that speak for themselves.</span>
+            <p class="section-sub" style="max-width: 320px">
+              <span class="es"
+                >Proyectos reales, con retos reales y resultados que hablan por
+                sí solos.</span
+              >
+              <span class="en"
+                >Real projects, real challenges, and results that speak for
+                themselves.</span
+              >
             </p>
           </div>
 
@@ -1296,8 +1544,16 @@
                 <span class="startup-badge">Startup</span>
               </div>
               <p class="portfolio-context">
-                <span class="es">Arquitectura multi-tenant y facturación automatizada con cálculo de IVA para autónomos españoles. Plataforma de contabilidad de nueva generación.</span>
-                <span class="en">Multi-tenant architecture and automated invoicing with VAT calculation for Spanish freelancers. Next-generation accounting platform.</span>
+                <span class="es"
+                  >Arquitectura multi-tenant y facturación automatizada con
+                  cálculo de IVA para autónomos españoles. Plataforma de
+                  contabilidad de nueva generación.</span
+                >
+                <span class="en"
+                  >Multi-tenant architecture and automated invoicing with VAT
+                  calculation for Spanish freelancers. Next-generation
+                  accounting platform.</span
+                >
               </p>
               <div class="portfolio-stack">
                 <span class="stack-pill">Node.js</span>
@@ -1319,8 +1575,15 @@
                 <span class="startup-badge">Startup</span>
               </div>
               <p class="portfolio-context">
-                <span class="es">MVP para gestión de logística deportiva, verificación de identidad e importación masiva de archivos CSV desde cero.</span>
-                <span class="en">MVP for sports logistics management, identity verification, and bulk CSV file imports built from scratch.</span>
+                <span class="es"
+                  >MVP para gestión de logística deportiva, verificación de
+                  identidad e importación masiva de archivos CSV desde
+                  cero.</span
+                >
+                <span class="en"
+                  >MVP for sports logistics management, identity verification,
+                  and bulk CSV file imports built from scratch.</span
+                >
               </p>
               <div class="portfolio-stack">
                 <span class="stack-pill">Next.js</span>
@@ -1341,8 +1604,14 @@
                 <span class="startup-badge">Startup</span>
               </div>
               <p class="portfolio-context">
-                <span class="es">Ecosistema completo de pagos para marketplace de hostelería con Stripe Connect, suscripciones y facturación SEPA.</span>
-                <span class="en">Full payments ecosystem for a hospitality marketplace with Stripe Connect, subscriptions, and SEPA invoicing.</span>
+                <span class="es"
+                  >Ecosistema completo de pagos para marketplace de hostelería
+                  con Stripe Connect, suscripciones y facturación SEPA.</span
+                >
+                <span class="en"
+                  >Full payments ecosystem for a hospitality marketplace with
+                  Stripe Connect, subscriptions, and SEPA invoicing.</span
+                >
               </p>
               <div class="portfolio-stack">
                 <span class="stack-pill">Stripe Connect</span>
@@ -1363,8 +1632,16 @@
                 <span class="startup-badge">Startup</span>
               </div>
               <p class="portfolio-context">
-                <span class="es">Autenticación multi-rol con doble factor (2FA por SMS) y lógica crítica de scheduling operativo para plataforma energética.</span>
-                <span class="en">Multi-role authentication with two-factor (SMS 2FA) and critical operational scheduling logic for an energy platform.</span>
+                <span class="es"
+                  >Autenticación multi-rol con doble factor (2FA por SMS) y
+                  lógica crítica de scheduling operativo para plataforma
+                  energética.</span
+                >
+                <span class="en"
+                  >Multi-role authentication with two-factor (SMS 2FA) and
+                  critical operational scheduling logic for an energy
+                  platform.</span
+                >
               </p>
               <div class="portfolio-stack">
                 <span class="stack-pill">React</span>
@@ -1385,8 +1662,15 @@
                 <span class="startup-badge">Agency</span>
               </div>
               <p class="portfolio-context">
-                <span class="es">Procesamiento automatizado de vídeo y conexión en tiempo real con LLMs para análisis de contenido y publicación en redes sociales.</span>
-                <span class="en">Automated video processing and real-time connection with LLMs for content analysis and social media publishing.</span>
+                <span class="es"
+                  >Procesamiento automatizado de vídeo y conexión en tiempo real
+                  con LLMs para análisis de contenido y publicación en redes
+                  sociales.</span
+                >
+                <span class="en"
+                  >Automated video processing and real-time connection with LLMs
+                  for content analysis and social media publishing.</span
+                >
               </p>
               <div class="portfolio-stack">
                 <span class="stack-pill">React</span>
@@ -1407,12 +1691,18 @@
             <span class="en">Process</span>
           </p>
           <h2 class="section-headline">
-            <span class="es">Así trabajamos<br>sin complicaciones.</span>
-            <span class="en">How we work,<br>without the fuss.</span>
+            <span class="es">Así trabajamos<br />sin complicaciones.</span>
+            <span class="en">How we work,<br />without the fuss.</span>
           </h2>
-          <p class="section-sub" style="margin-top:0.75rem;">
-            <span class="es">Simple, transparente y orientado a resultados. Escuchamos, planificamos y ejecutamos contigo.</span>
-            <span class="en">Simple, transparent, and results-oriented. We listen, plan, and execute alongside you.</span>
+          <p class="section-sub" style="margin-top: 0.75rem">
+            <span class="es"
+              >Simple, transparente y orientado a resultados. Escuchamos,
+              planificamos y ejecutamos contigo.</span
+            >
+            <span class="en"
+              >Simple, transparent, and results-oriented. We listen, plan, and
+              execute alongside you.</span
+            >
           </p>
 
           <div class="process-list">
@@ -1424,8 +1714,14 @@
                   <span class="en">Discovery call</span>
                 </div>
                 <div class="process-desc">
-                  <span class="es">Queremos entender bien tu producto, tus objetivos y el reto técnico al que te enfrentas.</span>
-                  <span class="en">We want to deeply understand your product, your goals, and the technical challenge you're facing.</span>
+                  <span class="es"
+                    >Queremos entender bien tu producto, tus objetivos y el reto
+                    técnico al que te enfrentas.</span
+                  >
+                  <span class="en"
+                    >We want to deeply understand your product, your goals, and
+                    the technical challenge you're facing.</span
+                  >
                 </div>
               </div>
             </div>
@@ -1437,8 +1733,14 @@
                   <span class="en">Technical proposal</span>
                 </div>
                 <div class="process-desc">
-                  <span class="es">Analizamos lo que necesitas y te enviamos una propuesta clara con alcance, entregables, plazos y presupuesto.</span>
-                  <span class="en">We analyze your needs and send a clear proposal with scope, deliverables, timeline, and budget.</span>
+                  <span class="es"
+                    >Analizamos lo que necesitas y te enviamos una propuesta
+                    clara con alcance, entregables, plazos y presupuesto.</span
+                  >
+                  <span class="en"
+                    >We analyze your needs and send a clear proposal with scope,
+                    deliverables, timeline, and budget.</span
+                  >
                 </div>
               </div>
             </div>
@@ -1450,8 +1752,15 @@
                   <span class="en">Architecture & design</span>
                 </div>
                 <div class="process-desc">
-                  <span class="es">Definimos la arquitectura técnica, las integraciones y el flujo de usuario antes de escribir la primera línea de código.</span>
-                  <span class="en">We define the technical architecture, integrations, and user flow before writing the first line of code.</span>
+                  <span class="es"
+                    >Definimos la arquitectura técnica, las integraciones y el
+                    flujo de usuario antes de escribir la primera línea de
+                    código.</span
+                  >
+                  <span class="en"
+                    >We define the technical architecture, integrations, and
+                    user flow before writing the first line of code.</span
+                  >
                 </div>
               </div>
             </div>
@@ -1463,8 +1772,14 @@
                   <span class="en">Sprint-based development</span>
                 </div>
                 <div class="process-desc">
-                  <span class="es">Dividimos el trabajo en sprints. Ves avances constantes y ajustamos si hace falta. Transparencia total.</span>
-                  <span class="en">We split the work into sprints. You see steady progress and we adjust as needed. Full transparency.</span>
+                  <span class="es"
+                    >Dividimos el trabajo en sprints. Ves avances constantes y
+                    ajustamos si hace falta. Transparencia total.</span
+                  >
+                  <span class="en"
+                    >We split the work into sprints. You see steady progress and
+                    we adjust as needed. Full transparency.</span
+                  >
                 </div>
               </div>
             </div>
@@ -1476,8 +1791,14 @@
                   <span class="en">Launch & support</span>
                 </div>
                 <div class="process-desc">
-                  <span class="es">Desplegamos, medimos y seguimos contigo. El lanzamiento es el comienzo, no el final.</span>
-                  <span class="en">We deploy, measure, and stay with you. The launch is the beginning, not the end.</span>
+                  <span class="es"
+                    >Desplegamos, medimos y seguimos contigo. El lanzamiento es
+                    el comienzo, no el final.</span
+                  >
+                  <span class="en"
+                    >We deploy, measure, and stay with you. The launch is the
+                    beginning, not the end.</span
+                  >
                 </div>
               </div>
             </div>
@@ -1505,10 +1826,20 @@
                 </div>
               </div>
               <p class="founder-text-bio es">
-                Arkeon nació de la experiencia de construir productos digitales desde cero. Como founder, he diseñado y desplegado mis propias plataformas, desde la idea hasta los primeros clientes de pago. Hoy ayudo a empresas y startups a desarrollar software robusto, integrar IA de forma real y llevar sus productos de una prueba de concepto a producción con confianza.
+                Arkeon nació de la experiencia de construir productos digitales
+                desde cero. Como founder, he diseñado y desplegado mis propias
+                plataformas, desde la idea hasta los primeros clientes de pago.
+                Hoy ayudo a empresas y startups a desarrollar software robusto,
+                integrar IA de forma real y llevar sus productos de una prueba
+                de concepto a producción con confianza.
               </p>
               <p class="founder-text-bio en">
-                Arkeon was born from the experience of building digital products from scratch. As a founder, I've designed and deployed my own platforms, from idea to first paying customers. Today I help companies and startups develop robust software, integrate AI meaningfully, and take their products from proof of concept to production with confidence.
+                Arkeon was born from the experience of building digital products
+                from scratch. As a founder, I've designed and deployed my own
+                platforms, from idea to first paying customers. Today I help
+                companies and startups develop robust software, integrate AI
+                meaningfully, and take their products from proof of concept to
+                production with confidence.
               </p>
               <div class="founder-button-group">
                 <a
@@ -1517,8 +1848,15 @@
                   target="_blank"
                   rel="noopener"
                 >
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                    />
                   </svg>
                   <span class="es">Conectar en LinkedIn</span>
                   <span class="en">Connect on LinkedIn</span>
@@ -1538,10 +1876,13 @@
             <div class="founder-testimonial-side">
               <blockquote class="testimonial-quote-box">
                 <p class="es">
-                  "Elegimos a Hugo por su potencial, su experiencia montando MVPs y el profundo conocimiento del stack tecnológico que necesitábamos."
+                  "Elegimos a Hugo por su potencial, su experiencia montando
+                  MVPs y el profundo conocimiento del stack tecnológico que
+                  necesitábamos."
                 </p>
                 <p class="en">
-                  "We chose Hugo for his potential, his experience building MVPs, and his deep knowledge of the tech stack we needed."
+                  "We chose Hugo for his potential, his experience building
+                  MVPs, and his deep knowledge of the tech stack we needed."
                 </p>
                 <cite>— Javier, CEO (Tweedy / FIRAL)</cite>
               </blockquote>
@@ -1555,8 +1896,8 @@
         <div class="wrap">
           <p class="section-label">FAQ</p>
           <h2 class="section-headline">
-            <span class="es">¿Tienes dudas?<br>Las resolvemos.</span>
-            <span class="en">Have questions?<br>We've got answers.</span>
+            <span class="es">¿Tienes dudas?<br />Las resolvemos.</span>
+            <span class="en">Have questions?<br />We've got answers.</span>
           </h2>
 
           <div class="faq-list">
@@ -1567,30 +1908,72 @@
                 <em class="faq-icon">+</em>
               </button>
               <div class="faq-answer">
-                <span class="es">Desarrollamos software a medida, plataformas SaaS, aplicaciones web y móvil, integraciones de IA (agentes, automatizaciones, pipelines de datos) y backends escalables. Cubrimos todo el ciclo de desarrollo, desde la arquitectura hasta el despliegue y el soporte.</span>
-                <span class="en">We develop custom software, SaaS platforms, web and mobile apps, AI integrations (agents, automations, data pipelines), and scalable backends. We cover the full development cycle, from architecture to deployment and support.</span>
+                <span class="es"
+                  >Desarrollamos software a medida, plataformas SaaS,
+                  aplicaciones web y móvil, integraciones de IA (agentes,
+                  automatizaciones, pipelines de datos) y backends escalables.
+                  Cubrimos todo el ciclo de desarrollo, desde la arquitectura
+                  hasta el despliegue y el soporte.</span
+                >
+                <span class="en"
+                  >We develop custom software, SaaS platforms, web and mobile
+                  apps, AI integrations (agents, automations, data pipelines),
+                  and scalable backends. We cover the full development cycle,
+                  from architecture to deployment and support.</span
+                >
               </div>
             </div>
             <div class="faq-item">
               <button class="faq-question" onclick="toggleFaq(this)">
-                <span class="es">¿Trabajáis con startups o también con empresas consolidadas?</span>
-                <span class="en">Do you work with startups or also established companies?</span>
+                <span class="es"
+                  >¿Trabajáis con startups o también con empresas
+                  consolidadas?</span
+                >
+                <span class="en"
+                  >Do you work with startups or also established
+                  companies?</span
+                >
                 <em class="faq-icon">+</em>
               </button>
               <div class="faq-answer">
-                <span class="es">Trabajamos con ambos. Con startups, ayudamos a construir MVPs sólidos y a escalar rápido. Con empresas más consolidadas, nos integramos en proyectos existentes, modernizamos arquitecturas o añadimos capacidades de IA a productos ya en producción.</span>
-                <span class="en">Both. With startups, we help build solid MVPs and scale quickly. With established companies, we integrate into existing projects, modernize architectures, or add AI capabilities to products already in production.</span>
+                <span class="es"
+                  >Trabajamos con ambos. Con startups, ayudamos a construir MVPs
+                  sólidos y a escalar rápido. Con empresas más consolidadas, nos
+                  integramos en proyectos existentes, modernizamos arquitecturas
+                  o añadimos capacidades de IA a productos ya en
+                  producción.</span
+                >
+                <span class="en"
+                  >Both. With startups, we help build solid MVPs and scale
+                  quickly. With established companies, we integrate into
+                  existing projects, modernize architectures, or add AI
+                  capabilities to products already in production.</span
+                >
               </div>
             </div>
             <div class="faq-item">
               <button class="faq-question" onclick="toggleFaq(this)">
-                <span class="es">¿Podéis integrar IA en un producto que ya existe?</span>
-                <span class="en">Can you integrate AI into an existing product?</span>
+                <span class="es"
+                  >¿Podéis integrar IA en un producto que ya existe?</span
+                >
+                <span class="en"
+                  >Can you integrate AI into an existing product?</span
+                >
                 <em class="faq-icon">+</em>
               </button>
               <div class="faq-answer">
-                <span class="es">Sí, es uno de nuestros servicios más demandados. Analizamos tu arquitectura actual, diseñamos la mejor forma de integrar los modelos de IA y los conectamos de forma limpia y escalable a tu producto, sin romper lo que ya funciona.</span>
-                <span class="en">Yes, it's one of our most in-demand services. We analyze your current architecture, design the best way to integrate AI models, and connect them cleanly and scalably to your product — without breaking what already works.</span>
+                <span class="es"
+                  >Sí, es uno de nuestros servicios más demandados. Analizamos
+                  tu arquitectura actual, diseñamos la mejor forma de integrar
+                  los modelos de IA y los conectamos de forma limpia y escalable
+                  a tu producto, sin romper lo que ya funciona.</span
+                >
+                <span class="en"
+                  >Yes, it's one of our most in-demand services. We analyze your
+                  current architecture, design the best way to integrate AI
+                  models, and connect them cleanly and scalably to your product
+                  — without breaking what already works.</span
+                >
               </div>
             </div>
             <div class="faq-item">
@@ -1600,8 +1983,18 @@
                 <em class="faq-icon">+</em>
               </button>
               <div class="faq-answer">
-                <span class="es">Depende del alcance. Un MVP o una integración puntual puede estar listo en 2–4 semanas. Una plataforma SaaS completa puede llevar de 2 a 4 meses. Siempre enviamos una propuesta con estimaciones claras antes de empezar.</span>
-                <span class="en">It depends on scope. An MVP or a targeted integration can be ready in 2–4 weeks. A full SaaS platform can take 2 to 4 months. We always send a proposal with clear estimates before starting.</span>
+                <span class="es"
+                  >Depende del alcance. Un MVP o una integración puntual puede
+                  estar listo en 2–4 semanas. Una plataforma SaaS completa puede
+                  llevar de 2 a 4 meses. Siempre enviamos una propuesta con
+                  estimaciones claras antes de empezar.</span
+                >
+                <span class="en"
+                  >It depends on scope. An MVP or a targeted integration can be
+                  ready in 2–4 weeks. A full SaaS platform can take 2 to 4
+                  months. We always send a proposal with clear estimates before
+                  starting.</span
+                >
               </div>
             </div>
             <div class="faq-item">
@@ -1611,19 +2004,43 @@
                 <em class="faq-icon">+</em>
               </button>
               <div class="faq-answer">
-                <span class="es">Adaptamos el presupuesto al proyecto. Trabajamos tanto por proyecto cerrado como por tiempo y materiales. Siempre enviamos una propuesta detallada y transparente antes de empezar, sin sorpresas.</span>
-                <span class="en">We adapt the budget to the project. We work both on fixed-price projects and on a time-and-materials basis. We always send a detailed, transparent proposal before starting — no surprises.</span>
+                <span class="es"
+                  >Adaptamos el presupuesto al proyecto. Trabajamos tanto por
+                  proyecto cerrado como por tiempo y materiales. Siempre
+                  enviamos una propuesta detallada y transparente antes de
+                  empezar, sin sorpresas.</span
+                >
+                <span class="en"
+                  >We adapt the budget to the project. We work both on
+                  fixed-price projects and on a time-and-materials basis. We
+                  always send a detailed, transparent proposal before starting —
+                  no surprises.</span
+                >
               </div>
             </div>
             <div class="faq-item">
               <button class="faq-question" onclick="toggleFaq(this)">
-                <span class="es">¿Ofrecéis soporte después de entregar el proyecto?</span>
-                <span class="en">Do you offer support after delivering the project?</span>
+                <span class="es"
+                  >¿Ofrecéis soporte después de entregar el proyecto?</span
+                >
+                <span class="en"
+                  >Do you offer support after delivering the project?</span
+                >
                 <em class="faq-icon">+</em>
               </button>
               <div class="faq-answer">
-                <span class="es">Sí. Podemos seguir colaborando con mantenimiento evolutivo, mejoras, nuevas funcionalidades o soporte técnico continuado. Muchos clientes optan por un acuerdo de acompañamiento técnico a largo plazo.</span>
-                <span class="en">Yes. We can continue collaborating with evolutionary maintenance, improvements, new features, or ongoing technical support. Many clients opt for a long-term technical partnership agreement.</span>
+                <span class="es"
+                  >Sí. Podemos seguir colaborando con mantenimiento evolutivo,
+                  mejoras, nuevas funcionalidades o soporte técnico continuado.
+                  Muchos clientes optan por un acuerdo de acompañamiento técnico
+                  a largo plazo.</span
+                >
+                <span class="en"
+                  >Yes. We can continue collaborating with evolutionary
+                  maintenance, improvements, new features, or ongoing technical
+                  support. Many clients opt for a long-term technical
+                  partnership agreement.</span
+                >
               </div>
             </div>
           </div>
@@ -1637,13 +2054,22 @@
             <span class="es">Contacto</span>
             <span class="en">Contact</span>
           </p>
-          <h2 class="section-headline" style="text-align:center;">
+          <h2 class="section-headline" style="text-align: center">
             <span class="es">Cuéntanos tu proyecto</span>
             <span class="en">Tell us about your project</span>
           </h2>
-          <p class="section-sub" style="text-align:center;margin:0.75rem auto 3rem;">
-            <span class="es">Escríbenos con lo que necesitas y te respondemos en menos de 24h.</span>
-            <span class="en">Write to us with what you need and we'll respond in less than 24h.</span>
+          <p
+            class="section-sub"
+            style="text-align: center; margin: 0.75rem auto 3rem"
+          >
+            <span class="es"
+              >Escríbenos con lo que necesitas y te respondemos en menos de
+              24h.</span
+            >
+            <span class="en"
+              >Write to us with what you need and we'll respond in less than
+              24h.</span
+            >
           </p>
           <div class="contact-card-pane">
             <div id="unified-contact-form" data-source="homepage"></div>
@@ -1659,8 +2085,14 @@
             <span class="en">Ready to get started?</span>
           </h2>
           <p>
-            <span class="es">Agenda una llamada de 30 minutos y cuéntanos tu proyecto. Sin compromisos, sin presión.</span>
-            <span class="en">Book a 30-minute call and tell us about your project. No commitments, no pressure.</span>
+            <span class="es"
+              >Agenda una llamada de 30 minutos y cuéntanos tu proyecto. Sin
+              compromisos, sin presión.</span
+            >
+            <span class="en"
+              >Book a 30-minute call and tell us about your project. No
+              commitments, no pressure.</span
+            >
           </p>
           <a
             href="https://calendar.app.google/hz4igAA6NwYTUoqGA"
@@ -1674,7 +2106,6 @@
           </a>
         </div>
       </section>
-
     </main>
 
     <!-- ==================== FOOTER ==================== -->
@@ -1684,8 +2115,17 @@
           &copy; 2026 Arkeon Data, S.L. — arkeondata.com
         </p>
         <div class="footer-links">
-          <a href="https://www.linkedin.com/in/hugo-prado-romero" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://calendar.app.google/hz4igAA6NwYTUoqGA" target="_blank" rel="noopener">
+          <a
+            href="https://www.linkedin.com/in/hugo-prado-romero"
+            target="_blank"
+            rel="noopener"
+            >LinkedIn</a
+          >
+          <a
+            href="https://calendar.app.google/hz4igAA6NwYTUoqGA"
+            target="_blank"
+            rel="noopener"
+          >
             <span class="es">Agendar llamada</span>
             <span class="en">Book a call</span>
           </a>
@@ -1702,7 +2142,8 @@
         var activeBtn = document.getElementById("sw-" + lang);
         if (activeBtn) activeBtn.classList.add("active");
         document.querySelectorAll("[data-ph-en]").forEach(function (el) {
-          el.placeholder = lang === "es" ? el.dataset.phEs || "" : el.dataset.phEn || "";
+          el.placeholder =
+            lang === "es" ? el.dataset.phEs || "" : el.dataset.phEn || "";
         });
       }
 
