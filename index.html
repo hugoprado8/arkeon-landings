@@ -650,61 +650,65 @@
         background: rgba(255, 255, 255, 0.02);
         border: 1px solid var(--border);
         border-radius: 16px;
-        padding: 2.5rem;
+        padding: 2rem;
         display: flex;
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 1.25rem;
+        cursor: pointer;
         transition:
           border-color 0.25s,
-          background 0.25s;
+          background 0.25s,
+          transform 0.2s;
       }
       .portfolio-card:hover {
-        border-color: rgba(129, 140, 248, 0.3);
-        background: rgba(129, 140, 248, 0.03);
+        border-color: rgba(129, 140, 248, 0.4);
+        background: rgba(129, 140, 248, 0.04);
+        transform: translateY(-2px);
       }
-      .portfolio-header-row {
+      .portfolio-logo-wrap {
+        height: 52px;
         display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 1rem;
+        align-items: center;
       }
-      .portfolio-meta h3 {
-        font-size: 1.25rem;
+      .portfolio-logo-wrap img {
+        max-height: 100%;
+        max-width: 160px;
+        object-fit: contain;
+        object-position: left center;
+      }
+      .portfolio-logo-text {
+        font-size: 1.3rem;
         font-weight: 800;
         color: #ffffff;
-        margin-bottom: 0.3rem;
+        letter-spacing: -0.02em;
+      }
+      .portfolio-tagline {
+        color: var(--muted-light);
+        font-size: 0.92rem;
+        line-height: 1.6;
+        flex: 1;
+      }
+      .portfolio-card-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border);
       }
       .portfolio-category {
-        font-size: 0.8rem;
+        font-size: 0.72rem;
         color: var(--accent);
         font-weight: 600;
         font-family: "JetBrains Mono", monospace;
       }
-      .startup-badge {
-        background: rgba(45, 212, 191, 0.08);
-        border: 1px solid rgba(45, 212, 191, 0.25);
-        color: var(--accent-2);
-        font-family: "JetBrains Mono", monospace;
-        font-size: 0.6rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        padding: 0.2rem 0.5rem;
-        border-radius: 4px;
-        white-space: nowrap;
-      }
-      .portfolio-context {
+      .portfolio-see-more {
+        font-size: 0.78rem;
         color: var(--muted);
-        font-size: 0.9rem;
-        line-height: 1.7;
-        flex: 1;
+        font-family: "JetBrains Mono", monospace;
+        transition: color 0.2s;
       }
-      .portfolio-stack {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.4rem;
-        padding-top: 1.25rem;
-        border-top: 1px solid var(--border);
+      .portfolio-card:hover .portfolio-see-more {
+        color: var(--accent);
       }
       .stack-pill {
         background: rgba(255, 255, 255, 0.05);
@@ -715,6 +719,130 @@
         padding: 0.25rem 0.6rem;
         border-radius: 4px;
         font-weight: 500;
+      }
+
+      /* ========================
+         PORTFOLIO MODAL
+         ======================== */
+      .pm-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s;
+      }
+      .pm-overlay.open {
+        opacity: 1;
+        pointer-events: all;
+      }
+      .pm-box {
+        background: #0f1117;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        max-width: 640px;
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+        padding: 2.5rem;
+        position: relative;
+        transform: translateY(16px) scale(0.98);
+        transition: transform 0.25s;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255,255,255,0.1) transparent;
+      }
+      .pm-overlay.open .pm-box {
+        transform: translateY(0) scale(1);
+      }
+      .pm-close {
+        position: absolute;
+        top: 1.25rem;
+        right: 1.25rem;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--muted-light);
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        transition: background 0.2s, color 0.2s;
+      }
+      .pm-close:hover {
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+      }
+      .pm-logo-wrap {
+        height: 56px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+      }
+      .pm-logo-wrap img {
+        max-height: 100%;
+        max-width: 200px;
+        object-fit: contain;
+        object-position: left center;
+      }
+      .pm-logo-text {
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: #ffffff;
+        letter-spacing: -0.02em;
+      }
+      .pm-client {
+        font-size: 0.78rem;
+        color: var(--muted);
+        font-family: "JetBrains Mono", monospace;
+        margin-bottom: 1.5rem;
+        padding: 0.6rem 0.9rem;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        display: inline-block;
+      }
+      .pm-body {
+        color: var(--muted-light);
+        font-size: 0.95rem;
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+      }
+      .pm-body strong {
+        color: #ffffff;
+        font-weight: 700;
+      }
+      .pm-impact {
+        background: rgba(45, 212, 191, 0.05);
+        border: 1px solid rgba(45, 212, 191, 0.2);
+        border-radius: 10px;
+        padding: 1rem 1.25rem;
+        margin-top: 1rem;
+        color: var(--muted-light);
+        font-size: 0.9rem;
+        line-height: 1.7;
+      }
+      .pm-impact strong {
+        color: var(--accent-2);
+        font-weight: 700;
+      }
+      .pm-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--border);
+        margin-top: 1.5rem;
       }
 
       /* ========================
@@ -1553,153 +1681,118 @@
           </div>
 
           <div class="portfolio-grid">
-            <article class="portfolio-card">
-              <div class="portfolio-header-row">
-                <div class="portfolio-meta">
-                  <h3>Tweedy</h3>
-                  <span class="portfolio-category">FinTech SaaS</span>
-                </div>
+            <!-- Tweedy -->
+            <article class="portfolio-card" onclick="openPortfolioModal('tweedy')" role="button" tabindex="0" aria-label="Ver proyecto Tweedy">
+              <div class="portfolio-logo-wrap">
+                <img src="assets/portfolio/tweedy-logo.png" alt="Tweedy" />
               </div>
-              <p class="portfolio-context">
-                <span class="es"
-                  >Arquitectura multi-tenant y facturación automatizada con
-                  cálculo de IVA para autónomos españoles. Plataforma de
-                  contabilidad de nueva generación.</span
-                >
-                <span class="en"
-                  >Multi-tenant architecture and automated invoicing with VAT
-                  calculation for Spanish freelancers. Next-generation
-                  accounting platform.</span
-                >
+              <p class="portfolio-tagline">
+                <span class="es">SaaS de gestión financiera para autónomos españoles</span>
+                <span class="en">Financial management SaaS for Spanish freelancers</span>
               </p>
-              <div class="portfolio-stack">
-                <span class="stack-pill">Node.js</span>
-                <span class="stack-pill">PostgreSQL</span>
-                <span class="stack-pill">React</span>
-                <span class="stack-pill">Emails</span>
-                <span class="stack-pill">VeriFactu</span>
+              <div class="portfolio-card-footer">
+                <span class="portfolio-category">FinTech SaaS</span>
+                <span class="portfolio-see-more">
+                  <span class="es">Ver más →</span>
+                  <span class="en">See more →</span>
+                </span>
               </div>
             </article>
 
-            <article class="portfolio-card">
-              <div class="portfolio-header-row">
-                <div class="portfolio-meta">
-                  <h3>Endless Racing</h3>
-                  <span class="portfolio-category">
-                    <span class="es">MVP de Logística</span>
-                    <span class="en">Logistics MVP</span>
-                  </span>
-                </div>
+            <!-- Gastrovisual -->
+            <article class="portfolio-card" onclick="openPortfolioModal('gastrovisual')" role="button" tabindex="0" aria-label="Ver proyecto Gastrovisual">
+              <div class="portfolio-logo-wrap">
+                <img src="assets/portfolio/gastrovisual-logo.png" alt="Gastrovisual" />
               </div>
-              <p class="portfolio-context">
-                <span class="es"
-                  >MVP para gestión de logística deportiva, verificación de
-                  identidad e importación masiva de archivos CSV desde
-                  cero.</span
-                >
-                <span class="en"
-                  >MVP for sports logistics management, identity verification,
-                  and bulk CSV file imports built from scratch.</span
-                >
+              <p class="portfolio-tagline">
+                <span class="es">Ecosistema de pagos completo para SaaS de hostelería</span>
+                <span class="en">Full payments ecosystem for a hospitality SaaS</span>
               </p>
-              <div class="portfolio-stack">
-                <span class="stack-pill">React</span>
-                <span class="stack-pill">Next.js</span>
-                <span class="stack-pill">Supabase</span>
-                <span class="stack-pill">Admin Dashboard</span>
-                <span class="stack-pill">Vercel</span>
+              <div class="portfolio-card-footer">
+                <span class="portfolio-category">
+                  <span class="es">Pagos &amp; Suscripciones</span>
+                  <span class="en">Payments &amp; Subscriptions</span>
+                </span>
+                <span class="portfolio-see-more">
+                  <span class="es">Ver más →</span>
+                  <span class="en">See more →</span>
+                </span>
               </div>
             </article>
 
-            <article class="portfolio-card">
-              <div class="portfolio-header-row">
-                <div class="portfolio-meta">
-                  <h3>Gastrovisual</h3>
-                  <span class="portfolio-category">
-                    <span class="es">Marketplace de Hostelería</span>
-                    <span class="en">Hospitality Marketplace</span>
-                  </span>
-                </div>
+            <!-- Endless Racing -->
+            <article class="portfolio-card" onclick="openPortfolioModal('endless')" role="button" tabindex="0" aria-label="Ver proyecto Endless Racing">
+              <div class="portfolio-logo-wrap">
+                <img src="assets/portfolio/endlessracing-logo.png" alt="Endless Racing" />
               </div>
-              <p class="portfolio-context">
-                <span class="es"
-                  >Ecosistema completo de pagos para marketplace de hostelería
-                  con Stripe Connect, suscripciones y facturación SEPA.</span
-                >
-                <span class="en"
-                  >Full payments ecosystem for a hospitality marketplace with
-                  Stripe Connect, subscriptions, and SEPA invoicing.</span
-                >
+              <p class="portfolio-tagline">
+                <span class="es">MVP de plataforma comunitaria para atletas</span>
+                <span class="en">Community platform MVP for athletes</span>
               </p>
-              <div class="portfolio-stack">
-                <span class="stack-pill">Stripe Connect</span>
-                <span class="stack-pill">Stripe Billing</span>
-                <span class="stack-pill">Node.js</span>
+              <div class="portfolio-card-footer">
+                <span class="portfolio-category">
+                  <span class="es">MVP Comunitario</span>
+                  <span class="en">Community MVP</span>
+                </span>
+                <span class="portfolio-see-more">
+                  <span class="es">Ver más →</span>
+                  <span class="en">See more →</span>
+                </span>
               </div>
             </article>
 
-            <article class="portfolio-card">
-              <div class="portfolio-header-row">
-                <div class="portfolio-meta">
-                  <h3>NAUA</h3>
-                  <span class="portfolio-category">
-                    <span class="es">Optimización Energética</span>
-                    <span class="en">Energy Optimization</span>
-                  </span>
-                </div>
+            <!-- NAUA -->
+            <article class="portfolio-card" onclick="openPortfolioModal('naua')" role="button" tabindex="0" aria-label="Ver proyecto NAUA">
+              <div class="portfolio-logo-wrap">
+                <img src="assets/portfolio/naua-logo.webp" alt="NAUA" style="border-radius:6px;" />
               </div>
-              <p class="portfolio-context">
-                <span class="es"
-                  >Autenticación multi-rol con doble factor (2FA por SMS) y
-                  lógica crítica de scheduling operativo para plataforma
-                  energética.</span
-                >
-                <span class="en"
-                  >Multi-role authentication with two-factor (SMS 2FA) and
-                  critical operational scheduling logic for an energy
-                  platform.</span
-                >
+              <p class="portfolio-tagline">
+                <span class="es">Plataforma SCADA de monitorización industrial</span>
+                <span class="en">Industrial SCADA monitoring platform</span>
               </p>
-              <div class="portfolio-stack">
-                <span class="stack-pill">React</span>
-                <span class="stack-pill">Django</span>
-                <span class="stack-pill">SMS Gateway</span>
-                <span class="stack-pill">Emails</span>
+              <div class="portfolio-card-footer">
+                <span class="portfolio-category">SCADA / Industrial</span>
+                <span class="portfolio-see-more">
+                  <span class="es">Ver más →</span>
+                  <span class="en">See more →</span>
+                </span>
               </div>
             </article>
 
-            <article class="portfolio-card">
-              <div class="portfolio-header-row">
-                <div class="portfolio-meta">
-                  <h3>Ingenia Agency</h3>
-                  <span class="portfolio-category">
-                    <span class="es">Automatización con IA</span>
-                    <span class="en">AI Automation</span>
-                  </span>
-                </div>
+            <!-- Ingenia / CTRL-F -->
+            <article class="portfolio-card" onclick="openPortfolioModal('ingenia')" role="button" tabindex="0" aria-label="Ver proyecto Ingenia">
+              <div class="portfolio-logo-wrap">
+                <span class="portfolio-logo-text">Ingenia / CTRL-F</span>
               </div>
-              <p class="portfolio-context">
-                <span class="es"
-                  >Procesamiento automatizado de vídeo y conexión en tiempo real
-                  con LLMs para análisis de contenido y publicación en redes
-                  sociales.</span
-                >
-                <span class="en"
-                  >Automated video processing and real-time connection with LLMs
-                  for content analysis and social media publishing.</span
-                >
+              <p class="portfolio-tagline">
+                <span class="es">Automatización de contenido con IA</span>
+                <span class="en">AI-powered content automation</span>
               </p>
-              <div class="portfolio-stack">
-                <span class="stack-pill">React</span>
-                <span class="stack-pill">Django</span>
-                <span class="stack-pill">Claude API</span>
-                <span class="stack-pill">Python</span>
-                <span class="stack-pill">Zapier</span>
+              <div class="portfolio-card-footer">
+                <span class="portfolio-category">
+                  <span class="es">Automatización IA</span>
+                  <span class="en">AI Automation</span>
+                </span>
+                <span class="portfolio-see-more">
+                  <span class="es">Ver más →</span>
+                  <span class="en">See more →</span>
+                </span>
               </div>
             </article>
           </div>
         </div>
       </section>
+
+      <!-- ==================== PORTFOLIO MODAL ==================== -->
+      <div id="pm-overlay" class="pm-overlay" role="dialog" aria-modal="true" aria-labelledby="pm-title" onclick="handleOverlayClick(event)">
+        <div class="pm-box">
+          <button class="pm-close" onclick="closePortfolioModal()" aria-label="Cerrar">✕</button>
+          <div class="pm-logo-wrap" id="pm-logo"></div>
+          <div class="pm-client" id="pm-client"></div>
+          <div class="pm-body" id="pm-body"></div>
+          <div class="pm-stack" id="pm-stack"></div>
+        </div>
+      </div>
 
       <!-- ==================== PROCESS ==================== -->
       <section class="section" id="process">
@@ -2176,6 +2269,84 @@
 
       var locale = navigator.language.startsWith("es") ? "es" : "en";
       setLang(locale);
+
+      /* ========================
+         PORTFOLIO MODAL
+         ======================== */
+      var PM_DATA = {
+        tweedy: {
+          logo: '<img src="assets/portfolio/tweedy-logo.png" alt="Tweedy" />',
+          client_es: "Cliente: Javier Molina · Consultores de Gestión y Reporting SL · 7.500€",
+          client_en: "Client: Javier Molina · Consultores de Gestión y Reporting SL · €7,500",
+          body_es: "<p>Javier necesitaba una plataforma para que autónomos gestionaran su facturación y contabilidad sin depender de hojas de cálculo ni de llamadas constantes a su gestoría. Construimos un SaaS multi-tenant desde cero: cálculo automático de IVA, facturación conforme a VeriFactu, y arquitectura pensada para escalar a miles de usuarios sin rediseñar nada.</p><div class='pm-impact'><strong>Impacto:</strong> pasa de un proceso manual y propenso a errores a un sistema que calcula y factura automáticamente — reduce el tiempo que un autónomo dedica a su contabilidad de horas a minutos, y elimina el riesgo de incumplimiento normativo en la facturación.</div>",
+          body_en: "<p>Javier needed a platform for freelancers to manage their invoicing and accounting without relying on spreadsheets or constant calls to their accountant. We built a multi-tenant SaaS from scratch: automatic VAT calculation, VeriFactu-compliant invoicing, and architecture designed to scale to thousands of users without any redesign.</p><div class='pm-impact'><strong>Impact:</strong> moves from a manual, error-prone process to a system that calculates and invoices automatically — reducing the time a freelancer spends on accounting from hours to minutes, and eliminating compliance risk in invoicing.</div>",
+          stack: ["Node.js", "PostgreSQL", "React", "VeriFactu"]
+        },
+        gastrovisual: {
+          logo: '<img src="assets/portfolio/gastrovisual-logo.png" alt="Gastrovisual" />',
+          client_es: "Cliente: Frank Torres · Visual Audiovisual Production SLL · 1.000€+",
+          client_en: "Client: Frank Torres · Visual Audiovisual Production SLL · €1,000+",
+          body_es: "<p>Visual VR necesitaba cobrar suscripciones a sus clientes (negocios de hostelería) sin gestionar manualmente cada cobro, cada baja de recibo SEPA o cada factura. Implementamos Stripe Connect completo: suscripciones recurrentes, domiciliación SEPA, Customer Portal de autogestión, y firma de contrato integrada en el propio flujo de pago.</p><div class='pm-impact'><strong>Impacto:</strong> Frank pasó de cobrar y perseguir pagos manualmente a un sistema 100% automatizado — sus clientes se dan de alta, pagan y pueden cambiar su suscripción sin que Frank tenga que intervenir en ningún cobro.</div>",
+          body_en: "<p>Visual VR needed to charge subscriptions to their clients (hospitality businesses) without manually managing every payment, SEPA debit cancellation, or invoice. We implemented full Stripe Connect: recurring subscriptions, SEPA direct debit, self-service Customer Portal, and contract signing integrated into the payment flow.</p><div class='pm-impact'><strong>Impact:</strong> Frank went from manually chasing payments to a fully automated system — clients sign up, pay, and can change their subscription without Frank having to intervene in any payment.</div>",
+          stack: ["Stripe Connect", "SEPA", "Suscripciones", "Customer Portal"]
+        },
+        endless: {
+          logo: '<img src="assets/portfolio/endlessracing-logo.png" alt="Endless Racing" />',
+          client_es: "Cliente: Renaud Duverger · 6.000€",
+          client_en: "Client: Renaud Duverger · €6,000",
+          body_es: "<p>Renaud tenía una comunidad de corredores gestionada a mano — coordinaba coche compartido, alojamiento y equipamiento por WhatsApp y hojas sueltas. Construimos el MVP completo: gestión de carpooling, alojamiento, equipamiento y dorsales, con verificación de identidad e importación masiva de datos vía CSV, en 12 semanas.</p><div class='pm-impact'><strong>Impacto:</strong> una idea validada informalmente con early adopters pasa a tener producto real con el que seguir creciendo sin depender de que Renaud coordine todo manualmente.</div>",
+          body_en: "<p>Renaud had a community of runners managed manually — he coordinated carpooling, accommodation, and gear via WhatsApp and loose spreadsheets. We built the full MVP: carpooling, accommodation, equipment and bib management, with identity verification and bulk CSV data import, in 12 weeks.</p><div class='pm-impact'><strong>Impact:</strong> an idea informally validated with early adopters now has a real product to keep growing with — without depending on Renaud to coordinate everything manually.</div>",
+          stack: ["Next.js", "Supabase", "Vercel"]
+        },
+        naua: {
+          logo: '<img src="assets/portfolio/naua-logo.webp" alt="NAUA" style="border-radius:6px;" />',
+          client_es: "Proyecto cerrado y cobrado íntegramente · ~2.000€",
+          client_en: "Project fully closed and paid · ~€2,000",
+          body_es: "<p>Sistema de monitorización y control de bombas industriales, con autenticación multi-rol (2FA) y lógica crítica de programación operativa. Frontend en React, backend en Django.</p><div class='pm-impact'><strong>Impacto:</strong> digitaliza el control de infraestructura que antes dependía de supervisión manual o de sistemas legacy — visibilidad y control centralizados sobre operaciones críticas.</div>",
+          body_en: "<p>Industrial pump monitoring and control system, with multi-role authentication (2FA) and critical operational scheduling logic. React frontend, Django backend.</p><div class='pm-impact'><strong>Impact:</strong> digitalizes infrastructure control that previously relied on manual supervision or legacy systems — centralized visibility and control over critical operations.</div>",
+          stack: ["React", "Django", "SCADA"]
+        },
+        ingenia: {
+          logo: '<span class="pm-logo-text">Ingenia / CTRL-F</span>',
+          client_es: "Cliente: Justin Warambourg · Ingenia Agency (Francia) · 800€",
+          client_en: "Client: Justin Warambourg · Ingenia Agency (France) · €800",
+          body_es: "<p>Pipeline automatizado que procesa vídeo con IA: YouTube → OpusClip → GetLate, generando y publicando clips automáticamente sin edición manual.</p><div class='pm-impact'><strong>Impacto:</strong> elimina el trabajo manual de recortar y programar publicación de clips — lo que antes era un proceso editorial manual pasa a ejecutarse solo.</div>",
+          body_en: "<p>Automated pipeline that processes video with AI: YouTube → OpusClip → GetLate, generating and publishing clips automatically without manual editing.</p><div class='pm-impact'><strong>Impact:</strong> eliminates the manual work of clipping and scheduling clip publication — what used to be a manual editorial process now runs on its own.</div>",
+          stack: ["React", "Django", "Automatización con IA"]
+        }
+      };
+
+      function openPortfolioModal(id) {
+        var d = PM_DATA[id];
+        if (!d) return;
+        var lang = document.documentElement.lang === "es" ? "es" : "en";
+        document.getElementById("pm-logo").innerHTML = d.logo;
+        document.getElementById("pm-client").textContent = lang === "es" ? d.client_es : d.client_en;
+        document.getElementById("pm-body").innerHTML = lang === "es" ? d.body_es : d.body_en;
+        var stackEl = document.getElementById("pm-stack");
+        stackEl.innerHTML = d.stack.map(function(s) { return '<span class="stack-pill">' + s + '</span>'; }).join("");
+        document.getElementById("pm-overlay").classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closePortfolioModal() {
+        document.getElementById("pm-overlay").classList.remove("open");
+        document.body.style.overflow = "";
+      }
+
+      function handleOverlayClick(e) {
+        if (e.target === document.getElementById("pm-overlay")) closePortfolioModal();
+      }
+
+      document.addEventListener("keydown", function(e) {
+        if (e.key === "Escape") closePortfolioModal();
+      });
+
+      document.querySelectorAll(".portfolio-card").forEach(function(card) {
+        card.addEventListener("keydown", function(e) {
+          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); card.click(); }
+        });
+      });
     </script>
     <script src="assets/contact-form.js" defer></script>
   </body>
