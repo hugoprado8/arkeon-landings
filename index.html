@@ -801,17 +801,6 @@
         color: #ffffff;
         letter-spacing: -0.02em;
       }
-      .pm-client {
-        font-size: 0.78rem;
-        color: var(--muted);
-        font-family: "JetBrains Mono", monospace;
-        margin-bottom: 1.5rem;
-        padding: 0.6rem 0.9rem;
-        background: rgba(255,255,255,0.03);
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        display: inline-block;
-      }
       .pm-body {
         color: var(--muted-light);
         font-size: 0.95rem;
@@ -1788,7 +1777,6 @@
         <div class="pm-box">
           <button class="pm-close" onclick="closePortfolioModal()" aria-label="Cerrar">✕</button>
           <div class="pm-logo-wrap" id="pm-logo"></div>
-          <div class="pm-client" id="pm-client"></div>
           <div class="pm-body" id="pm-body"></div>
           <div class="pm-stack" id="pm-stack"></div>
         </div>
@@ -2276,40 +2264,30 @@
       var PM_DATA = {
         tweedy: {
           logo: '<img src="assets/portfolio/tweedy-logo.png" alt="Tweedy" />',
-          client_es: "Cliente: Javier Molina · Consultores de Gestión y Reporting SL · 7.500€",
-          client_en: "Client: Javier Molina · Consultores de Gestión y Reporting SL · €7,500",
           body_es: "<p>Javier necesitaba una plataforma para que autónomos gestionaran su facturación y contabilidad sin depender de hojas de cálculo ni de llamadas constantes a su gestoría. Construimos un SaaS multi-tenant desde cero: cálculo automático de IVA, facturación conforme a VeriFactu, y arquitectura pensada para escalar a miles de usuarios sin rediseñar nada.</p><div class='pm-impact'><strong>Impacto:</strong> pasa de un proceso manual y propenso a errores a un sistema que calcula y factura automáticamente — reduce el tiempo que un autónomo dedica a su contabilidad de horas a minutos, y elimina el riesgo de incumplimiento normativo en la facturación.</div>",
           body_en: "<p>Javier needed a platform for freelancers to manage their invoicing and accounting without relying on spreadsheets or constant calls to their accountant. We built a multi-tenant SaaS from scratch: automatic VAT calculation, VeriFactu-compliant invoicing, and architecture designed to scale to thousands of users without any redesign.</p><div class='pm-impact'><strong>Impact:</strong> moves from a manual, error-prone process to a system that calculates and invoices automatically — reducing the time a freelancer spends on accounting from hours to minutes, and eliminating compliance risk in invoicing.</div>",
           stack: ["Node.js", "PostgreSQL", "React", "VeriFactu"]
         },
         gastrovisual: {
           logo: '<img src="assets/portfolio/gastrovisual-logo.png" alt="Gastrovisual" />',
-          client_es: "Cliente: Frank Torres · Visual Audiovisual Production SLL · 1.000€+",
-          client_en: "Client: Frank Torres · Visual Audiovisual Production SLL · €1,000+",
           body_es: "<p>Visual VR necesitaba cobrar suscripciones a sus clientes (negocios de hostelería) sin gestionar manualmente cada cobro, cada baja de recibo SEPA o cada factura. Implementamos Stripe Connect completo: suscripciones recurrentes, domiciliación SEPA, Customer Portal de autogestión, y firma de contrato integrada en el propio flujo de pago.</p><div class='pm-impact'><strong>Impacto:</strong> Frank pasó de cobrar y perseguir pagos manualmente a un sistema 100% automatizado — sus clientes se dan de alta, pagan y pueden cambiar su suscripción sin que Frank tenga que intervenir en ningún cobro.</div>",
           body_en: "<p>Visual VR needed to charge subscriptions to their clients (hospitality businesses) without manually managing every payment, SEPA debit cancellation, or invoice. We implemented full Stripe Connect: recurring subscriptions, SEPA direct debit, self-service Customer Portal, and contract signing integrated into the payment flow.</p><div class='pm-impact'><strong>Impact:</strong> Frank went from manually chasing payments to a fully automated system — clients sign up, pay, and can change their subscription without Frank having to intervene in any payment.</div>",
           stack: ["Stripe Connect", "SEPA", "Suscripciones", "Customer Portal"]
         },
         endless: {
           logo: '<img src="assets/portfolio/endlessracing-logo.png" alt="Endless Racing" />',
-          client_es: "Cliente: Renaud Duverger · 6.000€",
-          client_en: "Client: Renaud Duverger · €6,000",
           body_es: "<p>Renaud tenía una comunidad de corredores gestionada a mano — coordinaba coche compartido, alojamiento y equipamiento por WhatsApp y hojas sueltas. Construimos el MVP completo: gestión de carpooling, alojamiento, equipamiento y dorsales, con verificación de identidad e importación masiva de datos vía CSV, en 12 semanas.</p><div class='pm-impact'><strong>Impacto:</strong> una idea validada informalmente con early adopters pasa a tener producto real con el que seguir creciendo sin depender de que Renaud coordine todo manualmente.</div>",
           body_en: "<p>Renaud had a community of runners managed manually — he coordinated carpooling, accommodation, and gear via WhatsApp and loose spreadsheets. We built the full MVP: carpooling, accommodation, equipment and bib management, with identity verification and bulk CSV data import, in 12 weeks.</p><div class='pm-impact'><strong>Impact:</strong> an idea informally validated with early adopters now has a real product to keep growing with — without depending on Renaud to coordinate everything manually.</div>",
           stack: ["Next.js", "Supabase", "Vercel"]
         },
         naua: {
           logo: '<img src="assets/portfolio/naua-logo.webp" alt="NAUA" style="border-radius:6px;" />',
-          client_es: "Proyecto cerrado y cobrado íntegramente · ~2.000€",
-          client_en: "Project fully closed and paid · ~€2,000",
           body_es: "<p>Sistema de monitorización y control de bombas industriales, con autenticación multi-rol (2FA) y lógica crítica de programación operativa. Frontend en React, backend en Django.</p><div class='pm-impact'><strong>Impacto:</strong> digitaliza el control de infraestructura que antes dependía de supervisión manual o de sistemas legacy — visibilidad y control centralizados sobre operaciones críticas.</div>",
           body_en: "<p>Industrial pump monitoring and control system, with multi-role authentication (2FA) and critical operational scheduling logic. React frontend, Django backend.</p><div class='pm-impact'><strong>Impact:</strong> digitalizes infrastructure control that previously relied on manual supervision or legacy systems — centralized visibility and control over critical operations.</div>",
           stack: ["React", "Django", "SCADA"]
         },
         ingenia: {
           logo: '<span class="pm-logo-text">Ingenia / CTRL-F</span>',
-          client_es: "Cliente: Justin Warambourg · Ingenia Agency (Francia) · 800€",
-          client_en: "Client: Justin Warambourg · Ingenia Agency (France) · €800",
           body_es: "<p>Pipeline automatizado que procesa vídeo con IA: YouTube → OpusClip → GetLate, generando y publicando clips automáticamente sin edición manual.</p><div class='pm-impact'><strong>Impacto:</strong> elimina el trabajo manual de recortar y programar publicación de clips — lo que antes era un proceso editorial manual pasa a ejecutarse solo.</div>",
           body_en: "<p>Automated pipeline that processes video with AI: YouTube → OpusClip → GetLate, generating and publishing clips automatically without manual editing.</p><div class='pm-impact'><strong>Impact:</strong> eliminates the manual work of clipping and scheduling clip publication — what used to be a manual editorial process now runs on its own.</div>",
           stack: ["React", "Django", "Automatización con IA"]
@@ -2321,7 +2299,6 @@
         if (!d) return;
         var lang = document.documentElement.lang === "es" ? "es" : "en";
         document.getElementById("pm-logo").innerHTML = d.logo;
-        document.getElementById("pm-client").textContent = lang === "es" ? d.client_es : d.client_en;
         document.getElementById("pm-body").innerHTML = lang === "es" ? d.body_es : d.body_en;
         var stackEl = document.getElementById("pm-stack");
         stackEl.innerHTML = d.stack.map(function(s) { return '<span class="stack-pill">' + s + '</span>'; }).join("");
