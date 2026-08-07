@@ -756,7 +756,7 @@
         transform: translateY(16px) scale(0.98);
         transition: transform 0.25s;
         scrollbar-width: thin;
-        scrollbar-color: rgba(255,255,255,0.1) transparent;
+        scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
       }
       .pm-overlay.open .pm-box {
         transform: translateY(0) scale(1);
@@ -777,7 +777,9 @@
         align-items: center;
         justify-content: center;
         line-height: 1;
-        transition: background 0.2s, color 0.2s;
+        transition:
+          background 0.2s,
+          color 0.2s;
       }
       .pm-close:hover {
         background: rgba(255, 255, 255, 0.12);
@@ -1054,6 +1056,25 @@
         max-width: 620px;
         margin: 0 auto;
       }
+      .contact-option {
+        text-decoration: none;
+      }
+      .option-text {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+      }
+      .option-title {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-size: 0.95rem;
+      }
+      .option-sub {
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: var(--muted);
+      }
 
       /* Form elements (shared with contact-form.js) */
       .form-input {
@@ -1176,6 +1197,100 @@
       }
       html[lang="es"] .en {
         display: none !important;
+      }
+
+      /* ========================
+         WHATSAPP FLOATING CTA
+         ======================== */
+      .wa-float {
+        position: fixed;
+        bottom: 1.75rem;
+        right: 1.75rem;
+        z-index: 9998;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: #25d366;
+        box-shadow:
+          0 6px 24px rgba(0, 0, 0, 0.45),
+          0 0 0 1px rgba(255, 255, 255, 0.12);
+        text-decoration: none;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .wa-float::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background: #25d366;
+        opacity: 0.55;
+        animation: wa-pulse 2.4s ease-out infinite;
+        z-index: -1;
+      }
+      @keyframes wa-pulse {
+        0% {
+          transform: scale(1);
+          opacity: 0.55;
+        }
+        100% {
+          transform: scale(1.7);
+          opacity: 0;
+        }
+      }
+      .wa-float:hover {
+        transform: scale(1.08);
+        box-shadow:
+          0 8px 28px rgba(0, 0, 0, 0.55),
+          0 0 0 1px rgba(255, 255, 255, 0.2);
+      }
+      .wa-float svg {
+        width: 30px;
+        height: 30px;
+        fill: #ffffff;
+        flex-shrink: 0;
+      }
+      .wa-tooltip {
+        position: absolute;
+        right: calc(100% + 0.85rem);
+        top: 50%;
+        transform: translateY(-50%);
+        white-space: nowrap;
+        background: rgba(16, 16, 28, 0.95);
+        border: 1px solid var(--border);
+        color: var(--text);
+        font-size: 0.8rem;
+        font-weight: 600;
+        padding: 0.5rem 0.85rem;
+        border-radius: 8px;
+        opacity: 0;
+        pointer-events: none;
+        transition:
+          opacity 0.2s,
+          transform 0.2s;
+      }
+      .wa-float:hover .wa-tooltip {
+        opacity: 1;
+        transform: translateY(-50%) translateX(-4px);
+      }
+      @media (max-width: 768px) {
+        .wa-float {
+          bottom: 1.25rem;
+          right: 1.25rem;
+          width: 54px;
+          height: 54px;
+        }
+        .wa-float svg {
+          width: 27px;
+          height: 27px;
+        }
+        .wa-tooltip {
+          display: none;
+        }
       }
     </style>
 
@@ -1671,13 +1786,23 @@
 
           <div class="portfolio-grid">
             <!-- Tweedy -->
-            <article class="portfolio-card" onclick="openPortfolioModal('tweedy')" role="button" tabindex="0" aria-label="Ver proyecto Tweedy">
+            <article
+              class="portfolio-card"
+              onclick="openPortfolioModal('tweedy')"
+              role="button"
+              tabindex="0"
+              aria-label="Ver proyecto Tweedy"
+            >
               <div class="portfolio-logo-wrap">
                 <img src="assets/portfolio/tweedy-logo.png" alt="Tweedy" />
               </div>
               <p class="portfolio-tagline">
-                <span class="es">SaaS de gestión financiera para autónomos españoles</span>
-                <span class="en">Financial management SaaS for Spanish freelancers</span>
+                <span class="es"
+                  >SaaS de gestión financiera para autónomos españoles</span
+                >
+                <span class="en"
+                  >Financial management SaaS for Spanish freelancers</span
+                >
               </p>
               <div class="portfolio-card-footer">
                 <span class="portfolio-category">FinTech SaaS</span>
@@ -1689,13 +1814,26 @@
             </article>
 
             <!-- Gastrovisual -->
-            <article class="portfolio-card" onclick="openPortfolioModal('gastrovisual')" role="button" tabindex="0" aria-label="Ver proyecto Gastrovisual">
+            <article
+              class="portfolio-card"
+              onclick="openPortfolioModal('gastrovisual')"
+              role="button"
+              tabindex="0"
+              aria-label="Ver proyecto Gastrovisual"
+            >
               <div class="portfolio-logo-wrap">
-                <img src="assets/portfolio/gastrovisual-logo.png" alt="Gastrovisual" />
+                <img
+                  src="assets/portfolio/gastrovisual-logo.png"
+                  alt="Gastrovisual"
+                />
               </div>
               <p class="portfolio-tagline">
-                <span class="es">Ecosistema de pagos completo para SaaS de hostelería</span>
-                <span class="en">Full payments ecosystem for a hospitality SaaS</span>
+                <span class="es"
+                  >Ecosistema de pagos completo para SaaS de hostelería</span
+                >
+                <span class="en"
+                  >Full payments ecosystem for a hospitality SaaS</span
+                >
               </p>
               <div class="portfolio-card-footer">
                 <span class="portfolio-category">
@@ -1710,12 +1848,23 @@
             </article>
 
             <!-- Endless Racing -->
-            <article class="portfolio-card" onclick="openPortfolioModal('endless')" role="button" tabindex="0" aria-label="Ver proyecto Endless Racing">
+            <article
+              class="portfolio-card"
+              onclick="openPortfolioModal('endless')"
+              role="button"
+              tabindex="0"
+              aria-label="Ver proyecto Endless Racing"
+            >
               <div class="portfolio-logo-wrap">
-                <img src="assets/portfolio/endlessracing-logo.png" alt="Endless Racing" />
+                <img
+                  src="assets/portfolio/endlessracing-logo.png"
+                  alt="Endless Racing"
+                />
               </div>
               <p class="portfolio-tagline">
-                <span class="es">MVP de plataforma comunitaria para atletas</span>
+                <span class="es"
+                  >MVP de plataforma comunitaria para atletas</span
+                >
                 <span class="en">Community platform MVP for athletes</span>
               </p>
               <div class="portfolio-card-footer">
@@ -1731,12 +1880,24 @@
             </article>
 
             <!-- NAUA -->
-            <article class="portfolio-card" onclick="openPortfolioModal('naua')" role="button" tabindex="0" aria-label="Ver proyecto NAUA">
+            <article
+              class="portfolio-card"
+              onclick="openPortfolioModal('naua')"
+              role="button"
+              tabindex="0"
+              aria-label="Ver proyecto NAUA"
+            >
               <div class="portfolio-logo-wrap">
-                <img src="assets/portfolio/naua-logo.webp" alt="NAUA" style="border-radius:6px;" />
+                <img
+                  src="assets/portfolio/naua-logo.webp"
+                  alt="NAUA"
+                  style="border-radius: 6px"
+                />
               </div>
               <p class="portfolio-tagline">
-                <span class="es">Plataforma SCADA de monitorización industrial</span>
+                <span class="es"
+                  >Plataforma SCADA de monitorización industrial</span
+                >
                 <span class="en">Industrial SCADA monitoring platform</span>
               </p>
               <div class="portfolio-card-footer">
@@ -1749,7 +1910,13 @@
             </article>
 
             <!-- Ingenia / CTRL-F -->
-            <article class="portfolio-card" onclick="openPortfolioModal('ingenia')" role="button" tabindex="0" aria-label="Ver proyecto Ingenia">
+            <article
+              class="portfolio-card"
+              onclick="openPortfolioModal('ingenia')"
+              role="button"
+              tabindex="0"
+              aria-label="Ver proyecto Ingenia"
+            >
               <div class="portfolio-logo-wrap">
                 <span class="portfolio-logo-text">Ingenia / CTRL-F</span>
               </div>
@@ -1773,9 +1940,22 @@
       </section>
 
       <!-- ==================== PORTFOLIO MODAL ==================== -->
-      <div id="pm-overlay" class="pm-overlay" role="dialog" aria-modal="true" aria-labelledby="pm-title" onclick="handleOverlayClick(event)">
+      <div
+        id="pm-overlay"
+        class="pm-overlay"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="pm-title"
+        onclick="handleOverlayClick(event)"
+      >
         <div class="pm-box">
-          <button class="pm-close" onclick="closePortfolioModal()" aria-label="Cerrar">✕</button>
+          <button
+            class="pm-close"
+            onclick="closePortfolioModal()"
+            aria-label="Cerrar"
+          >
+            ✕
+          </button>
           <div class="pm-logo-wrap" id="pm-logo"></div>
           <div class="pm-body" id="pm-body"></div>
           <div class="pm-stack" id="pm-stack"></div>
@@ -2162,16 +2342,76 @@
             style="text-align: center; margin: 0.75rem auto 3rem"
           >
             <span class="es"
-              >Escríbenos con lo que necesitas y te respondemos en menos de
-              24h.</span
+              >Elige la forma que prefieras de contactarnos.</span
             >
-            <span class="en"
-              >Write to us with what you need and we'll respond in less than
-              24h.</span
-            >
+            <span class="en">Choose whichever way you'd rather reach us.</span>
           </p>
           <div class="contact-card-pane">
-            <div id="unified-contact-form" data-source="homepage"></div>
+            <div class="option-vertical-list">
+              <a
+                class="option-btn contact-option"
+                href="mailto:hugo@arkeondata.com"
+              >
+                <span class="option-text">
+                  <span class="option-title">
+                    <span class="ucf-emoji">📧</span>
+                    <span class="es">Escríbenos un email</span>
+                    <span class="en">Email us</span>
+                  </span>
+                  <span class="option-sub">
+                    <span class="es">Te respondemos en menos de 24h</span>
+                    <span class="en">We reply within 24h</span>
+                  </span>
+                </span>
+                <span class="btn-arrow">→</span>
+              </a>
+              <a
+                class="option-btn contact-option"
+                id="wa-contact-link"
+                href="https://wa.me/34623806299"
+                target="_blank"
+                rel="noopener"
+                data-msg-es="Hola, quiero saber más sobre vuestros servicios de desarrollo."
+                data-msg-en="Hi, I'd like to know more about your development services."
+              >
+                <span class="option-text">
+                  <span class="option-title">
+                    <span class="ucf-emoji">💬</span>
+                    <span class="es">Escríbenos por WhatsApp</span>
+                    <span class="en">Message us on WhatsApp</span>
+                  </span>
+                  <span class="option-sub">
+                    <span class="es"
+                      >Respuesta rápida, ideal para dudas puntuales</span
+                    >
+                    <span class="en"
+                      >Quick reply, great for a fast question</span
+                    >
+                  </span>
+                </span>
+                <span class="btn-arrow">→</span>
+              </a>
+              <a
+                class="option-btn contact-option"
+                href="https://calendar.app.google/hz4igAA6NwYTUoqGA"
+                target="_blank"
+                rel="noopener"
+                onclick="return gtag_report_conversion(this.href);"
+              >
+                <span class="option-text">
+                  <span class="option-title">
+                    <span class="ucf-emoji">📅</span>
+                    <span class="es">Reserva una llamada</span>
+                    <span class="en">Book a call</span>
+                  </span>
+                  <span class="option-sub">
+                    <span class="es">Habla directamente con nosotros</span>
+                    <span class="en">Talk directly with us</span>
+                  </span>
+                </span>
+                <span class="btn-arrow">→</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -2244,6 +2484,15 @@
           el.placeholder =
             lang === "es" ? el.dataset.phEs || "" : el.dataset.phEn || "";
         });
+        document
+          .querySelectorAll("#wa-float, #wa-contact-link")
+          .forEach(function (waBtn) {
+            var waMsg =
+              lang === "es" ? waBtn.dataset.msgEs : waBtn.dataset.msgEn;
+            waBtn.href =
+              "https://wa.me/34623806299?text=" +
+              encodeURIComponent(waMsg || "");
+          });
       }
 
       function toggleFaq(btn) {
@@ -2264,34 +2513,44 @@
       var PM_DATA = {
         tweedy: {
           logo: '<img src="assets/portfolio/tweedy-logo.png" alt="Tweedy" />',
-          body_es: "<p>Javier necesitaba una plataforma para que autónomos gestionaran su facturación y contabilidad sin depender de hojas de cálculo ni de llamadas constantes a su gestoría. Construimos un SaaS multi-tenant desde cero: cálculo automático de IVA, facturación conforme a VeriFactu, y arquitectura pensada para escalar a miles de usuarios sin rediseñar nada.</p><div class='pm-impact'><strong>Impacto:</strong> pasa de un proceso manual y propenso a errores a un sistema que calcula y factura automáticamente — reduce el tiempo que un autónomo dedica a su contabilidad de horas a minutos, y elimina el riesgo de incumplimiento normativo en la facturación.</div>",
-          body_en: "<p>Javier needed a platform for freelancers to manage their invoicing and accounting without relying on spreadsheets or constant calls to their accountant. We built a multi-tenant SaaS from scratch: automatic VAT calculation, VeriFactu-compliant invoicing, and architecture designed to scale to thousands of users without any redesign.</p><div class='pm-impact'><strong>Impact:</strong> moves from a manual, error-prone process to a system that calculates and invoices automatically — reducing the time a freelancer spends on accounting from hours to minutes, and eliminating compliance risk in invoicing.</div>",
-          stack: ["Node.js", "PostgreSQL", "React", "VeriFactu"]
+          body_es:
+            "<p>Javier necesitaba una plataforma para que autónomos gestionaran su facturación y contabilidad sin depender de hojas de cálculo ni de llamadas constantes a su gestoría. Construimos un SaaS multi-tenant desde cero: cálculo automático de IVA, facturación conforme a VeriFactu, y arquitectura pensada para escalar a miles de usuarios sin rediseñar nada.</p><div class='pm-impact'><strong>Impacto:</strong> pasa de un proceso manual y propenso a errores a un sistema que calcula y factura automáticamente — reduce el tiempo que un autónomo dedica a su contabilidad de horas a minutos, y elimina el riesgo de incumplimiento normativo en la facturación.</div>",
+          body_en:
+            "<p>Javier needed a platform for freelancers to manage their invoicing and accounting without relying on spreadsheets or constant calls to their accountant. We built a multi-tenant SaaS from scratch: automatic VAT calculation, VeriFactu-compliant invoicing, and architecture designed to scale to thousands of users without any redesign.</p><div class='pm-impact'><strong>Impact:</strong> moves from a manual, error-prone process to a system that calculates and invoices automatically — reducing the time a freelancer spends on accounting from hours to minutes, and eliminating compliance risk in invoicing.</div>",
+          stack: ["Node.js", "PostgreSQL", "React", "VeriFactu"],
         },
         gastrovisual: {
           logo: '<img src="assets/portfolio/gastrovisual-logo.png" alt="Gastrovisual" />',
-          body_es: "<p>Visual VR necesitaba cobrar suscripciones a sus clientes (negocios de hostelería) sin gestionar manualmente cada cobro, cada baja de recibo SEPA o cada factura. Implementamos Stripe Connect completo: suscripciones recurrentes, domiciliación SEPA, Customer Portal de autogestión, y firma de contrato integrada en el propio flujo de pago.</p><div class='pm-impact'><strong>Impacto:</strong> Frank pasó de cobrar y perseguir pagos manualmente a un sistema 100% automatizado — sus clientes se dan de alta, pagan y pueden cambiar su suscripción sin que Frank tenga que intervenir en ningún cobro.</div>",
-          body_en: "<p>Visual VR needed to charge subscriptions to their clients (hospitality businesses) without manually managing every payment, SEPA debit cancellation, or invoice. We implemented full Stripe Connect: recurring subscriptions, SEPA direct debit, self-service Customer Portal, and contract signing integrated into the payment flow.</p><div class='pm-impact'><strong>Impact:</strong> Frank went from manually chasing payments to a fully automated system — clients sign up, pay, and can change their subscription without Frank having to intervene in any payment.</div>",
-          stack: ["Stripe Connect", "SEPA", "Suscripciones", "Customer Portal"]
+          body_es:
+            "<p>Visual VR necesitaba cobrar suscripciones a sus clientes (negocios de hostelería) sin gestionar manualmente cada cobro, cada baja de recibo SEPA o cada factura. Implementamos Stripe Connect completo: suscripciones recurrentes, domiciliación SEPA, Customer Portal de autogestión, y firma de contrato integrada en el propio flujo de pago.</p><div class='pm-impact'><strong>Impacto:</strong> Frank pasó de cobrar y perseguir pagos manualmente a un sistema 100% automatizado — sus clientes se dan de alta, pagan y pueden cambiar su suscripción sin que Frank tenga que intervenir en ningún cobro.</div>",
+          body_en:
+            "<p>Visual VR needed to charge subscriptions to their clients (hospitality businesses) without manually managing every payment, SEPA debit cancellation, or invoice. We implemented full Stripe Connect: recurring subscriptions, SEPA direct debit, self-service Customer Portal, and contract signing integrated into the payment flow.</p><div class='pm-impact'><strong>Impact:</strong> Frank went from manually chasing payments to a fully automated system — clients sign up, pay, and can change their subscription without Frank having to intervene in any payment.</div>",
+          stack: ["Stripe Connect", "SEPA", "Suscripciones", "Customer Portal"],
         },
         endless: {
           logo: '<img src="assets/portfolio/endlessracing-logo.png" alt="Endless Racing" />',
-          body_es: "<p>Renaud tenía una comunidad de corredores gestionada a mano — coordinaba coche compartido, alojamiento y equipamiento por WhatsApp y hojas sueltas. Construimos el MVP completo: gestión de carpooling, alojamiento, equipamiento y dorsales, con verificación de identidad e importación masiva de datos vía CSV, en 12 semanas.</p><div class='pm-impact'><strong>Impacto:</strong> una idea validada informalmente con early adopters pasa a tener producto real con el que seguir creciendo sin depender de que Renaud coordine todo manualmente.</div>",
-          body_en: "<p>Renaud had a community of runners managed manually — he coordinated carpooling, accommodation, and gear via WhatsApp and loose spreadsheets. We built the full MVP: carpooling, accommodation, equipment and bib management, with identity verification and bulk CSV data import, in 12 weeks.</p><div class='pm-impact'><strong>Impact:</strong> an idea informally validated with early adopters now has a real product to keep growing with — without depending on Renaud to coordinate everything manually.</div>",
-          stack: ["Next.js", "Supabase", "Vercel"]
+          body_es:
+            "<p>Renaud tenía una comunidad de corredores gestionada a mano — coordinaba coche compartido, alojamiento y equipamiento por WhatsApp y hojas sueltas. Construimos el MVP completo: gestión de carpooling, alojamiento, equipamiento y dorsales, con verificación de identidad e importación masiva de datos vía CSV, en 12 semanas.</p><div class='pm-impact'><strong>Impacto:</strong> una idea validada informalmente con early adopters pasa a tener producto real con el que seguir creciendo sin depender de que Renaud coordine todo manualmente.</div>",
+          body_en:
+            "<p>Renaud had a community of runners managed manually — he coordinated carpooling, accommodation, and gear via WhatsApp and loose spreadsheets. We built the full MVP: carpooling, accommodation, equipment and bib management, with identity verification and bulk CSV data import, in 12 weeks.</p><div class='pm-impact'><strong>Impact:</strong> an idea informally validated with early adopters now has a real product to keep growing with — without depending on Renaud to coordinate everything manually.</div>",
+          stack: ["Next.js", "Supabase", "Vercel"],
         },
         naua: {
           logo: '<img src="assets/portfolio/naua-logo.webp" alt="NAUA" style="border-radius:6px;" />',
-          body_es: "<p>Sistema de monitorización y control de bombas industriales, con autenticación multi-rol (2FA) y lógica crítica de programación operativa. Frontend en React, backend en Django.</p><div class='pm-impact'><strong>Impacto:</strong> digitaliza el control de infraestructura que antes dependía de supervisión manual o de sistemas legacy — visibilidad y control centralizados sobre operaciones críticas.</div>",
-          body_en: "<p>Industrial pump monitoring and control system, with multi-role authentication (2FA) and critical operational scheduling logic. React frontend, Django backend.</p><div class='pm-impact'><strong>Impact:</strong> digitalizes infrastructure control that previously relied on manual supervision or legacy systems — centralized visibility and control over critical operations.</div>",
-          stack: ["React", "Django", "SCADA"]
+          body_es:
+            "<p>Sistema de monitorización y control de bombas industriales, con autenticación multi-rol (2FA) y lógica crítica de programación operativa. Frontend en React, backend en Django.</p><div class='pm-impact'><strong>Impacto:</strong> digitaliza el control de infraestructura que antes dependía de supervisión manual o de sistemas legacy — visibilidad y control centralizados sobre operaciones críticas.</div>",
+          body_en:
+            "<p>Industrial pump monitoring and control system, with multi-role authentication (2FA) and critical operational scheduling logic. React frontend, Django backend.</p><div class='pm-impact'><strong>Impact:</strong> digitalizes infrastructure control that previously relied on manual supervision or legacy systems — centralized visibility and control over critical operations.</div>",
+          stack: ["React", "Django", "SCADA"],
         },
         ingenia: {
           logo: '<span class="pm-logo-text">Ingenia / CTRL-F</span>',
-          body_es: "<p>Pipeline automatizado que procesa vídeo con IA: YouTube → OpusClip → GetLate, generando y publicando clips automáticamente sin edición manual.</p><div class='pm-impact'><strong>Impacto:</strong> elimina el trabajo manual de recortar y programar publicación de clips — lo que antes era un proceso editorial manual pasa a ejecutarse solo.</div>",
-          body_en: "<p>Automated pipeline that processes video with AI: YouTube → OpusClip → GetLate, generating and publishing clips automatically without manual editing.</p><div class='pm-impact'><strong>Impact:</strong> eliminates the manual work of clipping and scheduling clip publication — what used to be a manual editorial process now runs on its own.</div>",
-          stack: ["React", "Django", "Automatización con IA"]
-        }
+          body_es:
+            "<p>Pipeline automatizado que procesa vídeo con IA: YouTube → OpusClip → GetLate, generando y publicando clips automáticamente sin edición manual.</p><div class='pm-impact'><strong>Impacto:</strong> elimina el trabajo manual de recortar y programar publicación de clips — lo que antes era un proceso editorial manual pasa a ejecutarse solo.</div>",
+          body_en:
+            "<p>Automated pipeline that processes video with AI: YouTube → OpusClip → GetLate, generating and publishing clips automatically without manual editing.</p><div class='pm-impact'><strong>Impact:</strong> eliminates the manual work of clipping and scheduling clip publication — what used to be a manual editorial process now runs on its own.</div>",
+          stack: ["React", "Django", "Automatización con IA"],
+        },
       };
 
       function openPortfolioModal(id) {
@@ -2299,9 +2558,14 @@
         if (!d) return;
         var lang = document.documentElement.lang === "es" ? "es" : "en";
         document.getElementById("pm-logo").innerHTML = d.logo;
-        document.getElementById("pm-body").innerHTML = lang === "es" ? d.body_es : d.body_en;
+        document.getElementById("pm-body").innerHTML =
+          lang === "es" ? d.body_es : d.body_en;
         var stackEl = document.getElementById("pm-stack");
-        stackEl.innerHTML = d.stack.map(function(s) { return '<span class="stack-pill">' + s + '</span>'; }).join("");
+        stackEl.innerHTML = d.stack
+          .map(function (s) {
+            return '<span class="stack-pill">' + s + "</span>";
+          })
+          .join("");
         document.getElementById("pm-overlay").classList.add("open");
         document.body.style.overflow = "hidden";
       }
@@ -2312,19 +2576,46 @@
       }
 
       function handleOverlayClick(e) {
-        if (e.target === document.getElementById("pm-overlay")) closePortfolioModal();
+        if (e.target === document.getElementById("pm-overlay"))
+          closePortfolioModal();
       }
 
-      document.addEventListener("keydown", function(e) {
+      document.addEventListener("keydown", function (e) {
         if (e.key === "Escape") closePortfolioModal();
       });
 
-      document.querySelectorAll(".portfolio-card").forEach(function(card) {
-        card.addEventListener("keydown", function(e) {
-          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); card.click(); }
+      document.querySelectorAll(".portfolio-card").forEach(function (card) {
+        card.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            card.click();
+          }
         });
       });
     </script>
-    <script src="assets/contact-form.js" defer></script>
+    <!-- ==================== WHATSAPP FLOATING CTA ==================== -->
+    <a
+      href="https://wa.me/34623806299"
+      class="wa-float"
+      id="wa-float"
+      target="_blank"
+      rel="noopener"
+      aria-label="WhatsApp"
+      data-msg-es="Hola, quiero saber más sobre vuestros servicios de desarrollo."
+      data-msg-en="Hi, I'd like to know more about your development services."
+    >
+      <span class="wa-tooltip">
+        <span class="es">Escríbenos por WhatsApp</span>
+        <span class="en">Message us on WhatsApp</span>
+      </span>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M17.5 14.4c-.3-.1-1.6-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.5.1-.3-.1-1.2-.4-2.2-1.4-.8-.7-1.4-1.6-1.5-1.9-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.3 0-.5-.1-.1-.6-1.4-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1 0 1.3.9 2.5 1.1 2.7.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.2-.3-.3-.6-.4z"
+        />
+        <path
+          d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.8-1.5A9.9 9.9 0 0012 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.7 0-3.4-.5-4.8-1.4l-.3-.2-3.2 1 1-3.2-.2-.3A8.2 8.2 0 013.8 12C3.8 7.5 7.5 3.8 12 3.8s8.2 3.7 8.2 8.2-3.7 8.2-8.2 8.2z"
+        />
+      </svg>
+    </a>
   </body>
 </html>
