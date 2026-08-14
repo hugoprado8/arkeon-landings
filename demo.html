@@ -48,8 +48,9 @@
     align-self:flex-end;max-width:88%;background:#0C1118;border:1.5px solid var(--cyan);border-radius:14px;padding:12px 14px;font-size:13px;
   }
   .crm-card .title{color:var(--cyan);font-weight:800;font-size:11px;letter-spacing:1px;margin-bottom:8px;}
-  .crm-card .row{display:flex;justify-content:space-between;padding:3px 0;color:var(--text);}
-  .crm-card .row span:first-child{color:var(--muted);}
+  .crm-card .row{display:flex;justify-content:space-between;gap:12px;padding:3px 0;color:var(--text);}
+  .crm-card .row span:first-child{color:var(--muted);flex-shrink:0;}
+  .crm-card .row span:last-child{text-align:right;}
 
   .typing{align-self:flex-end;display:flex;gap:4px;padding:12px 16px;background:linear-gradient(135deg,var(--indigo),var(--cyan));border-radius:16px;border-bottom-right-radius:4px;}
   .typing span{width:6px;height:6px;border-radius:50%;background:#0B0F17;opacity:.5;animation:bounce 1s infinite ease-in-out;}
@@ -62,9 +63,12 @@
   .chat-input button{width:38px;height:38px;border-radius:50%;background:var(--cyan);border:none;display:flex;align-items:center;justify-content:center;color:#0B0F17;font-weight:700;font-size:15px;cursor:pointer;flex-shrink:0;}
   .chat-input button:disabled{opacity:.4;cursor:not-allowed;}
 
+  .chips{max-width:420px;margin:12px auto 0;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
+  .chips button{background:rgba(139,92,246,.12);border:1px solid var(--border);color:var(--muted);padding:7px 13px;border-radius:16px;font-size:12.5px;cursor:pointer;font-family:inherit;}
+  .chips button:hover{border-color:var(--indigo);color:var(--text);}
+
   .reset{display:block;margin:16px auto 0;background:transparent;border:1px solid var(--border);color:var(--muted);padding:8px 18px;border-radius:20px;font-size:13px;cursor:pointer;font-family:inherit;}
   .reset:hover{border-color:var(--indigo);color:var(--text);}
-  .err{max-width:420px;margin:12px auto 0;color:#F87171;font-size:13px;text-align:center;}
 </style>
 </head>
 <body>
@@ -111,67 +115,119 @@
       <button id="sendBtn">➤</button>
     </div>
   </div>
-  <div class="err" id="errBox"></div>
+
+  <div class="chips" id="chips"></div>
   <button class="reset" onclick="resetChat()">↻ Reiniciar conversación</button>
 </div>
 
 <script>
-// ─────────────────────────────────────────────────────────────
-// PEGA AQUÍ la URL de tu Cloudflare Worker (ver worker/README.md).
-// Ejemplo: "https://arkeon-demo-chat.TU-SUBDOMINIO.workers.dev"
-// NUNCA pongas la clave de Anthropic en este archivo — es público.
-const API_URL = "https://arkeon-demo-chat.TU-SUBDOMINIO.workers.dev";
-// ─────────────────────────────────────────────────────────────
+/* ───────────────────────────────────────────────────────────────
+   Demo autónoma: un solo archivo, sin backend y sin claves.
+   Las respuestas están guionizadas aquí abajo — se disparan por
+   palabras clave (modo BI) o siguen un flujo de preguntas (modos
+   asesor y leads). Para cambiar lo que dice el asistente, edita
+   los textos de SCRIPTS; no hace falta tocar nada más.
+   ─────────────────────────────────────────────────────────────── */
 
 const empresaInput = document.getElementById('empresa');
-const modoSelect = document.getElementById('modo');
-const chatBody = document.getElementById('chatBody');
-const headerName = document.getElementById('headerName');
+const modoSelect   = document.getElementById('modo');
+const chatBody     = document.getElementById('chatBody');
+const headerName   = document.getElementById('headerName');
 const avatarLetter = document.getElementById('avatarLetter');
-const userInput = document.getElementById('userInput');
-const sendBtn = document.getElementById('sendBtn');
-const roleBanner = document.getElementById('roleBanner');
-const errBox = document.getElementById('errBox');
+const userInput    = document.getElementById('userInput');
+const sendBtn      = document.getElementById('sendBtn');
+const roleBanner   = document.getElementById('roleBanner');
+const chipsBox     = document.getElementById('chips');
 
-let history = [];
+let step = 0;      // posición dentro del flujo (modos asesor y leads)
+let answers = [];  // respuestas del lead, para rellenar la ficha de CRM
 
-const MODES = {
+const has = (text, ...words) => words.some(w => text.includes(w));
+
+const SCRIPTS = {
+
+  /* ── 1. Business Intelligence ───────────────────────────────── */
   bi: {
     role: "🎭 Tú eres: el dueño de {{empresa}}. Pregúntale a tu asistente cómo va el negocio.",
     greeting: "¡Hola! Soy tu asistente de datos de {{empresa}}. Pregúntame lo que quieras sobre cómo va el negocio 📊",
-    system: `Eres el asistente de inteligencia de negocio de {{empresa}}. Hablas con el dueño del negocio. Tienes acceso a estos datos internos, trátalos siempre como reales y actuales, nunca digas que son de ejemplo:
-- Facturación de este mes: 12.400€ (+8% vs mes anterior)
-- Margen operativo: 34%
-- 3 clientes sin actividad en 30+ días, representan 15% de la facturación recurrente: Cliente A (340€/mes, 34 días inactivo), Cliente B (210€/mes, 31 días), Cliente C (180€/mes, 45 días)
-- Gasto en proveedores: +12% este trimestre
-- Producto/servicio más rentable: el de mayor volumen, con 48% de margen
-Si preguntan algo fuera de estos datos, da una cifra razonable y coherente, nunca digas que no lo sabes o que te lo inventas. Responde en español, corto y directo tipo WhatsApp, máximo 2-3 frases.`
+    chips: ["¿Cómo va el mes?", "¿Algún cliente en riesgo?", "¿Y los gastos?", "¿Qué es lo más rentable?"],
+    reply(text) {
+      const t = text.toLowerCase();
+
+      if (has(t, 'factur', 'ventas', 'ingres', 'mes', 'cómo va', 'como va', 'qué tal', 'que tal'))
+        return "Vas bien 📈 Llevas 12.400€ facturados este mes, un 8% por encima del anterior. El margen operativo está en el 34%, estable.";
+
+      if (has(t, 'margen', 'rentab', 'benefic', 'ganan'))
+        return "Margen operativo del 34% este mes. Tu servicio de mayor volumen es también el más rentable: 48% de margen. Ahí es donde más te compensa empujar.";
+
+      if (has(t, 'client', 'riesgo', 'inactiv', 'perd', 'fug', 'churn'))
+        return "Tienes 3 clientes sin actividad en más de 30 días — son el 15% de tu facturación recurrente:\n\n• Cliente A — 340€/mes, 34 días\n• Cliente B — 210€/mes, 31 días\n• Cliente C — 180€/mes, 45 días\n\nYo empezaría por el A y el C. ¿Te preparo un mensaje para cada uno?";
+
+      if (has(t, 'gast', 'coste', 'proveed', 'compra'))
+        return "Ojo aquí ⚠️ El gasto en proveedores ha subido un 12% este trimestre. Es lo único que va en dirección contraria al resto del negocio.";
+
+      if (has(t, 'rentable', 'mejor', 'producto', 'servicio', 'top'))
+        return "Tu servicio de mayor volumen, con un 48% de margen. Curiosamente es también el que menos promocionas.";
+
+      if (has(t, 'mensaje', 'escrib', 'contact', 'sí', 'si', 'vale', 'ok', 'dale', 'adelante'))
+        return "Hecho ✅ Te he dejado 3 borradores listos, uno por cliente, con el asunto y el histórico de cada uno. Los tienes en tu bandeja para revisar y enviar.";
+
+      if (has(t, 'previs', 'futuro', 'próximo', 'proximo', 'cerrar'))
+        return "Si el ritmo se mantiene, cierras el mes en torno a 13.100€. Recuperar a los 3 clientes inactivos te pondría cerca de 13.800€.";
+
+      return "Puedo mirarlo. De momento lo que más destaca: facturación +8%, margen al 34%, y 3 clientes inactivos que valen el 15% de tus ingresos recurrentes. ¿Por dónde quieres empezar?";
+    }
   },
+
+  /* ── 2. Agente asesor de producto ───────────────────────────── */
   asesor: {
     role: "🎭 Tú eres: un cliente interesado. Escríbele como si quisieras comprar.",
     greeting: "¡Hola! Bienvenido a {{empresa}} 🚲 ¿En qué puedo ayudarte hoy?",
-    system: `Eres el asistente de ventas conversacional de {{empresa}}, una tienda de bicicletas. Un cliente te escribe buscando ayuda para elegir una bicicleta. No sueltes un catálogo entero: hazle 2-3 preguntas cortas sobre para qué la quiere (ciudad, montaña, carretera), su presupuesto y su nivel de experiencia. Cuando tengas esa información, recomienda un modelo concreto con precio orientativo y explica brevemente por qué encaja. Sé natural y cercano, respuestas cortas tipo WhatsApp, nunca listas largas.`
+    chips: ["Busco una bici", "Para ir al trabajo", "Unos 800€", "Soy principiante"],
+    reply(text, step) {
+      const t = text.toLowerCase();
+
+      if (step === 0)
+        return "¡Genial! Para acertar con la recomendación: ¿para qué la vas a usar principalmente — ciudad, montaña o carretera?";
+
+      if (step === 1)
+        return "Perfecto 👌 ¿Y en qué presupuesto te mueves más o menos?";
+
+      if (step === 2)
+        return "Vale. Última cosa: ¿tienes ya experiencia o empiezas ahora?";
+
+      /* Recomendación final, ajustada al uso que indicó el cliente */
+      const uso = (answers[1] || '').toLowerCase();
+      if (has(uso, 'montañ', 'montan', 'mtb', 'campo', 'monte'))
+        return "Te iría muy bien una MTB de doble suspensión, sobre unos 890€. Cuadro de aluminio, 29\", y frenos hidráulicos — que en bajada es lo que de verdad marca la diferencia.\n\n¿Te la reservo para que vengas a probarla?";
+      if (has(uso, 'carreter', 'ruta', 'road', 'asfalto'))
+        return "Para carretera te recomiendo una de cuadro de aluminio con horquilla de carbono, unos 950€. Grupo Shimano 105, que es el punto donde la relación calidad-precio se dispara.\n\n¿Te la reservo para probarla?";
+      return "Con eso, la que mejor te encaja es una híbrida urbana de unos 750€: postura cómoda, cubiertas anchas para el bordillo y soporte para alforjas si algún día llevas peso.\n\n¿Te la reservo para que vengas a probarla?";
+    }
   },
+
+  /* ── 3. Cualificación de leads + CRM ────────────────────────── */
   leads: {
     role: "🎭 Tú eres: un lead interesado. Escríbele como si quisieras contratar el servicio.",
     greeting: "¡Hola! Soy el asistente de {{empresa}}. Cuéntame un poco qué necesitas y te ayudo 🙂",
-    system: `Eres el asistente comercial de {{empresa}}. Un lead te escribe interesado en tus servicios. Cualifícalo con 2-3 preguntas naturales (qué necesita, presupuesto aproximado, urgencia). En cuanto tengas esos 3 datos, en tu ÚLTIMA respuesta dile de forma natural que ha quedado registrado y que el equipo le contacta en menos de 24h, y termina el mensaje con esta etiqueta EXACTA (no la vera el usuario, se procesa aparte): <<CRM:nombre=VALOR|necesidad=VALOR|presupuesto=VALOR|prioridad=alta/media/baja>>. Responde en español, corto, tipo WhatsApp.`
+    chips: ["Quiero automatizar el WhatsApp", "Presupuesto de 2.000€", "Para este mes"],
+    reply(text, step) {
+      if (step === 0)
+        return "Entendido 👍 ¿Y qué presupuesto tenéis pensado para esto, aunque sea aproximado?";
+
+      if (step === 1)
+        return "Perfecto. ¿Para cuándo lo necesitaríais?";
+
+      /* Cierre + etiqueta que dispara la ficha de CRM */
+      return "Genial, ya lo tengo todo ✅ Te he registrado y el equipo te contacta en menos de 24h.\n<<CRM>>";
+    }
   }
 };
 
+/* ── Motor de la conversación ─────────────────────────────────── */
+
 function empresa(){ return empresaInput.value.trim() || 'tu negocio'; }
 function fill(str){ return str.replaceAll('{{empresa}}', empresa()); }
-
-function resetChat(){
-  history = [];
-  chatBody.innerHTML = '';
-  errBox.textContent = '';
-  const mode = MODES[modoSelect.value];
-  headerName.textContent = empresa();
-  avatarLetter.textContent = empresa().charAt(0).toUpperCase();
-  roleBanner.textContent = fill(mode.role);
-  addBubble('bot', fill(mode.greeting));
-}
 
 function addBubble(who, text){
   const b = document.createElement('div');
@@ -181,48 +237,62 @@ function addBubble(who, text){
   chatBody.scrollTop = chatBody.scrollHeight;
 }
 
-function addCrmCard(fields){
+function addCrmCard(){
+  const fields = {
+    'nombre':      empresa(),
+    'necesidad':   answers[0] || '—',
+    'presupuesto': answers[1] || '—',
+    'urgencia':    answers[2] || '—',
+    'prioridad':   'alta'
+  };
   const c = document.createElement('div');
   c.className = 'crm-card';
   const title = document.createElement('div');
   title.className = 'title';
   title.textContent = '✅ AÑADIDO AL CRM';
   c.appendChild(title);
-  Object.entries(fields).forEach(([k, v]) => {
+  for (const [k, v] of Object.entries(fields)) {
     const row = document.createElement('div');
     row.className = 'row';
-    const key = document.createElement('span');
-    key.textContent = k;
-    const val = document.createElement('span');
-    val.textContent = v;
+    const key = document.createElement('span'); key.textContent = k;
+    const val = document.createElement('span'); val.textContent = v;
     row.append(key, val);
     c.appendChild(row);
-  });
+  }
   chatBody.appendChild(c);
   chatBody.scrollTop = chatBody.scrollHeight;
 }
 
-function parseCrmTag(text){
-  const match = text.match(/<<CRM:(.*?)>>/);
-  if(!match) return { clean: text, crm: null };
-  const clean = text.replace(match[0], '').trim();
-  const fields = {};
-  match[1].split('|').forEach(pair=>{
-    const [k,v] = pair.split('=');
-    if(k && v) fields[k.trim()] = v.trim();
+function renderChips(){
+  chipsBox.innerHTML = '';
+  SCRIPTS[modoSelect.value].chips.forEach(label => {
+    const b = document.createElement('button');
+    b.textContent = label;
+    b.onclick = () => { userInput.value = label; sendMessage(); };
+    chipsBox.appendChild(b);
   });
-  return { clean, crm: fields };
 }
 
-async function sendMessage(){
+function resetChat(){
+  step = 0;
+  answers = [];
+  chatBody.innerHTML = '';
+  const s = SCRIPTS[modoSelect.value];
+  headerName.textContent = empresa();
+  avatarLetter.textContent = empresa().charAt(0).toUpperCase();
+  roleBanner.textContent = fill(s.role);
+  addBubble('bot', fill(s.greeting));
+  renderChips();
+}
+
+function sendMessage(){
   const text = userInput.value.trim();
-  if(!text) return;
+  if (!text) return;
   userInput.value = '';
   sendBtn.disabled = true;
-  errBox.textContent = '';
 
   addBubble('lead', text);
-  history.push({ role: 'user', content: text });
+  answers.push(text);
 
   const typing = document.createElement('div');
   typing.className = 'typing';
@@ -230,35 +300,28 @@ async function sendMessage(){
   chatBody.appendChild(typing);
   chatBody.scrollTop = chatBody.scrollHeight;
 
-  try{
-    const mode = MODES[modoSelect.value];
-    const res = await fetch(API_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        system: fill(mode.system),
-        messages: history
-      })
-    });
-    if(!res.ok) throw new Error('Fallo en la API (' + res.status + ')');
-    const data = await res.json();
-    const raw = data.reply || '';
-    typing.remove();
+  // Pausa variable: un tiempo de respuesta fijo se nota falso enseguida.
+  const delay = 700 + Math.random() * 600 + Math.min(text.length * 12, 500);
 
-    const { clean, crm } = parseCrmTag(raw);
-    addBubble('bot', clean);
-    if(crm) addCrmCard(crm);
-    history.push({ role: 'assistant', content: raw });
-  }catch(e){
+  setTimeout(() => {
     typing.remove();
-    errBox.textContent = '⚠️ No se pudo conectar con el backend — revisa que el Worker esté desplegado y que API_URL apunte a él.';
-  }
-  sendBtn.disabled = false;
-  userInput.focus();
+    let reply = fill(SCRIPTS[modoSelect.value].reply(text, step));
+    step++;
+
+    if (reply.includes('<<CRM>>')) {
+      addBubble('bot', reply.replace('<<CRM>>', '').trim());
+      setTimeout(addCrmCard, 600);
+    } else {
+      addBubble('bot', reply);
+    }
+
+    sendBtn.disabled = false;
+    userInput.focus();
+  }, delay);
 }
 
 sendBtn.addEventListener('click', sendMessage);
-userInput.addEventListener('keydown', e => { if(e.key === 'Enter') sendMessage(); });
+userInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendMessage(); });
 modoSelect.addEventListener('change', resetChat);
 empresaInput.addEventListener('input', () => {
   clearTimeout(window._deb);
