@@ -1,0 +1,249 @@
+/* Shared styles for legal pages (Privacy, Legal Notice, Terms) */
+:root {
+  --bg: #030306;
+  --text: #ffffff;
+  --muted: #94a3b8;
+  --muted-light: #e2e8f0;
+  --accent: #818cf8;
+  --accent-dim: #4f46e5;
+  --accent-2: #2dd4bf;
+  --card: rgba(16, 16, 28, 0.85);
+  --border: rgba(255, 255, 255, 0.1);
+  --border-hover: rgba(255, 255, 255, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.wrap {
+  width: min(1200px, 100%);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Header (simplified, non-floating for legal pages) */
+.legal-header {
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 0;
+}
+.legal-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.brand {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.brand-logo {
+  height: 30px;
+  width: auto;
+  display: block;
+}
+.back-link {
+  color: var(--muted);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.back-link:hover {
+  color: #ffffff;
+}
+
+/* Lang switcher (reuses same markup/behaviour as index.html) */
+.lang-sw {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 100px;
+  padding: 0.25rem;
+}
+.lang-sw button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0.25rem 0.4rem;
+  border-radius: 100px;
+  opacity: 0.4;
+  transition: all 0.2s;
+}
+.lang-sw button:hover {
+  opacity: 0.75;
+}
+.lang-sw button.active {
+  opacity: 1;
+  background: rgba(129, 140, 248, 0.25);
+}
+.flag-img {
+  width: 20px;
+  height: auto;
+  display: block;
+  border-radius: 2px;
+}
+
+/* Legal content */
+.legal-main {
+  padding: 4rem 0 6rem;
+}
+.legal-content {
+  max-width: 780px;
+  margin: 0 auto;
+}
+.legal-kicker {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+.legal-content h1 {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 0.75rem;
+}
+.legal-updated {
+  color: var(--muted);
+  font-size: 0.875rem;
+  margin-bottom: 3rem;
+}
+.legal-content h2 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin: 2.75rem 0 1rem;
+  letter-spacing: -0.01em;
+}
+.legal-content h2:first-of-type {
+  margin-top: 0;
+}
+.legal-content h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 1.75rem 0 0.75rem;
+  color: var(--muted-light);
+}
+.legal-content p {
+  color: var(--muted-light);
+  font-size: 0.98rem;
+  line-height: 1.8;
+  margin-bottom: 1.1rem;
+}
+.legal-content ul,
+.legal-content ol {
+  color: var(--muted-light);
+  font-size: 0.98rem;
+  line-height: 1.8;
+  margin: 0 0 1.1rem 1.4rem;
+}
+.legal-content li {
+  margin-bottom: 0.4rem;
+}
+.legal-content a {
+  color: var(--accent-2);
+  text-decoration: none;
+}
+.legal-content a:hover {
+  text-decoration: underline;
+}
+.legal-content strong {
+  color: #ffffff;
+  font-weight: 700;
+}
+.legal-table-wrap {
+  overflow-x: auto;
+  margin: 0 0 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.legal-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+.legal-table th,
+.legal-table td {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted-light);
+  vertical-align: top;
+}
+.legal-table th {
+  color: #ffffff;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.03);
+}
+.legal-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Footer (same as index.html) */
+footer {
+  padding: 3rem 0;
+  border-top: 1px solid var(--border);
+}
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.footer-copy {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.footer-links a {
+  color: var(--muted);
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover {
+  color: #ffffff;
+}
+
+/* Language visibility */
+html[lang="en"] .es {
+  display: none !important;
+}
+html[lang="es"] .en {
+  display: none !important;
+}
+
+@media (max-width: 600px) {
+  .legal-header .wrap {
+    justify-content: space-between;
+  }
+}

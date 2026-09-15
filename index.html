@@ -2,80 +2,6 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <!-- Meta Pixel Code -->
-    <script>
-      !(function (f, b, e, v, n, t, s) {
-        if (f.fbq) return;
-        n = f.fbq = function () {
-          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
-        };
-        if (!f._fbq) f._fbq = n;
-        n.push = n;
-        n.loaded = !0;
-        n.version = "2.0";
-        n.queue = [];
-        t = b.createElement(e);
-        t.async = !0;
-        t.src = v;
-        s = b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t, s);
-      })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
-      fbq("init", "2496673637427075");
-      fbq("track", "PageView");
-    </script>
-    <noscript
-      ><img
-        height="1"
-        width="1"
-        style="display: none"
-        src="https://www.facebook.com/tr?id=2496673637427075&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel Code -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=AW-18179723592"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "AW-18179723592");
-    </script>
-
-    <script>
-      function gtag_report_conversion(url) {
-        var callback = function () {
-          if (typeof url != "undefined") {
-            window.location = url;
-          }
-        };
-        gtag("event", "conversion", {
-          send_to: "AW-18179723592/nziNCPC_xLEcEMii4txD",
-          value: 1.0,
-          currency: "EUR",
-          event_callback: callback,
-        });
-        return false;
-      }
-    </script>
-
-    <script type="text/javascript">
-      (function (c, l, a, r, i, t, y) {
-        c[a] =
-          c[a] ||
-          function () {
-            (c[a].q = c[a].q || []).push(arguments);
-          };
-        t = l.createElement(r);
-        t.async = 1;
-        t.src = "https://www.clarity.ms/tag/" + i;
-        y = l.getElementsByTagName(r)[0];
-        y.parentNode.insertBefore(t, y);
-      })(window, document, "clarity", "script", "x8insalyd6");
-    </script>
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Arkeon — Desarrollo e IA</title>
     <meta
@@ -1207,6 +1133,7 @@
       .footer-links {
         display: flex;
         gap: 1.5rem;
+        flex-wrap: wrap;
       }
       .footer-links a {
         color: var(--muted);
@@ -1226,6 +1153,80 @@
       }
       html[lang="es"] .en {
         display: none !important;
+      }
+
+      /* ========================
+         COOKIE CONSENT BANNER
+         ======================== */
+      .cookie-banner {
+        position: fixed;
+        left: 1.25rem;
+        right: 1.25rem;
+        bottom: 1.25rem;
+        z-index: 10001;
+        max-width: 520px;
+        margin: 0 auto;
+        background: rgba(16, 16, 28, 0.96);
+        backdrop-filter: blur(20px) saturate(160%);
+        -webkit-backdrop-filter: blur(20px) saturate(160%);
+        border: 1px solid var(--border-hover);
+        border-radius: 16px;
+        padding: 1.5rem;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+        transform: translateY(calc(100% + 2rem));
+        opacity: 0;
+        transition:
+          transform 0.35s ease,
+          opacity 0.35s ease;
+        pointer-events: none;
+      }
+      .cookie-banner.visible {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: all;
+      }
+      .cookie-banner p {
+        color: var(--muted-light);
+        font-size: 0.85rem;
+        line-height: 1.6;
+        margin-bottom: 1.1rem;
+      }
+      .cookie-banner a {
+        color: var(--accent-2);
+        text-decoration: underline;
+      }
+      .cookie-banner-actions {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+      .cookie-btn {
+        flex: 1;
+        min-width: 110px;
+        border-radius: 8px;
+        padding: 0.65rem 1rem;
+        font-size: 0.85rem;
+        font-weight: 700;
+        cursor: pointer;
+        border: 1px solid var(--border);
+        font-family: inherit;
+        transition: all 0.2s;
+      }
+      .cookie-btn-accept {
+        background: var(--accent-2);
+        color: #030306;
+        border-color: transparent;
+      }
+      .cookie-btn-accept:hover {
+        background: #24bda9;
+      }
+      .cookie-btn-reject {
+        background: transparent;
+        color: var(--muted-light);
+      }
+      .cookie-btn-reject:hover {
+        border-color: var(--border-hover);
+        color: #ffffff;
       }
 
       /* ========================
@@ -1323,36 +1324,21 @@
       }
     </style>
 
-    <script
-      defer
-      src="https://cloud.umami.is/script.js"
-      data-website-id="e871ced2-a6d3-4425-964e-c3f0a55f792f"
-    ></script>
-    <script
-      defer
-      src="https://cloud.umami.is/recorder.js"
-      data-website-id="e871ced2-a6d3-4425-964e-c3f0a55f792f"
-    ></script>
-
     <script>
-      !(function (w, d) {
-        if (!w.rdt) {
-          var p = (w.rdt = function () {
-            p.sendEvent
-              ? p.sendEvent.apply(p, arguments)
-              : p.callQueue.push(arguments);
-          });
-          p.callQueue = [];
-          var t = d.createElement("script");
-          t.src =
-            "https://www.redditstatic.com/ads/pixel.js?pixel_id=a2_j6f1034oocg4";
-          t.async = !0;
-          var s = d.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(t, s);
-        }
-      })(window, document);
-      rdt("init", "a2_j6f1034oocg4");
-      rdt("track", "PageVisit");
+      function loadUmami() {
+        if (window.__umamiLoaded) return;
+        window.__umamiLoaded = true;
+        var s1 = document.createElement("script");
+        s1.defer = true;
+        s1.src = "https://cloud.umami.is/script.js";
+        s1.setAttribute("data-website-id", "e871ced2-a6d3-4425-964e-c3f0a55f792f");
+        document.head.appendChild(s1);
+        var s2 = document.createElement("script");
+        s2.defer = true;
+        s2.src = "https://cloud.umami.is/recorder.js";
+        s2.setAttribute("data-website-id", "e871ced2-a6d3-4425-964e-c3f0a55f792f");
+        document.head.appendChild(s2);
+      }
     </script>
   </head>
   <body>
@@ -1423,7 +1409,6 @@
           class="nav-cta"
           target="_blank"
           rel="noopener"
-          onclick="return gtag_report_conversion(this.href);"
         >
           <span class="es">Agendar llamada</span>
           <span class="en">Book a call</span>
@@ -1483,7 +1468,6 @@
               class="btn-primary"
               target="_blank"
               rel="noopener"
-              onclick="return gtag_report_conversion(this.href);"
             >
               <span class="es">Agendar llamada →</span>
               <span class="en">Book a call →</span>
@@ -2174,7 +2158,6 @@
                   class="btn-call-inline"
                   target="_blank"
                   rel="noopener"
-                  onclick="return gtag_report_conversion(this.href);"
                 >
                   <span class="es">¿Hablamos? Reserva una llamada →</span>
                   <span class="en">Want to talk? Schedule a call →</span>
@@ -2425,7 +2408,6 @@
                 href="https://calendar.app.google/hz4igAA6NwYTUoqGA"
                 target="_blank"
                 rel="noopener"
-                onclick="return gtag_report_conversion(this.href);"
               >
                 <span class="option-text">
                   <span class="option-title">
@@ -2467,7 +2449,6 @@
             class="btn-primary"
             target="_blank"
             rel="noopener"
-            onclick="return gtag_report_conversion(this.href);"
           >
             <span class="es">Agendar llamada →</span>
             <span class="en">Book a call →</span>
@@ -2483,6 +2464,18 @@
           &copy; 2026 Arkeon Data, S.L. — arkeondata.com
         </p>
         <div class="footer-links">
+          <a href="aviso-legal.html">
+            <span class="es">Aviso legal</span>
+            <span class="en">Legal notice</span>
+          </a>
+          <a href="privacidad.html">
+            <span class="es">Privacidad</span>
+            <span class="en">Privacy</span>
+          </a>
+          <a href="terminos.html">
+            <span class="es">Términos de uso</span>
+            <span class="en">Terms of use</span>
+          </a>
           <a
             href="https://www.linkedin.com/in/hugo-prado-romero"
             target="_blank"
@@ -2523,6 +2516,32 @@
               encodeURIComponent(waMsg || "");
           });
       }
+
+      /* ========================
+         COOKIE CONSENT
+         ======================== */
+      function setCookieConsent(accepted) {
+        try {
+          localStorage.setItem("cookie-consent", accepted ? "accepted" : "rejected");
+        } catch (e) {}
+        document.getElementById("cookie-banner").classList.remove("visible");
+        if (accepted) loadUmami();
+      }
+
+      (function initCookieConsent() {
+        var consent = null;
+        try {
+          consent = localStorage.getItem("cookie-consent");
+        } catch (e) {}
+        if (consent === "accepted") {
+          loadUmami();
+        } else if (consent !== "rejected") {
+          window.addEventListener("DOMContentLoaded", function () {
+            var banner = document.getElementById("cookie-banner");
+            if (banner) banner.classList.add("visible");
+          });
+        }
+      })();
 
       function toggleFaq(btn) {
         var item = btn.closest(".faq-item");
@@ -2646,5 +2665,32 @@
         />
       </svg>
     </a>
+
+    <!-- ==================== COOKIE CONSENT BANNER ==================== -->
+    <div class="cookie-banner" id="cookie-banner" role="dialog" aria-live="polite">
+      <p>
+        <span class="es"
+          >Usamos Umami, una herramienta de analítica sin cookies de
+          seguimiento individual, para entender de forma agregada cómo se usa
+          la web. Puedes aceptarlo o rechazarlo. Más info en nuestra
+          <a href="privacidad.html">Política de Privacidad</a>.</span
+        >
+        <span class="en"
+          >We use Umami, a cookie-less analytics tool, to understand
+          aggregate site usage. You can accept or reject it. More info in our
+          <a href="privacidad.html">Privacy Policy</a>.</span
+        >
+      </p>
+      <div class="cookie-banner-actions">
+        <button class="cookie-btn cookie-btn-reject" onclick="setCookieConsent(false)">
+          <span class="es">Rechazar</span>
+          <span class="en">Reject</span>
+        </button>
+        <button class="cookie-btn cookie-btn-accept" onclick="setCookieConsent(true)">
+          <span class="es">Aceptar</span>
+          <span class="en">Accept</span>
+        </button>
+      </div>
+    </div>
   </body>
 </html>
