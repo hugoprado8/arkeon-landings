@@ -3,7 +3,7 @@
 (function () {
   "use strict";
 
-  var CALENDAR_URL = "https://calendar.app.google/hz4igAA6NwYTUoqGA";
+  var CALENDAR_URL = "https://api.leadconnectorhq.com/widget/bookings/arkeon-saas";
   var FORMSPREE_ACTION = "https://formspree.io/f/mjgdzkyp";
   var CONVERSION_SEND_TO = "AW-18179723592/nziNCPC_xLEcEMii4txD";
 
