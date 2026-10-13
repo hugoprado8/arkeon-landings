@@ -1071,6 +1071,91 @@
         background: var(--accent-dim);
         box-shadow: 0 4px 25px rgba(99, 102, 241, 0.35);
       }
+      .btn-submit:disabled {
+        opacity: 0.6;
+        cursor: wait;
+      }
+
+      /* Quick call request form */
+      #contact-form {
+        scroll-margin-top: 90px;
+      }
+      .call-form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+      @media (max-width: 640px) {
+        .call-form-row {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+      }
+      #call-form textarea.form-input {
+        min-height: 90px;
+      }
+      .call-form-error {
+        color: #f87171;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin: -0.25rem 0 1rem;
+      }
+      .call-form-success {
+        text-align: center;
+      }
+      .call-form-success-icon {
+        width: 56px;
+        height: 56px;
+        margin: 0 auto 1.25rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: #030306;
+        background: var(--accent-2);
+      }
+      .call-form-success h3 {
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+      }
+      .call-form-success p {
+        color: var(--muted-light);
+        margin-bottom: 1.75rem;
+      }
+      .btn-whatsapp {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        background: #25d366;
+        color: #04210f;
+        font-weight: 700;
+        text-decoration: none;
+        padding: 0.95rem 1.5rem;
+        border-radius: 10px;
+        transition: all 0.2s;
+      }
+      .btn-whatsapp:hover {
+        box-shadow: 0 4px 25px rgba(37, 211, 102, 0.35);
+        transform: translateY(-1px);
+      }
+      .call-form-divider {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        color: var(--muted);
+        font-size: 0.8rem;
+        margin: 2.25rem 0 1.25rem;
+      }
+      .call-form-divider::before,
+      .call-form-divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+      }
 
       /* ========================
          FINAL CTA BAND
@@ -1405,10 +1490,8 @@
           </a>
         </nav>
         <a
-          href="https://api.leadconnectorhq.com/widget/bookings/arkeon-saas"
+          href="#contact-form"
           class="nav-cta"
-          target="_blank"
-          rel="noopener"
         >
           <span class="es">Agendar llamada</span>
           <span class="en">Book a call</span>
@@ -1464,10 +1547,8 @@
 
           <div class="hero-actions">
             <a
-              href="https://api.leadconnectorhq.com/widget/bookings/arkeon-saas"
+              href="#contact-form"
               class="btn-primary"
-              target="_blank"
-              rel="noopener"
             >
               <span class="es">Agendar llamada →</span>
               <span class="en">Book a call →</span>
@@ -2124,10 +2205,8 @@
                   <span class="en">Connect on LinkedIn</span>
                 </a>
                 <a
-                  href="https://api.leadconnectorhq.com/widget/bookings/arkeon-saas"
+                  href="#contact-form"
                   class="btn-call-inline"
-                  target="_blank"
-                  rel="noopener"
                 >
                   <span class="es">¿Hablamos? Reserva una llamada →</span>
                   <span class="en">Want to talk? Schedule a call →</span>
@@ -2324,11 +2403,115 @@
             style="text-align: center; margin: 0.75rem auto 3rem"
           >
             <span class="es"
-              >Elige la forma que prefieras de contactarnos.</span
+              >Déjanos tus datos y te escribimos para agendar una
+              llamada.</span
             >
-            <span class="en">Choose whichever way you'd rather reach us.</span>
+            <span class="en"
+              >Leave your details and we'll get back to you to schedule a
+              call.</span
+            >
           </p>
           <div class="contact-card-pane">
+            <form
+              id="call-form"
+              action="https://formspree.io/f/mjgdzkyp"
+              method="POST"
+              novalidate
+            >
+              <input type="hidden" name="source" value="index" />
+              <input type="hidden" name="intent" value="schedule_call" />
+              <div class="call-form-row">
+                <div class="form-field">
+                  <label class="form-field-label" for="cf-name">
+                    <span class="es">Nombre</span>
+                    <span class="en">Name</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="cf-name"
+                    name="name"
+                    class="form-input"
+                    autocomplete="name"
+                    data-ph-es="Tu nombre"
+                    data-ph-en="Your name"
+                    required
+                  />
+                </div>
+                <div class="form-field">
+                  <label class="form-field-label" for="cf-email">Email</label>
+                  <input
+                    type="email"
+                    id="cf-email"
+                    name="email"
+                    class="form-input"
+                    autocomplete="email"
+                    data-ph-es="tu@empresa.com"
+                    data-ph-en="you@company.com"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-field">
+                <label class="form-field-label" for="cf-message">
+                  <span class="es">¿Qué necesitas? (opcional)</span>
+                  <span class="en">What do you need? (optional)</span>
+                </label>
+                <textarea
+                  id="cf-message"
+                  name="message"
+                  class="form-input"
+                  rows="3"
+                  data-ph-es="En una frase: tu proyecto o idea"
+                  data-ph-en="In one sentence: your project or idea"
+                ></textarea>
+              </div>
+              <p class="call-form-error" id="cf-error" hidden>
+                <span class="es"
+                  >Revisa tu nombre y email, o escríbenos por WhatsApp.</span
+                >
+                <span class="en"
+                  >Check your name and email, or message us on WhatsApp.</span
+                >
+              </p>
+              <button type="submit" class="button btn-submit" id="cf-submit">
+                <span class="es">Quiero agendar una llamada →</span>
+                <span class="en">I want to schedule a call →</span>
+              </button>
+            </form>
+
+            <div class="call-form-success" id="cf-success" hidden>
+              <div class="call-form-success-icon">✓</div>
+              <h3>
+                <span class="es">¡Recibido!</span>
+                <span class="en">Got it!</span>
+              </h3>
+              <p>
+                <span class="es"
+                  >Te escribimos en menos de 24h para cerrar día y hora de la
+                  llamada.</span
+                >
+                <span class="en"
+                  >We'll write back within 24h to set a day and time for the
+                  call.</span
+                >
+              </p>
+              <a
+                class="btn-whatsapp"
+                id="cf-whatsapp"
+                href="https://wa.me/34623806299"
+                target="_blank"
+                rel="noopener"
+              >
+                <span class="es">¿Prefieres hablar ya? Escríbenos por WhatsApp</span>
+                <span class="en">Rather talk now? Message us on WhatsApp</span>
+              </a>
+            </div>
+
+            <div id="cf-alternatives">
+            <p class="call-form-divider">
+              <span class="es">o contáctanos directamente</span>
+              <span class="en">or reach us directly</span>
+            </p>
             <div class="option-vertical-list">
               <a
                 class="option-btn contact-option"
@@ -2373,25 +2556,7 @@
                 </span>
                 <span class="btn-arrow">→</span>
               </a>
-              <a
-                class="option-btn contact-option"
-                href="https://api.leadconnectorhq.com/widget/bookings/arkeon-saas"
-                target="_blank"
-                rel="noopener"
-              >
-                <span class="option-text">
-                  <span class="option-title">
-                    <span class="ucf-emoji">📅</span>
-                    <span class="es">Reserva una llamada</span>
-                    <span class="en">Book a call</span>
-                  </span>
-                  <span class="option-sub">
-                    <span class="es">Habla directamente con nosotros</span>
-                    <span class="en">Talk directly with us</span>
-                  </span>
-                </span>
-                <span class="btn-arrow">→</span>
-              </a>
+            </div>
             </div>
           </div>
         </div>
@@ -2415,10 +2580,8 @@
             >
           </p>
           <a
-            href="https://api.leadconnectorhq.com/widget/bookings/arkeon-saas"
+            href="#contact-form"
             class="btn-primary"
-            target="_blank"
-            rel="noopener"
           >
             <span class="es">Agendar llamada →</span>
             <span class="en">Book a call →</span>
@@ -2453,9 +2616,7 @@
             >LinkedIn</a
           >
           <a
-            href="https://api.leadconnectorhq.com/widget/bookings/arkeon-saas"
-            target="_blank"
-            rel="noopener"
+            href="#contact-form"
           >
             <span class="es">Agendar llamada</span>
             <span class="en">Book a call</span>
@@ -2486,6 +2647,58 @@
               encodeURIComponent(waMsg || "");
           });
       }
+
+      (function initCallForm() {
+        var form = document.getElementById("call-form");
+        var nameInput = document.getElementById("cf-name");
+        var emailInput = document.getElementById("cf-email");
+        var errorEl = document.getElementById("cf-error");
+        var submitBtn = document.getElementById("cf-submit");
+        var success = document.getElementById("cf-success");
+        var waBtn = document.getElementById("cf-whatsapp");
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var name = nameInput.value.trim();
+          var email = emailInput.value.trim();
+          if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            errorEl.hidden = false;
+            return;
+          }
+          errorEl.hidden = true;
+          submitBtn.disabled = true;
+
+          fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { Accept: "application/json" },
+          })
+            .then(function (res) {
+              if (!res.ok) throw new Error("submit failed");
+              if (typeof window.gtag === "function") {
+                window.gtag("event", "conversion", {
+                  send_to: "AW-18179723592/nziNCPC_xLEcEMii4txD",
+                });
+              }
+              if (typeof window.fbq === "function") window.fbq("track", "Lead");
+              if (typeof window.rdt === "function") window.rdt("track", "Lead");
+
+              var es = document.documentElement.lang === "es";
+              var msg = es
+                ? "Hola, soy " + name + ". Acabo de dejar mis datos en la web y quiero agendar una llamada."
+                : "Hi, I'm " + name + ". I just left my details on the website and would like to schedule a call.";
+              waBtn.href =
+                "https://wa.me/34623806299?text=" + encodeURIComponent(msg);
+              form.hidden = true;
+              document.getElementById("cf-alternatives").hidden = true;
+              success.hidden = false;
+            })
+            .catch(function () {
+              errorEl.hidden = false;
+              submitBtn.disabled = false;
+            });
+        });
+      })();
 
       /* ========================
          COOKIE CONSENT
