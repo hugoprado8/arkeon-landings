@@ -1100,6 +1100,97 @@
         font-weight: 600;
         margin: -0.25rem 0 1rem;
       }
+      .call-form-field-error {
+        color: #f87171;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-top: 0.5rem;
+      }
+      .phone-group {
+        display: flex;
+        gap: 0.5rem;
+      }
+      .phone-group input {
+        flex: 1;
+        min-width: 0;
+      }
+      .phone-prefix {
+        position: relative;
+        flex: 0 0 auto;
+        width: auto;
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding-right: 2.25rem;
+        white-space: nowrap;
+      }
+      .phone-prefix::after {
+        content: "";
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        width: 6px;
+        height: 6px;
+        border-right: 2px solid var(--muted);
+        border-bottom: 2px solid var(--muted);
+        transform: translateY(-70%) rotate(45deg);
+        pointer-events: none;
+      }
+      .phone-prefix:focus-within {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+      }
+      .phone-prefix-flag {
+        font-size: 1.15rem;
+        line-height: 1;
+      }
+      /* Chromium on Windows has no flag emoji ("ES" letters instead):
+         .flag-font is set from JS there, so only those visitors load it. */
+      @font-face {
+        font-family: "Twemoji Country Flags";
+        unicode-range: U+1F1E6-1F1FF;
+        src: url("https://cdn.jsdelivr.net/npm/country-flag-emoji-polyfill@0.1.8/dist/TwemojiCountryFlags.woff2")
+          format("woff2");
+        font-display: swap;
+      }
+      .flag-font .phone-prefix-flag,
+      .flag-font .phone-prefix select {
+        font-family:
+          "Twemoji Country Flags",
+          "Plus Jakarta Sans",
+          system-ui,
+          sans-serif;
+      }
+      .phone-prefix select {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+        font-size: 1rem;
+        color-scheme: dark;
+      }
+      .phone-prefix option {
+        background: var(--bg);
+        color: var(--text);
+      }
+      @media (max-width: 640px) {
+        .phone-prefix {
+          padding-left: 0.85rem;
+          padding-right: 1.9rem;
+        }
+        .phone-prefix::after {
+          right: 0.8rem;
+        }
+        .phone-prefix {
+          gap: 0.35rem;
+        }
+        .phone-group input {
+          padding-left: 0.9rem;
+          padding-right: 0.9rem;
+        }
+      }
       .call-form-success {
         text-align: center;
       }
@@ -2452,6 +2543,49 @@
                 </div>
               </div>
               <div class="form-field">
+                <label
+                  class="form-field-label"
+                  id="cf-phone-label"
+                  for="cf-phone"
+                >
+                  <span class="es">Teléfono</span>
+                  <span class="en">Phone</span>
+                </label>
+                <div class="phone-group">
+                  <div class="form-input phone-prefix">
+                    <span
+                      class="phone-prefix-flag"
+                      id="cf-phone-flag"
+                      aria-hidden="true"
+                      >🇪🇸</span
+                    >
+                    <span id="cf-phone-dial" aria-hidden="true">+34</span>
+                    <select
+                      id="cf-phone-country"
+                      aria-labelledby="cf-phone-label"
+                    ></select>
+                  </div>
+                  <input
+                    type="tel"
+                    id="cf-phone"
+                    class="form-input"
+                    inputmode="tel"
+                    autocomplete="tel"
+                    aria-describedby="cf-phone-error"
+                    required
+                  />
+                </div>
+                <input type="hidden" name="phone" id="cf-phone-full" />
+                <p class="call-form-field-error" id="cf-phone-error" hidden>
+                  <span class="es"
+                    >Introduce un teléfono válido para poder llamarte.</span
+                  >
+                  <span class="en"
+                    >Enter a valid phone number so we can call you.</span
+                  >
+                </p>
+              </div>
+              <div class="form-field">
                 <label class="form-field-label" for="cf-message">
                   <span class="es">¿Qué necesitas? (opcional)</span>
                   <span class="en">What do you need? (optional)</span>
@@ -2637,6 +2771,10 @@
           el.placeholder =
             lang === "es" ? el.dataset.phEs || "" : el.dataset.phEn || "";
         });
+        document.querySelectorAll("[data-label-en]").forEach(function (el) {
+          el.textContent =
+            lang === "es" ? el.dataset.labelEs : el.dataset.labelEn;
+        });
         document
           .querySelectorAll("#wa-float, #wa-contact-link")
           .forEach(function (waBtn) {
@@ -2646,6 +2784,292 @@
               "https://wa.me/34623806299?text=" +
               encodeURIComponent(waMsg || "");
           });
+        document.dispatchEvent(new CustomEvent("langchange", { detail: lang }));
+      }
+
+      /* ========================
+         PHONE FIELD — country prefix + as-you-type formatting.
+         Submits the number in E.164 (+34612345678) as "phone".
+         ======================== */
+      function initPhoneField() {
+        // len: [min, max] digits without the trunk prefix.
+        // fmt: national grouping ("#" = digit); null = groups of 3.
+        // trunk: national prefix ("0" in UK, FR…) dropped after the dial code.
+        var COUNTRIES = [
+          { iso: "ES", dial: "34", es: "España", en: "Spain", fmt: "### ### ###", len: [9, 9], start: /^[6-9]/, ex: "612345678" },
+          { iso: "MX", dial: "52", es: "México", en: "Mexico", fmt: "## #### ####", len: [10, 10], ex: "5512345678" },
+          { iso: "AR", dial: "54", es: "Argentina", en: "Argentina", fmt: null, len: [10, 11], trunk: "0", ex: "91123456789" },
+          { iso: "CO", dial: "57", es: "Colombia", en: "Colombia", fmt: "### ### ####", len: [10, 10], ex: "3001234567" },
+          { iso: "CL", dial: "56", es: "Chile", en: "Chile", fmt: "# #### ####", len: [9, 9], ex: "912345678" },
+          { iso: "PE", dial: "51", es: "Perú", en: "Peru", fmt: "### ### ###", len: [8, 9], ex: "912345678" },
+          { iso: "US", dial: "1", es: "EE. UU. / Canadá", en: "US / Canada", fmt: "(###) ###-####", len: [10, 10], ex: "2015550123" },
+          { iso: "GB", dial: "44", es: "Reino Unido", en: "United Kingdom", fmt: "#### ######", len: [10, 10], trunk: "0", ex: "7400123456" },
+          { iso: "FR", dial: "33", es: "Francia", en: "France", fmt: "# ## ## ## ##", len: [9, 9], trunk: "0", ex: "612345678" },
+          { iso: "DE", dial: "49", es: "Alemania", en: "Germany", fmt: null, len: [7, 11], trunk: "0", ex: "15123456789" },
+          { iso: "PT", dial: "351", es: "Portugal", en: "Portugal", fmt: "### ### ###", len: [9, 9], ex: "912345678" },
+          { iso: "IT", dial: "39", es: "Italia", en: "Italy", fmt: "### ### ####", len: [6, 11], ex: "3123456789" },
+        ];
+        // Any other country: the visitor types the full international number.
+        var OTHER = { iso: "", dial: "", es: "Otro país", en: "Other country", len: [8, 15] };
+        var ALL = COUNTRIES.concat(OTHER);
+
+        var select = document.getElementById("cf-phone-country");
+        var input = document.getElementById("cf-phone");
+        var flagEl = document.getElementById("cf-phone-flag");
+        var dialEl = document.getElementById("cf-phone-dial");
+        var hidden = document.getElementById("cf-phone-full");
+        var errorEl = document.getElementById("cf-phone-error");
+        var country;
+        var lastDigits = "";
+        // Once the visitor picks a country or types, language changes leave it alone.
+        var touched = false;
+
+        // Regional-indicator emoji from the ISO code. Chromium on Windows
+        // can't draw them, so it gets the flag webfont (see .flag-font).
+        if (/Windows/.test(navigator.userAgent) && !/Firefox/.test(navigator.userAgent)) {
+          document.documentElement.classList.add("flag-font");
+        }
+        function flag(c) {
+          if (!c.iso) return "🌐";
+          return String.fromCodePoint(
+            0x1f1e6 + c.iso.charCodeAt(0) - 65,
+            0x1f1e6 + c.iso.charCodeAt(1) - 65,
+          );
+        }
+
+        ALL.forEach(function (c, i) {
+          var suffix = c.dial ? " (+" + c.dial + ")" : "";
+          var opt = document.createElement("option");
+          opt.value = String(i);
+          opt.dataset.labelEs = flag(c) + " " + c.es + suffix;
+          opt.dataset.labelEn = flag(c) + " " + c.en + suffix;
+          opt.textContent =
+            document.documentElement.lang === "es"
+              ? opt.dataset.labelEs
+              : opt.dataset.labelEn;
+          select.appendChild(opt);
+        });
+
+        function guessCountry() {
+          var tz = "";
+          try {
+            tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+          } catch (e) {}
+          var iso =
+            {
+              "Europe/Madrid": "ES",
+              "Atlantic/Canary": "ES",
+              "Africa/Ceuta": "ES",
+              "Europe/Lisbon": "PT",
+              "Atlantic/Madeira": "PT",
+              "Atlantic/Azores": "PT",
+              "Europe/London": "GB",
+              "Europe/Paris": "FR",
+              "Europe/Berlin": "DE",
+              "Europe/Rome": "IT",
+              "America/Bogota": "CO",
+              "America/Lima": "PE",
+              "America/Santiago": "CL",
+            }[tz] ||
+            (/^America\/(Argentina\/|Buenos_Aires)/.test(tz) && "AR") ||
+            (/^America\/(Mexico_City|Monterrey|Cancun|Merida|Tijuana|Chihuahua|Hermosillo|Mazatlan|Matamoros|Bahia_Banderas)$/.test(
+              tz,
+            ) &&
+              "MX");
+          if (!iso) {
+            var m = /-([a-z]{2})$/i.exec(navigator.language || "");
+            iso = m ? m[1].toUpperCase() : "";
+            if (iso === "CA") iso = "US";
+          }
+          return (
+            COUNTRIES.filter(function (c) {
+              return c.iso === iso;
+            })[0] || COUNTRIES[0]
+          );
+        }
+
+        // Spanish site → Spain; English site → guess from timezone / locale.
+        function defaultCountry(lang) {
+          return lang === "es" ? COUNTRIES[0] : guessCountry();
+        }
+
+        function group(digits, fmt) {
+          if (!fmt) return digits.replace(/(\d{3})(?=\d)/g, "$1 ");
+          var out = "";
+          var i = 0;
+          for (var p = 0; p < fmt.length && i < digits.length; p++) {
+            out += fmt.charAt(p) === "#" ? digits.charAt(i++) : fmt.charAt(p);
+          }
+          return i < digits.length ? out + " " + digits.slice(i) : out;
+        }
+
+        function hasTrunk(c, digits) {
+          return !!c.trunk && digits.charAt(0) === c.trunk;
+        }
+
+        function maxDigits(c, digits) {
+          return c.len[1] + (hasTrunk(c, digits) ? 1 : 0);
+        }
+
+        function setCountry(c) {
+          country = c;
+          select.value = String(ALL.indexOf(c));
+          flagEl.textContent = flag(c);
+          dialEl.textContent = "+" + c.dial;
+          input.placeholder = c.ex ? group(c.ex, c.fmt) : "+41 79 123 45 67";
+        }
+
+        // Writes the national digits formatted, keeping the caret after the
+        // same number of digits it was after before reformatting.
+        function render(digits, caretDigits) {
+          var value = hasTrunk(country, digits)
+            ? country.trunk + group(digits.slice(1), country.fmt)
+            : group(digits, country.fmt);
+          input.value = value;
+          lastDigits = digits;
+          if (caretDigits == null || document.activeElement !== input) return;
+          var pos = caretDigits === 0 ? 0 : value.length;
+          for (var i = 0, n = 0; caretDigits > 0 && i < value.length; i++) {
+            if (/\d/.test(value.charAt(i)) && ++n === caretDigits) {
+              pos = i + 1;
+              break;
+            }
+          }
+          input.setSelectionRange(pos, pos);
+        }
+
+        // ITU dial codes are prefix-free, so at most one country matches.
+        function matchDial(digits) {
+          return COUNTRIES.filter(function (c) {
+            return digits.indexOf(c.dial) === 0;
+          })[0];
+        }
+
+        input.addEventListener("input", function (e) {
+          errorEl.hidden = true;
+          touched = true;
+          var raw = input.value;
+          var caret =
+            input.selectionStart == null ? raw.length : input.selectionStart;
+          var digits = raw.replace(/\D/g, "");
+          var caretDigits = raw.slice(0, caret).replace(/\D/g, "").length;
+
+          // Typed, pasted or autofilled with "+" / "00": switch country by code.
+          var intl = /^\s*(\+|00)/.exec(raw);
+          if (intl) {
+            if (intl[1] === "00") digits = digits.slice(2);
+            var match = matchDial(digits);
+            if (match) {
+              setCountry(match);
+              digits = digits.slice(match.dial.length);
+              render(digits.slice(0, maxDigits(match, digits)), null);
+              return;
+            }
+            var typingCode = COUNTRIES.some(function (c) {
+              return c.dial.indexOf(digits) === 0;
+            });
+            if (country !== OTHER && typingCode) {
+              input.value = "+" + digits;
+              lastDigits = digits;
+              return;
+            }
+            if (country !== OTHER) setCountry(OTHER);
+          }
+
+          if (country === OTHER) {
+            var clean = raw.replace(/[^\d\s()+.-]/g, "");
+            if (clean !== raw) input.value = clean;
+            return;
+          }
+
+          // Backspace/delete on a separator: remove the digit next to it.
+          if (digits === lastDigits) {
+            if (e.inputType === "deleteContentBackward" && caretDigits > 0) {
+              digits =
+                digits.slice(0, caretDigits - 1) + digits.slice(caretDigits);
+              caretDigits--;
+            } else if (e.inputType === "deleteContentForward") {
+              digits =
+                digits.slice(0, caretDigits) + digits.slice(caretDigits + 1);
+            }
+          }
+
+          // Pasted with the dial code but no "+" (34612345678): drop the code.
+          var max = maxDigits(country, digits);
+          if (digits.length > max && digits.indexOf(country.dial) === 0) {
+            var rest = digits.slice(country.dial.length);
+            if (rest.length >= country.len[0] && rest.length <= country.len[1]) {
+              digits = rest;
+              caretDigits = rest.length;
+            }
+          }
+          digits = digits.slice(0, maxDigits(country, digits));
+          render(digits, Math.min(caretDigits, digits.length));
+        });
+
+        select.addEventListener("change", function () {
+          touched = true;
+          var prev = country;
+          var next = ALL[Number(select.value)];
+          var raw = input.value;
+          var digits = raw.replace(/\D/g, "");
+          setCountry(next);
+          errorEl.hidden = true;
+          if (next === OTHER) {
+            // Carry the previous dial code over so the number keeps its meaning.
+            if (digits && !/^\s*\+/.test(raw)) {
+              var sig = hasTrunk(prev, digits) ? digits.slice(1) : digits;
+              input.value = "+" + prev.dial + " " + group(sig, prev.fmt);
+            }
+          } else {
+            // Coming from an international number: keep only the national part
+            // (or start over if its code isn't one we know).
+            if (/^\s*(\+|00)/.test(raw)) {
+              if (/^\s*00/.test(raw)) digits = digits.slice(2);
+              var from = matchDial(digits);
+              digits = from ? digits.slice(from.dial.length) : "";
+            }
+            render(digits.slice(0, maxDigits(next, digits)), null);
+          }
+          input.focus();
+        });
+
+        // Returns the E.164 number, or null when empty or invalid.
+        function toE164() {
+          var raw = input.value;
+          var digits = raw.replace(/\D/g, "");
+          if (!digits) return null;
+          if (country === OTHER || /^\s*\+/.test(raw)) {
+            if (/^\s*00/.test(raw)) digits = digits.slice(2);
+            return digits.length >= OTHER.len[0] && digits.length <= OTHER.len[1]
+              ? "+" + digits
+              : null;
+          }
+          var sig = hasTrunk(country, digits) ? digits.slice(1) : digits;
+          var valid =
+            sig.length >= country.len[0] &&
+            sig.length <= country.len[1] &&
+            (!country.start || country.start.test(sig));
+          return valid ? "+" + country.dial + sig : null;
+        }
+
+        function validate() {
+          var value = toE164();
+          hidden.value = value || "";
+          errorEl.hidden = !!value;
+          return !!value;
+        }
+
+        input.addEventListener("blur", function () {
+          if (input.value.trim()) validate();
+        });
+
+        document.addEventListener("langchange", function (e) {
+          if (!touched) setCountry(defaultCountry(e.detail));
+        });
+
+        setCountry(defaultCountry(document.documentElement.lang));
+        return { input: input, validate: validate };
       }
 
       (function initCallForm() {
@@ -2656,16 +3080,22 @@
         var submitBtn = document.getElementById("cf-submit");
         var success = document.getElementById("cf-success");
         var waBtn = document.getElementById("cf-whatsapp");
+        var phone = initPhoneField();
 
         form.addEventListener("submit", function (e) {
           e.preventDefault();
           var name = nameInput.value.trim();
           var email = emailInput.value.trim();
+          var phoneOk = phone.validate();
           if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
             errorEl.hidden = false;
             return;
           }
           errorEl.hidden = true;
+          if (!phoneOk) {
+            phone.input.focus();
+            return;
+          }
           submitBtn.disabled = true;
 
           fetch(form.action, {
