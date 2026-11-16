@@ -2,7 +2,7 @@
    UNIFIED CONTACT FORM
    Shared across index.html and all service landing pages.
    Relies on each page's existing tokens: var(--bg), var(--text), var(--muted),
-   var(--accent), var(--accent-2), var(--border), and its own .form-field /
+   var(--brand), var(--brand-light), var(--brand-*), var(--border), and its own .form-field /
    .form-input / .btn-submit (already defined per-page and visually
    consistent across the site). The component classes below
    (.option-btn, .btn-arrow, .step-title-wizard, .option-vertical-list,
@@ -13,7 +13,7 @@
 .step-title-wizard {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--text);
   margin-bottom: 2rem;
   line-height: 1.4;
 }
@@ -27,7 +27,7 @@
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 1.4rem 1.5rem;
-  color: #ffffff;
+  color: var(--text);
   font-family: inherit;
   font-size: 0.95rem;
   font-weight: 600;
@@ -41,12 +41,12 @@
   width: 100%;
 }
 .option-btn:hover {
-  border-color: var(--accent-2);
-  background: rgba(45, 212, 191, 0.1);
-  box-shadow: 0 0 15px rgba(45, 212, 191, 0.15);
+  border-color: var(--brand-border-hover);
+  background: var(--brand-soft);
+  box-shadow: 0 0 15px var(--brand-ring);
 }
 .btn-arrow {
-  color: var(--accent-2);
+  color: var(--brand-light);
   font-weight: 700;
   transition: transform 0.2s;
   margin-left: 1rem;
@@ -56,9 +56,9 @@
 }
 .step2-header-badge {
   display: inline-block;
-  background: rgba(45, 212, 191, 0.12);
-  border: 1px solid rgba(45, 212, 191, 0.3);
-  color: var(--accent-2);
+  background: var(--brand-soft-strong);
+  border: 1px solid var(--brand-border);
+  color: var(--brand-light);
   font-family: "JetBrains Mono", monospace;
   font-size: 0.75rem;
   font-weight: 700;
@@ -68,7 +68,7 @@
 }
 .form-field-label {
   display: block;
-  color: #ffffff;
+  color: var(--text);
   font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -105,12 +105,12 @@
   line-height: 1;
 }
 .ucf-category-btn.is-selected {
-  border-color: var(--accent);
-  background: rgba(99, 102, 241, 0.12);
-  box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);
+  border-color: var(--brand);
+  background: var(--brand-soft-strong);
+  box-shadow: 0 0 15px var(--brand-ring);
 }
 .ucf-field-error {
-  color: #f87171;
+  color: var(--danger);
   font-size: 0.8rem;
   font-weight: 600;
   margin-top: 0.6rem;

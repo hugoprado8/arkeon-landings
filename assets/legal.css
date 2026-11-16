@@ -1,13 +1,14 @@
 /* Shared styles for legal pages (Privacy, Legal Notice, Terms) */
+/* Same palette tokens as index.html ("2 principales + 1 acento").
+   Legal pages have no conversion CTA, so the cyan accent is not used here. */
 :root {
-  --bg: #030306;
-  --text: #ffffff;
+  --bg: #0b0f17;
+  --text: #f2f0fa;
   --muted: #94a3b8;
   --muted-light: #e2e8f0;
-  --accent: #818cf8;
-  --accent-dim: #4f46e5;
-  --accent-2: #2dd4bf;
-  --card: rgba(16, 16, 28, 0.85);
+  --brand: #8b5cf6;
+  --brand-light: #a78bfa;
+  --brand-border: rgba(139, 92, 246, 0.25);
   --border: rgba(255, 255, 255, 0.1);
   --border-hover: rgba(255, 255, 255, 0.2);
 }
@@ -66,7 +67,7 @@ body {
   transition: color 0.2s;
 }
 .back-link:hover {
-  color: #ffffff;
+  color: var(--text);
 }
 
 /* Lang switcher (reuses same markup/behaviour as index.html) */
@@ -95,7 +96,7 @@ body {
 }
 .lang-sw button.active {
   opacity: 1;
-  background: rgba(129, 140, 248, 0.25);
+  background: var(--brand-border);
 }
 .flag-img {
   width: 20px;
@@ -118,7 +119,7 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: var(--accent);
+  color: var(--brand-light);
   margin-bottom: 1rem;
 }
 .legal-content h1 {
@@ -165,14 +166,14 @@ body {
   margin-bottom: 0.4rem;
 }
 .legal-content a {
-  color: var(--accent-2);
+  color: var(--brand-light);
   text-decoration: none;
 }
 .legal-content a:hover {
   text-decoration: underline;
 }
 .legal-content strong {
-  color: #ffffff;
+  color: var(--text);
   font-weight: 700;
 }
 .legal-table-wrap {
@@ -195,7 +196,7 @@ body {
   vertical-align: top;
 }
 .legal-table th {
-  color: #ffffff;
+  color: var(--text);
   font-weight: 700;
   background: rgba(255, 255, 255, 0.03);
 }
@@ -231,7 +232,7 @@ footer {
   transition: color 0.2s;
 }
 .footer-links a:hover {
-  color: #ffffff;
+  color: var(--text);
 }
 
 /* Language visibility */
